@@ -126,7 +126,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="V0.0.0"/>
+            <Property name="text" type="java.lang.String" value="V.0.20160310"/>
           </Properties>
         </Component>
       </SubComponents>
