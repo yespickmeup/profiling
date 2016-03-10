@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="262022bc-9cfa-4ad0-9fd5-86fbd0b81b3d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="29"/>
+	<parameter name="col1" class="java.lang.String"/>
+	<parameter name="col2" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance2" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance3" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance4" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance5" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance6" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance7" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance8" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance9" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance10" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance1" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance11" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance12" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance13" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance14" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance15" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance16" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance17" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance18" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance19" class="java.lang.String"/>
+	<parameter name="Barangay_Clearance20" class="java.lang.String"/>
+	<parameter name="Barangay_Permit" class="java.lang.String"/>
+	<parameter name="Barangay_Permit1" class="java.lang.String"/>
+	<parameter name="Barangay_Permit2" class="java.lang.String"/>
+	<parameter name="Barangay_Permit3" class="java.lang.String"/>
+	<parameter name="Barangay_Permit4" class="java.lang.String"/>
+	<parameter name="Barangay_Permit5" class="java.lang.String"/>
+	<parameter name="Barangay_Permit6" class="java.lang.String"/>
+	<parameter name="Barangay_Permit7" class="java.lang.String"/>
+	<parameter name="Barangay_Permit8" class="java.lang.String"/>
+	<parameter name="Barangay_Permit9" class="java.lang.String"/>
+	<parameter name="Barangay_Permit10" class="java.lang.String"/>
+	<parameter name="Barangay_Permit11" class="java.lang.String"/>
+	<parameter name="Barangay_Permit12" class="java.lang.String"/>
+	<parameter name="Barangay_Permit13" class="java.lang.String"/>
+	<parameter name="Barangay_Permit14" class="java.lang.String"/>
+	<parameter name="Barangay_Permit15" class="java.lang.String"/>
+	<parameter name="Barangay_Permit16" class="java.lang.String"/>
+	<parameter name="Barangay_Permit17" class="java.lang.String"/>
+	<parameter name="Barangay_Permit18" class="java.lang.String"/>
+	<parameter name="Barangay_Permit19" class="java.lang.String"/>
+	<parameter name="Barangay_Permit20" class="java.lang.String"/>
+	<parameter name="Barangay_Permit21" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d6c94dbd-13e3-4b5f-817b-b1f326d507c6" x="385" y="0" width="170" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1c394f6a-5784-4e15-b2b6-fd184b699726" x="190" y="36" width="209" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8e76a726-7a4f-4b8b-ac6f-149d6da83cd8" x="168" y="56" width="252" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement uuid="b7a0ca03-61ce-4594-a5dc-3eeb941c4d0d" x="135" y="0" width="397" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="abad6c51-b72e-4f2e-9323-423a108098a6" x="206" y="33" width="152" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit4}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="138" splitType="Stretch">
+			<textField>
+				<reportElement uuid="160efaf3-c913-4bc0-bdcd-66fe76c64f35" x="212" y="0" width="146" height="20"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b5730648-4b35-4167-bb07-4fb735c73cf1" x="234" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d562b2e-8253-4883-a71e-53a5f5434a4d" x="222" y="40" width="146" height="20"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c6d46ee7-8f20-4454-b441-dc9e0da22b52" x="210" y="60" width="148" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5954e61a-77d5-4b7a-bf23-c9d29c08b15a" x="60" y="91" width="443" height="20"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="104c5fba-a006-4784-9ef5-d8a7ffa778b3" x="234" y="111" width="124" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit10}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="271" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0003c13d-3ab4-4d8d-8929-01eb9648e13f" x="261" y="59" width="170" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit13}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fe2c0f55-9b90-4a2e-93d5-f4c60edd5500" x="399" y="111" width="154" height="20"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit14}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7c319cf9-9f8c-4fc4-b4df-f8da9a78ae4e" x="385" y="131" width="170" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ecfb8b4f-1fee-49ef-bbec-5cfc1f1aa721" x="2" y="151" width="174" height="20"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit16}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cd0ba8b0-3021-4f5d-a2c7-b49320da6dac" x="2" y="171" width="174" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit17}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3d568a55-bfb0-48c9-875c-ca59b0f0bd1e" x="2" y="191" width="174" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit18}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5e501c7c-87f5-4279-8aa9-93375fdca120" x="2" y="211" width="174" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9785024-e0f2-4c2d-8557-6f959acdb03f" x="2" y="231" width="174" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit20}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="acc75d18-ecde-483a-9ef2-8b7d88d089a5" x="2" y="251" width="174" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit21}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1d5b3a4e-0d21-4ddd-8521-bebc694a126a" x="2" y="20" width="553" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9348d85f-f728-458d-95ec-75849f0a0a89" x="0" y="0" width="553" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Barangay_Permit11}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

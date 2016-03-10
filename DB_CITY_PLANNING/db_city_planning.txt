@@ -1,0 +1,422 @@
+create databases db_city_planning;
+
+create table countries(
+	id int not null auto_increment primary key,
+	country varchar(100))
+	;
+
+create table provinces(
+	id int not null auto_increment primary key,
+	province varchar(100))
+	;
+
+create table cities(
+	id int not null auto_increment primary key,
+	province_id int,
+	province varchar(100),
+	city varchar(100))
+	;
+
+create table brangays(
+	id int not null auto_increment primary key,
+	province_id int,
+	province varchar(100),
+	city_id int,
+	city varchar(100),
+	barangay varchar(100))
+	;
+
+create table building_types(
+	id int not null auto_increment primary key,
+	building_type varchar(100))
+	;
+
+create table puroks(
+	id int not null auto_increment primary key,
+	province_id int,
+	province varchar(100),
+        city_id int,	
+	city varchar(100),
+	barangay_id varchar(100),
+	barangay varchar(100),
+	purok_id int,
+	purok varchar(100),
+	street varchar(100))
+	;
+
+create table streets(
+	id int not null auto_increment primary key,
+	province_id int,
+	province varchar(100),
+	city_id int,
+	city varchar(100),
+	barangay_id int,
+	barangay varchar(100),
+	purok_id int,
+	purok varchar(100),
+	street varchar(100))
+	;
+
+create table toilet_types(
+	id int not null auto_increment primary key,
+	toilet_type varchar(100))
+	;
+
+create table bathroom_types(
+	id int not null auto_increment primary key,
+	bathroom_type varchar(100))
+	;
+
+create table solid_waste_disposal_methods(
+	id int not null auto_increment primary key,
+	disposal_method varchar(100))
+	;
+
+create table kicthen_types(
+	id int not null auto_increment primary key,
+	kicthen_type varchar(100))
+	;
+
+create table communication_types(
+	id int not null auto_increment primary key,
+	communication_type varchar(100))
+	;
+
+create table transportation_types(
+	id int not null auto_increment primary key,
+	transportation_type varchar(100))
+	;
+
+create table roof_types(
+	id int not null auto_increment primary key,
+	roof_type varchar(100))
+	;
+
+create table wall_types(
+	id int not null auto_increment primary key,
+	wall_type varchar(100))
+	;
+
+create table floor_types(
+	id int not null auto_increment primary key,
+	floor_type varchar(100))
+	;
+
+create table cooking_lighting_types(
+	id int not null auto_increment primary key,
+	cooking_lighting_type varchar(100))
+	;
+
+create table water_sources(
+	id int not null auto_increment primary key,
+	water_source varchar(100))
+	;
+
+create table assets(
+	id int not null auto_increment primary key,
+	asset varchar(100))
+	;
+
+create table genders(
+	id int not null auto_increment primary key,
+	gender varchar(100))
+	;
+
+create table marital_statuses(
+	id int not null auto_increment primary key,
+	marital_status varchar(100))
+	;
+
+create table household_positions(
+	id int not null auto_increment primary key,
+	household_position varchar(100))
+	;
+
+create table citizenships(
+	id int not null auto_increment primary key,
+	citizenship varchar(100))
+	;
+
+create table religions(
+	id int not null auto_increment primary key,
+	religion varchar(100))
+	;
+
+create table educational_statuses(
+	id int not null auto_increment primary key,
+	educational_status varchar(100))
+	;
+
+create table schools(
+	id int not null auto_increment primary key,
+	school varchar(100),
+	address varchar(100))
+	;
+
+create table achievements(
+	id int not null auto_increment primary key,
+	achievement varchar(100))
+	;
+
+create table disabilities(
+	id int not null auto_increment primary key,
+	disability varchar(100))
+	;
+
+create table businesses(
+	id int not null auto_increment primary key,
+	business varchar(100),
+	address varchar(100),
+	mailing_address varchar(100),
+	business_type varchar(100),
+	contact_no varchar(100),
+	remarks varchar(100))
+	;
+
+create table professions(
+	id int not null auto_increment primary key,
+	profession varchar(100))
+	;
+
+create table skills(
+	id int not null auto_increment primary key,
+	skill varchar(100))
+	;
+
+create table certifications(
+	id int not null auto_increment primary key,
+	certification varchar(100))
+	;
+
+create table basic_needs(
+	id int not null auto_increment primary key,
+	basic_needs varchar(100))
+	;
+
+
+
+
+
+
+
+----------------/*  new added tables  */---------------  9/25/14  1:02pm 
+
+
+
+CREATE TABLE houses
+	(id int not null auto_increment primary key
+	,house_no varchar(100)
+	,address varchar(100)
+	,city_id int
+	,city varchar(100)
+	,barangay_id int
+	,barangay varchar(100)
+	,purok_id int
+	,purok varchar(100)
+	,street_id int
+	,street varchar(100)
+	,building_type_id int
+	,building_type varchar(100)
+	,building_condition_id int
+	,building_condition varchar(100)
+	,no_rooms_for_sleeping int
+	,toilet_type_id int
+	,toilet_type varchar(100)
+	,bathroom_type_id int
+	,bathroom_type varchar(100)
+	,solid_waste_disposal_method_id int
+	,solid_waste_disposal_method varchar(100)
+	,kitchen_type_id int
+	,kitchen_type varchar(100)
+	,transportation_type_id int
+	,transportation_type varchar(100)
+	,roof_type_id int
+	,roof_type varchar(100)
+	,wall_type_id int
+	,wall_type varchar(100)
+	,floor_type_id int
+	,floor_type varchar(100)
+	,communication_type_id int
+	,communication_type varchar(100)
+	,fuel_use_for_lighting_id int
+	,fuel_use_for_lighting varchar(100)
+	,fuel_use_for_cooking_id int
+	,fuel_use_for_cooking varchar(100)
+	,water_source_id int
+	,water_source varchar(100)
+	,drinking_water_source_distance varchar(100)
+	,nearest_water_source_distance var
+char(100)
+	,assets varchar(100)
+	,no_of_household int
+	,no_of_household_members int
+         );
+
+
+
+
+CREATE TABLE households
+	(id int not null auto_increment primary key
+	,house_no varchar(100)
+	,household_no varchar(100)
+	,address varchar(100)
+	,city_id int
+	,city varchar(100)
+	,barangay_id int
+	,barangay varchar(100)
+	,purok_id int
+	,purok varchar(100)
+	,street_id int
+	,street varchar(100)
+	,building_type_id int
+	,building_type varchar(100)
+	,building_condition_id int
+	,building_condition varchar(100)
+	,no_rooms_for_sleeping int
+	,toilet_type_id int
+	,toilet_type varchar(100)
+	,bathroom_type_id int
+	,bathroom_type varchar(100)
+	,solid_waste_disposal_method_id int
+	,solid_waste_disposal_method varchar(100)
+	,kitchen_type_id int
+	,kitchen_type varchar(100)
+	,transportation_type_id int
+	,transportation_type varchar(100)
+	,roof_type_id int
+	,roof_type varchar(100)
+	,wall_type_id int
+	,wall_type varchar(100)
+	,floor_type_id int
+	,floor_type varchar(100)
+	,communication_type_id int
+	,communication_type varchar(100)
+	,fuel_use_for_lighting_id int
+	,fuel_use_for_lighting varchar(100)
+	,fuel_use_for_cooking_id int
+	,fuel_use_for_cooking varchar(100)
+	,water_source_id int
+	,water_source varchar(100)
+	,drinking_water_source_distance varchar(100)
+	,nearest_water_source_distance varchar(100)
+	,no_of_household varchar(100)
+	,no_of_household_members varchar(100)
+	,occupancy_type varchar(100)
+	,is_land_owner varchar(100)
+	,is_bldg_owner varchar(100)
+	,tenure varchar(100)
+	,monthly_rental varchar(100)
+	,household_assets varchar(100)
+        );
+	
+	
+CREATE TABLE household_consumptions
+	(id int not null auto_increment primary key
+	,house_no varchar(100)
+	,household_no int
+	,basic_need varchar(100)
+	,consumption_date date
+	,date_added datetime
+	);
+
+
+
+
+--------------/*  household_members  */--------------------9/25/14  3:04 pm
+
+create table household_members
+	(id int not null auto_increment primary key
+	,house_no varchar(100)
+	,household_no varchar(100)
+	,address varchar(100)
+	,city_id int
+	,city varchar(100)
+	,barangay_id int
+	,barangay varchar(100)
+	,purok_id int
+	,purok varchar(100)
+	,street_id int
+	,street varchar(100)
+	,household_f_name varchar(100)
+	,household_m_name varchar(100)
+	,household_l_name varchar(100)
+	,gender varchar(100)
+	,marital_status varchar(100)
+	,no_occupancy_year date
+	,birthdate date 
+	,birth_place varchar(100)
+	,prior_residence varchar(100)
+	,email_address varchar(100)
+	,relation_to_household varchar(100)
+	,citizenship varchar(100)
+	,religion varchar(100)
+	);
+	
+
+
+
+create table household_members_educational_background
+	(id int not null auto_increment primary key
+	,household_members_id int
+	,educational_status varchar(100)
+	,name_of_school varchar(100)
+	,highest_grade_computed varchar(100)
+	,year date
+	,achievements varchar(100)
+         );
+
+
+create table household_member_medication
+	(id int not null auto_increment primary key
+	,household_member_id int
+	,medication varchar(100)
+	,doctor_name varchar(100)
+	,prescription varchar(100)
+	,dose varchar(100)
+	,begin_date date
+	,end_date date
+	);
+
+
+create table household_member_health_status
+	(id int not null auto_increment primary key
+	,household_member_id int
+	,is_seeing_a_doctor varchar(100)
+	,status varchar(100)
+	,name_of_doctor varchar(100)
+	,level_of_disability varchar(100)
+	,cause varchar(100)
+	);
+
+
+create table household_member_employment_status
+	(id int not null auto_increment primary key
+	,household_member_id int
+	,status varchar(100)
+	,employment_status varchar(100)
+	,name_of_company varchar(100)
+	,name_of_business varchar(100)
+	,business_address varchar(100)
+	,mailing_address varchar(100)
+	,type_of_business varchar(100)
+	,is_homebased_business varchar(100)
+	,net_income_estimation double
+	,country varchar(100)
+	,profession varchar(100)
+	,financial_assistance_amount double
+	,reason_for_migration varchar(100)
+	);
+
+
+create table household_member_certification
+	(id int not null auto_increment primary key
+	,household_member_id int
+	,certification varchar(100)
+	,description varchar(100)
+	,address varchar(100)
+	,date date
+	);
+
+
+
+
