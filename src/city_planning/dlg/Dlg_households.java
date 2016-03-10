@@ -2096,6 +2096,8 @@ public class Dlg_households extends javax.swing.JDialog {
         Initialize_table_households.init_tbl_household_consumptions(tbl_household_consumptions);
         Initialize_table_households.init_tbl_household_members(tbl_household_members);
 
+        jButton16.setVisible(false);
+        jButton17.setVisible(false);
     }
 
     Households.to_households household = new Households.to_households(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList());
@@ -2106,7 +2108,9 @@ public class Dlg_households extends javax.swing.JDialog {
 
     public void do_pass(Households.to_households household1) {
         household = household1;
-
+        jButton16.setVisible(true);
+        jButton17.setVisible(true);
+        tf_household_no.setFocusable(false);
         //<editor-fold defaultstate="collapsed" desc=" Basic Information ">
         tf_household_no.setText(household.household_no);
         tf_tenure.setText(household.tenure);
@@ -3039,9 +3043,8 @@ public class Dlg_households extends javax.swing.JDialog {
     }
 
     private void update_household_basic_information() {
-        
-        //<editor-fold defaultstate="collapsed" desc=" Basic Information/Concerns ">
 
+        //<editor-fold defaultstate="collapsed" desc=" Basic Information/Concerns ">
         int id = household.id;
         String created_at = household.created_at;
         String updated_at = household.updated_at;
@@ -3098,6 +3101,5 @@ public class Dlg_households extends javax.swing.JDialog {
         Alert.set(2, "");
 
         //</editor-fold>
-        
     }
 }

@@ -554,7 +554,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_cityMouseClicked
 
     private void tf_barangayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_barangayMouseClicked
-        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province,tf_city);
+        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
     }//GEN-LAST:event_tf_barangayMouseClicked
 
     private void tf_barangays4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_barangays4MouseClicked
@@ -578,7 +578,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_cityActionPerformed
 
     private void tf_barangayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_barangayActionPerformed
-        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province,tf_city);
+        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
     }//GEN-LAST:event_tf_barangayActionPerformed
 
     private void tf_regionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_regionActionPerformed
@@ -894,21 +894,17 @@ public class Dlg_search_record extends javax.swing.JDialog {
                         Alert.set(1, "");
                         ret_household_members();
 
-                        Initialize_table_households.tbl_houses_ALM.clear();
                         Initialize_table_households.tbl_households_ALM.clear();
                         Initialize_table_households.tbl_household_members_ALM.clear();
-                        Initialize_table_households.tbl_household_member_concerns_ALM.clear();
                         Initialize_table_households.tbl_household_expenditures_ALM.clear();
                         Initialize_table_households.tbl_household_consumptions_ALM.clear();
                         Initialize_table_households.tbl_household_assets_ALM.clear();
-
                         Initialize_table_household_members.tbl_household_member_work_experiences_ALM.clear();
                         Initialize_table_household_members.tbl_household_member_vocational_experiences_ALM.clear();
                         Initialize_table_household_members.tbl_household_member_prefered_works_ALM.clear();
                         Initialize_table_household_members.tbl_household_member_medications_ALM.clear();
                         Initialize_table_household_members.tbl_household_member_licenses_ALM.clear();
                         Initialize_table_household_members.tbl_household_member_health_statuses_ALM.clear();
-                        Initialize_table_household_members.tbl_household_member_employment_status_ALM.clear();
                         Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.clear();
                         Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.clear();
 

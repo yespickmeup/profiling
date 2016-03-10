@@ -241,7 +241,14 @@ public class Initialize_search_record_field_types {
         tr.setCallback(new TableRenderer.Callback() {
             @Override
             public void ok(TableRenderer.OutputData data) {
-                Barangays.to_barangays to = barangays.get(data.selected_row);
+                Barangays.to_barangays to = null;
+
+                if (tf.getText().isEmpty()) {
+                    to = barangays.get(data.selected_row);
+                } else {
+                    to = in_search.get(data.selected_row);
+                }
+
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.barangay);
                 field.setId("" + to.id);

@@ -3609,33 +3609,28 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel270" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel271" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel269" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel270" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel271" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel269" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cb_ts_machine_work" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cb_ts_setting_up" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cb_ts_assembling" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                  <Component id="cb_ts_operating" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="cb_ts_driving" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Component id="cb_ts_repairing" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_ts_machine_work" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_ts_setting_up" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_ts_assembling" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                          <Component id="cb_ts_operating" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="cb_ts_driving" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jLabel268" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_ts_repairing" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="460" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jLabel268" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">

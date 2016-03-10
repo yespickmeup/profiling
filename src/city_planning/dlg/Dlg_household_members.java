@@ -4031,13 +4031,18 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Initialize_table_household_members.init_tbl_household_member_work_experiences(tbl_household_member_work_experiences);
         Initialize_table_household_members.init_tbl_household_member_prefered_works(tbl_household_member_prefered_works);
 
+        jButton13.setVisible(false);
+        jButton14.setVisible(false);
+        jButton16.setVisible(false);
     }
 
     Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null);
 
     public void do_pass(Household_members.to_household_members household_member1) {
         household_member = household_member1;
-
+        jButton13.setVisible(true);
+        jButton14.setVisible(true);
+        jButton16.setVisible(true);
         //<editor-fold defaultstate="collapsed" desc=" Basic Information ">
         tf_fname.setText(household_member.fname);
         tf_mname.setText(household_member.mname);
@@ -5754,7 +5759,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }
 
     private void update_household_member_skills() {
-        
+
         //<editor-fold defaultstate="collapsed" desc=" Skills ">
         int id = household_member.id;
         String created_at = household_member.created_at;
@@ -5837,6 +5842,5 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Alert.set(2, "");
 
         //</editor-fold>
-        
     }
 }

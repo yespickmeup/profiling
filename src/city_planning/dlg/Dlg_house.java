@@ -1372,6 +1372,7 @@ public class Dlg_house extends javax.swing.JDialog {
         Initialize_search_record_field_types.ret_data();
         Initialize_table_households.init_tbl_households(tbl_households);
 
+        jButton13.setVisible(false);
         tf_house_number.grabFocus();
     }
 
@@ -1379,6 +1380,8 @@ public class Dlg_house extends javax.swing.JDialog {
 
     public void do_pass(Houses.to_houses house1, Household_members.to_household_members member) {
         house = house1;
+        jButton13.setVisible(true);
+        tf_house_number.setFocusable(false);
         //<editor-fold defaultstate="collapsed" desc=" set house details">
         Field.Combo reg = (Field.Combo) tf_region;
         Field.Combo prov = (Field.Combo) tf_province;
