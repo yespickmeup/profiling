@@ -2108,8 +2108,7 @@ public class Dlg_households extends javax.swing.JDialog {
 
     public void do_pass(Households.to_households household1) {
         household = household1;
-        jButton16.setVisible(true);
-        jButton17.setVisible(true);
+
         tf_household_no.setFocusable(false);
         //<editor-fold defaultstate="collapsed" desc=" Basic Information ">
         tf_household_no.setText(household.household_no);
@@ -2167,6 +2166,8 @@ public class Dlg_households extends javax.swing.JDialog {
     public void do_pass_db(Households.to_households household1, Household_members.to_household_members member) {
         household = household1;
         jTabbedPane1.setSelectedIndex(5);
+        jButton16.setVisible(true);
+        jButton17.setVisible(true);
 
         //<editor-fold defaultstate="collapsed" desc=" Basic Information ">
         tf_household_no.setText(household.household_no);
