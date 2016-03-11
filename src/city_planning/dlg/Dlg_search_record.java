@@ -26,6 +26,7 @@ import java.util.logging.Level;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
@@ -656,7 +657,14 @@ public class Dlg_search_record extends javax.swing.JDialog {
         ret_default_location();
         Initialize_search_record_field_types.ret_data();
         init_tbl_household_members(tbl_household_members);
-        jTextField1.grabFocus();
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                jTextField1.grabFocus();
+            }
+        });
+
     }
 
     public void do_pass() {
