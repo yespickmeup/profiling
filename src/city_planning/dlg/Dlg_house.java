@@ -13,6 +13,7 @@ import city_planning.household_members.Household_members;
 import city_planning.households.Households;
 import city_planning.houses.Houses;
 import city_planning.initialize_fields.Initialize_house_field_types;
+import city_planning.initialize_fields.Initialize_household_field_types;
 import city_planning.initialize_fields.Initialize_search_record_field_types;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
@@ -93,8 +94,10 @@ public class Dlg_house extends javax.swing.JDialog {
         double drinking_water_source_distance;
         double nearest_water_source_distance;
         List<Households.to_households> households;
+        String latitude;
+        String longtitude;
 
-        public OutputData(String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households) {
+        public OutputData(String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households, String latitude, String longtitude) {
             this.region = region;
             this.region_id = region_id;
             this.province = province;
@@ -333,6 +336,10 @@ public class Dlg_house extends javax.swing.JDialog {
         jLabel209 = new javax.swing.JLabel();
         jLabel210 = new javax.swing.JLabel();
         jButton13 = new Button.Info();
+        jLabel213 = new javax.swing.JLabel();
+        tf_nearest_water_src1 = new Field.Input();
+        tf_nearest_water_src2 = new Field.Input();
+        jLabel214 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_households = new javax.swing.JTable();
@@ -603,6 +610,11 @@ public class Dlg_house extends javax.swing.JDialog {
         jLabel194.setText("Bldg. Permit:");
 
         tf_compartments.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_compartments.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_compartmentsMouseClicked(evt);
+            }
+        });
 
         jLabel152.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel152.setText("Toilet Type:");
@@ -900,6 +912,16 @@ public class Dlg_house extends javax.swing.JDialog {
             }
         });
 
+        jLabel213.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel213.setText("Latitude:");
+
+        tf_nearest_water_src1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        tf_nearest_water_src2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel214.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel214.setText("Longtitude:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -907,16 +929,8 @@ public class Dlg_house extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel212, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel210, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_drinking_water_src)
-                                    .addComponent(tf_nearest_water_src)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel208)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -931,13 +945,28 @@ public class Dlg_house extends javax.swing.JDialog {
                                     .addComponent(tf_lighting)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel213, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel212, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel210, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_drinking_water_src)
+                                    .addComponent(tf_nearest_water_src)
+                                    .addComponent(tf_nearest_water_src1))))
                         .addGap(10, 10, 10))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_house_condition3)
                             .addComponent(jLabel206)
                             .addComponent(jLabel209))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel214, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_nearest_water_src2)
                         .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
@@ -969,9 +998,17 @@ public class Dlg_house extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel212, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_nearest_water_src, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel213, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_nearest_water_src1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel214, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_nearest_water_src2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -1049,12 +1086,12 @@ public class Dlg_house extends javax.swing.JDialog {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_house_condition4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -1088,8 +1125,8 @@ public class Dlg_house extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1287,6 +1324,10 @@ public class Dlg_house extends javax.swing.JDialog {
         update_house();
     }//GEN-LAST:event_jButton13ActionPerformed
 
+    private void tf_compartmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_compartmentsMouseClicked
+        Initialize_house_field_types.init_compartments(tf_compartments);
+    }//GEN-LAST:event_tf_compartmentsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1315,6 +1356,8 @@ public class Dlg_house extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel210;
     private javax.swing.JLabel jLabel211;
     private javax.swing.JLabel jLabel212;
+    private javax.swing.JLabel jLabel213;
+    private javax.swing.JLabel jLabel214;
     private javax.swing.JLabel jLabel216;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel1;
@@ -1353,6 +1396,8 @@ public class Dlg_house extends javax.swing.JDialog {
     private javax.swing.JTextField tf_kitchens;
     private javax.swing.JTextField tf_lighting;
     private javax.swing.JTextField tf_nearest_water_src;
+    private javax.swing.JTextField tf_nearest_water_src1;
+    private javax.swing.JTextField tf_nearest_water_src2;
     private javax.swing.JTextField tf_no_rooms;
     private javax.swing.JTextField tf_province;
     private javax.swing.JTextField tf_purok;
@@ -1368,15 +1413,15 @@ public class Dlg_house extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         ret_default_location();
-        Initialize_house_field_types.ret_data();
-        Initialize_search_record_field_types.ret_data();
+//        Initialize_household_field_types.ret_data();
+//        Initialize_search_record_field_types.ret_data();
         Initialize_table_households.init_tbl_households(tbl_households);
 
         jButton13.setVisible(false);
         tf_house_number.grabFocus();
     }
 
-    Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList());
+    Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList(), "", "");
 
     public void do_pass(Houses.to_houses house1, Household_members.to_household_members member) {
         house = house1;
@@ -1423,7 +1468,8 @@ public class Dlg_house extends javax.swing.JDialog {
         tf_water_sources.setText(house.water_sources);
         tf_drinking_water_src.setText(FitIn.fmt_wc_0(house.drinking_water_source_distance));
         tf_nearest_water_src.setText(FitIn.fmt_wc_0(house.nearest_water_source_distance));
-
+        tf_nearest_water_src1.setText(house.latitude);
+        tf_nearest_water_src2.setText(house.longtitude);
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" load households ">
         List<Households.to_households> households = house.households;
@@ -1545,8 +1591,14 @@ public class Dlg_house extends javax.swing.JDialog {
 
     //<editor-fold defaultstate="collapsed" desc=" Households ">
     private void new_household() {
+        final Field.Combo reg = (Field.Combo) tf_region;
+        final Field.Combo pro = (Field.Combo) tf_province;
+        final Field.Combo cit = (Field.Combo) tf_city;
+        final Field.Combo bar = (Field.Combo) tf_barangay;
+        final Field.Combo pur = (Field.Combo) tf_purok;
 
         List<Households.to_households> households = Initialize_table_households.tbl_households_ALM;
+
         String household_no = "";
         for (Households.to_households household : households) {
             household_no = household.household_no;
@@ -1556,20 +1608,16 @@ public class Dlg_house extends javax.swing.JDialog {
         } else {
             household_no = ReceiptIncrementor.increment(household_no);
         }
+        String house_no = tf_house_number.getText();
         Window p = (Window) this;
         Dlg_households nd = Dlg_households.create(p, true);
         nd.setTitle("");
-        nd.do_pass_new(household_no);
+        nd.do_pass_new(household_no, reg.getText(), reg.getId(), pro.getText(), pro.getId(), cit.getText(), cit.getId(), bar.getText(), bar.getId(), house_no);
         nd.setCallback(new Dlg_households.Callback() {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_households.OutputData data) {
                 closeDialog.ok();
                 if (house.id == 0) {
-                    Field.Combo reg = (Field.Combo) tf_region;
-                    Field.Combo pro = (Field.Combo) tf_province;
-                    Field.Combo cit = (Field.Combo) tf_city;
-                    Field.Combo bar = (Field.Combo) tf_barangay;
-                    Field.Combo pur = (Field.Combo) tf_purok;
 
                     int id = 0;
                     String created_at = DateType.now();
@@ -1746,9 +1794,10 @@ public class Dlg_house extends javax.swing.JDialog {
         double drinking_water_source_distance = FitIn.toDouble(tf_drinking_water_src.getText());
         double nearest_water_source_distance = FitIn.toDouble(tf_nearest_water_src.getText());
         List<Households.to_households> households = Initialize_table_households.tbl_households_ALM;
-
+        String latitude = tf_nearest_water_src1.getText();
+        String longtitude = tf_nearest_water_src2.getText();
         if (callback != null) {
-            callback.ok(new CloseDialog(this), new OutputData(region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households));
+            callback.ok(new CloseDialog(this), new OutputData(region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude));
         }
     }
 
@@ -1790,7 +1839,9 @@ public class Dlg_house extends javax.swing.JDialog {
         double drinking_water_source_distance = FitIn.toDouble(tf_drinking_water_src.getText());
         double nearest_water_source_distance = FitIn.toDouble(tf_nearest_water_src.getText());
         List<Households.to_households> households = new ArrayList();
-        Houses.to_houses hou = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households);
+        String latitude = tf_nearest_water_src1.getText();
+        String longtitude = tf_nearest_water_src2.getText();
+        Houses.to_houses hou = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude);
         Houses.update_data(hou);
         Alert.set(2, "");
         //</editor-fold>

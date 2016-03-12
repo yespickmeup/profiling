@@ -83,8 +83,9 @@ public class Household_members {
         public List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works;
         public Household_member_employment_status.to_household_member_employment_status employment_status;
         public Household_member_skills.to_household_member_skills skills;
+        public String image;
 
-        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills) {
+        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -134,6 +135,15 @@ public class Household_members {
             this.prefered_works = prefered_works;
             this.employment_status = employment_status;
             this.skills = skills;
+            this.image = image;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
         }
 
         public String getFname() {
@@ -420,6 +430,7 @@ public class Household_members {
                     + ",languages_spoken"
                     + ",is_registered_voter"
                     + ",voters_id_no"
+                    + ",image"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -459,6 +470,7 @@ public class Household_members {
                     + ",:languages_spoken"
                     + ",:is_registered_voter"
                     + ",:voters_id_no"
+                    + ",:image"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -500,6 +512,7 @@ public class Household_members {
                     .setString("languages_spoken", to_household_members.languages_spoken)
                     .setNumber("is_registered_voter", to_household_members.is_registered_voter)
                     .setString("voters_id_no", to_household_members.voters_id_no)
+                    .setString("image", to_household_members.image)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -539,6 +552,7 @@ public class Household_members {
                     + ",languages_spoken= :languages_spoken "
                     + ",is_registered_voter= :is_registered_voter "
                     + ",voters_id_no= :voters_id_no "
+                    + ",image= :image "
                     + " where household_member_no='" + to_household_members.household_member_no + "' "
                     + " ";
 
@@ -563,13 +577,13 @@ public class Household_members {
                     .setString("languages_spoken", to_household_members.languages_spoken)
                     .setNumber("is_registered_voter", to_household_members.is_registered_voter)
                     .setString("voters_id_no", to_household_members.voters_id_no)
+                    .setString("image", to_household_members.image)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.addBatch(s0);
 
             //</editor-fold>
-            
             //<editor-fold defaultstate="collapsed" desc=" Educational Background ">
             String s2 = "update household_member_educational_backgrounds  set "
                     + " fname= :fname "
@@ -762,15 +776,135 @@ public class Household_members {
         }
     }
 
-    public static void delete_data(to_household_members to_household_members) {
+    public static void delete_data(to_household_members to_household_members, int no_of_households, int no_of_household_members) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from household_members  "
-                    + " where id='" + to_household_members.id + "' "
-                    + " ";
+            conn.setAutoCommit(false);
 
-            PreparedStatement stmt = conn.prepareStatement(s0);
-            stmt.execute();
+            if (no_of_households == 1) {
+                if (no_of_household_members == 1) {
+                    String stmt1 = "delete from houses where house_no='" + to_household_members.house_no + "' ";
+                    String stmt2 = "delete from household_assets where house_no='" + to_household_members.house_no + "' ";
+                    String stmt3 = "delete from household_consumptions where house_no='" + to_household_members.house_no + "' ";
+                    String stmt4 = "delete from household_expenditures where house_no='" + to_household_members.house_no + "' ";
+                    String stmt5 = "delete from household_member_competence_certificates where house_no='" + to_household_members.house_no + "' ";
+                    String stmt6 = "delete from household_member_educational_backgrounds where house_no='" + to_household_members.house_no + "' ";
+                    String stmt7 = "delete from household_member_employment_status where house_no='" + to_household_members.house_no + "' ";
+                    String stmt8 = "delete from household_member_health_statuses where house_no='" + to_household_members.house_no + "' ";
+                    String stmt9 = "delete from household_member_licenses where house_no='" + to_household_members.house_no + "' ";
+                    String stmt10 = "delete from household_member_medications where house_no='" + to_household_members.house_no + "' ";
+                    String stmt11 = "delete from household_member_prefered_works where house_no='" + to_household_members.house_no + "' ";
+                    String stmt12 = "delete from household_member_skills where house_no='" + to_household_members.house_no + "' ";
+                    String stmt13 = "delete from household_member_vocational_experiences where house_no='" + to_household_members.house_no + "' ";
+                    String stmt14 = "delete from household_member_work_experiences where house_no='" + to_household_members.house_no + "' ";
+                    String stmt15 = "delete from household_members where house_no='" + to_household_members.house_no + "' ";
+                    String stmt17 = "delete from households where house_no='" + to_household_members.house_no + "' ";
+                    PreparedStatement stmt = conn.prepareStatement(stmt1);
+                    stmt.addBatch(stmt1);
+                    stmt.addBatch(stmt2);
+                    stmt.addBatch(stmt3);
+                    stmt.addBatch(stmt4);
+                    stmt.addBatch(stmt5);
+                    stmt.addBatch(stmt6);
+                    stmt.addBatch(stmt7);
+                    stmt.addBatch(stmt8);
+                    stmt.addBatch(stmt9);
+                    stmt.addBatch(stmt10);
+                    stmt.addBatch(stmt11);
+                    stmt.addBatch(stmt12);
+                    stmt.addBatch(stmt13);
+                    stmt.addBatch(stmt14);
+                    stmt.addBatch(stmt15);
+
+                    stmt.addBatch(stmt17);
+                    stmt.executeBatch();
+                } else {
+
+                    String stmt5 = "delete from household_member_competence_certificates where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt6 = "delete from household_member_educational_backgrounds where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt7 = "delete from household_member_employment_status where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt8 = "delete from household_member_health_statuses where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt9 = "delete from household_member_licenses where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt10 = "delete from household_member_medications where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt11 = "delete from household_member_prefered_works where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt12 = "delete from household_member_skills where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt13 = "delete from household_member_vocational_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt14 = "delete from household_member_work_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt15 = "delete from household_members where household_member_no='" + to_household_members.household_member_no + "' ";
+
+                    PreparedStatement stmt = conn.prepareStatement(stmt5);
+
+                    stmt.addBatch(stmt5);
+                    stmt.addBatch(stmt6);
+                    stmt.addBatch(stmt7);
+                    stmt.addBatch(stmt8);
+                    stmt.addBatch(stmt9);
+                    stmt.addBatch(stmt10);
+                    stmt.addBatch(stmt11);
+                    stmt.addBatch(stmt12);
+                    stmt.addBatch(stmt13);
+                    stmt.addBatch(stmt14);
+                    stmt.addBatch(stmt15);
+
+                    stmt.executeBatch();
+                }
+            } else {
+                if (no_of_household_members == 1) {
+                    String stmt5 = "delete from household_member_competence_certificates where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt6 = "delete from household_member_educational_backgrounds where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt7 = "delete from household_member_employment_status where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt8 = "delete from household_member_health_statuses where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt9 = "delete from household_member_licenses where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt10 = "delete from household_member_medications where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt11 = "delete from household_member_prefered_works where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt12 = "delete from household_member_skills where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt13 = "delete from household_member_vocational_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt14 = "delete from household_member_work_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt15 = "delete from household_members where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt17 = "delete from households where household_no='" + to_household_members.household_no + "' ";
+                    PreparedStatement stmt = conn.prepareStatement(stmt5);
+                    stmt.addBatch(stmt5);
+                    stmt.addBatch(stmt6);
+                    stmt.addBatch(stmt7);
+                    stmt.addBatch(stmt8);
+                    stmt.addBatch(stmt9);
+                    stmt.addBatch(stmt10);
+                    stmt.addBatch(stmt11);
+                    stmt.addBatch(stmt12);
+                    stmt.addBatch(stmt13);
+                    stmt.addBatch(stmt14);
+                    stmt.addBatch(stmt15);
+                    stmt.addBatch(stmt17);
+                    stmt.executeBatch();
+                } else {
+                    String stmt5 = "delete from household_member_competence_certificates where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt6 = "delete from household_member_educational_backgrounds where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt7 = "delete from household_member_employment_status where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt8 = "delete from household_member_health_statuses where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt9 = "delete from household_member_licenses where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt10 = "delete from household_member_medications where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt11 = "delete from household_member_prefered_works where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt12 = "delete from household_member_skills where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt13 = "delete from household_member_vocational_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt14 = "delete from household_member_work_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+                    String stmt15 = "delete from household_members where household_member_no='" + to_household_members.household_member_no + "' ";
+                    PreparedStatement stmt = conn.prepareStatement(stmt5);
+                    stmt.addBatch(stmt5);
+                    stmt.addBatch(stmt6);
+                    stmt.addBatch(stmt7);
+                    stmt.addBatch(stmt8);
+                    stmt.addBatch(stmt9);
+                    stmt.addBatch(stmt10);
+                    stmt.addBatch(stmt11);
+                    stmt.addBatch(stmt12);
+                    stmt.addBatch(stmt13);
+                    stmt.addBatch(stmt14);
+                    stmt.addBatch(stmt15);
+                    stmt.executeBatch();
+                }
+            }
+
+            conn.commit();
             Lg.s(Household_members.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -835,6 +969,7 @@ public class Household_members {
                     + ",languages_spoken"
                     + ",is_registered_voter"
                     + ",voters_id_no"
+                    + ",image"
                     + " from household_members"
                     + " " + where;
 
@@ -880,8 +1015,8 @@ public class Household_members {
                 String languages_spoken = rs.getString(37);
                 int is_registered_voter = rs.getInt(38);
                 String voters_id_no = rs.getString(39);
-
-                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills);
+                String image = rs.getString(40);
+                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image);
                 datas.add(to);
             }
             return datas;

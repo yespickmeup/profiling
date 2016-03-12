@@ -31,19 +31,16 @@ public class Initialize_household_member_field_types {
     static List<Blood_types.to_blood_types> blood_types = new ArrayList();
     static List<Household_relations.to_household_relations> household_relations = new ArrayList();
     static List<Religions.to_religions> religions = new ArrayList();
-    
 
     public static void ret_data() {
 
         disabilities = Disabilities.ret_data(" order by disability asc ");
         religions = Religions.ret_data("order by religion asc");
-        
 
         Genders.to_genders g1 = new Genders.to_genders(0, "Male");
         Genders.to_genders g2 = new Genders.to_genders(0, "Female");
         genders.add(g1);
         genders.add(g2);
-
 
         Marital_statuses.to_marital_statuses ms1 = new Marital_statuses.to_marital_statuses(0, "Single");
         Marital_statuses.to_marital_statuses ms2 = new Marital_statuses.to_marital_statuses(0, "Married");
@@ -77,6 +74,8 @@ public class Initialize_household_member_field_types {
         Household_relations.to_household_relations thr6 = new Household_relations.to_household_relations(0, "GrandMother");
         Household_relations.to_household_relations thr7 = new Household_relations.to_household_relations(0, "Nephew");
         Household_relations.to_household_relations thr8 = new Household_relations.to_household_relations(0, "Niece");
+        Household_relations.to_household_relations thr9 = new Household_relations.to_household_relations(0, "Aunt");
+        Household_relations.to_household_relations thr10 = new Household_relations.to_household_relations(0, "Uncle");
 
         household_relations.add(thr1);
         household_relations.add(thr2);
@@ -86,6 +85,8 @@ public class Initialize_household_member_field_types {
         household_relations.add(thr6);
         household_relations.add(thr7);
         household_relations.add(thr8);
+        household_relations.add(thr9);
+        household_relations.add(thr10);
 
     }
 
@@ -250,4 +251,4 @@ public class Initialize_household_member_field_types {
         });
     }
 //</editor-fold> 
-    }
+}

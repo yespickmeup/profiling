@@ -10,9 +10,12 @@ import city_planning.household_members.Household_members;
 import city_planning.household_members.Household_members.to_household_members;
 import city_planning.households.Households;
 import city_planning.houses.Houses;
+import city_planning.initialize_fields.Initialize_house_field_types;
+import city_planning.initialize_fields.Initialize_household_field_types;
 import city_planning.initialize_fields.Initialize_search_record_field_types;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
+import city_planning.util.Dlg_confirm_action;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
@@ -655,10 +658,11 @@ public class Dlg_search_record extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         ret_default_location();
-        Initialize_search_record_field_types.ret_data();
+//        Initialize_house_field_types.ret_data();
+//        Initialize_household_field_types.ret_data();
+//        Initialize_search_record_field_types.ret_data();
         init_tbl_household_members(tbl_household_members);
         SwingUtilities.invokeLater(new Runnable() {
-
             @Override
             public void run() {
                 jTextField1.grabFocus();
@@ -981,20 +985,20 @@ public class Dlg_search_record extends javax.swing.JDialog {
                 double drinking_water_source_distance = data.drinking_water_source_distance;
                 double nearest_water_source_distance = data.nearest_water_source_distance;
                 List<Households.to_households> households = data.households;
-                final Houses.to_houses house = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households);
+                String latitude = data.latitude;
+                String longtitude = data.longtitude;
+                final Houses.to_houses house = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude);
                 jProgressBar1.setString("Loading...Please wait...");
                 jProgressBar1.setIndeterminate(true);
                 jButton2.setEnabled(false);
                 jTextField1.setEnabled(false);
                 jButton3.setEnabled(false);
                 Thread t = new Thread(new Runnable() {
-
                     @Override
                     public void run() {
                         Houses.add_data(house);
                         Alert.set(1, "");
                         ret_household_members();
-
                         Initialize_table_households.tbl_households_ALM.clear();
                         Initialize_table_households.tbl_household_members_ALM.clear();
                         Initialize_table_households.tbl_household_expenditures_ALM.clear();
@@ -1032,7 +1036,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
         if (row < 0) {
             return;
         }
-        to_household_members member = (to_household_members) tbl_household_members_ALM.get(row);
+        final to_household_members member = (to_household_members) tbl_household_members_ALM.get(row);
         int col = tbl_household_members.getSelectedColumn();
         if (col == 8) {
             String where = " where house_no='" + member.house_no + "' ";
@@ -1049,21 +1053,18 @@ public class Dlg_search_record extends javax.swing.JDialog {
                 public void ok(CloseDialog closeDialog, Dlg_house.OutputData data) {
                     closeDialog.ok();
 
-                    Initialize_table_households.tbl_houses_ALM.clear();
                     Initialize_table_households.tbl_households_ALM.clear();
                     Initialize_table_households.tbl_household_members_ALM.clear();
                     Initialize_table_households.tbl_household_member_concerns_ALM.clear();
                     Initialize_table_households.tbl_household_expenditures_ALM.clear();
                     Initialize_table_households.tbl_household_consumptions_ALM.clear();
                     Initialize_table_households.tbl_household_assets_ALM.clear();
-
                     Initialize_table_household_members.tbl_household_member_work_experiences_ALM.clear();
                     Initialize_table_household_members.tbl_household_member_vocational_experiences_ALM.clear();
                     Initialize_table_household_members.tbl_household_member_prefered_works_ALM.clear();
                     Initialize_table_household_members.tbl_household_member_medications_ALM.clear();
                     Initialize_table_household_members.tbl_household_member_licenses_ALM.clear();
                     Initialize_table_household_members.tbl_household_member_health_statuses_ALM.clear();
-                    Initialize_table_household_members.tbl_household_member_employment_status_ALM.clear();
                     Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.clear();
                     Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.clear();
                 }
@@ -1072,6 +1073,63 @@ public class Dlg_search_record extends javax.swing.JDialog {
             nd.setVisible(true);
         }
         if (col == 9) {
+            String where1 = " where house_no='" + member.house_no + "' ";
+            String where2 = " where household_no='" + member.household_no + "' ";
+            List<Households.to_households> households = Households.ret_data(where1);
+            List<Household_members.to_household_members> household_members = Household_members.ret_data(where2);
+            System.out.println("No: " + member.household_member_no);
+            System.out.println(where2);
+            final int no_of_households = households.size();
+            final int no_of_household_members = household_members.size();
+            System.out.println("Households: " + no_of_households);
+            System.out.println("Household Members: " + no_of_household_members);
+
+            Window p = (Window) this;
+            Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+            nd.setTitle("");
+
+            nd.setCallback(new Dlg_confirm_action.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                    closeDialog.ok();
+
+                    jProgressBar1.setString("Loading...Please wait...");
+                    jProgressBar1.setIndeterminate(true);
+                    jButton2.setEnabled(false);
+                    jButton3.setEnabled(false);
+                    Thread t = new Thread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            Household_members.delete_data(member, no_of_households, no_of_household_members);
+                            if (no_of_households == 1) {
+                                if (no_of_household_members == 1) {
+                                    System.out.println("1.) Deleting all records. House/Households/Household Members");
+                                } else {
+                                    System.out.println("2.) Deleting all records. Household Members");
+                                }
+                            } else {
+                                if (no_of_household_members == 1) {
+                                    System.out.println("3.) Deleting all records. Households/Household Members");
+                                } else {
+                                    System.out.println("4.) Deleting all records. Household Members");
+                                }
+                            }
+                            Alert.set(3, "");
+                            ret_household_members();
+                            jButton2.setEnabled(true);
+                            jButton3.setEnabled(true);
+                            jProgressBar1.setString("Finished...");
+                            jProgressBar1.setIndeterminate(false);
+                        }
+                    });
+                    t.start();
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
 
         }
         if (col == 10) {

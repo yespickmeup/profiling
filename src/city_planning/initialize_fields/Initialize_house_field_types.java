@@ -10,12 +10,12 @@ import city_planning.bathroom_types.Bathroom_types;
 import city_planning.building_types.Building_types;
 import city_planning.cities.Cities;
 import city_planning.communication_types.Communication_types;
+import city_planning.compartments.Compartments;
 import city_planning.cooking_lighting_types.Cooking_lighting_types;
 import city_planning.floor_types.Floor_types;
 import city_planning.kitchen_types.Kitchen_types;
 import city_planning.provinces.Provinces;
 import city_planning.puroks.Puroks;
-import city_planning.regions.Regions;
 import city_planning.roof_types.Roof_types;
 import city_planning.solid_waste_disposal_methods.Solid_waste_disposal_methods;
 import city_planning.streets.Streets;
@@ -53,6 +53,7 @@ public class Initialize_house_field_types {
     static List<Wall_types.to_wall_types> walls = new ArrayList();
     static List<Floor_types.to_floor_types> floor = new ArrayList();
     static List<Communication_types.to_communication_types> communication = new ArrayList();
+    static List<Compartments.to_compartments> compartments = new ArrayList();
 
     public static void ret_data() {
 
@@ -67,13 +68,13 @@ public class Initialize_house_field_types {
         bathroom = Bathroom_types.ret_data(" order by bathroom_type asc ");
         solid = Solid_waste_disposal_methods.ret_data(" order by disposal_method asc ");
         cooking = Cooking_lighting_types.ret_data(" order by cooking_lighting_type asc ");
-//        kitchen = Kitchen_types.ret_data(" order by kitchen_type asc ");
+        kitchen = Kitchen_types.ret_data(" order by kitchen_type asc ");
         water = Water_sources.ret_data(" order by water_source asc ");
         walls = Wall_types.ret_data("order by wall_type asc");
         transportation = Transportation_types.ret_data("order by transportation_type asc");
         floor = Floor_types.ret_data("order by floor_type asc");
         communication = Communication_types.ret_data("order by communication_type asc");
-
+        compartments = Compartments.ret_data("order by compartment asc");
     }
 
     //<editor-fold defaultstate="collapsed" desc=" Province ">
@@ -529,6 +530,33 @@ public class Initialize_house_field_types {
                 Communication_types.to_communication_types to = communication.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.communication_type);
+                field.setId("" + to.id);
+            }
+        });
+    }
+
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc=" Compartments ">
+    public static void init_compartments(final JTextField tf) {
+
+        Object[][] obj = new Object[compartments.size()][1];
+        int i = 0;
+        for (Compartments.to_compartments to : compartments) {
+            obj[i][0] = " " + to.compartment;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        String[] col_names = {"Name"};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.
+                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Compartments.to_compartments to = compartments.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.compartment);
                 field.setId("" + to.id);
             }
         });

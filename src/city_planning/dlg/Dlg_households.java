@@ -2089,8 +2089,7 @@ public class Dlg_households extends javax.swing.JDialog {
 
     private void myInit() {
         init_key();
-        Initialize_search_record_field_types.ret_data();
-        Initialize_household_field_types.ret_data();
+        
         Initialize_table_households.init_tbl_household_assets(tbl_household_assets);
         Initialize_table_households.init_tbl_household_expenditures(tbl_household_expenditures);
         Initialize_table_households.init_tbl_household_consumptions(tbl_household_consumptions);
@@ -2101,9 +2100,28 @@ public class Dlg_households extends javax.swing.JDialog {
     }
 
     Households.to_households household = new Households.to_households(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList());
+    String my_region = "";
+    String my_region_id = "";
+    String my_province = "";
+    String my_province_id = "";
+    String my_city = "";
+    String my_city_id = "";
+    String my_barangay = "";
+    String my_barangay_id = "";
+    String my_house_no = "";
 
-    public void do_pass_new(String house_no) {
-        tf_household_no.setText(house_no + "");
+    public void do_pass_new(String household_no, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String house_no) {
+        tf_household_no.setText(household_no + "");
+        my_region = region;
+        my_region_id = region_id;
+        my_province = province;
+        my_province_id = province_id;
+        my_city = city;
+        my_city_id = city_id;
+        my_barangay = barangay;
+        my_barangay_id = barangay;
+        my_house_no = house_no;
+
     }
 
     public void do_pass(Households.to_households household1) {
@@ -2168,7 +2186,15 @@ public class Dlg_households extends javax.swing.JDialog {
         jTabbedPane1.setSelectedIndex(5);
         jButton16.setVisible(true);
         jButton17.setVisible(true);
-
+        my_region = household1.region;
+        my_region_id = household1.region_id;
+        my_province = household1.province;
+        my_province_id = household1.province_id;
+        my_city = household1.city;
+        my_city_id = household1.city_id;
+        my_barangay = household1.barangay;
+        my_barangay_id = household1.barangay;
+        my_house_no = household1.house_no;
         //<editor-fold defaultstate="collapsed" desc=" Basic Information ">
         tf_household_no.setText(household.household_no);
         tf_tenure.setText(household.tenure);
@@ -2259,7 +2285,7 @@ public class Dlg_households extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_household_members nd = Dlg_household_members.create(p, true);
         nd.setTitle("");
-        nd.do_pass(household_member);
+        nd.do_pass(household_member, household.house_no, household.household_no);
         nd.setCallback(new Dlg_household_members.Callback() {
 
             @Override
@@ -2295,6 +2321,7 @@ public class Dlg_households extends javax.swing.JDialog {
                 household_member.setPrefered_works(data.prefered_works);
                 household_member.setEmployment_status(data.employment_status);
                 household_member.setSkills(data.skills);
+                household_member.setImage(data.image);
                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
                 Alert.set(2, "");
             }
@@ -2507,7 +2534,7 @@ public class Dlg_households extends javax.swing.JDialog {
                 Household_expenditures.add_data(household_exp);
                 String where = " where household_no='" + tf_household_no.getText() + "'";
                 Initialize_table_households.ret_household_expenditures(where);
-                jLabel7.setText("" + Initialize_table_households.tbl_household_assets_ALM.size());
+                jLabel7.setText("" + Initialize_table_households.tbl_household_expenditures_ALM.size());
 
             }
             Alert.set(1, "");
@@ -2837,20 +2864,40 @@ public class Dlg_households extends javax.swing.JDialog {
 
         List<Household_members.to_household_members> household_members = Initialize_table_households.tbl_household_members_ALM;
         String member_no = "";
+        String hh_no = "";
+        String hhm_no = "";
         if (!household_members.isEmpty()) {
+
             for (Household_members.to_household_members hm : household_members) {
                 member_no = hm.household_member_no;
+                hh_no = hm.household_no;
+                hhm_no = member_no;
+
             }
-            member_no = ReceiptIncrementor.increment(member_no);
+
+            String[] stmt = member_no.split("-");
+            for (String s : stmt) {
+                hhm_no = s;
+            }
+
+            if (household.id == 0) {
+                hh_no = tf_household_no.getText();
+                hhm_no = hh_no + "-" + ReceiptIncrementor.increment(hhm_no);
+            } else {
+                hhm_no = ReceiptIncrementor.increment(hhm_no);
+            }
+            member_no = hhm_no;
         } else {
             member_no = tf_household_no.getText() + "-00";
             member_no = ReceiptIncrementor.increment(member_no);
+            hh_no = tf_household_no.getText();
+            hhm_no = member_no;
         }
-
         final String mn = member_no;
         Window p = (Window) this;
         Dlg_household_members nd = Dlg_household_members.create(p, true);
         nd.setTitle("");
+        nd.do_pass_new(my_region, my_region_id, my_province, my_province_id, my_city, my_city_id, my_barangay, my_barangay_id, my_house_no, hh_no, hhm_no);
         nd.setCallback(new Dlg_household_members.Callback() {
 
             @Override
@@ -2906,7 +2953,8 @@ public class Dlg_households extends javax.swing.JDialog {
                 List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works = data.prefered_works;
                 Household_member_employment_status.to_household_member_employment_status employment_status = data.employment_status;
                 Household_member_skills.to_household_member_skills skills = data.skills;
-                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills);
+                String image = data.image;
+                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image);
 
                 Initialize_table_households.tbl_household_members_ALM.add(household_members);
                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
@@ -2924,11 +2972,12 @@ public class Dlg_households extends javax.swing.JDialog {
         }
         final Household_members.to_household_members household_member = (Household_members.to_household_members) Initialize_table_households.tbl_household_members_ALM.get(row);
         int col = tbl_household_members.getSelectedColumn();
+        String household_no = tf_household_no.getText();
         if (col == 2) {
             Window p = (Window) this;
             Dlg_household_members nd = Dlg_household_members.create(p, true);
             nd.setTitle("");
-            nd.do_pass(household_member);
+            nd.do_pass(household_member, household.house_no, household.household_no);
             nd.setCallback(new Dlg_household_members.Callback() {
 
                 @Override

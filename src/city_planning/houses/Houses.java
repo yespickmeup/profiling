@@ -75,8 +75,10 @@ public class Houses {
         public final double drinking_water_source_distance;
         public final double nearest_water_source_distance;
         public List<Households.to_households> households;
+        public final String latitude;
+        public final String longtitude;
 
-        public to_houses(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households) {
+        public to_houses(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households, String latitude, String longtitude) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -113,6 +115,8 @@ public class Houses {
             this.drinking_water_source_distance = drinking_water_source_distance;
             this.nearest_water_source_distance = nearest_water_source_distance;
             this.households = households;
+            this.latitude = latitude;
+            this.longtitude = longtitude;
         }
 
         public List<Households.to_households> getHouseholds() {
@@ -166,6 +170,8 @@ public class Houses {
                     + ",water_sources"
                     + ",drinking_water_source_distance"
                     + ",nearest_water_source_distance"
+                    + ",latitude"
+                    + ",longtitude"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -201,6 +207,8 @@ public class Houses {
                     + ",:water_sources"
                     + ",:drinking_water_source_distance"
                     + ",:nearest_water_source_distance"
+                    + ",:latitude"
+                    + ",:longtitude"
                     + ")";
 
             h = SqlStringUtil.parse(h)
@@ -238,6 +246,8 @@ public class Houses {
                     .setString("water_sources", to_houses.water_sources)
                     .setNumber("drinking_water_source_distance", to_houses.drinking_water_source_distance)
                     .setNumber("nearest_water_source_distance", to_houses.nearest_water_source_distance)
+                    .setString("latitude", to_houses.latitude)
+                    .setString("longtitude", to_houses.longtitude)
                     .ok();
 
             //</editor-fold>
@@ -668,6 +678,7 @@ public class Houses {
                             + ",languages_spoken"
                             + ",is_registered_voter"
                             + ",voters_id_no"
+                            + ",image"
                             + ")values("
                             + ":created_at"
                             + ",:updated_at"
@@ -707,6 +718,7 @@ public class Houses {
                             + ",:languages_spoken"
                             + ",:is_registered_voter"
                             + ",:voters_id_no"
+                            + ",:image"
                             + ")";
 
                     hm = SqlStringUtil.parse(hm)
@@ -748,6 +760,7 @@ public class Houses {
                             .setString("languages_spoken", household_member.languages_spoken)
                             .setNumber("is_registered_voter", household_member.is_registered_voter)
                             .setString("voters_id_no", household_member.voters_id_no)
+                            .setString("image", household_member.image)
                             .ok();
                     stmt.addBatch(hm);
                     //</editor-fold>
@@ -1887,6 +1900,8 @@ public class Houses {
                     + ",water_sources= :water_sources "
                     + ",drinking_water_source_distance= :drinking_water_source_distance "
                     + ",nearest_water_source_distance= :nearest_water_source_distance "
+                    + ",latitude= :latitude "
+                    + ",longtitude= :longtitude "
                     + " where id='" + to_houses.id + "' "
                     + " ";
 
@@ -1925,6 +1940,8 @@ public class Houses {
                     .setString("water_sources", to_houses.water_sources)
                     .setNumber("drinking_water_source_distance", to_houses.drinking_water_source_distance)
                     .setNumber("nearest_water_source_distance", to_houses.nearest_water_source_distance)
+                    .setString("latitude", to_houses.latitude)
+                    .setString("longtitude", to_houses.longtitude)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -2438,6 +2455,8 @@ public class Houses {
                     + ",water_sources"
                     + ",drinking_water_source_distance"
                     + ",nearest_water_source_distance"
+                    + ",latitude"
+                    + ",longtitude"
                     + " from houses"
                     + " " + where;
 
@@ -2479,8 +2498,9 @@ public class Houses {
                 String water_sources = rs.getString(33);
                 double drinking_water_source_distance = rs.getDouble(34);
                 double nearest_water_source_distance = rs.getDouble(35);
-
-                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList());
+                String latitude = rs.getString(36);
+                String longtitude = rs.getString(37);
+                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList(), latitude, longtitude);
                 datas.add(to);
             }
             return datas;

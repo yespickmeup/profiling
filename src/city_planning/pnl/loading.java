@@ -4,6 +4,9 @@
  */
 package city_planning.pnl;
 
+import city_planning.initialize_fields.Initialize_house_field_types;
+import city_planning.initialize_fields.Initialize_household_field_types;
+import city_planning.initialize_fields.Initialize_search_record_field_types;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -285,8 +288,10 @@ public class loading extends javax.swing.JDialog {
                 ok1();
             }
 
-            if (i == 1) {
-//                System_start.do_announcements();
+            if (i == 3) {
+                Initialize_house_field_types.ret_data();
+                Initialize_household_field_types.ret_data();
+                Initialize_search_record_field_types.ret_data();
             }
             i++;
         }
