@@ -493,7 +493,7 @@ public class Dlg_floor_types extends javax.swing.JDialog {
         int id = 0;
         String floor_type = tf_floor_type.getText();
 
-        to_floor_types to = new to_floor_types(id, floor_type);
+        to_floor_types to = new to_floor_types(id, floor_type,false);
         Floor_types.add_data(to);
         tf_floor_type.setText("");
         
@@ -523,7 +523,7 @@ public class Dlg_floor_types extends javax.swing.JDialog {
         int id = to.id;
         String floor_type = tf_floor_type.getText();
 
-        to_floor_types to1 = new to_floor_types(id, floor_type);
+        to_floor_types to1 = new to_floor_types(id, floor_type,false);
         Floor_types.update_data(to1);
         tf_floor_type.setText("");
         

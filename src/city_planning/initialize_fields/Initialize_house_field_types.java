@@ -20,6 +20,8 @@ import city_planning.roof_types.Roof_types;
 import city_planning.solid_waste_disposal_methods.Solid_waste_disposal_methods;
 import city_planning.streets.Streets;
 import city_planning.toilet_types.Toilet_types;
+import city_planning.util.CheckBox;
+import city_planning.util.TableCheckBoxRenderer;
 import city_planning.util.TableRenderer;
 import city_planning.wall_types.Wall_types;
 import city_planning.water_sources.Water_sources;
@@ -377,25 +379,54 @@ public class Initialize_house_field_types {
     //<editor-fold defaultstate="collapsed" desc=" Transportation_types ">
     public static void init_transportation_types(final JTextField tf) {
 
-        Object[][] obj = new Object[cooking.size()][1];
+        Object[][] obj = new Object[transportation.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Transportation_types.to_transportation_types to : transportation) {
-            obj[i][0] = " " + to.transportation_type;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.transportation_type)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.transportation_type;
             i++;
         }
+
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Transportation_types.to_transportation_types to = transportation.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.transportation_type);
                 field.setId("" + to.id);
+
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
             }
         });
     }
@@ -431,25 +462,53 @@ public class Initialize_house_field_types {
     //<editor-fold defaultstate="collapsed" desc=" Roof_types ">
     public static void init_roof(final JTextField tf) {
 
-        Object[][] obj = new Object[roofs.size()][1];
+        Object[][] obj = new Object[roofs.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Roof_types.to_roof_types to : roofs) {
-            obj[i][0] = " " + to.roof_type;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.roof_type)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.roof_type;
             i++;
         }
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Roof_types.to_roof_types to = roofs.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.roof_type);
                 field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
             }
         });
     }
@@ -458,25 +517,54 @@ public class Initialize_house_field_types {
     //<editor-fold defaultstate="collapsed" desc=" Wall_types ">
     public static void init_wall(final JTextField tf) {
 
-        Object[][] obj = new Object[walls.size()][1];
+        Object[][] obj = new Object[walls.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Wall_types.to_wall_types to : walls) {
-            obj[i][0] = " " + to.wall_type;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.wall_type)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.wall_type;
             i++;
         }
+
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Wall_types.to_wall_types to = walls.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.wall_type);
                 field.setId("" + to.id);
+
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
             }
         });
     }
@@ -485,25 +573,54 @@ public class Initialize_house_field_types {
     //<editor-fold defaultstate="collapsed" desc=" Floor_types ">
     public static void init_floor(final JTextField tf) {
 
-        Object[][] obj = new Object[floor.size()][1];
+        Object[][] obj = new Object[floor.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Floor_types.to_floor_types to : floor) {
-            obj[i][0] = " " + to.floor_type;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.floor_type)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.floor_type;
             i++;
         }
+
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Floor_types.to_floor_types to = floor.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.floor_type);
                 field.setId("" + to.id);
+
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
             }
         });
     }
@@ -512,25 +629,54 @@ public class Initialize_house_field_types {
     //<editor-fold defaultstate="collapsed" desc=" Communication/s_types ">
     public static void init_communication(final JTextField tf) {
 
-        Object[][] obj = new Object[communication.size()][1];
+        Object[][] obj = new Object[communication.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Communication_types.to_communication_types to : communication) {
-            obj[i][0] = " " + to.communication_type;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.communication_type)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.communication_type;
             i++;
         }
+
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Communication_types.to_communication_types to = communication.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.communication_type);
                 field.setId("" + to.id);
+
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
             }
         });
     }
@@ -539,25 +685,54 @@ public class Initialize_house_field_types {
     //<editor-fold defaultstate="collapsed" desc=" Compartments ">
     public static void init_compartments(final JTextField tf) {
 
-        Object[][] obj = new Object[compartments.size()][1];
+        Object[][] obj = new Object[compartments.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Compartments.to_compartments to : compartments) {
-            obj[i][0] = " " + to.compartment;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.compartment)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.compartment;
             i++;
         }
+
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Compartments.to_compartments to = compartments.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.compartment);
                 field.setId("" + to.id);
+
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
             }
         });
     }

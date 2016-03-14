@@ -116,8 +116,7 @@ public class TableCheckBoxRenderer {
                     String select2 = tbl.getModel().getValueAt(i, 0).toString();
                     String select3 = tbl.getModel().getValueAt(i, 1).toString();
                     select3=select3.substring(1,select3.length());
-                    boolean s = select2.equals("true");
-
+                    boolean s = select2.equals("true");                   
                     CheckBox.list li = new CheckBox.list(s, select3);
                     output.add(li);
                 }

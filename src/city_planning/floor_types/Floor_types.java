@@ -26,10 +26,11 @@ public class Floor_types {
 
         public final int id;
         public final String floor_type;
-
-        public to_floor_types(int id, String floor_type) {
+        public final boolean selected;
+        public to_floor_types(int id, String floor_type,boolean selected) {
             this.id = id;
             this.floor_type = floor_type;
+            this.selected=selected;
         }
     }
 
@@ -112,7 +113,7 @@ public class Floor_types {
                 int id = rs.getInt(1);
                 String floor_type = rs.getString(2);
 
-                to_floor_types to = new to_floor_types(id, floor_type);
+                to_floor_types to = new to_floor_types(id, floor_type,false);
                 datas.add(to);
             }
             return datas;

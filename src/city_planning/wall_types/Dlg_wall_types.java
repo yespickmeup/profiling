@@ -497,7 +497,7 @@ public class Dlg_wall_types extends javax.swing.JDialog {
         int id = 0;
         String wall_type = tf_wall_type.getText();
 
-        to_wall_types to = new to_wall_types(id, wall_type);
+        to_wall_types to = new to_wall_types(id, wall_type,false);
         Wall_types.add_data(to);
         tf_wall_type.setText("");
         
@@ -527,7 +527,7 @@ public class Dlg_wall_types extends javax.swing.JDialog {
         int id = to.id;
         String wall_type = tf_wall_type.getText();
 
-        to_wall_types to1 = new to_wall_types(id, wall_type);
+        to_wall_types to1 = new to_wall_types(id, wall_type,false);
         Wall_types.update_data(to1);
         tf_wall_type.setText("");
 

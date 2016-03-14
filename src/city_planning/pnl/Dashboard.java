@@ -448,6 +448,8 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.updateUI();
 
         cardLayout.show(pnl_main_holder, "2");
+        Dlg_search_record rpt = new Dlg_search_record();
+        MyFrame.set(rpt.getSurface(), jPanel1, "City Planning");
     }//GEN-LAST:event_tf_passwordActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -590,7 +592,7 @@ public class Dashboard extends javax.swing.JFrame {
 //        Dlg_users dtc = new Dlg_users();
 //        MyFrame.set2(dtc.getSurface(), jPanel1, "Users");
     }
-    
+
     private void dlg_maximize() {
         Dlg_search_record rpt = new Dlg_search_record();
         MyFrame.set(rpt.getSurface(), jPanel1, "City Planning");

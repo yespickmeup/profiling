@@ -776,6 +776,48 @@ public class Household_members {
         }
     }
 
+    public static void delete_data2(to_household_members to_household_members) {
+        try {
+            Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+
+            String stmt5 = "delete from household_member_competence_certificates where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt6 = "delete from household_member_educational_backgrounds where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt7 = "delete from household_member_employment_status where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt8 = "delete from household_member_health_statuses where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt9 = "delete from household_member_licenses where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt10 = "delete from household_member_medications where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt11 = "delete from household_member_prefered_works where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt12 = "delete from household_member_skills where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt13 = "delete from household_member_vocational_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt14 = "delete from household_member_work_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
+            String stmt15 = "delete from household_members where household_member_no='" + to_household_members.household_member_no + "' ";
+
+            PreparedStatement stmt = conn.prepareStatement(stmt5);
+
+            stmt.addBatch(stmt5);
+            stmt.addBatch(stmt6);
+            stmt.addBatch(stmt7);
+            stmt.addBatch(stmt8);
+            stmt.addBatch(stmt9);
+            stmt.addBatch(stmt10);
+            stmt.addBatch(stmt11);
+            stmt.addBatch(stmt12);
+            stmt.addBatch(stmt13);
+            stmt.addBatch(stmt14);
+            stmt.addBatch(stmt15);
+
+            stmt.executeBatch();
+
+            conn.commit();
+            Lg.s(Household_members.class, "Successfully Deleted");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void delete_data(to_household_members to_household_members, int no_of_households, int no_of_household_members) {
         try {
             Connection conn = MyConnection.connect();

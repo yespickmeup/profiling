@@ -26,10 +26,11 @@ public class Compartments {
 
         public final int id;
         public final String compartment;
-
-        public to_compartments(int id, String compartment) {
+        public final boolean selected;
+        public to_compartments(int id, String compartment,boolean selected) {
             this.id = id;
             this.compartment = compartment;
+            this.selected=selected;
         }
     }
 
@@ -112,7 +113,7 @@ public class Compartments {
                 int id = rs.getInt(1);
                 String compartment = rs.getString(2);
 
-                to_compartments to = new to_compartments(id, compartment);
+                to_compartments to = new to_compartments(id, compartment,false);
                 datas.add(to);
             }
             return datas;

@@ -26,10 +26,11 @@ public class Wall_types {
 
         public final int id;
         public final String wall_type;
-
-        public to_wall_types(int id, String wall_type) {
+        public final boolean selected;
+        public to_wall_types(int id, String wall_type,boolean selected) {
             this.id = id;
             this.wall_type = wall_type;
+            this.selected=selected;
         }
     }
 
@@ -112,7 +113,7 @@ public class Wall_types {
                 int id = rs.getInt(1);
                 String wall_type = rs.getString(2);
 
-                to_wall_types to = new to_wall_types(id, wall_type);
+                to_wall_types to = new to_wall_types(id, wall_type,false);
                 datas.add(to);
             }
             return datas;

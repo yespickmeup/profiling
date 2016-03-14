@@ -490,7 +490,7 @@ public class Dlg_roof_types extends javax.swing.JDialog {
         int id = 0;
         String roof_type = tf_roof_type.getText();
 
-        to_roof_types to = new to_roof_types(id, roof_type);
+        to_roof_types to = new to_roof_types(id, roof_type,false);
         Roof_types.add_data(to);
         tf_roof_type.setText("");
         data_disbursements();
@@ -518,7 +518,7 @@ public class Dlg_roof_types extends javax.swing.JDialog {
         int id = 0;
         String roof_type = tf_roof_type.getText();
 
-        to_roof_types to1 = new to_roof_types(id, roof_type);
+        to_roof_types to1 = new to_roof_types(id, roof_type,false);
         Roof_types.update_data(to1);
         tf_roof_type.setText("");
         data_disbursements();

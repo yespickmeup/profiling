@@ -26,10 +26,11 @@ public class Transportation_types {
 
         public final int id;
         public final String transportation_type;
-
-        public to_transportation_types(int id, String transportation_type) {
+        public final boolean selected;
+        public to_transportation_types(int id, String transportation_type,boolean selected) {
             this.id = id;
             this.transportation_type = transportation_type;
+            this.selected=selected;
         }
     }
 
@@ -112,7 +113,7 @@ public class Transportation_types {
                 int id = rs.getInt(1);
                 String transportation_type = rs.getString(2);
 
-                to_transportation_types to = new to_transportation_types(id, transportation_type);
+                to_transportation_types to = new to_transportation_types(id, transportation_type,false);
                 datas.add(to);
             }
             return datas;

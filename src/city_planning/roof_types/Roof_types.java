@@ -26,11 +26,21 @@ public class Roof_types {
 
         public final int id;
         public final String roof_type;
-
-        public to_roof_types(int id, String roof_type) {
+        public  boolean selected;
+        public to_roof_types(int id, String roof_type,boolean selected) {
             this.id = id;
             this.roof_type = roof_type;
+            this.selected=selected;
         }
+
+        public boolean isSelected() {
+            return selected;
+        }
+
+        public void setSelected(boolean selected) {
+            this.selected = selected;
+        }
+        
     }
 
     public static void add_data(to_roof_types to_roof_types) {
@@ -112,7 +122,7 @@ public class Roof_types {
                 int id = rs.getInt(1);
                 String roof_type = rs.getString(2);
 
-                to_roof_types to = new to_roof_types(id, roof_type);
+                to_roof_types to = new to_roof_types(id, roof_type,false);
                 datas.add(to);
             }
             return datas;

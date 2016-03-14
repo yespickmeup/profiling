@@ -1725,7 +1725,7 @@ public class Dlg_house extends javax.swing.JDialog {
                             public void run() {
                                 tbl_households.getSelectionModel().clearSelection();
                                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
-                                Alert.set(2, "");
+                               
                             }
                         });
                     } else {

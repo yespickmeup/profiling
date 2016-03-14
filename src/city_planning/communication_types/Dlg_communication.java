@@ -495,7 +495,7 @@ public class Dlg_communication extends javax.swing.JDialog {
         int id = 0;
         String communication_type = tf_communication_type.getText();
 
-        to_communication_types to = new to_communication_types(id, communication_type);
+        to_communication_types to = new to_communication_types(id, communication_type,false);
         Communication_types.add_data(to);
         tf_communication_type.setText("");
         data_disbursements();
@@ -523,7 +523,7 @@ public class Dlg_communication extends javax.swing.JDialog {
         int id = 0;
         String communication_type = tf_communication_type.getText();
 
-        to_communication_types to1 = new to_communication_types(id, communication_type);
+        to_communication_types to1 = new to_communication_types(id, communication_type,false);
         Communication_types.update_data(to1);
         tf_communication_type.setText("");
         data_disbursements();

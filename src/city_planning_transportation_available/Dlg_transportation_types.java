@@ -494,7 +494,7 @@ if (column == 100) {
  int id=0; 
  String transportation_type = tf_transportation_type.getText(); 
 
- to_transportation_types to = new to_transportation_types(id,transportation_type); 
+ to_transportation_types to = new to_transportation_types(id,transportation_type,false); 
  Transportation_types.add_data(to); 
  tf_transportation_type.setText(""); 
  ret_data();
@@ -523,7 +523,7 @@ if (column == 100) {
  int id=0; 
  String transportation_type = tf_transportation_type.getText(); 
 
- to_transportation_types to1 = new to_transportation_types(id,transportation_type); 
+ to_transportation_types to1 = new to_transportation_types(id,transportation_type,false); 
  Transportation_types.update_data(to1); 
  tf_transportation_type.setText(""); 
 ret_data();

@@ -11,6 +11,7 @@ import city_planning.household_concerns.Household_concerns.to_household_member_c
 import city_planning.household_consumptions.Household_consumptions;
 import city_planning.household_expenditures.Household_expenditures;
 import city_planning.household_expenditures.Household_expenditures.to_household_expenditures;
+import city_planning.household_members.Household_members;
 import city_planning.household_members.Household_members.to_household_members;
 import city_planning.households.Households;
 import city_planning.households.Households.to_households;
@@ -831,6 +832,11 @@ public class Initialize_table_households {
                     return tt.voters_id_no;
             }
         }
+    }
+
+    public static void ret_household_members(String where) {
+        List<to_household_members> datas = Household_members.ret_data(where);
+        loadData_household_members(datas);
     }
 //</editor-fold> 
     //<editor-fold defaultstate="collapsed" desc=" household_member_concerns "> 

@@ -329,7 +329,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        tf_sname = new Field.Input();
+        tf_sname = new Field.Combo();
         lbl_facilities6 = new javax.swing.JLabel();
         tf_others_language = new Field.Input();
         tf_fname = new Field.Input();
@@ -338,7 +338,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel21 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel117 = new javax.swing.JLabel();
-        tf_genders1 = new Field.Combo();
+        tf_genders1 = new Field.Input();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lbl_facilities9 = new javax.swing.JLabel();
@@ -751,6 +751,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel15.setText("Suffix Name:");
 
         tf_sname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_sname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_snameMouseClicked(evt);
+            }
+        });
+        tf_sname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_snameActionPerformed(evt);
+            }
+        });
 
         lbl_facilities6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_facilities6.setText("[BASIC INFORMATION]");
@@ -1017,7 +1027,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(cb_is_registered_voter, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("BASIC INFORMATION", jPanel2);
@@ -1177,7 +1187,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -1335,7 +1345,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -1575,7 +1585,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -1717,7 +1727,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -1887,7 +1897,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -1983,7 +1993,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -2144,7 +2154,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -2253,7 +2263,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -2685,7 +2695,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -2693,7 +2703,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("EMPLOYMENT STATUS", jPanel14);
@@ -3324,7 +3334,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                         .addComponent(cb_is_expressing, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("SKILLS", jPanel17);
@@ -3361,7 +3371,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3815,6 +3825,14 @@ public class Dlg_household_members extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_genders1ActionPerformed
 
+    private void tf_snameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_snameActionPerformed
+        Initialize_household_member_field_types.init_suffixes(tf_sname);
+    }//GEN-LAST:event_tf_snameActionPerformed
+
+    private void tf_snameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_snameMouseClicked
+        Initialize_household_member_field_types.init_suffixes(tf_sname);
+    }//GEN-LAST:event_tf_snameMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -4123,7 +4141,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         init_key();
 
 //        Initialize_household_member_field_types.ret_data();
-
         Initialize_table_household_members.init_tbl_household_member_health_statuses(tbl_household_member_health_statuses);
         Initialize_table_household_members.init_tbl_household_member_medications(tbl_household_member_medications);
         Initialize_table_household_members.init_tbl_household_member_educational_backgrounds(tbl_household_member_educational_backgrounds);
@@ -4498,7 +4515,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_health_statuses_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_health_statuses_M.fireTableDataChanged();
-                        jLabel2.setText("" + Initialize_table_household_members.tbl_household_member_health_statuses_ALM.size());
 
                     } else {
                         Household_member_health_statuses.delete_data(health_statuses);
@@ -4507,6 +4523,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
                     }
                     Alert.set(3, "");
+                    jLabel2.setText("" + Initialize_table_household_members.tbl_household_member_health_statuses_ALM.size());
                     clear_household_member_health_status();
                 }
             });
@@ -4655,7 +4672,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_medications_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_medications_M.fireTableDataChanged();
-                        jLabel4.setText("" + Initialize_table_household_members.tbl_household_member_medications_ALM.size());
 
                     } else {
                         Household_member_medications.delete_data(health_medications);
@@ -4664,6 +4680,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
                     }
                     Alert.set(3, "");
+                    jLabel4.setText("" + Initialize_table_household_members.tbl_household_member_medications_ALM.size());
                     clear_household_member_medications();
                 }
             });
@@ -4815,7 +4832,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_educational_backgrounds_M.fireTableDataChanged();
-                        jLabel4.setText("" + Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.size());
 
                     } else {
                         Household_member_educational_backgrounds.delete_data(educational_back);
@@ -4824,6 +4840,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
                     }
                     Alert.set(3, "");
+                    jLabel4.setText("" + Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.size());
                     clear_household_member_educational_background();
                 }
             });
@@ -4976,7 +4993,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_vocational_experiences_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_vocational_experiences_M.fireTableDataChanged();
-                        jLabel8.setText("" + Initialize_table_household_members.tbl_household_member_vocational_experiences_ALM.size());
 
                     } else {
                         Household_member_vocational_experiences.delete_data(vocational_experience);
@@ -4985,6 +5001,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
                     }
                     Alert.set(3, "");
+                    jLabel8.setText("" + Initialize_table_household_members.tbl_household_member_vocational_experiences_ALM.size());
                     clear_household_member_vocational_experience();
                 }
             });
@@ -5136,7 +5153,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_competence_certificates_M.fireTableDataChanged();
-                        jLabel10.setText("" + Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.size());
 
                     } else {
                         Household_member_competence_certificates.delete_data(competence_certificate);
@@ -5145,6 +5161,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
                     }
                     Alert.set(3, "");
+                    jLabel10.setText("" + Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.size());
                     clear_household_member_competence_certificate();
                 }
             });
@@ -5286,7 +5303,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_licenses_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_licenses_M.fireTableDataChanged();
-                        jLabel16.setText("" + Initialize_table_household_members.tbl_household_member_licenses_ALM.size());
 
                     } else {
                         Household_member_licences.delete_data(license);
@@ -5295,6 +5311,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
                     }
                     Alert.set(3, "");
+                    jLabel16.setText("" + Initialize_table_household_members.tbl_household_member_licenses_ALM.size());
                     clear_household_member_licenses();
                 }
             });
@@ -5444,13 +5461,14 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_work_experiences_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_work_experiences_M.fireTableDataChanged();
-                        jLabel18.setText("" + Initialize_table_household_members.tbl_household_member_work_experiences_ALM.size());
+
                     } else {
                         Household_member_work_experiences.delete_data(work_experiences);
                         String where = " where household_member_no='" + work_experiences.household_member_no + "'";
                         Initialize_table_household_members.ret_household_member_work_experiences(where);
                     }
                     Alert.set(3, "");
+                    jLabel18.setText("" + Initialize_table_household_members.tbl_household_member_work_experiences_ALM.size());
                     clear_household_member_work_experience();
                 }
             });
@@ -5582,13 +5600,14 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_prefered_works_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_prefered_works_M.fireTableDataChanged();
-                        jLabel18.setText("" + Initialize_table_household_members.tbl_household_member_prefered_works_ALM.size());
+
                     } else {
                         Household_member_prefered_works.delete_data(prefered_work);
                         String where = " where household_member_no='" + prefered_work.household_member_no + "'";
                         Initialize_table_household_members.ret_household_member_prefered_works(where);
                     }
                     Alert.set(3, "");
+                    jLabel18.setText("" + Initialize_table_household_members.tbl_household_member_prefered_works_ALM.size());
                     clear_household_member_prefered_works();
                 }
             });
@@ -5818,7 +5837,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String citizenship = tf_citizenship.getText();
         String email_address = tf_email_address.getText();
         String blood_type = tf_blood_type.getText();
-        String languages_spoken = tf_others_language.getText();
+        String languages_spoken = tf_languages_spoken.getText();
         int is_registered_voter = FitIn.toInt(cb_is_registered_voter.getText().trim());
         String voters_id_no = tf_is_registered_voter.getText();
         List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses = new ArrayList();
@@ -6003,11 +6022,14 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
         //</editor-fold>
     }
-    private Dimension size = WebcamResolution.QQVGA.getSize();
-    private List<Webcam> webcams = Webcam.getWebcams();
-    private List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
+    private final Dimension size = WebcamResolution.QQVGA.getSize();
+    private final List<Webcam> webcams = Webcam.getWebcams();
+    private final List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
     private void init_camera() {
+        
+        //<editor-fold defaultstate="collapsed" desc=" camera ">
+       
         if (jButton1.getText().equalsIgnoreCase("Capture")) {
             String home = System.getProperty("user.home", "C:\\Users\\Guinness");
 //            String home = "C:\\Users\\Guinness\\Desktop";
@@ -6066,6 +6088,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 panel.start();
             }
         }
-
+         //</editor-fold>
+        
     }
 }

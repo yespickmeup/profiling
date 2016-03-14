@@ -27,6 +27,7 @@ public class Initialize_household_member_field_types {
 
     static List<Disabilities.to_disabilities> disabilities = new ArrayList();
     static List<Genders.to_genders> genders = new ArrayList();
+    static List<Genders.to_genders> suffixes = new ArrayList();
     static List<Marital_statuses.to_marital_statuses> marital_statuses = new ArrayList();
     static List<Blood_types.to_blood_types> blood_types = new ArrayList();
     static List<Household_relations.to_household_relations> household_relations = new ArrayList();
@@ -41,6 +42,23 @@ public class Initialize_household_member_field_types {
         Genders.to_genders g2 = new Genders.to_genders(0, "Female");
         genders.add(g1);
         genders.add(g2);
+
+        Genders.to_genders s1 = new Genders.to_genders(0, "Jr.");
+        Genders.to_genders s2 = new Genders.to_genders(0, "Sr.");
+        Genders.to_genders s3 = new Genders.to_genders(0, "I.");
+        Genders.to_genders s4 = new Genders.to_genders(0, "II.");
+        Genders.to_genders s5 = new Genders.to_genders(0, "III.");
+        Genders.to_genders s6 = new Genders.to_genders(0, "IV.");
+        Genders.to_genders s7 = new Genders.to_genders(0, "X.");
+        Genders.to_genders s8 = new Genders.to_genders(0, "IX.");
+        suffixes.add(s1);
+        suffixes.add(s2);
+        suffixes.add(s3);
+        suffixes.add(s4);
+        suffixes.add(s5);
+        suffixes.add(s6);
+        suffixes.add(s7);
+        suffixes.add(s8);
 
         Marital_statuses.to_marital_statuses ms1 = new Marital_statuses.to_marital_statuses(0, "Single");
         Marital_statuses.to_marital_statuses ms2 = new Marital_statuses.to_marital_statuses(0, "Married");
@@ -136,6 +154,31 @@ public class Initialize_household_member_field_types {
             @Override
             public void ok(TableRenderer.OutputData data) {
                 Genders.to_genders to = genders.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.gender);
+                field.setId("" + to.id);
+            }
+        });
+    }
+
+    public static void init_suffixes(final JTextField tf) {
+
+        Object[][] obj = new Object[suffixes.size()][1];
+        int i = 0;
+        for (Genders.to_genders to : suffixes) {
+            obj[i][0] = " " + to.gender;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        String[] col_names = {"Name"};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.
+                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Genders.to_genders to = suffixes.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.gender);
                 field.setId("" + to.id);

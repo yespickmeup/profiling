@@ -11,3 +11,4 @@ create table compartments(
 id int auto_increment primary key
 ,compartment varchar(255)
 );
+

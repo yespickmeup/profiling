@@ -26,10 +26,11 @@ public class Communication_types {
 
         public final int id;
         public final String communication_type;
-
-        public to_communication_types(int id, String communication_type) {
+        public final boolean selected;
+        public to_communication_types(int id, String communication_type,boolean selected) {
             this.id = id;
             this.communication_type = communication_type;
+            this.selected=selected;
         }
     }
 
@@ -112,7 +113,7 @@ public class Communication_types {
                 int id = rs.getInt(1);
                 String communication_type = rs.getString(2);
 
-                to_communication_types to = new to_communication_types(id, communication_type);
+                to_communication_types to = new to_communication_types(id, communication_type,false);
                 datas.add(to);
             }
             return datas;
