@@ -238,7 +238,7 @@ public class Dlg_disposal_methods extends javax.swing.JDialog {
         jLabel3.setText("Status:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Disposa Methods");
+        jLabel4.setText("Disposal Methods");
 
         tf_disposal_method.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 

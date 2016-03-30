@@ -661,10 +661,13 @@ public class Dashboard extends javax.swing.JFrame {
                     dlg_maximize();
                 }
                 if (data.stmt.equals("Education")) {
-                    maintenance_educational_status();
+                   
                 }
                 if (data.stmt.equals("Achievements")) {
-                      maintenance_achievements();
+                   
+                }
+                 if (data.stmt.equals("assets")) {
+                     
                 }
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" maintenance ">
@@ -863,10 +866,10 @@ public class Dashboard extends javax.swing.JFrame {
         MyFrame.set2(dtc.getSurface(), jPanel1, "Education", dtc.getWidth(), dtc.getHeight());
     }
 
-    private void reports_report() {
+   private void transactions_assets() {
 
-        Dlg_report_barangay_clearance dtc = new Dlg_report_barangay_clearance();
-        MyFrame.set2(dtc.getSurface(), jPanel1, "Education", dtc.getWidth(), dtc.getHeight());
+        Dlg_assets dtc = new Dlg_assets();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Assets", dtc.getWidth(), dtc.getHeight());
     }
 //</editor-fold>
 }
