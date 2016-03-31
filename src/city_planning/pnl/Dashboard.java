@@ -17,7 +17,6 @@ import city_planning.dlg.Dlg_search_record;
 import city_planning.educational_statuses.Dlg_educational_status;
 import city_planning.genders.Dlg_genders;
 import city_planning.kitchen_types.Dlg_kitchen_types;
-import city_planning.reports.Dlg_report_barangay_clearance;
 import city_planning.roof_types.Dlg_roof_types;
 import city_planning.schools.Dlg_schools;
 import city_planning.skills.Dlg_skills;
@@ -684,16 +683,15 @@ public class Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Bathroom Types")) {
                     maintenance_bathroom_types();
                 }
-                if (data.stmt.equals("Certification")) {
+                if (data.stmt.equals("Certifications")) {
                     maintenance_certifications();
                 }
-                if (data.stmt.equals("Cities")) {
+                 if (data.stmt.equals("Cities")) {
                     maintenance_cities();
+                } 
+                  if (data.stmt.equals("Blood Types")) {
+                    maintenance_blood_types();
                 }
-                 if (data.stmt.equals("Blood")) {
-                    maintenance_blood();
-                }
-                
                 if (data.stmt.equals("Building Types")) {
                     maintenance_building_types();
                 }
@@ -786,7 +784,13 @@ public class Dashboard extends javax.swing.JFrame {
         Dlg_communication dtc = new Dlg_communication();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Communication", dtc.getWidth(), dtc.getHeight());
     }
-      private void maintenance_cities() {
+    
+       private void maintenance_certifications() {
+
+        Dlg_certifications dtc = new Dlg_certifications();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Certifications", dtc.getWidth(), dtc.getHeight());
+    }
+       private void maintenance_cities() {
 
         Dlg_cities dtc = new Dlg_cities();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Cities", dtc.getWidth(), dtc.getHeight());
@@ -796,11 +800,12 @@ public class Dashboard extends javax.swing.JFrame {
         Dlg_bathroom_types dtc = new Dlg_bathroom_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Bathroom", dtc.getWidth(), dtc.getHeight());
     }
-       private void maintenance_certifications() {
+       private void maintenance_blood_types() {
 
-        Dlg_certifications dtc = new Dlg_certifications();
-        MyFrame.set2(dtc.getSurface(), jPanel1, "Certifications", dtc.getWidth(), dtc.getHeight());
+        Dlg_blood_types dtc = new Dlg_blood_types();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Blood", dtc.getWidth(), dtc.getHeight());
     }
+      
       private void maintenance_building_types() {
 
         Dlg_building_types dtc = new Dlg_building_types();
