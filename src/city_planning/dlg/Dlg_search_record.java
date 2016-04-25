@@ -14,6 +14,7 @@ import city_planning.initialize_fields.Initialize_house_field_types;
 import city_planning.initialize_fields.Initialize_household_field_types;
 import city_planning.initialize_fields.Initialize_household_member_field_types;
 import city_planning.initialize_fields.Initialize_search_record_field_types;
+import city_planning.reports.Dlg_report_barangay_clearance;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
 import city_planning.util.Dlg_confirm_action;
@@ -1135,9 +1136,27 @@ public class Dlg_search_record extends javax.swing.JDialog {
 
         }
         if (col == 10) {
+           String where = " where house_no='" + member.house_no + "' ";
+            List<Houses.to_houses> houses = Houses.ret_data(where);
+            List<Households.to_households> households = Households.ret_data(where);
+            houses.get(0).setHouseholds(households);
 
+            Window p = (Window) this;
+            Dlg_report_barangay_clearance nd = Dlg_report_barangay_clearance.create(p, true);
+            nd.setTitle("");
+            nd.do_pass();
+            nd.setCallback(new Dlg_report_barangay_clearance.Callback() {
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_report_barangay_clearance.OutputData data) {
+                    closeDialog.ok();
+                    ret_household_members();               
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
         }
 
     }
 
-}
+
