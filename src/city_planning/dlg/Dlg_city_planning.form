@@ -229,6 +229,11 @@
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                                               <Component id="tf_communications" min="-2" pref="280" max="-2" attributes="0"/>
                                                           </Group>
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <Component id="jLabel197" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                                              <Component id="tf_walls" min="-2" pref="280" max="-2" attributes="0"/>
+                                                          </Group>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -259,12 +264,6 @@
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel197" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="tf_walls" min="-2" pref="280" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
