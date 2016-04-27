@@ -1556,14 +1556,14 @@ public class Dlg_house extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                        disposed();
+                    }
+                });
     }
 
     // </editor-fold>
@@ -1724,7 +1724,7 @@ public class Dlg_house extends javax.swing.JDialog {
                             public void run() {
                                 tbl_households.getSelectionModel().clearSelection();
                                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
-                               
+
                             }
                         });
                     } else {
