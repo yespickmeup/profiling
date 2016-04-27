@@ -1412,8 +1412,8 @@ public class Dlg_house extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         ret_default_location();
-//        Initialize_household_field_types.ret_data();
-//        Initialize_search_record_field_types.ret_data();
+        Initialize_household_field_types.ret_data();
+        Initialize_search_record_field_types.ret_data();
         Initialize_table_households.init_tbl_households(tbl_households);
 
         jButton13.setVisible(false);
