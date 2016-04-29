@@ -329,7 +329,7 @@ public class Dlg_house extends javax.swing.JDialog {
         jLabel206 = new javax.swing.JLabel();
         tf_cookings = new Field.Combo();
         jLabel212 = new javax.swing.JLabel();
-        tf_drinking_water_src = new Field.Input();
+        tf_drinking_water_src = new Field.Combo();
         jLabel211 = new javax.swing.JLabel();
         lbl_house_condition3 = new javax.swing.JLabel();
         jLabel209 = new javax.swing.JLabel();
@@ -841,6 +841,11 @@ public class Dlg_house extends javax.swing.JDialog {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         tf_nearest_water_src.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_nearest_water_src.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_nearest_water_srcActionPerformed(evt);
+            }
+        });
 
         tf_water_sources.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_water_sources.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -891,6 +896,26 @@ public class Dlg_house extends javax.swing.JDialog {
         jLabel212.setText("Nearest Water Src:");
 
         tf_drinking_water_src.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_drinking_water_src.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_water_sourcesMouseClicked(evt);
+            }
+        });
+        tf_drinking_water_src.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+            }
+        });
+        tf_drinking_water_src.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_drinking_water_srcMouseClicked(evt);
+            }
+        });
+        tf_drinking_water_src.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_drinking_water_srcActionPerformed(evt);
+            }
+        });
 
         jLabel211.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel211.setText("Cooking:");
@@ -1327,6 +1352,18 @@ public class Dlg_house extends javax.swing.JDialog {
         Initialize_house_field_types.init_compartments(tf_compartments);
     }//GEN-LAST:event_tf_compartmentsMouseClicked
 
+    private void tf_drinking_water_srcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_drinking_water_srcActionPerformed
+        Initialize_house_field_types.init_water(tf_drinking_water_src);
+    }//GEN-LAST:event_tf_drinking_water_srcActionPerformed
+
+    private void tf_drinking_water_srcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_drinking_water_srcMouseClicked
+        Initialize_house_field_types.init_water(tf_drinking_water_src);
+    }//GEN-LAST:event_tf_drinking_water_srcMouseClicked
+
+    private void tf_nearest_water_srcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nearest_water_srcActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_nearest_water_srcActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1724,7 +1761,7 @@ public class Dlg_house extends javax.swing.JDialog {
                             public void run() {
                                 tbl_households.getSelectionModel().clearSelection();
                                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
-                               
+
                             }
                         });
                     } else {

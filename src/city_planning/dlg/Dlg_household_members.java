@@ -56,7 +56,7 @@ import synsoftech.fields.Field;
 public class Dlg_household_members extends javax.swing.JDialog {
 
     /**
-     * Creates new form Dlg_household_members
+     * Creates new form dig_household_members
      */
     //<editor-fold defaultstate="collapsed" desc=" callback ">
     private Callback callback;
@@ -340,6 +340,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel117 = new javax.swing.JLabel();
         tf_genders1 = new Field.Input();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel124 = new javax.swing.JLabel();
+        jLabel125 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lbl_facilities9 = new javax.swing.JLabel();
@@ -633,7 +635,12 @@ public class Dlg_household_members extends javax.swing.JDialog {
         tf_languages_spoken.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_languages_spoken.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-             
+                
+            }
+        });
+        tf_languages_spoken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_languages_spokenActionPerformed(evt);
             }
         });
 
@@ -728,6 +735,11 @@ public class Dlg_household_members extends javax.swing.JDialog {
         tf_is_registered_voter.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         tf_email_address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_email_address.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_email_addressMouseClicked(evt);
+            }
+        });
 
         jLabel111.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel111.setText("Email address:");
@@ -802,11 +814,11 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
         );
 
         jButton1.setText("Start");
@@ -835,6 +847,12 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox1.setSelected(true);
         jCheckBox1.setText("Citizenship:");
+
+        jLabel124.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel124.setText("cm");
+
+        jLabel125.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel125.setText("kg");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -934,16 +952,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                             .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addComponent(tf_occupancy_years, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(4, 4, 4)
+                                            .addGap(18, 18, 18)
                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(tf_genders, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(tf_maritals, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -953,9 +971,9 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                         .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(4, 4, 4)
+                                        .addGap(18, 18, 18)
                                         .addComponent(tf_genders1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(42, 42, 42)
+                                .addGap(28, 28, 28)
                                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(192, 192, 192))))
         );
@@ -3400,9 +3418,9 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3866,6 +3884,14 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private void tf_citizenshipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_citizenshipActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_citizenshipActionPerformed
+
+    private void tf_languages_spokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_languages_spokenActionPerformed
+        Initialize_household_member_field_types.init_languages(tf_languages_spoken);
+    }//GEN-LAST:event_tf_languages_spokenActionPerformed
+
+    private void tf_email_addressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_email_addressMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_email_addressMouseClicked
 
     /**
      * @param args the command line arguments

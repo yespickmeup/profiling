@@ -297,30 +297,59 @@ public class Initialize_house_field_types {
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc=" Water Sources ">
     public static void init_water(final JTextField tf) {
-
-        Object[][] obj = new Object[water.size()][1];
+        
+        
+        Object[][] obj = new Object[water.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Water_sources.to_water_sources to : water) {
-            obj[i][0] = " " + to.water_source;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.water_source)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.water_source;
             i++;
         }
+
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Water_sources.to_water_sources to = water.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.water_source);
                 field.setId("" + to.id);
+
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
             }
         });
     }
-
     //</editor-fold>    
     //<editor-fold defaultstate="collapsed" desc=" Disposal_Methods ">
     public static void init_solid(final JTextField tf) {
@@ -352,25 +381,54 @@ public class Initialize_house_field_types {
     //<editor-fold defaultstate="collapsed" desc=" Cooking_Lighting_types ">
     public static void init_cooking_lighting(final JTextField tf) {
 
-        Object[][] obj = new Object[cooking.size()][1];
+        Object[][] obj = new Object[cooking.size()][2];
         int i = 0;
+        String[] stmt = tf.getText().split(",");
         for (Cooking_lighting_types.to_cooking_lighting_types to : cooking) {
-            obj[i][0] = " " + to.cooking_lighting_type;
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.cooking_lighting_type)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.cooking_lighting_type;
             i++;
         }
+
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
             @Override
-            public void ok(TableRenderer.OutputData data) {
+            public void ok(TableCheckBoxRenderer.OutputData data) {
                 Cooking_lighting_types.to_cooking_lighting_types to = cooking.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.cooking_lighting_type);
                 field.setId("" + to.id);
+
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
             }
         });
     }
