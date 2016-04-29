@@ -270,17 +270,33 @@ public class Initialize_search_record_field_types {
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc=" puroks "> 
-    public static void init_puroks(final JTextField tf) {
-
-        Object[][] obj = new Object[puroks.size()][1];
+    public static void init_puroks(final JTextField tf, final JTextField region, final JTextField province, final JTextField city, final JTextField barangay) {
+        final List<Puroks.to_puroks> in_search = new ArrayList();
+        Object[][] obj = null;
         int i = 0;
-        for (Puroks.to_puroks to : puroks) {
-            obj[i][0] = " " + to.purok;
-            i++;
+        if (tf.getText().isEmpty()) {
+            obj = new Object[puroks.size()][1];
+            for (Puroks.to_puroks to : puroks) {
+                obj[i][0] = " " + to.purok;
+                i++;
+            }
+        } else {
+
+            for (Puroks.to_puroks to : puroks) {
+                boolean contains = StringUtils.containsIgnoreCase(to.purok, tf.getText());
+                if (contains) {
+                    in_search.add(to);
+                }
+            }
+            obj = new Object[in_search.size()][1];
+            for (Puroks.to_puroks to : in_search) {
+                obj[i][0] = " " + to.purok;
+                i++;
+            }
         }
         JLabel[] labels = {};
         int[] tbl_widths_customers = {tf.getWidth()};
-        String[] col_names = {"Name"};
+        String[] col_names = {"Puroks"};
         TableRenderer tr = new TableRenderer();
         TableRenderer.
                 setPopup(tf, obj, labels, tbl_widths_customers, col_names);
@@ -288,9 +304,28 @@ public class Initialize_search_record_field_types {
             @Override
             public void ok(TableRenderer.OutputData data) {
                 Puroks.to_puroks to = puroks.get(data.selected_row);
+                if (tf.getText().isEmpty()) {
+                    to = puroks.get(data.selected_row);
+                } else {
+                    to = in_search.get(data.selected_row);
+                }
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.purok);
                 field.setId("" + to.id);
+
+                Field.Combo field2 = (Field.Combo) region;
+                Field.Combo field3 = (Field.Combo) province;
+                Field.Combo field4 = (Field.Combo) city;
+                Field.Combo field5 = (Field.Combo) barangay;
+
+                field2.setText(to.barangay);
+                field2.setId("" + to.barangay_id);
+                field3.setText(to.province);
+                field3.setId("" + to.province_id);
+                field4.setText(to.city);
+                field4.setId("" + to.city_id);
+                 field4.setText(to.barangay);
+                field4.setId("" + to.barangay_id);
             }
         });
     }

@@ -9,12 +9,18 @@ import city_planning.barangays.Barangays.to_barangays;
 import city_planning.initialize_fields.Initialize_search_record_field_types;
 import city_planning.util.Alert;
 import city_planning.util.Dlg_confirm_action;
+import city_planning.util.MyConnection;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JTable;
@@ -27,7 +33,6 @@ import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
-import synsoftech.fields.Label;
 
 /**
  *
@@ -202,7 +207,6 @@ public class Dlg_barangays extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         tf_province = new Field.Combo();
         jTextField2 = new Field.Search();
-        jLabel5 = new Label.Separator();
         jButton1 = new Button.Warning();
         jButton2 = new Button.Info();
         jButton3 = new Button.Primary();
@@ -213,6 +217,8 @@ public class Dlg_barangays extends javax.swing.JDialog {
         tf_barangay = new Field.Input();
         lbl_barangay3 = new javax.swing.JLabel();
         tf_region = new Field.Combo();
+        jLabel8 = new javax.swing.JLabel();
+        tf_purok = new Field.Input();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -269,10 +275,6 @@ public class Dlg_barangays extends javax.swing.JDialog {
                 jTextField2ActionPerformed(evt);
             }
         });
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -338,6 +340,16 @@ public class Dlg_barangays extends javax.swing.JDialog {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Purok:");
+
+        tf_purok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_purok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_purokActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -365,22 +377,23 @@ public class Dlg_barangays extends javax.swing.JDialog {
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_city)
-                            .addComponent(tf_barangay)))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lbl_barangay3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_province)
-                            .addComponent(tf_region))))
+                            .addComponent(tf_region)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_city)
+                            .addComponent(tf_barangay)
+                            .addComponent(tf_purok))))
                 .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
@@ -402,9 +415,11 @@ public class Dlg_barangays extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_barangay, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_purok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,7 +428,7 @@ public class Dlg_barangays extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -486,6 +501,10 @@ public class Dlg_barangays extends javax.swing.JDialog {
         delete_barangays();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tf_purokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_purokActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_purokActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -499,9 +518,9 @@ public class Dlg_barangays extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -511,6 +530,7 @@ public class Dlg_barangays extends javax.swing.JDialog {
     private javax.swing.JTextField tf_barangay;
     private javax.swing.JTextField tf_city;
     private javax.swing.JTextField tf_province;
+    private javax.swing.JTextField tf_purok;
     private javax.swing.JTextField tf_region;
     // End of variables declaration//GEN-END:variables
 
@@ -532,14 +552,14 @@ public class Dlg_barangays extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                        disposed();
+                    }
+                });
     }
     // </editor-fold>
 
@@ -630,9 +650,12 @@ public class Dlg_barangays extends javax.swing.JDialog {
         Field.Combo reg = (Field.Combo) tf_region;
         Field.Combo prov = (Field.Combo) tf_province;
         Field.Combo cit = (Field.Combo) tf_city;
+        Field.Combo pur = (Field.Combo) tf_purok;
 
         int id = 0;
         String barangay = tf_barangay.getText();
+        int purok_id = FitIn.toInt(pur.getId());
+        String purok = pur.getText();
         int city_id = FitIn.toInt(cit.getId());
         String city = cit.getText();
         int province_id = FitIn.toInt(prov.getId());
@@ -641,7 +664,7 @@ public class Dlg_barangays extends javax.swing.JDialog {
         String region = reg.getText();
         int is_default = 0;
 
-        to_barangays to = new to_barangays(id, barangay, city_id, city, province_id, province, region_id, region, is_default);
+        to_barangays to = new to_barangays(id, barangay, purok_id, purok, city_id, city, province_id, province, region_id, region, is_default);
         Barangays.add_data(to);
         Alert.set(1, city);
 
@@ -697,12 +720,15 @@ public class Dlg_barangays extends javax.swing.JDialog {
             return;
         }
         to_barangays to = (to_barangays) tbl_barangays_ALM.get(row);
+        Field.Combo pur = (Field.Combo) tf_purok;
         Field.Combo reg = (Field.Combo) tf_region;
         Field.Combo prov = (Field.Combo) tf_province;
         Field.Combo cit = (Field.Combo) tf_city;
 
         int id = 0;
         String barangay = tf_barangay.getText();
+        int purok_id = FitIn.toInt(cit.getId());
+        String purok = cit.getText();
         int city_id = FitIn.toInt(cit.getId());
         String city = cit.getText();
         int province_id = FitIn.toInt(prov.getId());
@@ -711,7 +737,7 @@ public class Dlg_barangays extends javax.swing.JDialog {
         String region = reg.getText();
         int is_default = 0;
 
-        to_barangays to1 = new to_barangays(id, barangay, city_id, city, province_id, province, region_id, region, is_default);
+        to_barangays to1 = new to_barangays(id, barangay, purok_id, purok, city_id, city, province_id, province, region_id, region, is_default);
 
         Barangays.update_data(to1);
         Alert.set(2, "");
@@ -734,6 +760,52 @@ public class Dlg_barangays extends javax.swing.JDialog {
         List<to_barangays> datas = Barangays.ret_data(where);
         loadData_barangays(datas);
 
+    }
+
+    public static List<to_barangays> ret_data(String where) {
+        List<to_barangays> datas = new ArrayList();
+
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + "id"
+                    + ",barangay"
+                    + ",purok_id"
+                    + ",purok"
+                    + ",city_id"
+                    + ",city"
+                    + ",province_id"
+                    + ",province"
+                    + ",region_id"
+                    + ",region"
+                    + ",is_default"
+                    + " from barangays"
+                    + " " + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String barangay = rs.getString(2);
+                int purok_id = rs.getInt(3);
+                String purok = rs.getString(4);
+                int city_id = rs.getInt(5);
+                String city = rs.getString(6);
+                int province_id = rs.getInt(7);
+                String province = rs.getString(8);
+                int region_id = rs.getInt(9);
+                String region = rs.getString(10);
+                int is_default = rs.getInt(11);
+
+                to_barangays to = new to_barangays(id, barangay, purok_id, purok, city_id, city, province_id, province, region_id, region, is_default);
+                datas.add(to);
+            }
+            return datas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
     }
 
 }

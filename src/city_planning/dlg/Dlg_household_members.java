@@ -859,7 +859,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(176, Short.MAX_VALUE)
+                .addContainerGap(90, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lbl_facilities6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -874,12 +874,12 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
-                                            .addComponent(tf_religions, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tf_religions, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel110)
+                                            .addGap(1, 1, 1)
+                                            .addComponent(jLabel130)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jCheckBox1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(tf_citizenship, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                             .addComponent(jLabel107)
@@ -924,15 +924,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(tf_birth_place)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                            .addGap(0, 0, Short.MAX_VALUE)
-                                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(tf_fname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(tf_mname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(tf_lname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(tf_sname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
                                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                                                     .addComponent(tf_bday, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -944,10 +937,18 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                                                     .addGap(4, 4, 4)))
                                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                 .addComponent(jLabel104, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(jLabel103, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addComponent(jLabel103, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                                         .addGroup(jPanel2Layout.createSequentialGroup()
+                                                            .addGap(0, 0, Short.MAX_VALUE)
+                                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addComponent(tf_genders1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tf_mname, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tf_sname, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                                             .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                             .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1001,7 +1002,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_sname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tf_genders1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1055,7 +1056,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_religions, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_citizenship, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_email_address, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2601,7 +2602,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, Short.MAX_VALUE)
+                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -3445,26 +3446,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField57ActionPerformed
 
-    private void tf_gendersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_gendersMouseClicked
-        Initialize_household_member_field_types.init_genders(tf_genders);
-    }//GEN-LAST:event_tf_gendersMouseClicked
-
-    private void tf_maritalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_maritalsMouseClicked
-        Initialize_household_member_field_types.init_marital_statuses(tf_maritals);
-    }//GEN-LAST:event_tf_maritalsMouseClicked
-
-    private void tf_blood_typeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_blood_typeMouseClicked
-        Initialize_household_member_field_types.init_blood_types(tf_blood_type);
-    }//GEN-LAST:event_tf_blood_typeMouseClicked
-
-    private void tf_relationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_relationMouseClicked
-        Initialize_household_member_field_types.init_household_relations(tf_relation);
-    }//GEN-LAST:event_tf_relationMouseClicked
-
-    private void tf_religionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_religionsMouseClicked
-        Initialize_household_member_field_types.init_religions(tf_religions);
-    }//GEN-LAST:event_tf_religionsMouseClicked
-
     private void tf_disabilitiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilitiesMouseClicked
         Initialize_household_member_field_types.init_disabilities(tf_disabilities);
     }//GEN-LAST:event_tf_disabilitiesMouseClicked
@@ -3681,10 +3662,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         disposed();
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jTextField48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField48ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField48ActionPerformed
-
     private void jTextField40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField40ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField40ActionPerformed
@@ -3696,26 +3673,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private void tf_name_of_schoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_name_of_schoolActionPerformed
 
     }//GEN-LAST:event_tf_name_of_schoolActionPerformed
-
-    private void tf_gendersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_gendersActionPerformed
-        Initialize_household_member_field_types.init_genders(tf_genders);
-    }//GEN-LAST:event_tf_gendersActionPerformed
-
-    private void tf_blood_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_blood_typeActionPerformed
-        Initialize_household_member_field_types.init_blood_types(tf_blood_type);
-    }//GEN-LAST:event_tf_blood_typeActionPerformed
-
-    private void tf_maritalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_maritalsActionPerformed
-        Initialize_household_member_field_types.init_marital_statuses(tf_maritals);
-    }//GEN-LAST:event_tf_maritalsActionPerformed
-
-    private void tf_relationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_relationActionPerformed
-        Initialize_household_member_field_types.init_household_relations(tf_relation);
-    }//GEN-LAST:event_tf_relationActionPerformed
-
-    private void tf_religionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_religionsActionPerformed
-        Initialize_household_member_field_types.init_religions(tf_religions);
-    }//GEN-LAST:event_tf_religionsActionPerformed
 
     private void tf_educational_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_educational_statusActionPerformed
 
@@ -3837,22 +3794,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_comapanyActionPerformed
 
-    private void tf_others_relationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_relationsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_others_relationsActionPerformed
-
-    private void tf_others_languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_languageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_others_languageActionPerformed
-
-    private void tf_fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_fnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_fnameActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        update_household_member_basic_infomation();
-    }//GEN-LAST:event_jButton13ActionPerformed
-
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         update_household_member_employment_status();
     }//GEN-LAST:event_jButton14ActionPerformed
@@ -3861,17 +3802,29 @@ public class Dlg_household_members extends javax.swing.JDialog {
         update_household_member_skills();
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        init_camera();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void tf_genders1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_genders1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_genders1ActionPerformed
 
     private void tf_genders1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_genders1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_genders1MouseClicked
 
-    private void tf_genders1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_genders1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        init_camera();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        update_household_member_basic_infomation();
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void tf_fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_fnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_genders1ActionPerformed
+    }//GEN-LAST:event_tf_fnameActionPerformed
+
+    private void tf_others_languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_languageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_others_languageActionPerformed
 
     private void tf_snameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_snameActionPerformed
         Initialize_household_member_field_types.init_suffixes(tf_sname);
@@ -3881,9 +3834,61 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Initialize_household_member_field_types.init_suffixes(tf_sname);
     }//GEN-LAST:event_tf_snameMouseClicked
 
+    private void tf_religionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_religionsActionPerformed
+        Initialize_household_member_field_types.init_religions(tf_religions);
+    }//GEN-LAST:event_tf_religionsActionPerformed
+
+    private void tf_religionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_religionsMouseClicked
+        Initialize_household_member_field_types.init_religions(tf_religions);
+    }//GEN-LAST:event_tf_religionsMouseClicked
+
+    private void tf_relationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_relationActionPerformed
+        Initialize_household_member_field_types.init_household_relations(tf_relation);
+    }//GEN-LAST:event_tf_relationActionPerformed
+
+    private void tf_relationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_relationMouseClicked
+        Initialize_household_member_field_types.init_household_relations(tf_relation);
+    }//GEN-LAST:event_tf_relationMouseClicked
+
+    private void tf_blood_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_blood_typeActionPerformed
+        Initialize_household_member_field_types.init_blood_types(tf_blood_type);
+    }//GEN-LAST:event_tf_blood_typeActionPerformed
+
+    private void tf_blood_typeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_blood_typeMouseClicked
+        Initialize_household_member_field_types.init_blood_types(tf_blood_type);
+    }//GEN-LAST:event_tf_blood_typeMouseClicked
+
+    private void tf_maritalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_maritalsActionPerformed
+        Initialize_household_member_field_types.init_marital_statuses(tf_maritals);
+    }//GEN-LAST:event_tf_maritalsActionPerformed
+
+    private void tf_maritalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_maritalsMouseClicked
+        Initialize_household_member_field_types.init_marital_statuses(tf_maritals);
+    }//GEN-LAST:event_tf_maritalsMouseClicked
+
+    private void tf_gendersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_gendersActionPerformed
+        Initialize_household_member_field_types.init_genders(tf_genders);
+    }//GEN-LAST:event_tf_gendersActionPerformed
+
+    private void tf_gendersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_gendersMouseClicked
+        Initialize_household_member_field_types.init_genders(tf_genders);
+    }//GEN-LAST:event_tf_gendersMouseClicked
+
+    private void tf_languages_spokenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_languages_spokenMouseClicked
+
+    }//GEN-LAST:event_tf_languages_spokenMouseClicked
+
     private void tf_citizenshipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_citizenshipActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_citizenshipActionPerformed
+
+    private void tf_others_relationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_relationsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_others_relationsActionPerformed
+
+    private void jTextField48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField48ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField48ActionPerformed
 
     private void tf_languages_spokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_languages_spokenActionPerformed
         Initialize_household_member_field_types.init_languages(tf_languages_spoken);
@@ -3972,7 +3977,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton16;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -4008,6 +4012,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel128;
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

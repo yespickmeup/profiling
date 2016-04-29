@@ -33,14 +33,27 @@ CREATE TABLE `puroks` (
   `purok` varchar(100) DEFAULT NULL,
   `barangay_id` int(11) DEFAULT NULL,
   `barangay` varchar(100) DEFAULT NULL,
-   `city_id` int(11) DEFAULT NULL,
+  `city_id` int(11) DEFAULT NULL,
   `city` varchar(100) DEFAULT NULL,
   `province_id` int(11) DEFAULT NULL,
   `province` varchar(100) DEFAULT NULL,
- `region_id` int(11) DEFAULT NULL,
+  `region_id` int(11) DEFAULT NULL,
   `region` varchar(100) DEFAULT NULL,
+  `street` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+INSERT INTO `puroks` (`id`,`purok`,`barangay_id`,`barangay`, `city_id`,`city`, `province_id`, `province`, `region_id`, `region`,`is_default`) VALUES 
+(1, 'Purok 1',207, 'Barangay 7 (Mangga)','471', 'Dumaguete','46','Negros Oriental Province','9','VISAYAS REGION VI (WESTERN VISAYAS)',1),
+(2, 'Purok 2',207, 'Barangay 7 (Mangga)','471', 'Dumaguete','46','Negros Oriental Province','9','VISAYAS REGION VI (WESTERN VISAYAS)',1),
+(3, 'Purok 3',207, 'Barangay 7 (Mangga)','471', 'Dumaguete','46','Negros Oriental Province','9','VISAYAS REGION VI (WESTERN VISAYAS)',1),
+(4, 'Purok 4',207, 'Barangay 7 (Mangga)','471', 'Dumaguete','46','Negros Oriental Province','9','VISAYAS REGION VI (WESTERN VISAYAS)',1),
+(5, 'Purok 5',207, 'Barangay 7 (Mangga)','471', 'Dumaguete','46','Negros Oriental Province','9','VISAYAS REGION VI (WESTERN VISAYAS)',1),
+(6, 'Purok 6',207, 'Barangay 7 (Mangga)','471', 'Dumaguete','46','Negros Oriental Province','9','VISAYAS REGION VI (WESTERN VISAYAS)',1),
+(7, 'Purok 7',207, 'Barangay 7 (Mangga)','471', 'Dumaguete','46','Negros Oriental Province','9','VISAYAS REGION VI (WESTERN VISAYAS)',1);
 
 --
 -- Dumping data for table `puroks`
@@ -54,12 +67,15 @@ DROP TABLE IF EXISTS `barangays`;
 CREATE TABLE `barangays` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `barangay` varchar(100) DEFAULT NULL,
+  `purok_id` int(11) DEFAULT NULL,
+  `purok` varchar(100) DEFAULT NULL,
   `city_id` int(11) DEFAULT NULL,
   `city` varchar(100) DEFAULT NULL,
   `province_id` int(11) DEFAULT NULL,
   `province` varchar(100) DEFAULT NULL,
   `region_id` int(11) DEFAULT NULL,
   `region` varchar(100) DEFAULT NULL,
+  `is_default` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=332 DEFAULT CHARSET=latin1;
 
