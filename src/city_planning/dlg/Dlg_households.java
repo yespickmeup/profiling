@@ -22,7 +22,6 @@ import city_planning.household_member_work_experiences.Household_member_work_exp
 import city_planning.household_members.Household_members;
 import city_planning.households.Households;
 import city_planning.initialize_fields.Initialize_household_field_types;
-import city_planning.initialize_fields.Initialize_search_record_field_types;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
 import city_planning.util.DateType;
