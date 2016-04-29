@@ -26,7 +26,7 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
 march 25, 2016 - janica1 baboy
 march 25, 2016 - kenneth
 march 25, 2016 - ronald1
-april 29, 2016 - kenneth
+april 29, 2016 - kenneth - ok
 april 29, 2016 - peter
 */
 public class Achievements {
