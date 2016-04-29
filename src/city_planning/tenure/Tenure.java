@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package city_planning.achievements;
+package city_planning.tenure;
 
 import city_planning.util.MyConnection;
 import java.sql.Connection;
@@ -18,50 +18,37 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
 
 /**
  *
- * @author Guinness
+ * @author Arcinue
  */
+public class Tenure {
 
+    public static class to_tenure {
 
-/* 
-march 25, 2016 - janica1 baboy
-march 25, 2016 - kenneth
-march 25, 2016 - ronald1
-april 29, 2016 - kenneth - ok
-april 29, 2016 - peter - ok
-april 29, 2016 - ronald
-*/
-public class Achievements {
-
-    public static class to_achievements {
-        
-        
         public final int id;
-        public final String achievement;
+        public final String tenure;
 
-        public to_achievements(int id, String achievement) {
+        public to_tenure(int id, String tenure) {
             this.id = id;
-            this.achievement = achievement;
-                    }
+            this.tenure = tenure;
+        }
     }
 
-    public static void add_data(to_achievements to_achievements) {
+    public static void add_data(to_tenure to_tenure) {
         try {
-            
-          
             Connection conn = MyConnection.connect();
-            String s0 = "insert into achievements("
-                    + "achievement"
+            String s0 = "insert into tenure_types("
+                    + "tenure_type"
                     + ")values("
-                    + ":achievement"
+                    + ":tenure_type"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("achievement", to_achievements.achievement)
+                    .setString("tenure", to_tenure.tenure)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Achievements.class, "Successfully Added");
+            Lg.s(Tenure.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -69,21 +56,21 @@ public class Achievements {
         }
     }
 
-    public static void update_data(to_achievements to_achievements) {
+    public static void update_data(to_tenure to_tenure) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "update achievements set "
-                    + "achievement= :achievement "
-                    + " where id='" + to_achievements.id + "' "
+            String s0 = "update blood_types set "
+                    + "blood_type= :blood_type "
+                    + " where id='" + to_tenure.id + "' "
                     + " ";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("achievement", to_achievements.achievement)
+                    .setString("blood_type", to_tenure.tenure)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Achievements.class, "Successfully Updated");
+            Lg.s(Tenure.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -91,16 +78,16 @@ public class Achievements {
         }
     }
 
-    public static void delete_data(to_achievements to_achievements) {
+    public static void delete_data(to_tenure to_tenure) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from achievements  "
-                    + " where id='" + to_achievements.id + "' "
+            String s0 = "delete from tenure_types  "
+                    + " where id='" + to_tenure.id + "' "
                     + " ";
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Achievements.class, "Successfully Deleted");
+            Lg.s(Tenure.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -108,24 +95,24 @@ public class Achievements {
         }
     }
 
-    public static List<to_achievements> ret_data(String where) {
-        List<to_achievements> datas = new ArrayList();
+    public static List<to_tenure> ret_data(String where) {
+        List<to_tenure> datas = new ArrayList();
 
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select "
                     + "id"
-                    + ",achievement"
-                    + " from achievements"
+                    + ",tenure_type"
+                    + " from tenure_types"
                     + " " + where;
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String achievement = rs.getString(2);
+                String tenure_type = rs.getString(2);
 
-                to_achievements to = new to_achievements(id, achievement);
+                to_tenure to = new to_tenure(id, tenure_type);
                 datas.add(to);
             }
             return datas;

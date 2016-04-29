@@ -538,9 +538,9 @@ public class Dlg_search_record extends javax.swing.JDialog {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -580,7 +580,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_barangayMouseClicked
 
     private void tf_purokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_purokMouseClicked
-        // TODO add your handling code here:
+        Initialize_search_record_field_types.init_puroks(tf_barangay, tf_region, tf_province, tf_city, tf_region);
     }//GEN-LAST:event_tf_purokMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -608,7 +608,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_regionActionPerformed
 
     private void tf_purokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_purokActionPerformed
-        Initialize_search_record_field_types.init_puroks(tf_purok);
+        Initialize_search_record_field_types.init_puroks(tf_barangay, tf_region, tf_province, tf_city, tf_region);
     }//GEN-LAST:event_tf_purokActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -686,14 +686,14 @@ public class Dlg_search_record extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                        disposed();
+                    }
+                });
         jTextField1.addKeyListener(new KeyAdapter() {
 
             @Override
@@ -941,7 +941,6 @@ public class Dlg_search_record extends javax.swing.JDialog {
         cit.setText(location.city);
         bar.setId("" + location.id);
         bar.setText(location.barangay);
-        pur.setId("");
     }
 
     private void add_new_record() {
@@ -1136,7 +1135,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
 
         }
         if (col == 10) {
-           String where = " where house_no='" + member.house_no + "' ";
+            String where = " where house_no='" + member.house_no + "' ";
             List<Houses.to_houses> houses = Houses.ret_data(where);
             List<Households.to_households> households = Households.ret_data(where);
             houses.get(0).setHouseholds(households);
@@ -1149,14 +1148,12 @@ public class Dlg_search_record extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_report_barangay_clearance.OutputData data) {
                     closeDialog.ok();
-                    ret_household_members();               
+                    ret_household_members();
                 }
             });
             nd.setLocationRelativeTo(this);
             nd.setVisible(true);
         }
-        }
-
     }
 
-
+}
