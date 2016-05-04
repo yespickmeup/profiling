@@ -2,7 +2,7 @@
 * To change this license header, choose License Headers in Project Properties.
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
-*/
+ */
 package city_planning.household_members;
 
 import city_planning.household_member_competence_certificates.Household_member_competence_certificates;
@@ -32,9 +32,9 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
  * @author Guinness
  */
 public class Household_members {
-    
+
     public static class to_household_members {
-        
+
         public final int id;
         public final String created_at;
         public final String updated_at;
@@ -85,8 +85,9 @@ public class Household_members {
         public Household_member_employment_status.to_household_member_employment_status employment_status;
         public Household_member_skills.to_household_member_skills skills;
         public String image;
-        
-        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image) {
+        public String transient_no;
+
+        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -137,265 +138,265 @@ public class Household_members {
             this.employment_status = employment_status;
             this.skills = skills;
             this.image = image;
+            this.transient_no = transient_no;
         }
-        
+
         public String getImage() {
             return image;
         }
-        
+
         public void setImage(String image) {
             this.image = image;
         }
-        
+
         public String getFname() {
             return fname;
         }
-        
+
         public void setFname(String fname) {
             this.fname = fname;
         }
-        
+
         public String getMname() {
             return mname;
         }
-        
+
         public void setMname(String mname) {
             this.mname = mname;
         }
-        
+
         public String getLname() {
             return lname;
         }
-        
+
         public void setLname(String lname) {
             this.lname = lname;
         }
-        
+
         public String getSname() {
             return sname;
         }
-        
+
         public void setSname(String sname) {
             this.sname = sname;
         }
-        
+
         public String getGender() {
             return gender;
         }
-        
+
         public void setGender(String gender) {
             this.gender = gender;
         }
-        
+
         public String getMarital_status() {
             return marital_status;
         }
-        
+
         public void setMarital_status(String marital_status) {
             this.marital_status = marital_status;
         }
-        
+
         public String getBday() {
             return bday;
         }
-        
+
         public void setBday(String bday) {
             this.bday = bday;
         }
-        
+
         public double getOccupancy_years() {
             return occupancy_years;
         }
-        
+
         public void setOccupancy_years(double occupancy_years) {
             this.occupancy_years = occupancy_years;
         }
-        
+
         public String getHeight() {
             return height;
         }
-        
+
         public void setHeight(String height) {
             this.height = height;
         }
-        
+
         public String getWeight() {
             return weight;
         }
-        
+
         public void setWeight(String weight) {
             this.weight = weight;
         }
-        
+
         public String getBirth_place() {
             return birth_place;
         }
-        
+
         public void setBirth_place(String birth_place) {
             this.birth_place = birth_place;
         }
-        
+
         public String getPresent_address() {
             return present_address;
         }
-        
+
         public void setPresent_address(String present_address) {
             this.present_address = present_address;
         }
-        
+
         public String getRelation_to_household() {
             return relation_to_household;
         }
-        
+
         public void setRelation_to_household(String relation_to_household) {
             this.relation_to_household = relation_to_household;
         }
-        
+
         public String getReligion() {
             return religion;
         }
-        
+
         public void setReligion(String religion) {
             this.religion = religion;
         }
-        
+
         public String getCitizenship() {
             return citizenship;
         }
-        
+
         public void setCitizenship(String citizenship) {
             this.citizenship = citizenship;
         }
-        
+
         public String getEmail_address() {
             return email_address;
         }
-        
+
         public void setEmail_address(String email_address) {
             this.email_address = email_address;
         }
-        
+
         public String getBlood_type() {
             return blood_type;
         }
-        
+
         public void setBlood_type(String blood_type) {
             this.blood_type = blood_type;
         }
-        
+
         public String getLanguages_spoken() {
             return languages_spoken;
         }
-        
+
         public void setLanguages_spoken(String languages_spoken) {
             this.languages_spoken = languages_spoken;
         }
-        
+
         public int getIs_registered_voter() {
             return is_registered_voter;
         }
-        
+
         public void setIs_registered_voter(int is_registered_voter) {
             this.is_registered_voter = is_registered_voter;
         }
-        
+
         public String getVoters_id_no() {
             return voters_id_no;
         }
-        
+
         public void setVoters_id_no(String voters_id_no) {
             this.voters_id_no = voters_id_no;
         }
-        
+
         public List<Household_member_health_statuses.to_household_member_health_statuses> getHealth_statuses() {
             return health_statuses;
         }
-        
+
         public void setHealth_statuses(List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses) {
             this.health_statuses = health_statuses;
         }
-        
+
         public List<Household_member_medications.to_household_member_medications> getHealth_medications() {
             return health_medications;
         }
-        
+
         public void setHealth_medications(List<Household_member_medications.to_household_member_medications> health_medications) {
             this.health_medications = health_medications;
         }
-        
+
         public List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> getEducational_backgrounds() {
             return educational_backgrounds;
         }
-        
+
         public void setEducational_backgrounds(List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds) {
             this.educational_backgrounds = educational_backgrounds;
         }
-        
+
         public List<Household_member_vocational_experiences.to_household_member_vocational_experiences> getVocational_experiences() {
             return vocational_experiences;
         }
-        
+
         public void setVocational_experiences(List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences) {
             this.vocational_experiences = vocational_experiences;
         }
-        
+
         public List<Household_member_competence_certificates.to_household_member_competence_certificates> getCompetence_certificates() {
             return competence_certificates;
         }
-        
+
         public void setCompetence_certificates(List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates) {
             this.competence_certificates = competence_certificates;
         }
-        
+
         public List<Household_member_licences.to_household_member_licenses> getLicenses() {
             return licenses;
         }
-        
+
         public void setLicenses(List<Household_member_licences.to_household_member_licenses> licenses) {
             this.licenses = licenses;
         }
-        
+
         public List<Household_member_work_experiences.to_household_member_work_experiences> getWork_experiences() {
             return work_experiences;
         }
-        
+
         public void setWork_experiences(List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences) {
             this.work_experiences = work_experiences;
         }
-        
+
         public List<Household_member_prefered_works.to_household_member_prefered_works> getPrefered_works() {
             return prefered_works;
         }
-        
+
         public void setPrefered_works(List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works) {
             this.prefered_works = prefered_works;
         }
-        
+
         public Household_member_employment_status.to_household_member_employment_status getEmployment_status() {
             return employment_status;
         }
-        
+
         public void setEmployment_status(Household_member_employment_status.to_household_member_employment_status employment_status) {
             this.employment_status = employment_status;
         }
-        
+
         public Household_member_skills.to_household_member_skills getSkills() {
             return skills;
         }
-        
+
         public void setSkills(Household_member_skills.to_household_member_skills skills) {
             this.skills = skills;
         }
-        
+
     }
-    
+
     public static void add_data(to_household_members household_member) {
         try {
             Connection conn = MyConnection.connect();
             conn.setAutoCommit(false);
             //<editor-fold defaultstate="collapsed" desc=" insert household members ">
-            
-            
+
             //<editor-fold defaultstate="collapsed" desc=" insert household member ">
             String hm = "insert into household_members("
                     + "created_at"
@@ -437,6 +438,7 @@ public class Household_members {
                     + ",is_registered_voter"
                     + ",voters_id_no"
                     + ",image"
+                    + ",transient_no"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -477,8 +479,9 @@ public class Household_members {
                     + ",:is_registered_voter"
                     + ",:voters_id_no"
                     + ",:image"
+                    + ",:transient_no"
                     + ")";
-            
+
             hm = SqlStringUtil.parse(hm)
                     .setString("created_at", household_member.created_at)
                     .setString("updated_at", household_member.updated_at)
@@ -519,9 +522,10 @@ public class Household_members {
                     .setNumber("is_registered_voter", household_member.is_registered_voter)
                     .setString("voters_id_no", household_member.voters_id_no)
                     .setString("image", household_member.image)
+                    .setString("transient_no", household_member.transient_no)
                     .ok();
             PreparedStatement stmt = conn.prepareStatement(hm);
-            
+
             stmt.addBatch(hm);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" insert household member health statuses ">
@@ -556,6 +560,7 @@ public class Household_members {
                         + ",disabilities"
                         + ",level_of_disability"
                         + ",cause_of_disability"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -585,8 +590,9 @@ public class Household_members {
                         + ",:disabilities"
                         + ",:level_of_disability"
                         + ",:cause_of_disability"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hs = SqlStringUtil.parse(hs)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -616,6 +622,7 @@ public class Household_members {
                         .setString("disabilities", health_status.disabilities)
                         .setString("level_of_disability", health_status.level_of_disability)
                         .setString("cause_of_disability", health_status.cause_of_disability)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hs);
             }
@@ -650,6 +657,7 @@ public class Household_members {
                         + ",dosage"
                         + ",medication_date_started"
                         + ",medication_date_ended"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -677,8 +685,9 @@ public class Household_members {
                         + ",:dosage"
                         + ",:medication_date_started"
                         + ",:medication_date_ended"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hhm = SqlStringUtil.parse(hhm)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -706,6 +715,7 @@ public class Household_members {
                         .setString("dosage", health_medication.dosage)
                         .setString("medication_date_started", health_medication.medication_date_started)
                         .setString("medication_date_ended", health_medication.medication_date_ended)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hhm);
             }
@@ -741,6 +751,7 @@ public class Household_members {
                         + ",achievements"
                         + ",highest_grade"
                         + ",year_graduated"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -769,8 +780,9 @@ public class Household_members {
                         + ",:achievements"
                         + ",:highest_grade"
                         + ",:year_graduated"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hheb = SqlStringUtil.parse(hheb)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -799,6 +811,7 @@ public class Household_members {
                         .setString("achievements", educational_background.achievements)
                         .setNumber("highest_grade", educational_background.highest_grade)
                         .setString("year_graduated", educational_background.year_graduated)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hheb);
             }
@@ -834,6 +847,7 @@ public class Household_members {
                         + ",skills_required"
                         + ",name_of_school"
                         + ",period_of_training"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -862,8 +876,9 @@ public class Household_members {
                         + ",:skills_required"
                         + ",:name_of_school"
                         + ",:period_of_training"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hhve = SqlStringUtil.parse(hhve)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -892,6 +907,7 @@ public class Household_members {
                         .setString("skills_required", vocational_experience.skills_required)
                         .setString("name_of_school", vocational_experience.name_of_school)
                         .setString("period_of_training", vocational_experience.period_of_training)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hhve);
             }
@@ -926,6 +942,7 @@ public class Household_members {
                         + ",rating"
                         + ",issued_by"
                         + ",date_issued"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -953,8 +970,9 @@ public class Household_members {
                         + ",:rating"
                         + ",:issued_by"
                         + ",:date_issued"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hhcc = SqlStringUtil.parse(hhcc)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -982,6 +1000,7 @@ public class Household_members {
                         .setString("rating", competence_certificate.rating)
                         .setString("issued_by", competence_certificate.issued_by)
                         .setString("date_issued", competence_certificate.date_issued)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hhcc);
             }
@@ -1014,6 +1033,7 @@ public class Household_members {
                         + ",sname"
                         + ",title"
                         + ",expiry"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -1039,8 +1059,9 @@ public class Household_members {
                         + ",:sname"
                         + ",:title"
                         + ",:expiry"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hhl = SqlStringUtil.parse(hhl)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -1066,6 +1087,7 @@ public class Household_members {
                         .setString("sname", license.sname)
                         .setString("title", license.title)
                         .setString("expiry", license.expiry)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hhl);
             }
@@ -1102,6 +1124,7 @@ public class Household_members {
                         + ",work_description"
                         + ",work_started"
                         + ",work_ended"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -1131,8 +1154,9 @@ public class Household_members {
                         + ",:work_description"
                         + ",:work_started"
                         + ",:work_ended"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hhwe = SqlStringUtil.parse(hhwe)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -1162,6 +1186,7 @@ public class Household_members {
                         .setString("work_description", work_experience.work_description)
                         .setString("work_started", work_experience.work_started)
                         .setString("work_ended", work_experience.work_ended)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hhwe);
             }
@@ -1193,6 +1218,7 @@ public class Household_members {
                         + ",lname"
                         + ",sname"
                         + ",work"
+                        + ",transient_no"
                         + ")values("
                         + ":created_at"
                         + ",:updated_at"
@@ -1217,8 +1243,9 @@ public class Household_members {
                         + ",:lname"
                         + ",:sname"
                         + ",:work"
+                        + ",:transient_no"
                         + ")";
-                
+
                 hhpw = SqlStringUtil.parse(hhpw)
                         .setString("created_at", household_member.created_at)
                         .setString("updated_at", household_member.updated_at)
@@ -1243,6 +1270,7 @@ public class Household_members {
                         .setString("lname", prefered_work.lname)
                         .setString("sname", prefered_work.sname)
                         .setString("work", prefered_work.work)
+                        .setString("transient_no", household_member.transient_no)
                         .ok();
                 stmt.addBatch(hhpw);
             }
@@ -1287,6 +1315,7 @@ public class Household_members {
                     + ",ofw_country"
                     + ",ofw_job"
                     + ",ofw_reason_for_migration"
+                    + ",transient_no"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -1325,8 +1354,9 @@ public class Household_members {
                     + ",:ofw_country"
                     + ",:ofw_job"
                     + ",:ofw_reason_for_migration"
+                    + ",:transient_no"
                     + ")";
-            
+
             hhes = SqlStringUtil.parse(hhes)
                     .setString("created_at", household_member.created_at)
                     .setString("updated_at", household_member.updated_at)
@@ -1365,6 +1395,7 @@ public class Household_members {
                     .setString("ofw_country", employment_status.ofw_country)
                     .setString("ofw_job", employment_status.ofw_job)
                     .setString("ofw_reason_for_migration", employment_status.ofw_reason_for_migration)
+                    .setString("transient_no", household_member.transient_no)
                     .ok();
             stmt.addBatch(hhes);
             //</editor-fold>
@@ -1446,6 +1477,7 @@ public class Household_members {
                     + ",is_innovating"
                     + ",is_expressing"
                     + ",is_organizing"
+                    + ",transient_no"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -1522,8 +1554,9 @@ public class Household_members {
                     + ",:is_innovating"
                     + ",:is_expressing"
                     + ",:is_organizing"
+                    + ",:transient_no"
                     + ")";
-            
+
             hhs = SqlStringUtil.parse(hhs)
                     .setString("created_at", household_member.created_at)
                     .setString("updated_at", household_member.updated_at)
@@ -1600,27 +1633,52 @@ public class Household_members {
                     .setNumber("is_innovating", skills.is_innovating)
                     .setNumber("is_expressing", skills.is_expressing)
                     .setNumber("is_organizing", skills.is_organizing)
+                    .setString("transient_no", household_member.transient_no)
                     .ok();
             stmt.addBatch(hhs);
             //</editor-fold>
-            
+
+            //<editor-fold defaultstate="collapsed" desc=" update household member count ">
+            int count = 0;
+            String h2 = "select count(id) from household_members where household_no='" + household_member.household_no + "' ";
+            Statement stmtt = conn.createStatement();
+            ResultSet rs2 = stmtt.executeQuery(h2);
+            if (rs2.next()) {
+                count = rs2.getInt(1);
+            }
+            count++;
+            String h3 = "update households set no_of_household_members = '" + count + "' where household_no='" + household_member.household_no + "' ";
+            stmt.addBatch(h3);
+            System.out.println(h3);
+            int count2 = 0;
+            String hh3 = "select count(id) from household_members where house_no='" + household_member.house_no + "' ";
+            Statement stmtt3 = conn.createStatement();
+            ResultSet rs3 = stmtt3.executeQuery(hh3);
+            if (rs3.next()) {
+                count2 = rs3.getInt(1);
+            }
+            count2++;
+            String hhh3 = "update houses set no_of_household_members = '" + count2 + "' where house_no='" + household_member.house_no + "' ";
+            stmt.addBatch(hhh3);
+
+            //</editor-fold>
             Lg.s(Household_members.class, "Successfully Added");
             stmt.executeBatch();
             conn.commit();
             //</editor-fold>
-            
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             MyConnection.close();
         }
     }
-    
+
     public static void update_data(to_household_members to_household_members) {
         try {
             Connection conn = MyConnection.connect();
             conn.setAutoCommit(false);
-            
+
             //<editor-fold defaultstate="collapsed" desc=" Basic Information  ">
             String s0 = "update household_members set "
                     + " fname= :fname "
@@ -1644,9 +1702,22 @@ public class Household_members {
                     + ",is_registered_voter= :is_registered_voter "
                     + ",voters_id_no= :voters_id_no "
                     + ",image= :image "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s0 = SqlStringUtil.parse(s0)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
@@ -1669,11 +1740,24 @@ public class Household_members {
                     .setNumber("is_registered_voter", to_household_members.is_registered_voter)
                     .setString("voters_id_no", to_household_members.voters_id_no)
                     .setString("image", to_household_members.image)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.addBatch(s0);
-            
+
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Educational Background ">
             String s2 = "update household_member_educational_backgrounds  set "
@@ -1681,16 +1765,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s2 = SqlStringUtil.parse(s2)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s2);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Vocational Experiences ">
@@ -1699,16 +1809,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s3 = SqlStringUtil.parse(s3)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s3);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Health Status ">
@@ -1717,16 +1853,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s4 = SqlStringUtil.parse(s4)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s4);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Medications ">
@@ -1735,16 +1897,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s5 = SqlStringUtil.parse(s5)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s5);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Work Experiences ">
@@ -1753,16 +1941,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s6 = SqlStringUtil.parse(s6)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s6);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Prefered Works ">
@@ -1771,16 +1985,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s7 = SqlStringUtil.parse(s7)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s7);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Competence Certificates ">
@@ -1789,16 +2029,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s8 = SqlStringUtil.parse(s8)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s8);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" licenses ">
@@ -1807,16 +2073,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s9 = SqlStringUtil.parse(s9)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s9);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Employment Status ">
@@ -1825,16 +2117,42 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s10 = SqlStringUtil.parse(s10)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s10);
             //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" Skills ">
@@ -1843,22 +2161,48 @@ public class Household_members {
                     + ",mname= :mname "
                     + ",lname= :lname "
                     + ",sname= :sname "
-                    + " where household_member_no='" + to_household_members.household_member_no + "' "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
-            
+
             s11 = SqlStringUtil.parse(s11)
                     .setString("fname", to_household_members.fname)
                     .setString("mname", to_household_members.mname)
                     .setString("lname", to_household_members.lname)
                     .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
                     .ok();
-            
+
             stmt.addBatch(s11);
             //</editor-fold>
-            
+
             stmt.executeBatch();
             conn.commit();
-            
+
             Lg.s(Household_members.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -1866,12 +2210,12 @@ public class Household_members {
             MyConnection.close();
         }
     }
-    
+
     public static void delete_data2(to_household_members to_household_members) {
         try {
             Connection conn = MyConnection.connect();
             conn.setAutoCommit(false);
-            
+
             String stmt5 = "delete from household_member_competence_certificates where household_member_no='" + to_household_members.household_member_no + "' ";
             String stmt6 = "delete from household_member_educational_backgrounds where household_member_no='" + to_household_members.household_member_no + "' ";
             String stmt7 = "delete from household_member_employment_status where household_member_no='" + to_household_members.household_member_no + "' ";
@@ -1883,9 +2227,9 @@ public class Household_members {
             String stmt13 = "delete from household_member_vocational_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
             String stmt14 = "delete from household_member_work_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
             String stmt15 = "delete from household_members where household_member_no='" + to_household_members.household_member_no + "' ";
-            
+
             PreparedStatement stmt = conn.prepareStatement(stmt5);
-            
+
             stmt.addBatch(stmt5);
             stmt.addBatch(stmt6);
             stmt.addBatch(stmt7);
@@ -1897,9 +2241,9 @@ public class Household_members {
             stmt.addBatch(stmt13);
             stmt.addBatch(stmt14);
             stmt.addBatch(stmt15);
-            
+
             stmt.executeBatch();
-            
+
             conn.commit();
             Lg.s(Household_members.class, "Successfully Deleted");
         } catch (SQLException e) {
@@ -1908,12 +2252,12 @@ public class Household_members {
             MyConnection.close();
         }
     }
-    
+
     public static void delete_data(to_household_members to_household_members, int no_of_households, int no_of_household_members) {
         try {
             Connection conn = MyConnection.connect();
             conn.setAutoCommit(false);
-            
+
             if (no_of_households == 1) {
                 if (no_of_household_members == 1) {
                     String stmt1 = "delete from houses where house_no='" + to_household_members.house_no + "' ";
@@ -1948,11 +2292,11 @@ public class Household_members {
                     stmt.addBatch(stmt13);
                     stmt.addBatch(stmt14);
                     stmt.addBatch(stmt15);
-                    
+
                     stmt.addBatch(stmt17);
                     stmt.executeBatch();
                 } else {
-                    
+
                     String stmt5 = "delete from household_member_competence_certificates where household_member_no='" + to_household_members.household_member_no + "' ";
                     String stmt6 = "delete from household_member_educational_backgrounds where household_member_no='" + to_household_members.household_member_no + "' ";
                     String stmt7 = "delete from household_member_employment_status where household_member_no='" + to_household_members.household_member_no + "' ";
@@ -1964,9 +2308,9 @@ public class Household_members {
                     String stmt13 = "delete from household_member_vocational_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
                     String stmt14 = "delete from household_member_work_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
                     String stmt15 = "delete from household_members where household_member_no='" + to_household_members.household_member_no + "' ";
-                    
+
                     PreparedStatement stmt = conn.prepareStatement(stmt5);
-                    
+
                     stmt.addBatch(stmt5);
                     stmt.addBatch(stmt6);
                     stmt.addBatch(stmt7);
@@ -1978,7 +2322,7 @@ public class Household_members {
                     stmt.addBatch(stmt13);
                     stmt.addBatch(stmt14);
                     stmt.addBatch(stmt15);
-                    
+
                     stmt.executeBatch();
                 }
             } else if (no_of_household_members == 1) {
@@ -2034,7 +2378,7 @@ public class Household_members {
                 stmt.addBatch(stmt15);
                 stmt.executeBatch();
             }
-            
+
             conn.commit();
             Lg.s(Household_members.class, "Successfully Deleted");
         } catch (SQLException e) {
@@ -2043,23 +2387,23 @@ public class Household_members {
             MyConnection.close();
         }
     }
-    
+
     public static void delete_household_member(to_household_members to_household_members) {
         try {
             Connection conn = MyConnection.connect();
             conn.setAutoCommit(false);
-            
-            String stmt5 = "delete from household_member_competence_certificates where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt6 = "delete from household_member_educational_backgrounds where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt7 = "delete from household_member_employment_status where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt8 = "delete from household_member_health_statuses where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt9 = "delete from household_member_licenses where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt10 = "delete from household_member_medications where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt11 = "delete from household_member_prefered_works where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt12 = "delete from household_member_skills where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt13 = "delete from household_member_vocational_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt14 = "delete from household_member_work_experiences where household_member_no='" + to_household_members.household_member_no + "' ";
-            String stmt15 = "delete from household_members where household_member_no='" + to_household_members.household_member_no + "' ";
+
+            String stmt5 = "delete from household_member_competence_certificates where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt6 = "delete from household_member_educational_backgrounds where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt7 = "delete from household_member_employment_status where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt8 = "delete from household_member_health_statuses where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt9 = "delete from household_member_licenses where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt10 = "delete from household_member_medications where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt11 = "delete from household_member_prefered_works where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt12 = "delete from household_member_skills where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt13 = "delete from household_member_vocational_experiences where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt14 = "delete from household_member_work_experiences where transient_no='" + to_household_members.transient_no + "' ";
+            String stmt15 = "delete from household_members where transient_no='" + to_household_members.transient_no + "' ";
             PreparedStatement stmt = conn.prepareStatement(stmt5);
             stmt.addBatch(stmt5);
             stmt.addBatch(stmt6);
@@ -2072,8 +2416,33 @@ public class Household_members {
             stmt.addBatch(stmt13);
             stmt.addBatch(stmt14);
             stmt.addBatch(stmt15);
+
+            //<editor-fold defaultstate="collapsed" desc=" update household member count ">
+            int count = 0;
+            String h2 = "select count(id) from household_members where household_no='" + to_household_members.household_no + "' ";
+            Statement stmtt = conn.createStatement();
+            ResultSet rs2 = stmtt.executeQuery(h2);
+            if (rs2.next()) {
+                count = rs2.getInt(1);
+            }
+            count--;
+           
+            String h3 = "update households set no_of_household_members = '" + count + "' where household_no='" + to_household_members.household_no + "' ";
+            stmt.addBatch(h3);
+          
+            int count2 = 0;
+            String hh3 = "select count(id) from household_members where house_no='" + to_household_members.house_no + "' ";
+            Statement stmtt3 = conn.createStatement();
+            ResultSet rs3 = stmtt3.executeQuery(hh3);
+            if (rs3.next()) {
+                count2 = rs3.getInt(1);
+            }
+            count2--;
+            String hhh3 = "update houses set no_of_household_members = '" + count2 + "' where house_no='" + to_household_members.house_no + "' ";
+            stmt.addBatch(hhh3);
+
+            //</editor-fold>
             stmt.executeBatch();
-            
             conn.commit();
             Lg.s(Household_members.class, "Successfully Deleted");
         } catch (SQLException e) {
@@ -2082,11 +2451,10 @@ public class Household_members {
             MyConnection.close();
         }
     }
-    
-    
+
     public static List<to_household_members> ret_data(String where) {
         List<to_household_members> datas = new ArrayList();
-        
+
         List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses = new ArrayList();
         List<Household_member_medications.to_household_member_medications> health_medications = new ArrayList();
         List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds = new ArrayList();
@@ -2097,7 +2465,7 @@ public class Household_members {
         List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works = new ArrayList();
         Household_member_employment_status.to_household_member_employment_status employment_status = null;
         Household_member_skills.to_household_member_skills skills = null;
-        
+
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select "
@@ -2141,9 +2509,10 @@ public class Household_members {
                     + ",is_registered_voter"
                     + ",voters_id_no"
                     + ",image"
+                    + ",transient_no"
                     + " from household_members"
                     + " " + where;
-            
+
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
             while (rs.next()) {
@@ -2187,7 +2556,8 @@ public class Household_members {
                 int is_registered_voter = rs.getInt(38);
                 String voters_id_no = rs.getString(39);
                 String image = rs.getString(40);
-                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image);
+                String transient_no = rs.getString(41);
+                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no);
                 datas.add(to);
             }
             return datas;
@@ -2197,19 +2567,21 @@ public class Household_members {
             MyConnection.close();
         }
     }
+
     public static void main(String[] args) {
         System.out.println(increment_id());
     }
+
     public static String increment_id() {
         String id = "TRN-000000000000";
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "select max(id) from household_members where house_no like '"+""+"' ";
+            String s0 = "select max(id) from household_members  ";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
             if (rs.next()) {
                 id = rs.getString(1);
-                String s2 = "select household_member_no from household_members where id='" + id + "'";
+                String s2 = "select transient_no from household_members where id='" + id + "'";
                 Statement stmt2 = conn.createStatement();
                 ResultSet rs2 = stmt2.executeQuery(s2);
                 if (rs2.next()) {

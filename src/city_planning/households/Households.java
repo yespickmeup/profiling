@@ -8,7 +8,18 @@ package city_planning.households;
 import city_planning.household_assets.Household_assets;
 import city_planning.household_consumptions.Household_consumptions;
 import city_planning.household_expenditures.Household_expenditures;
+import city_planning.household_member_competence_certificates.Household_member_competence_certificates;
+import city_planning.household_member_educational_backgrounds.Household_member_educational_backgrounds;
+import city_planning.household_member_employment_status.Household_member_employment_status;
+import city_planning.household_member_health_statuses.Household_member_health_statuses;
+import city_planning.household_member_licences.Household_member_licences;
+import city_planning.household_member_medications.Household_member_medications;
+import city_planning.household_member_prefered_works.Household_member_prefered_works;
+import city_planning.household_member_skills.Household_member_skills;
+import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
+import city_planning.household_member_work_experiences.Household_member_work_experiences;
 import city_planning.household_members.Household_members;
+import city_planning.houses.Houses;
 import city_planning.util.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -70,8 +81,9 @@ public class Households {
         public List<Household_expenditures.to_household_expenditures> household_expenditures;
         public List<Household_consumptions.to_household_consumptions> household_consumptions;
         public List<Household_members.to_household_members> household_members;
+        public int no_of_household_members;
 
-        public to_households(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members) {
+        public to_households(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members, int no_of_household_members) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -114,6 +126,7 @@ public class Households {
             this.household_expenditures = household_expenditures;
             this.household_consumptions = household_consumptions;
             this.household_members = household_members;
+            this.no_of_household_members = no_of_household_members;
         }
 
         public String getOccupancy_types() {
@@ -313,7 +326,10 @@ public class Households {
     public static void add_data(to_households to_households) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "insert into households("
+            conn.setAutoCommit(false);
+
+            //<editor-fold defaultstate="collapsed" desc=" insert households ">
+            String hh = "insert into households("
                     + "created_at"
                     + ",updated_at"
                     + ",created_by"
@@ -351,6 +367,7 @@ public class Households {
                     + ",hunger_rating"
                     + ",environmental_contamination_rating"
                     + ",health_disparities_rating"
+                    + ",no_of_household_members"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -389,9 +406,10 @@ public class Households {
                     + ",:hunger_rating"
                     + ",:environmental_contamination_rating"
                     + ",:health_disparities_rating"
+                    + ",:no_of_household_members"
                     + ")";
 
-            s0 = SqlStringUtil.parse(s0)
+            hh = SqlStringUtil.parse(hh)
                     .setString("created_at", to_households.created_at)
                     .setString("updated_at", to_households.updated_at)
                     .setString("created_by", to_households.created_by)
@@ -429,11 +447,286 @@ public class Households {
                     .setString("hunger_rating", to_households.hunger_rating)
                     .setString("environmental_contamination_rating", to_households.environmental_contamination_rating)
                     .setString("health_disparities_rating", to_households.health_disparities_rating)
+                    .setNumber("no_of_household_members", to_households.no_of_household_members)
                     .ok();
+            PreparedStatement stmt = conn.prepareStatement(hh);
+            stmt.addBatch(hh);
 
-            PreparedStatement stmt = conn.prepareStatement(s0);
-            stmt.execute();
-            Lg.s(Households.class, "Successfully Added");
+            //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" insert household assets ">
+            List<Household_assets.to_household_assets> assets = to_households.assets;
+            for (Household_assets.to_household_assets household_asset : assets) {
+                String ha = "insert into household_assets("
+                        + "created_at"
+                        + ",updated_at"
+                        + ",created_by"
+                        + ",updated_by"
+                        + ",region"
+                        + ",region_id"
+                        + ",province"
+                        + ",province_id"
+                        + ",city"
+                        + ",city_id"
+                        + ",barangay"
+                        + ",barangay_id"
+                        + ",purok"
+                        + ",purok_id"
+                        + ",status"
+                        + ",house_no"
+                        + ",household_no"
+                        + ",qty"
+                        + ",assets"
+                        + ")values("
+                        + ":created_at"
+                        + ",:updated_at"
+                        + ",:created_by"
+                        + ",:updated_by"
+                        + ",:region"
+                        + ",:region_id"
+                        + ",:province"
+                        + ",:province_id"
+                        + ",:city"
+                        + ",:city_id"
+                        + ",:barangay"
+                        + ",:barangay_id"
+                        + ",:purok"
+                        + ",:purok_id"
+                        + ",:status"
+                        + ",:house_no"
+                        + ",:household_no"
+                        + ",:qty"
+                        + ",:assets"
+                        + ")";
+
+                ha = SqlStringUtil.parse(ha)
+                        .setString("created_at", to_households.created_at)
+                        .setString("updated_at", to_households.updated_at)
+                        .setString("created_by", to_households.created_by)
+                        .setString("updated_by", to_households.updated_by)
+                        .setString("region", to_households.region)
+                        .setString("region_id", to_households.region_id)
+                        .setString("province", to_households.province)
+                        .setString("province_id", to_households.province_id)
+                        .setString("city", to_households.city)
+                        .setString("city_id", to_households.city_id)
+                        .setString("barangay", to_households.barangay)
+                        .setString("barangay_id", to_households.barangay_id)
+                        .setString("purok", to_households.purok)
+                        .setString("purok_id", to_households.purok_id)
+                        .setNumber("status", to_households.status)
+                        .setString("house_no", to_households.house_no)
+                        .setString("household_no", household_asset.household_no)
+                        .setNumber("qty", household_asset.qty)
+                        .setString("assets", household_asset.assets)
+                        .ok();
+                stmt.addBatch(ha);
+            }
+
+            //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" insert household expenditures ">
+            List<Household_expenditures.to_household_expenditures> household_expenditures = to_households.household_expenditures;
+            for (Household_expenditures.to_household_expenditures household_expenditure : household_expenditures) {
+                String he = "insert into household_expenditures("
+                        + "created_at"
+                        + ",updated_at"
+                        + ",created_by"
+                        + ",updated_by"
+                        + ",region"
+                        + ",region_id"
+                        + ",province"
+                        + ",province_id"
+                        + ",city"
+                        + ",city_id"
+                        + ",barangay"
+                        + ",barangay_id"
+                        + ",purok"
+                        + ",purok_id"
+                        + ",status"
+                        + ",house_no"
+                        + ",household_no"
+                        + ",expenditure_date"
+                        + ",fuel_expenses"
+                        + ",internet_services"
+                        + ",medical_expenses"
+                        + ",cigarretes"
+                        + ",hobbies_clubs"
+                        + ",load_expenses"
+                        + ",electric_gas_expenses"
+                        + ",books_newspapers_expenses"
+                        + ",gambling"
+                        + ",personal_care"
+                        + ",misc"
+                        + ",alcohol"
+                        + ",vacation"
+                        + ",water_bill"
+                        + ",cable_services"
+                        + ",social_obligations"
+                        + ")values("
+                        + ":created_at"
+                        + ",:updated_at"
+                        + ",:created_by"
+                        + ",:updated_by"
+                        + ",:region"
+                        + ",:region_id"
+                        + ",:province"
+                        + ",:province_id"
+                        + ",:city"
+                        + ",:city_id"
+                        + ",:barangay"
+                        + ",:barangay_id"
+                        + ",:purok"
+                        + ",:purok_id"
+                        + ",:status"
+                        + ",:house_no"
+                        + ",:household_no"
+                        + ",:expenditure_date"
+                        + ",:fuel_expenses"
+                        + ",:internet_services"
+                        + ",:medical_expenses"
+                        + ",:cigarretes"
+                        + ",:hobbies_clubs"
+                        + ",:load_expenses"
+                        + ",:electric_gas_expenses"
+                        + ",:books_newspapers_expenses"
+                        + ",:gambling"
+                        + ",:personal_care"
+                        + ",:misc"
+                        + ",:alcohol"
+                        + ",:vacation"
+                        + ",:water_bill"
+                        + ",:cable_services"
+                        + ",:social_obligations"
+                        + ")";
+
+                he = SqlStringUtil.parse(he)
+                        .setString("created_at", to_households.created_at)
+                        .setString("updated_at", to_households.updated_at)
+                        .setString("created_by", to_households.created_by)
+                        .setString("updated_by", to_households.updated_by)
+                        .setString("region", to_households.region)
+                        .setString("region_id", to_households.region_id)
+                        .setString("province", to_households.province)
+                        .setString("province_id", to_households.province_id)
+                        .setString("city", to_households.city)
+                        .setString("city_id", to_households.city_id)
+                        .setString("barangay", to_households.barangay)
+                        .setString("barangay_id", to_households.barangay_id)
+                        .setString("purok", to_households.purok)
+                        .setString("purok_id", to_households.purok_id)
+                        .setNumber("status", to_households.status)
+                        .setString("house_no", to_households.house_no)
+                        .setString("household_no", household_expenditure.household_no)
+                        .setString("expenditure_date", household_expenditure.expenditure_date)
+                        .setNumber("fuel_expenses", household_expenditure.fuel_expenses)
+                        .setNumber("internet_services", household_expenditure.internet_services)
+                        .setNumber("medical_expenses", household_expenditure.medical_expenses)
+                        .setNumber("cigarretes", household_expenditure.cigarretes)
+                        .setNumber("hobbies_clubs", household_expenditure.hobbies_clubs)
+                        .setNumber("load_expenses", household_expenditure.load_expenses)
+                        .setNumber("electric_gas_expenses", household_expenditure.electric_gas_expenses)
+                        .setNumber("books_newspapers_expenses", household_expenditure.books_newspapers_expenses)
+                        .setNumber("gambling", household_expenditure.gambling)
+                        .setNumber("personal_care", household_expenditure.personal_care)
+                        .setNumber("misc", household_expenditure.misc)
+                        .setNumber("alcohol", household_expenditure.alcohol)
+                        .setNumber("vacation", household_expenditure.vacation)
+                        .setNumber("water_bill", household_expenditure.water_bill)
+                        .setNumber("cable_services", household_expenditure.cable_services)
+                        .setNumber("social_obligations", household_expenditure.social_obligations)
+                        .ok();
+                stmt.addBatch(he);
+            }
+            //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" insert household consumptions ">
+            List<Household_consumptions.to_household_consumptions> household_consumptions = to_households.household_consumptions;
+            for (Household_consumptions.to_household_consumptions household_consumption : household_consumptions) {
+                String hc = "insert into household_consumptions("
+                        + "created_at"
+                        + ",updated_at"
+                        + ",created_by"
+                        + ",updated_by"
+                        + ",region"
+                        + ",region_id"
+                        + ",province"
+                        + ",province_id"
+                        + ",city"
+                        + ",city_id"
+                        + ",barangay"
+                        + ",barangay_id"
+                        + ",purok"
+                        + ",purok_id"
+                        + ",status"
+                        + ",house_no"
+                        + ",household_no"
+                        + ",consumption_date"
+                        + ",items"
+                        + ",amount"
+                        + ")values("
+                        + ":created_at"
+                        + ",:updated_at"
+                        + ",:created_by"
+                        + ",:updated_by"
+                        + ",:region"
+                        + ",:region_id"
+                        + ",:province"
+                        + ",:province_id"
+                        + ",:city"
+                        + ",:city_id"
+                        + ",:barangay"
+                        + ",:barangay_id"
+                        + ",:purok"
+                        + ",:purok_id"
+                        + ",:status"
+                        + ",:house_no"
+                        + ",:household_no"
+                        + ",:consumption_date"
+                        + ",:items"
+                        + ",:amount"
+                        + ")";
+
+                hc = SqlStringUtil.parse(hc)
+                        .setString("created_at", to_households.created_at)
+                        .setString("updated_at", to_households.updated_at)
+                        .setString("created_by", to_households.created_by)
+                        .setString("updated_by", to_households.updated_by)
+                        .setString("region", to_households.region)
+                        .setString("region_id", to_households.region_id)
+                        .setString("province", to_households.province)
+                        .setString("province_id", to_households.province_id)
+                        .setString("city", to_households.city)
+                        .setString("city_id", to_households.city_id)
+                        .setString("barangay", to_households.barangay)
+                        .setString("barangay_id", to_households.barangay_id)
+                        .setString("purok", to_households.purok)
+                        .setString("purok_id", to_households.purok_id)
+                        .setNumber("status", to_households.status)
+                        .setString("house_no", to_households.house_no)
+                        .setString("household_no", household_consumption.household_no)
+                        .setString("consumption_date", household_consumption.consumption_date)
+                        .setString("items", household_consumption.items)
+                        .setNumber("amount", household_consumption.amount)
+                        .ok();
+                stmt.addBatch(hc);
+            }
+            //</editor-fold>
+
+            //<editor-fold defaultstate="collapsed" desc=" update household count ">
+            int count = 0;
+            String h2 = "select count(id) from households where house_no='" + to_households.house_no + "' ";
+            Statement stmt2 = conn.createStatement();
+            ResultSet rs2 = stmt2.executeQuery(h2);
+            if (rs2.next()) {
+                count = rs2.getInt(1);
+            }
+            count++;
+            String h3 = "update houses set no_of_households = '" + count + "' where house_no='" + to_households.house_no + "' ";
+            stmt.addBatch(h3);
+            //</editor-fold>
+
+            Lg.s(Houses.class, "Successfully Added");
+            stmt.executeBatch();
+            conn.commit();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -538,13 +831,35 @@ public class Households {
     public static void delete_data(to_households to_households) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from households  "
-                    + " where id='" + to_households.id + "' "
-                    + " ";
+            conn.setAutoCommit(false);
 
-            PreparedStatement stmt = conn.prepareStatement(s0);
-            stmt.execute();
-            Lg.s(Households.class, "Successfully Deleted");
+            String stmt2 = "delete from household_assets where house_no='" + to_households.house_no + "' ";
+            String stmt3 = "delete from household_consumptions where house_no='" + to_households.house_no + "' ";
+            String stmt4 = "delete from household_expenditures where house_no='" + to_households.house_no + "' ";
+            String stmt17 = "delete from households where house_no='" + to_households.house_no + "' ";
+            PreparedStatement stmt = conn.prepareStatement(stmt2);
+            stmt.addBatch(stmt2);
+            stmt.addBatch(stmt2);
+            stmt.addBatch(stmt3);
+            stmt.addBatch(stmt4);
+            stmt.addBatch(stmt17);
+
+            //<editor-fold defaultstate="collapsed" desc=" update household count ">
+            int count = 0;
+            String h2 = "select count(id) from households where house_no='" + to_households.house_no + "' ";
+            Statement stmtt = conn.createStatement();
+            ResultSet rs2 = stmtt.executeQuery(h2);
+            if (rs2.next()) {
+                count = rs2.getInt(1);
+            }
+            count--;
+            String h3 = "update houses set no_of_households = '" + count + "' where house_no='" + to_households.house_no + "' ";
+            stmt.addBatch(h3);
+            //</editor-fold>
+
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(Household_members.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -599,6 +914,7 @@ public class Households {
                     + ",hunger_rating"
                     + ",environmental_contamination_rating"
                     + ",health_disparities_rating"
+                    + ",no_of_household_members"
                     + " from households"
                     + " " + where;
 
@@ -643,8 +959,8 @@ public class Households {
                 String hunger_rating = rs.getString(36);
                 String environmental_contamination_rating = rs.getString(37);
                 String health_disparities_rating = rs.getString(38);
-
-                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members);
+                int no_of_household_members=rs.getInt(39);
+                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members,no_of_household_members);
                 datas.add(to);
             }
             return datas;

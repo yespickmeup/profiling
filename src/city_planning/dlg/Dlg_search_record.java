@@ -990,7 +990,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
                 List<Households.to_households> households = data.households;
                 String latitude = data.latitude;
                 String longtitude = data.longtitude;
-                final Houses.to_houses house = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude);
+                final Houses.to_houses house = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude,0,0);
                 jProgressBar1.setString("Loading...Please wait...");
                 jProgressBar1.setIndeterminate(true);
                 jButton2.setEnabled(false);
@@ -1050,7 +1050,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
             Window p = (Window) this;
             Dlg_house nd = Dlg_house.create(p, true);
             nd.setTitle("");
-            nd.do_pass(houses.get(0), member);
+            nd.do_pass(houses.get(0));
             nd.setCallback(new Dlg_house.Callback() {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_house.OutputData data) {
@@ -1104,7 +1104,7 @@ public class Dlg_search_record extends javax.swing.JDialog {
 
                         @Override
                         public void run() {
-
+                            
                             Household_members.delete_data(member, no_of_households, no_of_household_members);
                             if (no_of_households == 1) {
                                 if (no_of_household_members == 1) {

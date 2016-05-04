@@ -77,8 +77,10 @@ public class Houses {
         public List<Households.to_households> households;
         public final String latitude;
         public final String longtitude;
+        public final int no_of_households;
+        public final int no_of_household_members;
 
-        public to_houses(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households, String latitude, String longtitude) {
+        public to_houses(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households, String latitude, String longtitude, int no_of_households, int no_of_household_members) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -117,6 +119,8 @@ public class Houses {
             this.households = households;
             this.latitude = latitude;
             this.longtitude = longtitude;
+            this.no_of_households = no_of_households;
+            this.no_of_household_members = no_of_household_members;
         }
 
         public List<Households.to_households> getHouseholds() {
@@ -136,7 +140,7 @@ public class Houses {
 
             //<editor-fold defaultstate="collapsed" desc=" insert house ">
             String h = "insert into houses("
-                    + "created_at"
+                    + " created_at"
                     + ",updated_at"
                     + ",created_by"
                     + ",updated_by"
@@ -172,6 +176,8 @@ public class Houses {
                     + ",nearest_water_source_distance"
                     + ",latitude"
                     + ",longtitude"
+                    + ",no_of_households"
+                    + ",no_of_household_members"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -209,6 +215,8 @@ public class Houses {
                     + ",:nearest_water_source_distance"
                     + ",:latitude"
                     + ",:longtitude"
+                    + ",:no_of_households"
+                    + ",:no_of_household_members"
                     + ")";
 
             h = SqlStringUtil.parse(h)
@@ -248,6 +256,8 @@ public class Houses {
                     .setNumber("nearest_water_source_distance", to_houses.nearest_water_source_distance)
                     .setString("latitude", to_houses.latitude)
                     .setString("longtitude", to_houses.longtitude)
+                    .setNumber("no_of_households", to_houses.no_of_households)
+                    .setNumber("no_of_household_members", to_houses.no_of_household_members)
                     .ok();
 
             //</editor-fold>
@@ -2400,13 +2410,44 @@ public class Houses {
     public static void delete_data(to_houses to_houses) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from houses  "
-                    + " where id='" + to_houses.id + "' "
-                    + " ";
-
-            PreparedStatement stmt = conn.prepareStatement(s0);
-            stmt.execute();
-            Lg.s(Houses.class, "Successfully Deleted");
+            conn.setAutoCommit(false);
+            String stmt1 = "delete from houses where house_no='" + to_houses.house_no + "' ";
+//            String stmt2 = "delete from household_assets where house_no='" + to_houses.house_no + "' ";
+//            String stmt3 = "delete from household_consumptions where house_no='" + to_houses.house_no + "' ";
+//            String stmt4 = "delete from household_expenditures where house_no='" + to_houses.house_no + "' ";
+//            String stmt5 = "delete from household_member_competence_certificates where house_no='" + to_houses.house_no + "' ";
+//            String stmt6 = "delete from household_member_educational_backgrounds where house_no='" + to_houses.house_no + "' ";
+//            String stmt7 = "delete from household_member_employment_status where house_no='" + to_houses.house_no + "' ";
+//            String stmt8 = "delete from household_member_health_statuses where house_no='" + to_houses.house_no + "' ";
+//            String stmt9 = "delete from household_member_licenses where house_no='" + to_houses.house_no + "' ";
+//            String stmt10 = "delete from household_member_medications where house_no='" + to_houses.house_no + "' ";
+//            String stmt11 = "delete from household_member_prefered_works where house_no='" + to_houses.house_no + "' ";
+//            String stmt12 = "delete from household_member_skills where house_no='" + to_houses.house_no + "' ";
+//            String stmt13 = "delete from household_member_vocational_experiences where house_no='" + to_houses.house_no + "' ";
+//            String stmt14 = "delete from household_member_work_experiences where house_no='" + to_houses.house_no + "' ";
+//            String stmt15 = "delete from household_members where house_no='" + to_houses.house_no + "' ";
+//            String stmt17 = "delete from households where house_no='" + to_houses.house_no + "' ";
+            PreparedStatement stmt = conn.prepareStatement(stmt1);
+            stmt.addBatch(stmt1);
+//            stmt.addBatch(stmt2);
+//            stmt.addBatch(stmt3);
+//            stmt.addBatch(stmt4);
+//            stmt.addBatch(stmt5);
+//            stmt.addBatch(stmt6);
+//            stmt.addBatch(stmt7);
+//            stmt.addBatch(stmt8);
+//            stmt.addBatch(stmt9);
+//            stmt.addBatch(stmt10);
+//            stmt.addBatch(stmt11);
+//            stmt.addBatch(stmt12);
+//            stmt.addBatch(stmt13);
+//            stmt.addBatch(stmt14);
+//            stmt.addBatch(stmt15);
+//
+//            stmt.addBatch(stmt17);
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(Household_members.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -2457,6 +2498,8 @@ public class Houses {
                     + ",nearest_water_source_distance"
                     + ",latitude"
                     + ",longtitude"
+                    + ",no_of_households"
+                    + ",no_of_household_members"
                     + " from houses"
                     + " " + where;
 
@@ -2500,7 +2543,9 @@ public class Houses {
                 double nearest_water_source_distance = rs.getDouble(35);
                 String latitude = rs.getString(36);
                 String longtitude = rs.getString(37);
-                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList(), latitude, longtitude);
+                int no_of_households=rs.getInt(38);
+                int no_of_household_members=rs.getInt(39);
+                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList(), latitude, longtitude,no_of_households,no_of_household_members);
                 datas.add(to);
             }
             return datas;

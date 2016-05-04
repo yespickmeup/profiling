@@ -103,8 +103,8 @@ public class Household_member_skills {
         public final int is_innovating;
         public final int is_expressing;
         public final int is_organizing;
-
-        public to_household_member_skills(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, int ps_teaching, int ps_negotiating, int ps_diverting, int ps_persuading, int ps_promoting, int ps_selling, int ps_leading, int ps_speaking, int ps_serving, int ps_helping, int ps_encouraging, int ps_motivating, int ds_coordinating, int ds_analyzing, int ds_planning, int ds_compiling, int ds_computing, int ds_recording, int ds_checking, int ds_researching, int ds_testing, int ds_comparing, int ds_tabulating, int ds_posting, int ds_copying, int ts_machine_work, int ts_setting_up, int ts_assembling, int ts_operating, int ts_driving, int ts_repairing, int ts_manipulating, int ts_materials_handling, int ts_producing, int ts_inspecting, int ts_warehousing, int ts_building, int ts_precision_working, int ts_restoring, int ts_feeding, int is_implementing, int is_synthesizing, int is_interpreting, int is_instruction, int is_speculating, int is_anticipating, int is_inventing, int is_discovering, int is_predicting, int is_theorizing, int is_innovating, int is_expressing, int is_organizing) {
+        public final String transient_no;
+        public to_household_member_skills(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, int ps_teaching, int ps_negotiating, int ps_diverting, int ps_persuading, int ps_promoting, int ps_selling, int ps_leading, int ps_speaking, int ps_serving, int ps_helping, int ps_encouraging, int ps_motivating, int ds_coordinating, int ds_analyzing, int ds_planning, int ds_compiling, int ds_computing, int ds_recording, int ds_checking, int ds_researching, int ds_testing, int ds_comparing, int ds_tabulating, int ds_posting, int ds_copying, int ts_machine_work, int ts_setting_up, int ts_assembling, int ts_operating, int ts_driving, int ts_repairing, int ts_manipulating, int ts_materials_handling, int ts_producing, int ts_inspecting, int ts_warehousing, int ts_building, int ts_precision_working, int ts_restoring, int ts_feeding, int is_implementing, int is_synthesizing, int is_interpreting, int is_instruction, int is_speculating, int is_anticipating, int is_inventing, int is_discovering, int is_predicting, int is_theorizing, int is_innovating, int is_expressing, int is_organizing,String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -181,6 +181,7 @@ public class Household_member_skills {
             this.is_innovating = is_innovating;
             this.is_expressing = is_expressing;
             this.is_organizing = is_organizing;
+            this.transient_no=transient_no;
         }
     }
 
@@ -263,6 +264,7 @@ public class Household_member_skills {
                     + ",is_innovating"
                     + ",is_expressing"
                     + ",is_organizing"
+                    + ",transient_no"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -339,6 +341,7 @@ public class Household_member_skills {
                     + ",:is_innovating"
                     + ",:is_expressing"
                     + ",:is_organizing"
+                    + ",:transient_no"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -417,6 +420,8 @@ public class Household_member_skills {
                     .setNumber("is_innovating", to_household_member_skills.is_innovating)
                     .setNumber("is_expressing", to_household_member_skills.is_expressing)
                     .setNumber("is_organizing", to_household_member_skills.is_organizing)
+                    .setString("transient_no", to_household_member_skills.transient_no)
+                    
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -698,6 +703,7 @@ public class Household_member_skills {
                     + ",is_innovating"
                     + ",is_expressing"
                     + ",is_organizing"
+                    + ",transient_no"
                     + " from household_member_skills"
                     + " " + where;
 
@@ -780,8 +786,8 @@ public class Household_member_skills {
                 int is_innovating = rs.getInt(74);
                 int is_expressing = rs.getInt(75);
                 int is_organizing = rs.getInt(76);
-
-                to_household_member_skills to = new to_household_member_skills(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, ps_teaching, ps_negotiating, ps_diverting, ps_persuading, ps_promoting, ps_selling, ps_leading, ps_speaking, ps_serving, ps_helping, ps_encouraging, ps_motivating, ds_coordinating, ds_analyzing, ds_planning, ds_compiling, ds_computing, ds_recording, ds_checking, ds_researching, ds_testing, ds_comparing, ds_tabulating, ds_posting, ds_copying, ts_machine_work, ts_setting_up, ts_assembling, ts_operating, ts_driving, ts_repairing, ts_manipulating, ts_materials_handling, ts_producing, ts_inspecting, ts_warehousing, ts_building, ts_precision_working, ts_restoring, ts_feeding, is_implementing, is_synthesizing, is_interpreting, is_instruction, is_speculating, is_anticipating, is_inventing, is_discovering, is_predicting, is_theorizing, is_innovating, is_expressing, is_organizing);
+                String transient_no=rs.getString(77);
+                to_household_member_skills to = new to_household_member_skills(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, ps_teaching, ps_negotiating, ps_diverting, ps_persuading, ps_promoting, ps_selling, ps_leading, ps_speaking, ps_serving, ps_helping, ps_encouraging, ps_motivating, ds_coordinating, ds_analyzing, ds_planning, ds_compiling, ds_computing, ds_recording, ds_checking, ds_researching, ds_testing, ds_comparing, ds_tabulating, ds_posting, ds_copying, ts_machine_work, ts_setting_up, ts_assembling, ts_operating, ts_driving, ts_repairing, ts_manipulating, ts_materials_handling, ts_producing, ts_inspecting, ts_warehousing, ts_building, ts_precision_working, ts_restoring, ts_feeding, is_implementing, is_synthesizing, is_interpreting, is_instruction, is_speculating, is_anticipating, is_inventing, is_discovering, is_predicting, is_theorizing, is_innovating, is_expressing, is_organizing,transient_no);
                 datas.add(to);
             }
             return datas;

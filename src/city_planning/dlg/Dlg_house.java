@@ -128,6 +128,8 @@ public class Dlg_house extends javax.swing.JDialog {
             this.drinking_water_source_distance = drinking_water_source_distance;
             this.nearest_water_source_distance = nearest_water_source_distance;
             this.households = households;
+            this.latitude = latitude;
+            this.longtitude = longtitude;
         }
 
     }
@@ -282,8 +284,6 @@ public class Dlg_house extends javax.swing.JDialog {
         tf_barangay = new Field.Combo();
         lbl_purok1 = new javax.swing.JLabel();
         tf_purok = new Field.Combo();
-        jLabel23 = new javax.swing.JLabel();
-        tf_street = new Field.Combo();
         lbl_barangay3 = new javax.swing.JLabel();
         tf_region = new Field.Combo();
         lbl_barangay2 = new javax.swing.JLabel();
@@ -391,6 +391,7 @@ public class Dlg_house extends javax.swing.JDialog {
         lbl_purok1.setText("Purok:");
 
         tf_purok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_purok.setNextFocusableComponent(tf_no_rooms);
         tf_purok.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_purokMouseClicked(evt);
@@ -399,22 +400,6 @@ public class Dlg_house extends javax.swing.JDialog {
         tf_purok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_purokActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel23.setText("Street:");
-
-        tf_street.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_street.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_streetMouseClicked(evt);
-            }
-        });
-        tf_street.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_streetActionPerformed(evt);
             }
         });
 
@@ -481,11 +466,9 @@ public class Dlg_house extends javax.swing.JDialog {
                             .addComponent(lbl_barangay3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                             .addComponent(lbl_house_number1)
                             .addComponent(lbl_barangay1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_purok1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbl_purok1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_street, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tf_purok, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tf_barangay, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tf_house_number)
@@ -523,11 +506,7 @@ public class Dlg_house extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_purok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_purok1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_street, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -692,6 +671,7 @@ public class Dlg_house extends javax.swing.JDialog {
         jLabel205.setText("Communication/s:");
 
         tf_communications.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_communications.setNextFocusableComponent(tf_lighting);
         tf_communications.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_communicationsMouseClicked(evt);
@@ -1244,17 +1224,9 @@ public class Dlg_house extends javax.swing.JDialog {
         ok();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void tf_streetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_streetActionPerformed
-        Initialize_house_field_types.init_streets(tf_street);
-    }//GEN-LAST:event_tf_streetActionPerformed
-
     private void tf_barangayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_barangayActionPerformed
         Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
     }//GEN-LAST:event_tf_barangayActionPerformed
-
-    private void tf_streetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_streetMouseClicked
-        Initialize_house_field_types.init_streets(tf_street);
-    }//GEN-LAST:event_tf_streetMouseClicked
 
     private void tf_purokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_purokActionPerformed
         Initialize_house_field_types.init_puroks(tf_purok);
@@ -1399,7 +1371,6 @@ public class Dlg_house extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel213;
     private javax.swing.JLabel jLabel214;
     private javax.swing.JLabel jLabel216;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1443,7 +1414,6 @@ public class Dlg_house extends javax.swing.JDialog {
     private javax.swing.JTextField tf_purok;
     private javax.swing.JTextField tf_region;
     private javax.swing.JTextField tf_roofs;
-    private javax.swing.JTextField tf_street;
     private javax.swing.JTextField tf_toilets;
     private javax.swing.JTextField tf_transportations;
     private javax.swing.JTextField tf_walls;
@@ -1453,144 +1423,106 @@ public class Dlg_house extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         ret_default_location();
-        Initialize_household_field_types.ret_data();
-        Initialize_search_record_field_types.ret_data();
         Initialize_table_households.init_tbl_households(tbl_households);
-
         jPanel5.setVisible(false);
         jButton13.setVisible(false);
         tf_house_number.grabFocus();
     }
 
-    Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList(), "", "");
+    Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList(), "", "", 0,0);
 
-    public void do_pass(Houses.to_houses house1, Household_members.to_household_members member) {
+    public void do_pass(Houses.to_houses house1) {
         house = house1;
         jButton13.setVisible(true);
         tf_house_number.setFocusable(false);
+        jButton3.setVisible(false);
+        jButton2.setVisible(false);
         //<editor-fold defaultstate="collapsed" desc=" set house details">
         Field.Combo reg = (Field.Combo) tf_region;
         Field.Combo prov = (Field.Combo) tf_province;
         Field.Combo cit = (Field.Combo) tf_city;
         Field.Combo bar = (Field.Combo) tf_barangay;
         Field.Combo pur = (Field.Combo) tf_purok;
-        Field.Combo str = (Field.Combo) tf_street;
 
-        tf_house_number.setText(house.house_no);
-        reg.setId(house.region_id);
-        reg.setText(house.region);
-        prov.setId(house.province_id);
-        prov.setText(house.province);
-        cit.setId(house.city_id);
-        cit.setText(house.city);
-        bar.setId(house.barangay_id);
-        bar.setText(house.barangay);
-        pur.setId(house.purok_id);
-        pur.setText(house.purok);
-        str.setId("");
-        str.setText("");
+        tf_house_number.setText(house1.house_no);
+        reg.setId(house1.region_id);
+        reg.setText(house1.region);
+        prov.setId(house1.province_id);
+        prov.setText(house1.province);
+        cit.setId(house1.city_id);
+        cit.setText(house1.city);
+        bar.setId(house1.barangay_id);
+        bar.setText(house1.barangay);
+        pur.setId(house1.purok_id);
+        pur.setText(house1.purok);
 
-        tf_no_rooms.setText(FitIn.fmt_wc_0(house.no_of_rooms));
-        tf_buildings.setText(house.bldg_types);
-        tf_toilets.setText(house.toilet_types);
-        tf_bldg_permit.setText(house.bldg_permit);
-        tf_compartments.setText(house.compartments);
-        tf_bathrooms.setText(house.bathroom_types);
-        tf_disposals.setText(house.waste_disposal_methods);
-        tf_kitchens.setText(house.kitchen_types);
-        tf_transportations.setText(house.trans_types);
-        tf_roofs.setText(house.construction_roof_types);
-        tf_walls.setText(house.construction_wall_types);
-        tf_floors.setText(house.construction_floor_types);
-        tf_communications.setText(house.construction_communication_types);
+        tf_no_rooms.setText(FitIn.fmt_woc(house1.no_of_rooms));
+        tf_buildings.setText(house1.bldg_types);
+        tf_toilets.setText(house1.toilet_types);
+        tf_bldg_permit.setText(house1.bldg_permit);
+        tf_compartments.setText(house1.compartments);
+        tf_bathrooms.setText(house1.bathroom_types);
+        tf_disposals.setText(house1.waste_disposal_methods);
+        tf_kitchens.setText(house1.kitchen_types);
+        tf_transportations.setText(house1.trans_types);
+        tf_roofs.setText(house1.construction_roof_types);
+        tf_walls.setText(house1.construction_wall_types);
+        tf_floors.setText(house1.construction_floor_types);
+        tf_communications.setText(house1.construction_communication_types);
 
-        tf_lighting.setText(house.lighting_fuels);
-        tf_cookings.setText(house.cooking_fuels);
-        tf_water_sources.setText(house.water_sources);
-        tf_drinking_water_src.setText(FitIn.fmt_wc_0(house.drinking_water_source_distance));
-        tf_nearest_water_src.setText(FitIn.fmt_wc_0(house.nearest_water_source_distance));
-        tf_nearest_water_src1.setText(house.latitude);
-        tf_nearest_water_src2.setText(house.longtitude);
+        tf_lighting.setText(house1.lighting_fuels);
+        tf_cookings.setText(house1.cooking_fuels);
+        tf_water_sources.setText(house1.water_sources);
+        tf_drinking_water_src.setText(FitIn.fmt_wc_0(house1.drinking_water_source_distance));
+        tf_nearest_water_src.setText(FitIn.fmt_wc_0(house1.nearest_water_source_distance));
+        tf_nearest_water_src1.setText(house1.latitude);
+        tf_nearest_water_src2.setText(house1.longtitude);
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" load households ">
-        List<Households.to_households> households = house.households;
-        int row_to_select = 0;
-        int count = 0;
-        for (Households.to_households household : households) {
-            String where = " where household_no='" + household.household_no + "' ";
-            List<Household_assets.to_household_assets> assets = Household_assets.ret_data(where);
-            List<Household_expenditures.to_household_expenditures> household_expenditures = Household_expenditures.ret_data(where);
-            List<Household_consumptions.to_household_consumptions> household_consumptions = Household_consumptions.ret_data(where);
-            List<Household_members.to_household_members> household_members = Household_members.ret_data(where);
-            household.setAssets(assets);
-            household.setHousehold_expenditures(household_expenditures);
-            household.setHousehold_consumptions(household_consumptions);
-            household.setHousehold_members(household_members);
-            if (household.household_no.equalsIgnoreCase(member.household_no)) {
-                row_to_select = count;
-            }
-            count++;
-        }
+//        List<Households.to_households> households = house.households;
+//        int row_to_select = 0;
+//        int count = 0;
+//        for (Households.to_households household : households) {
+//            String where = " where household_no='" + household.household_no + "' ";
+//            List<Household_assets.to_household_assets> assets = Household_assets.ret_data(where);
+//            List<Household_expenditures.to_household_expenditures> household_expenditures = Household_expenditures.ret_data(where);
+//            List<Household_consumptions.to_household_consumptions> household_consumptions = Household_consumptions.ret_data(where);
+//            List<Household_members.to_household_members> household_members = Household_members.ret_data(where);
+//            household.setAssets(assets);
+//            household.setHousehold_expenditures(household_expenditures);
+//            household.setHousehold_consumptions(household_consumptions);
+//            household.setHousehold_members(household_members);
+//            if (household.household_no.equalsIgnoreCase(member.household_no)) {
+//                row_to_select = count;
+//            }
+//            count++;
+//        }
 
-        Initialize_table_households.loadData_households(households);
-        tbl_households.getSelectionModel().setSelectionInterval(row_to_select, row_to_select);
-        jLabel2.setText("" + Initialize_table_households.tbl_households_ALM.size());
-        //</editor-fold>
-        //<editor-fold defaultstate="collapsed" desc=" call household form ">
-        final Households.to_households household = households.get(row_to_select);
-        Window p = (Window) this;
-        Dlg_households nd = Dlg_households.create(p, true);
-        nd.setTitle("");
-        nd.do_pass_db(household, member);
-        nd.setCallback(new Dlg_households.Callback() {
-            @Override
-            public void ok(CloseDialog closeDialog, Dlg_households.OutputData data) {
-                closeDialog.ok();
-                if (house.id == 0) {
-                    household.setOccupancy_types(data.occupancy_types);
-                    household.setTenure(data.tenure);
-                    household.setIs_occupant_owns_the_land(data.is_occupant_owns_the_land);
-                    household.setIs_occupant_owns_the_bldg(data.is_occupant_owns_the_bldg);
-                    household.setMonthly_rental(data.monthly_rental);
-                    household.setDrainage_system_concern(data.drainage_system_concern);
-                    household.setStreet_maintenance_concern(data.street_maintenance_concern);
-                    household.setGarbage_collection_concern(data.garbage_collection_concern);
-                    household.setFire_protection_concern(data.fire_protection_concern);
-                    household.setPolice_protection_concern(data.police_protection_concern);
-                    household.setAmbulance_service_concern(data.ambulance_service_concern);
-                    household.setLivelihood_programs_concern(data.livelihood_programs_concern);
-                    household.setAdolescent_pregnancy_rate(data.adolescent_pregnancy_rate);
-                    household.setChild_abuse_rating(data.child_abuse_rating);
-                    household.setCrime_rating(data.crime_rating);
-                    household.setDomestic_violence_rating(data.domestic_violence_rating);
-                    household.setDrug_abuse_rating(data.drug_abuse_rating);
-                    household.setHunger_rating(data.hunger_rating);
-                    household.setEnvironmental_contamination_rating(data.environmental_contamination_rating);
-                    household.setHealth_disparities_rating(data.health_disparities_rating);
-                    household.setAssets(data.assets);
-                    household.setHousehold_expenditures(data.household_expenditures);
-                    household.setHousehold_consumptions(data.household_consumptions);
-                    household.setHousehold_members(data.household_members);
-
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            tbl_households.getSelectionModel().clearSelection();
-                            Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
-                            Alert.set(2, "");
-                        }
-                    });
-                } else {
-
-                }
-            }
-        });
-        nd.setLocationRelativeTo(this);
-        nd.setVisible(true);
-
+//        Initialize_table_households.loadData_households(households);
+//        tbl_households.getSelectionModel().setSelectionInterval(row_to_select, row_to_select);
+//        jLabel2.setText("" + Initialize_table_households.tbl_households_ALM.size());
         //</editor-fold>
     }
-    
+
+    public void do_pass_new(String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, Houses.to_houses house1) {
+        house = house1;
+        Field.Combo reg = (Field.Combo) tf_region;
+        Field.Combo prov = (Field.Combo) tf_province;
+        Field.Combo cit = (Field.Combo) tf_city;
+        Field.Combo bar = (Field.Combo) tf_barangay;
+        Field.Combo pur = (Field.Combo) tf_purok;
+        reg.setText(region);
+        reg.setId(region_id);
+        prov.setText(province);
+        prov.setId(province_id);
+        cit.setText(city);
+        cit.setId(city_id);
+        bar.setText(barangay);
+        bar.setId(barangay_id);
+        pur.setText(purok);
+        pur.setId(purok_id);
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Key">
     private void disposed() {
         this.dispose();
@@ -1600,12 +1532,12 @@ public class Dlg_house extends javax.swing.JDialog {
         KeyMapping.mapKeyWIFW(getSurface(),
                 KeyEvent.VK_ESCAPE, new KeyAction() {
 
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                        disposed();
-                    }
-                });
+                disposed();
+            }
+        });
     }
 
     // </editor-fold>
@@ -1653,7 +1585,7 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_households nd = Dlg_households.create(p, true);
         nd.setTitle("");
-        nd.do_pass_new(household_no, reg.getText(), reg.getId(), pro.getText(), pro.getId(), cit.getText(), cit.getId(), bar.getText(), bar.getId(),pur.getText(),pur.getId());
+        nd.do_pass_new(household_no, reg.getText(), reg.getId(), pro.getText(), pro.getId(), cit.getText(), cit.getId(), bar.getText(), bar.getId(), pur.getText(), pur.getId());
         nd.setCallback(new Dlg_households.Callback() {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_households.OutputData data) {
@@ -1702,7 +1634,7 @@ public class Dlg_house extends javax.swing.JDialog {
                     List<Household_expenditures.to_household_expenditures> household_expenditures = data.household_expenditures;
                     List<Household_consumptions.to_household_consumptions> household_consumptions = data.household_consumptions;
                     List<Household_members.to_household_members> household_members = data.household_members;
-                    Households.to_households household = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members);
+                    Households.to_households household = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members,0);
                     Initialize_table_households.tbl_households_ALM.add(household);
                     Initialize_table_households.tbl_households_M.fireTableDataChanged();
                     jLabel2.setText("" + Initialize_table_households.tbl_households_ALM.size());
@@ -1803,20 +1735,25 @@ public class Dlg_house extends javax.swing.JDialog {
     //</editor-fold>
 
     private void ok() {
+        Field.Combo reg = (Field.Combo) tf_region;
+        Field.Combo prov = (Field.Combo) tf_province;
+        Field.Combo cit = (Field.Combo) tf_city;
+        Field.Combo bar = (Field.Combo) tf_barangay;
+        Field.Combo pur = (Field.Combo) tf_purok;
 
-        String region = tf_region.getText();
-        String region_id = "";
-        String province = tf_province.getText();
-        String province_id = "";
-        String city = tf_city.getText();
-        String city_id = "";
-        String barangay = tf_barangay.getText();
-        String barangay_id = "";
-        String purok = tf_purok.getText();
-        String purok_id = "";
-        int status = 0;
+        String region = reg.getText();
+        String region_id = reg.getId();
+        String province = prov.getText();
+        String province_id = prov.getText();
+        String city = cit.getText();
+        String city_id = cit.getId();
+        String barangay = bar.getText();
+        String barangay_id = bar.getId();
+        String purok = pur.getText();
+        String purok_id = pur.getId();
+        int status = 1;
         String house_no = tf_house_number.getText();
-        int no_of_rooms = 0;
+        int no_of_rooms = FitIn.toInt(tf_no_rooms.getText());
         String bldg_types = tf_buildings.getText();
         String bldg_permit = tf_bldg_permit.getText();
         String toilet_types = tf_toilets.getText();
@@ -1837,6 +1774,8 @@ public class Dlg_house extends javax.swing.JDialog {
         List<Households.to_households> households = Initialize_table_households.tbl_households_ALM;
         String latitude = tf_nearest_water_src1.getText();
         String longtitude = tf_nearest_water_src2.getText();
+        int no_of_households = 0;
+        int no_of_household_members = 0;
         if (callback != null) {
             callback.ok(new CloseDialog(this), new OutputData(region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude));
         }
@@ -1844,24 +1783,29 @@ public class Dlg_house extends javax.swing.JDialog {
 
     private void update_house() {
         //<editor-fold defaultstate="collapsed" desc=" Update ">
+        Field.Combo reg = (Field.Combo) tf_region;
+        Field.Combo prov = (Field.Combo) tf_province;
+        Field.Combo cit = (Field.Combo) tf_city;
+        Field.Combo bar = (Field.Combo) tf_barangay;
+        Field.Combo pur = (Field.Combo) tf_purok;
         int id = house.id;
         String created_at = house.created_at;
         String updated_at = house.updated_at;
         String created_by = house.created_by;
         String updated_by = house.updated_by;
-        String region = tf_region.getText();
-        String region_id = "";
-        String province = tf_province.getText();
-        String province_id = "";
-        String city = tf_city.getText();
-        String city_id = "";
-        String barangay = tf_barangay.getText();
-        String barangay_id = "";
-        String purok = tf_purok.getText();
-        String purok_id = "";
+        String region = reg.getText();
+        String region_id = reg.getId();
+        String province = prov.getText();
+        String province_id = prov.getId();
+        String city = cit.getText();
+        String city_id = cit.getId();
+        String barangay = bar.getText();
+        String barangay_id = bar.getId();
+        String purok = pur.getText();
+        String purok_id = pur.getId();
         int status = house.status;
         String house_no = house.house_no;
-        int no_of_rooms = 0;
+        int no_of_rooms = FitIn.toInt(tf_no_rooms.getText());
         String bldg_types = tf_buildings.getText();
         String bldg_permit = tf_bldg_permit.getText();
         String toilet_types = tf_toilets.getText();
@@ -1882,7 +1826,7 @@ public class Dlg_house extends javax.swing.JDialog {
         List<Households.to_households> households = new ArrayList();
         String latitude = tf_nearest_water_src1.getText();
         String longtitude = tf_nearest_water_src2.getText();
-        Houses.to_houses hou = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude);
+        Houses.to_houses hou = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude,0,0);
         Houses.update_data(hou);
         Alert.set(2, "");
         //</editor-fold>

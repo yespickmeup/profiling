@@ -52,8 +52,8 @@ public class Household_member_educational_backgrounds {
         public String achievements;
         public double highest_grade;
         public String year_graduated;
-
-        public to_household_member_educational_backgrounds(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String educational_status, String name_of_school, String achievements, double highest_grade, String year_graduated) {
+        public String transient_no;
+        public to_household_member_educational_backgrounds(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String educational_status, String name_of_school, String achievements, double highest_grade, String year_graduated,String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -82,6 +82,7 @@ public class Household_member_educational_backgrounds {
             this.achievements = achievements;
             this.highest_grade = highest_grade;
             this.year_graduated = year_graduated;
+            this.transient_no=transient_no;
         }
 
         public String getEducational_status() {
@@ -157,6 +158,7 @@ public class Household_member_educational_backgrounds {
                     + ",achievements"
                     + ",highest_grade"
                     + ",year_graduated"
+                    + ",transient_no"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -185,6 +187,7 @@ public class Household_member_educational_backgrounds {
                     + ",:achievements"
                     + ",:highest_grade"
                     + ",:year_graduated"
+                    + ",:transient_no"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -215,6 +218,8 @@ public class Household_member_educational_backgrounds {
                     .setString("achievements", to_household_member_educational_backgrounds.achievements)
                     .setNumber("highest_grade", to_household_member_educational_backgrounds.highest_grade)
                     .setString("year_graduated", to_household_member_educational_backgrounds.year_graduated)
+                    .setString("transient_no", to_household_member_educational_backgrounds.transient_no)
+                    
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -352,6 +357,7 @@ public class Household_member_educational_backgrounds {
                     + ",achievements"
                     + ",highest_grade"
                     + ",year_graduated"
+                    + ",transient_no"
                     + " from household_member_educational_backgrounds"
                     + " " + where;
 
@@ -386,8 +392,8 @@ public class Household_member_educational_backgrounds {
                 String achievements = rs.getString(26);
                 double highest_grade = rs.getDouble(27);
                 String year_graduated = rs.getString(28);
-
-                to_household_member_educational_backgrounds to = new to_household_member_educational_backgrounds(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, educational_status, name_of_school, achievements, highest_grade, year_graduated);
+                String transient_no=rs.getString(29);
+                to_household_member_educational_backgrounds to = new to_household_member_educational_backgrounds(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, educational_status, name_of_school, achievements, highest_grade, year_graduated,transient_no);
                 datas.add(to);
             }
             return datas;
