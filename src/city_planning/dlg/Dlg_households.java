@@ -2150,9 +2150,11 @@ public class Dlg_households extends javax.swing.JDialog {
     String my_city_id = "";
     String my_barangay = "";
     String my_barangay_id = "";
+    String my_purok="";
+    String my_purok_id="";
     String my_house_no = "";
 
-    public void do_pass_new(String household_no, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String house_no) {
+    public void do_pass_new(String household_no, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok,String purok_id) {
         tf_household_no.setText(household_no + "");
         my_region = region;
         my_region_id = region_id;
@@ -2162,7 +2164,8 @@ public class Dlg_households extends javax.swing.JDialog {
         my_city_id = city_id;
         my_barangay = barangay;
         my_barangay_id = barangay;
-        my_house_no = house_no;
+        my_purok=purok;
+        my_purok_id=purok_id;
 
     }
 
@@ -2327,7 +2330,7 @@ public class Dlg_households extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_household_members nd = Dlg_household_members.create(p, true);
         nd.setTitle("");
-        nd.do_pass(household_member, household.house_no, household.household_no);
+        nd.do_pass(household_member);
         nd.setCallback(new Dlg_household_members.Callback() {
 
             @Override
@@ -2939,7 +2942,7 @@ public class Dlg_households extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_household_members nd = Dlg_household_members.create(p, true);
         nd.setTitle("");
-        nd.do_pass_new(my_region, my_region_id, my_province, my_province_id, my_city, my_city_id, my_barangay, my_barangay_id, my_house_no, hh_no, hhm_no);
+        nd.do_pass_new(my_region, my_region_id, my_province, my_province_id, my_city, my_city_id, my_barangay, my_barangay_id,my_purok,my_purok_id,null);
         nd.setCallback(new Dlg_household_members.Callback() {
 
             @Override
@@ -3019,7 +3022,7 @@ public class Dlg_households extends javax.swing.JDialog {
             Window p = (Window) this;
             Dlg_household_members nd = Dlg_household_members.create(p, true);
             nd.setTitle("");
-            nd.do_pass(household_member, household.house_no, household.household_no);
+            nd.do_pass(household_member);
             nd.setCallback(new Dlg_household_members.Callback() {
 
                 @Override

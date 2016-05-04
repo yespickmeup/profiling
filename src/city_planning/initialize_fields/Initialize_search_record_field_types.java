@@ -324,7 +324,7 @@ public class Initialize_search_record_field_types {
                 field3.setId("" + to.province_id);
                 field4.setText(to.city);
                 field4.setId("" + to.city_id);
-                 field4.setText(to.barangay);
+                field4.setText(to.barangay);
                 field4.setId("" + to.barangay_id);
             }
         });
