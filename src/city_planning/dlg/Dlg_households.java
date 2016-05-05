@@ -5,6 +5,7 @@
  */
 package city_planning.dlg;
 
+import city_planning.building_types.Dlg_building_types;
 import city_planning.household_assets.Household_assets;
 import city_planning.household_concerns.Household_concerns;
 import city_planning.household_consumptions.Household_consumptions;
@@ -33,6 +34,7 @@ import city_planning.util.Dlg_confirm_action;
 import city_planning.util.TableRenderer;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -2419,7 +2421,7 @@ public class Dlg_households extends javax.swing.JDialog {
         });
     }
 
-    Households.to_households household = new Households.to_households(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(),0);
+    Households.to_households household = new Households.to_households(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), 0);
     String my_region = "";
     String my_region_id = "";
     String my_province = "";
@@ -2446,8 +2448,6 @@ public class Dlg_households extends javax.swing.JDialog {
         my_purok_id = purok_id;
 
     }
-
-    
 
     public void do_pass(Households.to_households household1) {
 
@@ -2559,8 +2559,12 @@ public class Dlg_households extends javax.swing.JDialog {
                 disposed();
             }
         });
+
+       
     }
     // </editor-fold>
+
+   
 
     //<editor-fold defaultstate="collapsed" desc=" Household Assets ">
     private void save_household_asset() {
@@ -3166,8 +3170,8 @@ public class Dlg_households extends javax.swing.JDialog {
                 Household_member_employment_status.to_household_member_employment_status employment_status = data.employment_status;
                 Household_member_skills.to_household_member_skills skills = data.skills;
                 String image = data.image;
-                String transient_no="";
-                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image,transient_no);
+                String transient_no = "";
+                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no);
 
                 Initialize_table_households.tbl_household_members_ALM.add(household_members);
                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
@@ -3380,8 +3384,8 @@ public class Dlg_households extends javax.swing.JDialog {
         List<Household_expenditures.to_household_expenditures> household_expenditures = new ArrayList();
         List<Household_consumptions.to_household_consumptions> household_consumptions = new ArrayList();
         List<Household_members.to_household_members> household_members = new ArrayList();
-        int no_of_household_members=0;
-        Households.to_households househol = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_lan, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members,no_of_household_members);
+        int no_of_household_members = 0;
+        Households.to_households househol = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_lan, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
         Households.update_data(househol);
         Alert.set(2, "");
 

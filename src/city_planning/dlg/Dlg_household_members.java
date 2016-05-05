@@ -33,6 +33,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -4895,8 +4896,13 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 disposed();
             }
         });
+              
     }
     // </editor-fold>
+    
+    
+    
+    
 
     //<editor-fold defaultstate="collapsed" desc=" Household Member Health Status ">
     private void save_household_member_health_status() {
