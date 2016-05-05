@@ -328,7 +328,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     }
 
     public void do_pass() {
-
+        init_report();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
