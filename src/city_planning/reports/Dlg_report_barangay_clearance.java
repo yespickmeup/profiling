@@ -360,8 +360,8 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
 
                 String Barangay_Clearance = "Republic of the Philippines";
                 String Barangay_Clearance1 = "Province of Negros Oriental";
-                String Barangay_Clearance2 = "Municipality of Bacong";
-                String Barangay_Clearance3 = "Barangay Banilad Bacong";
+                String Barangay_Clearance2 = "City of Dumaguete";
+                String Barangay_Clearance3 = "Barangay Poblacion 7";
                 String Barangay_Clearance4 = "OFFICE OF THE PUNONG BARANGAY";
                 String Barangay_Clearance5 = "B A R A N G A Y  C L E A R A N C E";
                 String Barangay_Clearance6 = "TO WHOM IT MAY CONCERN:";

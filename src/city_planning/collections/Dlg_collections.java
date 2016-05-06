@@ -12,6 +12,7 @@ import city_planning.reports.Dlg_report_barangay_clearance;
 import city_planning.reports.Dlg_report_barangay_permit;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
+import city_planning.util.Dlg_confirm_action_for_report;
 import city_planning.util.TableRenderer;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
@@ -750,14 +751,14 @@ public class Dlg_collections extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_ESCAPE, new KeyAction() {
+                              KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
     }
     // </editor-fold>
 
@@ -771,7 +772,7 @@ public class Dlg_collections extends javax.swing.JDialog {
         tbl_collections.setModel(tbl_collections_M);
         tbl_collections.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_collections.setRowHeight(25);
-        int[] tbl_widths_collections = {100, 100, 100, 80, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_collections = {100, 100, 100, 80, 80, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_collections.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -795,7 +796,7 @@ public class Dlg_collections extends javax.swing.JDialog {
     public static class TblcollectionsModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Transaction_no", "Date", "Name", "Amount", "", "", "region", "region_id", "province", "province_id", "city", "city_id", "barangay", "barangay_id", "purok", "purok_id", "status", "citizen", "citizen_id", "house_no", "household_no", "household_member_no", "transient_no", "issuance_type", "issuance_type_id", "purpose", "is_fixed", "amount_due", "amount_tendered"
+            "Transaction_no", "Date", "Name", "Amount", "Status", "", "region", "region_id", "province", "province_id", "city", "city_id", "barangay", "barangay_id", "purok", "purok_id", "status", "citizen", "citizen_id", "house_no", "household_no", "household_member_no", "transient_no", "issuance_type", "issuance_type_id", "purpose", "is_fixed", "amount_due", "amount_tendered"
         };
 
         public TblcollectionsModel(ListModel listmodel) {
@@ -831,7 +832,11 @@ public class Dlg_collections extends javax.swing.JDialog {
                 case 3:
                     return tt.amount_due + " ";
                 case 4:
-                    return " Void";
+                    if (tt.status == 1) {
+                        return " Counted";
+                    } else {
+                        return " Void";
+                    }
                 case 5:
                     return " Print";
                 case 6:
@@ -1106,10 +1111,23 @@ public class Dlg_collections extends javax.swing.JDialog {
             return;
         }
         int col = tbl_collections.getSelectedColumn();
-        Collections.to_collections collection = (Collections.to_collections) tbl_collections_ALM.get(row);
+        final Collections.to_collections collection = (Collections.to_collections) tbl_collections_ALM.get(row);
         if (col == 4) {
             //void
+            Window p = (Window) this;
+            Dlg_confirm_action_for_report nd = Dlg_confirm_action_for_report.create(p, true);
+            nd.setTitle("");
+            nd.do_pass();
+            nd.setCallback(new Dlg_confirm_action_for_report.Callback() {
 
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_confirm_action_for_report.OutputData data) {
+                    closeDialog.ok();
+                    Collections.update_collection(collection); 
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
         }
         if (col == 5) {
             //print

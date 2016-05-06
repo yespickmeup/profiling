@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6661103-a87e-454d-aa0e-469278c1f498">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fname" class="java.lang.String"/>
+	<parameter name="lname" class="java.lang.String"/>
+	<parameter name="age" class="java.lang.Integer"/>
+	<field name="program" class="java.lang.String"/>
+	<field name="days" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="160" splitType="Stretch">
+			<textField>
+				<reportElement uuid="bc15e73a-32cd-45d9-b21a-ea6ea749c422" x="136" y="68" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0385993d-e2e3-478a-896c-e5947435299a" x="136" y="88" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b954454e-73d6-4a29-965a-ba00e702df34" x="136" y="108" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{age}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="00df0a10-418d-4ebe-8770-06cb153fd115" x="36" y="68" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Fname:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="00df0a10-418d-4ebe-8770-06cb153fd115" x="36" y="88" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Lname:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="00df0a10-418d-4ebe-8770-06cb153fd115" x="36" y="108" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Age]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c2f168f2-984d-4237-b746-61b982a41b40" x="0" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[program]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5c75a975-e547-42a7-8797-ba136f061750" x="100" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[days]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="84b94bed-949c-46bd-b271-a6ec0d2d89ae" x="0" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{program}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="786a44e6-9c0a-4b9d-ad18-700ed238b6d5" x="100" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{days}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="104" splitType="Stretch"/>
+	</summary>
+</jasperReport>

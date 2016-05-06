@@ -17,10 +17,7 @@ import city_planning.household_member_vocational_experiences.Household_member_vo
 import city_planning.household_member_work_experiences.Household_member_work_experiences;
 import city_planning.household_members.Household_members;
 import city_planning.households.Households;
-import city_planning.houses.Houses;
-import city_planning.initialize_fields.Initialize_house_field_types;
 import city_planning.initialize_fields.Initialize_household_member_field_types;
-import city_planning.initialize_fields.Initialize_search_record_field_types;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
 import city_planning.util.DateType;
@@ -33,7 +30,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -6657,6 +6653,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             obj[i][0] = " " + to.household_no;
             i++;
         }
+        
         JLabel[] labels = {};
         int[] tbl_widths_customers = {tf_household_no.getWidth()};
         String[] col_names = {""};

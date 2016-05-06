@@ -268,6 +268,26 @@ public class Collections {
         }
     }
 
+    public static void update_collection(to_collections to_collections) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update collections set "
+                    + "status = 0 "
+                    + " where id='" + to_collections.id + "' "
+                    + " ";
+
+           
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Collections.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void delete_data(to_collections to_collections) {
         try {
             Connection conn = MyConnection.connect();

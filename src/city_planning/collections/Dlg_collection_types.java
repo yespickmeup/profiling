@@ -539,9 +539,9 @@ public class Dlg_collection_types extends javax.swing.JDialog {
                     return " " + tt.collection_type;
                 case 1:
                     if (tt.is_fixed == 0) {
-                        return " Yes";
+                        return "No";
                     } else {
-                        return " No";
+                        return "Yes";
                     }
                 case 2:
                     return FitIn.fmt_wc_0(tt.amount_due) + " ";

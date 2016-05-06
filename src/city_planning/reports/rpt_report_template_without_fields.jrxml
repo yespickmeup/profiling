@@ -9,14 +9,14 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="416" splitType="Stretch">
 			<textField>
-				<reportElement uuid="2a4e2001-41e3-4dc1-bdf1-7e943ced11e8" x="0" y="40" width="100" height="20"/>
+				<reportElement uuid="2a4e2001-41e3-4dc1-bdf1-7e943ced11e8" x="237" y="132" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$P{col2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="07ef2183-1050-448e-b6ed-643687148164" x="0" y="20" width="100" height="20"/>
+				<reportElement uuid="07ef2183-1050-448e-b6ed-643687148164" x="137" y="132" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$P{col1}]]></textFieldExpression>
 			</textField>
@@ -26,18 +26,18 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>
