@@ -921,11 +921,16 @@ public class Dlg_collections extends javax.swing.JDialog {
             Alert.set(0, "Input Purpose!");
             return;
         }
+        if (issuance_type.contains(issuance_type)) {
+            Alert.set(0, "Insufficient Amount!");
+            jTextField5.grabFocus();
+            return;
+        }
         double amount_due = FitIn.toDouble(jTextField4.getText());
         double tendered = FitIn.toDouble(jTextField5.getText());
         double change = tendered - amount_due;
         if (change < 0) {
-            if (issuance_type.equals("BARANGAY PERMIT")) {
+            if (issuance_type.equals("BARANGAY PERMIT") || (jCheckBox3.isSelected())) {
                 Alert.set(0, "Insufficient Amount!");
                 jTextField5.grabFocus();
                 return;
