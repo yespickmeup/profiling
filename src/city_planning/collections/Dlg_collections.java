@@ -904,15 +904,21 @@ public class Dlg_collections extends javax.swing.JDialog {
     private void add_collection() {
         Field.Combo iss = (Field.Combo) jTextField2;
         Field.Search citiz = (Field.Search) jTextField1;
-        String issuance_type = iss.getSelectedText();
+        String issuance_type = iss.getText();
         String issuance_type_id = iss.getId();
-        if (issuance_type.equals("BARANGAY CLEARANCE")) {
-            Alert.set(0, "Please Provide your Purpose!");
-            jTextField3.grabFocus();
+        String citizen = citiz.getText();
+        String citizen_id = citiz.getId();
+        if (citizen_id == null) {
+            Alert.set(0, "Choose Citizen!");
             return;
         }
-        if (issuance_type_id == null) {
+        if (issuance_type.isEmpty() || issuance_type == null) {
             Alert.set(0, "Choose Type of Clearance!");
+            jTextField2.grabFocus();
+            return;
+        }
+        if (jTextField3.getText().isEmpty() && issuance_type_id.equalsIgnoreCase("1")) {
+            Alert.set(0, "Input Purpose!");
             return;
         }
         double amount_due = FitIn.toDouble(jTextField4.getText());
@@ -943,12 +949,7 @@ public class Dlg_collections extends javax.swing.JDialog {
         String purok = my_purok;
         String purok_id = my_purok_id;
         int status = 1;
-        String citizen = citiz.getText();
-        String citizen_id = citiz.getId();
-        if (citizen_id == null) {
-            Alert.set(0, "Choose Citizen!");
-            return;
-        }
+
         String house_no = "";
         String household_no = "";
         String household_member_no = "";
@@ -1172,7 +1173,7 @@ public class Dlg_collections extends javax.swing.JDialog {
                     @Override
                     public void ok(CloseDialog closeDialog, Dlg_report_barangay_permit.OutputData data) {
                         closeDialog.ok();
-                        
+
                     }
                 });
                 nd.setLocationRelativeTo(this);
