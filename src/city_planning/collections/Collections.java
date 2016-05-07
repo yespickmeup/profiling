@@ -275,9 +275,6 @@ public class Collections {
                     + "status = 0 "
                     + " where id='" + to_collections.id + "' "
                     + " ";
-
-           
-
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
             Lg.s(Collections.class, "Successfully Updated");
