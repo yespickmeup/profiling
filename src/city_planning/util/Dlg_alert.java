@@ -28,7 +28,6 @@ public class Dlg_alert extends javax.swing.JDialog {
     public void setCallback(Callback callback) {
         this.callback = callback;
 
-
     }
 
     public static interface Callback {
@@ -142,7 +141,6 @@ public class Dlg_alert extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-
         Dlg_alert dialog = Dlg_alert.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
@@ -160,7 +158,6 @@ public class Dlg_alert extends javax.swing.JDialog {
             myInit();
             repaint();
         }
-
 
     }
 
@@ -290,7 +287,6 @@ public class Dlg_alert extends javax.swing.JDialog {
         }
         t.start();
     }
-
     // <editor-fold defaultstate="collapsed" desc="Key">
     private void disposed() {
         this.dispose();
@@ -298,28 +294,28 @@ public class Dlg_alert extends javax.swing.JDialog {
     int i = 1;
     Timer t = new Timer(500, new ActionListener() {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (i >= 2) {
-                i = 1;
-                t.stop();
-                disposed();
-            }
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (i >= 2) {
+                            i = 1;
+                            t.stop();
+                            disposed();
+                        }
 //            System.out.println(""+i);
-            i++;
-        }
-    });
+                        i++;
+                    }
+                });
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_ESCAPE, new KeyAction() {
+                              KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
     }
     // </editor-fold>
 }

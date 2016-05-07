@@ -902,21 +902,30 @@ public class Dlg_collections extends javax.swing.JDialog {
     }
 
     private void add_collection() {
-
+        Field.Combo iss = (Field.Combo) jTextField2;
+        Field.Search citiz = (Field.Search) jTextField1;
+        String issuance_type = iss.getSelectedText();
+        String issuance_type_id = iss.getId();
+        if (issuance_type.equals("BARANGAY CLEARANCE")) {
+            Alert.set(0, "Please Provide your Purpose!");
+            jTextField3.grabFocus();
+            return;
+        }
+        if (issuance_type_id == null) {
+            Alert.set(0, "Choose Type of Clearance!");
+            return;
+        }
         double amount_due = FitIn.toDouble(jTextField4.getText());
         double tendered = FitIn.toDouble(jTextField5.getText());
         double change = tendered - amount_due;
         if (change < 0) {
-            if (jCheckBox3.isSelected()) {
+            if (issuance_type.equals("BARANGAY PERMIT")) {
                 Alert.set(0, "Insufficient Amount!");
                 jTextField5.grabFocus();
                 return;
             }
-
         }
 
-        Field.Combo iss = (Field.Combo) jTextField2;
-        Field.Search citiz = (Field.Search) jTextField1;
         int id = 0;
         String collection_no = Collections.increment_id();
         String created_at = DateType.now();
@@ -944,8 +953,7 @@ public class Dlg_collections extends javax.swing.JDialog {
         String household_no = "";
         String household_member_no = "";
         String transient_no = "";
-        String issuance_type = iss.getText();
-        String issuance_type_id = iss.getId();
+
         String purpose = jTextField3.getText();
         int is_fixed = 0;
         if (jCheckBox3.isSelected()) {
@@ -1112,6 +1120,11 @@ public class Dlg_collections extends javax.swing.JDialog {
         }
         int col = tbl_collections.getSelectedColumn();
         final Collections.to_collections collection = (Collections.to_collections) tbl_collections_ALM.get(row);
+        if (collection.status == 0) {
+            Alert.set(0, "Cannot proceed, transaction already cancelled!");
+            return;
+        }
+
         if (col == 4) {
             //void
             Window p = (Window) this;
@@ -1123,7 +1136,9 @@ public class Dlg_collections extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_confirm_action_for_report.OutputData data) {
                     closeDialog.ok();
-                    Collections.update_collection(collection); 
+                    Collections.update_collection(collection);
+                    ret_collections();
+                    Alert.set(0, "Transaction Cancelled!");
                 }
             });
             nd.setLocationRelativeTo(this);
@@ -1157,7 +1172,7 @@ public class Dlg_collections extends javax.swing.JDialog {
                     @Override
                     public void ok(CloseDialog closeDialog, Dlg_report_barangay_permit.OutputData data) {
                         closeDialog.ok();
-
+                        
                     }
                 });
                 nd.setLocationRelativeTo(this);

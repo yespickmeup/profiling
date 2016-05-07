@@ -43,7 +43,6 @@ public class Srpt_report_template_without_fields {
 
     public static JasperReport compileJasper(String jrxml) {
         try {
-
             InputStream is = Srpt_report_template_without_fields.class.getResourceAsStream(jrxml);
             JasperReport jasper = JasperCompileManager.compileReport(is);
 
