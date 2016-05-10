@@ -53,6 +53,18 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     }
 
     public static class OutputData {
+
+        public final String tf;
+
+        public OutputData(String tf) {
+            this.tf = tf;
+
+        }
+
+        public String getTf() {
+            return tf;
+        }
+
     }
 //</editor-fold>
 
@@ -328,6 +340,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     }
 
     public void do_pass() {
+
         init_report();
     }
 
@@ -340,12 +353,12 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
         KeyMapping.mapKeyWIFW(getSurface(),
                               KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
     }
     // </editor-fold>
 
@@ -357,30 +370,12 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
 
             @Override
             public void run() {
+              
+                String Name = "Kenneth Arcinue";
+               
 
-                String Barangay_Clearance = "Republic of the Philippines";
-                String Barangay_Clearance1 = "Province of Negros Oriental";
-                String Barangay_Clearance2 = "City of Dumaguete";
-                String Barangay_Clearance3 = "Barangay Poblacion 7";
-                String Barangay_Clearance4 = "OFFICE OF THE PUNONG BARANGAY";
-                String Barangay_Clearance5 = "B A R A N G A Y  C L E A R A N C E";
-                String Barangay_Clearance6 = "TO WHOM IT MAY CONCERN:";
-                String Barangay_Clearance7 = "This is to certify that Mr./Mrs./Ms., Kenneth Arcinue, 19 years of age, single/married/widow, Filipino ";
-                String Barangay_Clearance8 = "with residence and postal address at Barangay Banilad Bacong is personally known to me to be a person of a good ";
-                String Barangay_Clearance9 = "moral character in this community and to my knowledge has not been accused of any crime or misdemeanor.";
-                String Barangay_Clearance10 = "This clearance is being issued upon of Mr./Mrs./Ms., Kenneth Arcinue for whatever legal purpose this may serve.";
-                String Barangay_Clearance11 = "GIVEN: this 3rd day of March 2016 at";
-                String Barangay_Clearance12 = "Barangay Banilad, Bacong";
-                String Barangay_Clearance13 = "Peter D. Sulima";
-                String Barangay_Clearance14 = "Punong Barangay";
-                String Barangay_Clearance15 = "O.R. No:13000544700 ";
-                String Barangay_Clearance16 = "Date Pd: March 3 2016 ";
-                String Barangay_Clearance17 = "Amount Pd: Php 50.00 ";
-                String Barangay_Clearance18 = "Community Tax No: 1234";
-                String Barangay_Clearance19 = "Issued On: March 3, 2016";
-                String Barangay_Clearance20 = "Issued At.: Barangay Banilad Bacong  ";
 
-                Srpt_bc rpt = new Srpt_bc(Barangay_Clearance, Barangay_Clearance1, Barangay_Clearance2, Barangay_Clearance3, Barangay_Clearance4, Barangay_Clearance5, Barangay_Clearance6, Barangay_Clearance7, Barangay_Clearance8, Barangay_Clearance9, Barangay_Clearance10, Barangay_Clearance11, Barangay_Clearance12, Barangay_Clearance13, Barangay_Clearance14, Barangay_Clearance15, Barangay_Clearance16, Barangay_Clearance17, Barangay_Clearance18, Barangay_Clearance19, Barangay_Clearance20);
+                Srpt_bc rpt = new Srpt_bc(Name);
                 String jrxml = "rpt_bc.jrxml";
                 report_without_fields(rpt, jrxml);
 
@@ -388,7 +383,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
                 try {
                     JasperReport jasperReport = JasperCompileManager.compileReport(is);
                     jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-                            setParameter(rpt), JasperUtil.emptyDatasource());
+                                                               setParameter(rpt), JasperUtil.emptyDatasource());
 
                 } catch (JRException ex) {
                     Logger.getLogger(Dlg_report_barangay_clearance.class.getName()).

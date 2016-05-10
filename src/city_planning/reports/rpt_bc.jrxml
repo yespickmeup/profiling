@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="262022bc-9cfa-4ad0-9fd5-86fbd0b81b3d">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.2100000000000009"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="col1" class="java.lang.String"/>
@@ -30,137 +30,134 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="113" splitType="Stretch">
+		<band height="437" splitType="Stretch">
 			<textField>
-				<reportElement uuid="9d1986d7-f674-454b-a29a-9d01f4b37a52" x="200" y="0" width="168" height="20"/>
+				<reportElement uuid="93554f5b-0f1a-45f7-9400-16bd13370e70" x="290" y="199" width="130" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{Barangay_Clearance7}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="5a72c5ed-95fe-4951-b8c4-35c27093c73f" x="189" y="20" width="168" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="b8e66083-0c37-4cbf-9532-99bd018d3cc9" x="200" y="40" width="168" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="31e26181-5fad-405e-a804-87727a5e88a6" x="189" y="60" width="168" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="a1e14f69-535d-468c-a3cf-33d5306fdbf8" x="157" y="93" width="261" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance4}]]></textFieldExpression>
-			</textField>
+			<staticText>
+				<reportElement uuid="f5eeedbd-c82b-49f7-a2ca-9960a1f8bcd2" x="218" y="32" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Province of Oriental Negros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c204cf3e-19e2-40d3-b25a-f3d3ce63138c" x="218" y="45" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[City of Dumaguete]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8ec14e00-ca7e-4821-bbe8-af150863dbcd" x="218" y="19" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d49d424-2ac7-4b5d-9e09-390b5aabfb14" x="218" y="58" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Barangay Poblacion 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9dd9f1d7-1d9c-4d4c-9134-df69c10c7573" x="351" y="363" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Reynaldo A. Caballes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8bcc52c2-0b9c-4d5f-9d67-fe3674ac660c" x="351" y="377" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Punong Barangay]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="10127b2b-2f20-4b25-803a-137c1993dc87" x="374" y="377" width="109" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="748d7566-932f-4088-8e32-67a456f6baeb" x="148" y="96" width="279" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[OFFICE OF THE PUNONG BARANGAY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf25fb1a-c845-481f-865f-d5491ce877ce" x="53" y="179" width="279" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[TO WHOM IT MAY CONCERN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37aa6559-fafb-4824-a6b2-02527f03d318" x="53" y="307" width="45" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Purpose:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="41a56e34-ad25-4e00-aa79-676c2164171d" x="101" y="320" width="117" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="68200161-fac7-42dd-912c-ba6cb0a85b36" x="98" y="199" width="192" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[This is to certify that Mr. / Mrs. / Ms.,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a32f39f6-ffca-46d2-9a1a-130162652f8e" x="53" y="219" width="23" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[age,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4356ac8f-dc02-49b7-aa87-ecd14ed07c20" x="134" y="219" width="95" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Citizen, residing at]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="861d595d-ded7-4319-b8b3-5928514a74e2" x="53" y="239" width="115" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[territorial boundaries of ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e767b9bd-7ce0-445b-9b4e-9369af1d3b82" x="168" y="239" width="112" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Barangay Poblacion 7]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="70" splitType="Stretch">
-			<textField>
-				<reportElement uuid="9228ce37-e082-4dfe-9711-89a264d364d9" x="157" y="0" width="261" height="20"/>
-				<textElement>
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance5}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="135" splitType="Stretch">
-			<textField>
-				<reportElement uuid="23b5359b-a4a9-487c-b1ad-59b39fd2299c" x="0" y="0" width="214" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance6}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="93554f5b-0f1a-45f7-9400-16bd13370e70" x="63" y="20" width="492" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance7}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="060ded0f-6df9-41e7-a900-64a1aa9a4dfe" x="0" y="40" width="555" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance8}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="d92d0d1c-efc8-410e-9cd8-f06f3cd96119" x="0" y="60" width="555" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance9}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="9c157696-9b3c-42af-8b67-b7b075287310" x="0" y="105" width="555" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance10}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band splitType="Stretch"/>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="33" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="244" splitType="Stretch">
-			<textField>
-				<reportElement uuid="540764e2-b4e5-4df3-b438-2bccf955bd3a" x="0" y="160" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance15}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="29f5520e-c7ad-499e-80c8-04c4caeede51" x="0" y="180" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance16}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="5cd297cf-57ce-46a7-b38b-30a42646403d" x="0" y="200" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance17}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="f49c28bf-3cc9-4fcd-aeef-5cf0211a0dfb" x="324" y="160" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance18}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="62f7cea0-0fdd-4ce5-ae26-f913899f122a" x="324" y="180" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance19}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="dc35b518-c163-452a-93ec-4a81e7608fe9" x="324" y="200" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance20}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="ba38a926-1958-4b8f-872f-404987bc8903" x="391" y="39" width="164" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance14}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="947f34f9-3c82-43dd-a4ad-324052aff1d2" x="0" y="77" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance12}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="2475fe98-5c9c-4dac-b08e-f124fa6bb2b3" x="0" y="57" width="231" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance11}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="c9cefb70-e978-459f-b34f-321a92840656" x="391" y="19" width="164" height="20"/>
-				<textElement>
-					<font isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Barangay_Clearance13}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

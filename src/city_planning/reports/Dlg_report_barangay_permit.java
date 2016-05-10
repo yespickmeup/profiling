@@ -1,4 +1,3 @@
-
 package city_planning.reports;
 
 import java.awt.BorderLayout;
@@ -48,6 +47,29 @@ public class Dlg_report_barangay_permit extends javax.swing.JDialog {
     }
 
     public static class OutputData {
+
+        public final String fname;
+        public final String mname;
+        public final String lname;
+
+        public OutputData(String fname, String mname, String lname) {
+            this.fname = fname;
+            this.mname = mname;
+            this.lname = lname;
+        }
+
+        public String getFname() {
+            return fname;
+        }
+
+        public String getMname() {
+            return mname;
+        }
+
+        public String getLname() {
+            return lname;
+        }
+
     }
 //</editor-fold>
 
@@ -323,7 +345,8 @@ public class Dlg_report_barangay_permit extends javax.swing.JDialog {
     }
 
     public void do_pass() {
-          init_report();
+
+        init_report();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -335,17 +358,17 @@ public class Dlg_report_barangay_permit extends javax.swing.JDialog {
         KeyMapping.mapKeyWIFW(getSurface(),
                               KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
     }
     // </editor-fold>
 
     private void init_report() {
-
+      
         jProgressBar1.setString("Loading...Please wait...");
         jProgressBar1.setIndeterminate(true);
         Thread t = new Thread(new Runnable() {
@@ -376,7 +399,7 @@ public class Dlg_report_barangay_permit extends javax.swing.JDialog {
                 String Barangay_Permit20 = "Business plate No: 136";
                 String Barangay_Permit21 = "BBA OR No: ";
 
-                Srpt_bp rpt = new Srpt_bp(Barangay_Permit, Barangay_Permit1, Barangay_Permit2,  Barangay_Permit3,  Barangay_Permit4, Barangay_Permit5, Barangay_Permit6, Barangay_Permit7, Barangay_Permit8, Barangay_Permit9, Barangay_Permit10, Barangay_Permit11, Barangay_Permit12, Barangay_Permit13, Barangay_Permit14, Barangay_Permit15, Barangay_Permit16, Barangay_Permit17, Barangay_Permit18, Barangay_Permit19, Barangay_Permit20, Barangay_Permit21);
+                Srpt_bp rpt = new Srpt_bp(Barangay_Permit, Barangay_Permit1, Barangay_Permit2, Barangay_Permit3, Barangay_Permit4, Barangay_Permit5, Barangay_Permit6, Barangay_Permit7, Barangay_Permit8, Barangay_Permit9, Barangay_Permit10, Barangay_Permit11, Barangay_Permit12, Barangay_Permit13, Barangay_Permit14, Barangay_Permit15, Barangay_Permit16, Barangay_Permit17, Barangay_Permit18, Barangay_Permit19, Barangay_Permit20, Barangay_Permit21);
                 String jrxml = "rpt_bp.jrxml";
                 report_without_fields(rpt, jrxml);
 
@@ -384,7 +407,7 @@ public class Dlg_report_barangay_permit extends javax.swing.JDialog {
                 try {
                     JasperReport jasperReport = JasperCompileManager.compileReport(is);
                     jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-                            setParameter(rpt), JasperUtil.emptyDatasource());
+                                                               setParameter(rpt), JasperUtil.emptyDatasource());
 
                 } catch (JRException ex) {
                     Logger.getLogger(Dlg_report_barangay_permit.class.getName()).

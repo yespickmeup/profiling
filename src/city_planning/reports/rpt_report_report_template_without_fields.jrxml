@@ -1,43 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="262022bc-9cfa-4ad0-9fd5-86fbd0b81b3d">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.4641000000000035"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="43"/>
 	<parameter name="col1" class="java.lang.String"/>
 	<parameter name="col2" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="506" splitType="Stretch">
 			<textField>
-				<reportElement uuid="2a4e2001-41e3-4dc1-bdf1-7e943ced11e8" x="0" y="40" width="100" height="20"/>
+				<reportElement uuid="2a4e2001-41e3-4dc1-bdf1-7e943ced11e8" x="291" y="190" width="48" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$P{col2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="07ef2183-1050-448e-b6ed-643687148164" x="0" y="20" width="100" height="20"/>
+				<reportElement uuid="07ef2183-1050-448e-b6ed-643687148164" x="240" y="190" width="51" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$P{col1}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="a32f39f6-ffca-46d2-9a1a-130162652f8e" x="10" y="210" width="44" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[age,]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="10127b2b-2f20-4b25-803a-137c1993dc87" x="331" y="390" width="109" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="4356ac8f-dc02-49b7-aa87-ecd14ed07c20" x="92" y="210" width="106" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Citizen, residing at]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9dd9f1d7-1d9c-4d4c-9134-df69c10c7573" x="308" y="376" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Reynaldo A. Caballes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf25fb1a-c845-481f-865f-d5491ce877ce" x="10" y="170" width="279" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[TO WHOM IT MAY CONCERN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="748d7566-932f-4088-8e32-67a456f6baeb" x="105" y="87" width="279" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[OFFICE OF THE PUNONG BARANGAY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d49d424-2ac7-4b5d-9e09-390b5aabfb14" x="175" y="49" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Barangay Poblacion 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8ec14e00-ca7e-4821-bbe8-af150863dbcd" x="175" y="10" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f5eeedbd-c82b-49f7-a2ca-9960a1f8bcd2" x="175" y="23" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Province of Oriental Negros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8bcc52c2-0b9c-4d5f-9d67-fe3674ac660c" x="308" y="390" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Punong Barangay]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="41a56e34-ad25-4e00-aa79-676c2164171d" x="54" y="339" width="117" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="861d595d-ded7-4319-b8b3-5928514a74e2" x="10" y="230" width="127" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[territorial boundaries of ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37aa6559-fafb-4824-a6b2-02527f03d318" x="10" y="326" width="45" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Purpose:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="68200161-fac7-42dd-912c-ba6cb0a85b36" x="41" y="190" width="192" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[This is to certify that Mr. / Mrs. / Ms.,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c204cf3e-19e2-40d3-b25a-f3d3ce63138c" x="175" y="36" width="156" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[City of Dumaguete]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e767b9bd-7ce0-445b-9b4e-9369af1d3b82" x="131" y="230" width="131" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Barangay Poblacion 7, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="861d595d-ded7-4319-b8b3-5928514a74e2" x="255" y="230" width="243" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[this City, has no criminal offense or pending case]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4356ac8f-dc02-49b7-aa87-ecd14ed07c20" x="409" y="210" width="89" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Street within the]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="861d595d-ded7-4319-b8b3-5928514a74e2" x="9" y="250" width="115" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[recorded in this office.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="68200161-fac7-42dd-912c-ba6cb0a85b36" x="41" y="270" width="457" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[This certificate is issued pursuant to section 152 ( c ) of the 1991 Local Government Code  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="861d595d-ded7-4319-b8b3-5928514a74e2" x="10" y="290" width="216" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[upon the request of the above named person.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4356ac8f-dc02-49b7-aa87-ecd14ed07c20" x="453" y="190" width="45" height="20"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[of legel ]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="41a56e34-ad25-4e00-aa79-676c2164171d" x="173" y="203" width="283" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="41a56e34-ad25-4e00-aa79-676c2164171d" x="186" y="222" width="224" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="41a56e34-ad25-4e00-aa79-676c2164171d" x="33" y="222" width="59" height="1"/>
+			</line>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>
