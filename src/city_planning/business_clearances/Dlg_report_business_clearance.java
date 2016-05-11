@@ -1,6 +1,6 @@
 package city_planning.business_clearances;
 
-import city_planning.reports.Srpt_bp;
+import city_planning.util.DateType;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -210,7 +210,6 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         tf_assets = new Button.Success();
-        tf_assets1 = new Button.Info();
         pnl_report = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -228,22 +227,12 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
             }
         });
 
-        tf_assets1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/newspaper.png"))); // NOI18N
-        tf_assets1.setText("Generate");
-        tf_assets1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_assets1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -251,9 +240,7 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
 
@@ -323,10 +310,6 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
         print();
     }//GEN-LAST:event_tf_assetsActionPerformed
 
-    private void tf_assets1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_assets1ActionPerformed
-        init_report();
-    }//GEN-LAST:event_tf_assets1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -338,16 +321,14 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel pnl_report;
     private javax.swing.JButton tf_assets;
-    private javax.swing.JButton tf_assets1;
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
         init_key();
     }
 
-    public void do_pass() {
-
-        init_report();
+    public void do_pass(Business_clearances.to_business_clearances business_clearance) {
+        init_report(business_clearance);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -368,26 +349,27 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    private void init_report() {
+    private void init_report(final Business_clearances.to_business_clearances business_clearance) {
 
         jProgressBar1.setString("Loading...Please wait...");
         jProgressBar1.setIndeterminate(true);
         Thread t = new Thread(new Runnable() {
-
             @Override
             public void run() {
+                String city_label = System.getProperty("city_label", "Municipality");
+                String pb = System.getProperty("punong_barangay", "JOSE O. DE GUZMAN");
 
-                String province = "Province of Siquijor";
-                String city = "Municipality of Siquijor";
-                String barangay = "Barangay Siquijor";
-                String applicant = "ASIATECH, DEVELOPMENT & BUILDERS [ADB] CORP.";
-                String business_name = "ASIATECH, DEVELOPMENT & BUILDERS [ADB] CORP.";
-                String location = "59 7TH AVENUE. JUSTICE LOURDES PAREDES SAN DIEGO AVENUE.";
-                String valid_on = "December 31,2016";
-                String issued_on = "January 13, 2016";
-                String issued_at = "Barangay Socorro, Quezon City";
-                String clearance_no = "12345";
-                String punong_barangay = "JOSE O. DE GUZMAN";
+                String province = "Province of " + business_clearance.province;
+                String city = city_label + " of " + business_clearance.city;
+                String barangay = "Barangay " + business_clearance.barangay;
+                String applicant = business_clearance.applicant;
+                String business_name = business_clearance.business_name;
+                String location = business_clearance.business_location;
+                String valid_on = DateType.convert_jan_1_2013_sf(business_clearance.valid_on);
+                String issued_on = DateType.convert_jan_1_2013_datetime2(business_clearance.issued_on);
+                String issued_at = "Barangay ," + business_clearance.barangay + " " + business_clearance.city + " City";
+                String clearance_no = business_clearance.business_clearance_no;
+                String punong_barangay = pb;
                 String home = System.getProperty("user.home");
                 String img_city = home + "\\images\\city.png";;
                 String img_barangay = home + "\\images\\barangay.png";;

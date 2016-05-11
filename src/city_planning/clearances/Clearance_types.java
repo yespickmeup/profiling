@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package city_planning.collections;
+package city_planning.clearances;
 
 import city_planning.util.MyConnection;
 import java.sql.Connection;
@@ -20,18 +20,18 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
  *
  * @author Guinness
  */
-public class Collection_types {
+public class Clearance_types {
 
     public static class to_collection_types {
 
         public final int id;
-        public final String collection_type;
+        public final String clearance_type;
         public final int is_fixed;
         public final double amount_due;
 
-        public to_collection_types(int id, String collection_type, int is_fixed, double amount_due) {
+        public to_collection_types(int id, String clearance_type, int is_fixed, double amount_due) {
             this.id = id;
-            this.collection_type = collection_type;
+            this.clearance_type = clearance_type;
             this.is_fixed = is_fixed;
             this.amount_due = amount_due;
         }
@@ -40,25 +40,25 @@ public class Collection_types {
     public static void add_data(to_collection_types to_collection_types) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "insert into collection_types("
-                    + "collection_type"
+            String s0 = "insert into clearance_types("
+                    + "clearance_type"
                     + ",is_fixed"
                     + ",amount_due"
                     + ")values("
-                    + ":collection_type"
+                    + ":clearance_type"
                     + ",:is_fixed"
                     + ",:amount_due"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("collection_type", to_collection_types.collection_type)
+                    .setString("clearance_type", to_collection_types.clearance_type)
                     .setNumber("is_fixed", to_collection_types.is_fixed)
                     .setNumber("amount_due", to_collection_types.amount_due)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Collection_types.class, "Successfully Added");
+            Lg.s(Clearance_types.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -69,22 +69,22 @@ public class Collection_types {
     public static void update_data(to_collection_types to_collection_types) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "update collection_types set "
-                    + "collection_type= :collection_type "
+            String s0 = "update clearance_types set "
+                    + "clearance_type= :clearance_type "
                     + ",is_fixed= :is_fixed "
                     + ",amount_due= :amount_due "
                     + " where id='" + to_collection_types.id + "' "
                     + " ";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("collection_type", to_collection_types.collection_type)
+                    .setString("clearance_type", to_collection_types.clearance_type)
                     .setNumber("is_fixed", to_collection_types.is_fixed)
                     .setNumber("amount_due", to_collection_types.amount_due)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Collection_types.class, "Successfully Updated");
+            Lg.s(Clearance_types.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -95,13 +95,13 @@ public class Collection_types {
     public static void delete_data(to_collection_types to_collection_types) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from collection_types  "
+            String s0 = "delete from clearance_types  "
                     + " where id='" + to_collection_types.id + "' "
                     + " ";
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Collection_types.class, "Successfully Deleted");
+            Lg.s(Clearance_types.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -116,10 +116,10 @@ public class Collection_types {
             Connection conn = MyConnection.connect();
             String s0 = "select "
                     + "id"
-                    + ",collection_type"
+                    + ",clearance_type"
                     + ",is_fixed"
                     + ",amount_due"
-                    + " from collection_types"
+                    + " from clearance_types"
                     + " " + where;
 
             Statement stmt = conn.createStatement();

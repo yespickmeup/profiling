@@ -5,11 +5,13 @@
  */
 package city_planning.collections;
 
+import city_planning.clearances.Clearance_purposes;
+import city_planning.clearances.Clearance_types;
 import city_planning.barangays.Barangays;
 import city_planning.collections.Collections.to_collections;
 import city_planning.household_members.Household_members;
-import city_planning.reports.Dlg_report_barangay_clearance;
-import city_planning.reports.Dlg_report_barangay_permit;
+import city_planning.barangay_clearances.Dlg_report_barangay_clearance;
+import city_planning.business_clearances.Dlg_report_business_clearance;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
 import city_planning.util.Dlg_confirm_action_for_report;
@@ -705,7 +707,7 @@ public class Dlg_collections extends javax.swing.JDialog {
         init_tbl_collections(tbl_collections);
 
         String where = "";
-        collection_types = Collection_types.ret_data(where);
+        collection_types = Clearance_types.ret_data(where);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -751,14 +753,14 @@ public class Dlg_collections extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
-                          @Override
-                          public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                              disposed();
-                          }
-                      });
+                disposed();
+            }
+        });
     }
     // </editor-fold>
 
@@ -990,13 +992,13 @@ public class Dlg_collections extends javax.swing.JDialog {
         }
         if (collection.issuance_type_id.equals("2")) {
             Window p = (Window) this;
-            Dlg_report_barangay_permit nd = Dlg_report_barangay_permit.create(p, true);
+            Dlg_report_business_clearance nd = Dlg_report_business_clearance.create(p, true);
             nd.setTitle("");
-            nd.do_pass();
-            nd.setCallback(new Dlg_report_barangay_permit.Callback() {
+//            nd.do_pass();
+            nd.setCallback(new Dlg_report_business_clearance.Callback() {
 
                 @Override
-                public void ok(CloseDialog closeDialog, Dlg_report_barangay_permit.OutputData data) {
+                public void ok(CloseDialog closeDialog, Dlg_report_business_clearance.OutputData data) {
                     closeDialog.ok();
 
                 }
@@ -1038,15 +1040,15 @@ public class Dlg_collections extends javax.swing.JDialog {
             }
         });
     }
-    List<Collection_types.to_collection_types> collection_types = new ArrayList();
+    List<Clearance_types.to_collection_types> collection_types = new ArrayList();
 
     private void init_collection_types() {
         final Field.Combo tf = (Field.Combo) jTextField2;
 
         Object[][] obj = new Object[collection_types.size()][1];
         int i = 0;
-        for (Collection_types.to_collection_types to : collection_types) {
-            obj[i][0] = " " + to.collection_type;
+        for (Clearance_types.to_collection_types to : collection_types) {
+            obj[i][0] = " " + to.clearance_type;
             i++;
         }
         JLabel[] labels = {};
@@ -1058,8 +1060,8 @@ public class Dlg_collections extends javax.swing.JDialog {
         tr.setCallback(new TableRenderer.Callback() {
             @Override
             public void ok(TableRenderer.OutputData data) {
-                Collection_types.to_collection_types to = collection_types.get(data.selected_row);
-                tf.setText(to.collection_type);
+                Clearance_types.to_collection_types to = collection_types.get(data.selected_row);
+                tf.setText(to.clearance_type);
                 tf.setId("" + to.id);
                 if (to.is_fixed == 0) {
                     jCheckBox3.setSelected(false);
@@ -1077,10 +1079,10 @@ public class Dlg_collections extends javax.swing.JDialog {
     private void init_collection_purposes() {
         final Field.Combo tf = (Field.Combo) jTextField3;
         String where = "";
-        final List<Collection_purposes.to_collection_purposes> collection_purposes = Collection_purposes.ret_data(where);
+        final List<Clearance_purposes.to_collection_purposes> collection_purposes = Clearance_purposes.ret_data(where);
         Object[][] obj = new Object[collection_purposes.size()][1];
         int i = 0;
-        for (Collection_purposes.to_collection_purposes to : collection_purposes) {
+        for (Clearance_purposes.to_collection_purposes to : collection_purposes) {
             obj[i][0] = " " + to.purpose;
             i++;
         }
@@ -1093,7 +1095,7 @@ public class Dlg_collections extends javax.swing.JDialog {
         tr.setCallback(new TableRenderer.Callback() {
             @Override
             public void ok(TableRenderer.OutputData data) {
-                Collection_purposes.to_collection_purposes to = collection_purposes.get(data.selected_row);
+                Clearance_purposes.to_collection_purposes to = collection_purposes.get(data.selected_row);
                 tf.setText(to.purpose);
                 jTextField5.grabFocus();
             }
@@ -1170,13 +1172,13 @@ public class Dlg_collections extends javax.swing.JDialog {
             }
             if (collection.issuance_type_id.equals("2")) {
                 Window p = (Window) this;
-                Dlg_report_barangay_permit nd = Dlg_report_barangay_permit.create(p, true);
+                Dlg_report_business_clearance nd = Dlg_report_business_clearance.create(p, true);
                 nd.setTitle("");
-                nd.do_pass();
-                nd.setCallback(new Dlg_report_barangay_permit.Callback() {
+//                nd.do_pass();
+                nd.setCallback(new Dlg_report_business_clearance.Callback() {
 
                     @Override
-                    public void ok(CloseDialog closeDialog, Dlg_report_barangay_permit.OutputData data) {
+                    public void ok(CloseDialog closeDialog, Dlg_report_business_clearance.OutputData data) {
                         closeDialog.ok();
 
                     }

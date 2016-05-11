@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package city_planning.collections;
+package city_planning.clearances;
 
-import city_planning.collections.Collection_purposes.to_collection_purposes;
+import city_planning.clearances.Clearance_purposes;
+import city_planning.clearances.Clearance_purposes.to_collection_purposes;
 import city_planning.util.Alert;
 import city_planning.util.Dlg_confirm_action;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
@@ -31,7 +32,7 @@ import synsoftech.fields.Label;
  *
  * @author Guinness
  */
-public class Dlg_collection_purposes extends javax.swing.JDialog {
+public class Dlg_clearance_purposes extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_collection_purposes
@@ -57,33 +58,33 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_collection_purposes(java.awt.Frame parent, boolean modal) {
+    private Dlg_clearance_purposes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_collection_purposes(java.awt.Dialog parent, boolean modal) {
+    private Dlg_clearance_purposes(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_collection_purposes() {
+    public Dlg_clearance_purposes() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_collection_purposes myRef;
+    private Dlg_clearance_purposes myRef;
 
-    private void setThisRef(Dlg_collection_purposes myRef) {
+    private void setThisRef(Dlg_clearance_purposes myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_collection_purposes> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_clearance_purposes> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -91,7 +92,7 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_collection_purposes create(java.awt.Window parent, boolean modal) {
+    public static Dlg_clearance_purposes create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -101,14 +102,14 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_collection_purposes create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_clearance_purposes create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_collection_purposes dialog = dialogContainer.get(parent);
+            Dlg_clearance_purposes dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_collection_purposes((java.awt.Frame) parent, false);
+                dialog = new Dlg_clearance_purposes((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -122,10 +123,10 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_collection_purposes dialog = dialogContainer.get(parent);
+            Dlg_clearance_purposes dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_collection_purposes((java.awt.Dialog) parent, false);
+                dialog = new Dlg_clearance_purposes((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -152,7 +153,7 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_collection_purposes dialog = Dlg_collection_purposes.create(new javax.swing.JFrame(), true);
+        Dlg_clearance_purposes dialog = Dlg_clearance_purposes.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -389,31 +390,18 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tbl_collection_purposes;
     private javax.swing.JTextField tf_purpose;
@@ -515,7 +503,7 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
 
     private void ret_purposes() {
         String where = "";
-        List<to_collection_purposes> datas = Collection_purposes.ret_data(where);
+        List<to_collection_purposes> datas = Clearance_purposes.ret_data(where);
         loadData_collection_purposes(datas);
         jLabel7.setText("" + datas.size());
     }
@@ -526,7 +514,7 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
         String purpose = tf_purpose.getText();
 
         to_collection_purposes to = new to_collection_purposes(id, purpose);
-        Collection_purposes.add_data(to);
+        Clearance_purposes.add_data(to);
         Alert.set(1, "");
         ret_purposes();
         tf_purpose.setText("");
@@ -556,7 +544,7 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
         String purpose = tf_purpose.getText();
 
         to_collection_purposes to1 = new to_collection_purposes(id, purpose);
-        Collection_purposes.update_data(to1);
+        Clearance_purposes.update_data(to1);
         Alert.set(2, "");
         ret_purposes();
         tf_purpose.setText("");
@@ -579,7 +567,7 @@ public class Dlg_collection_purposes extends javax.swing.JDialog {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
                 closeDialog.ok();
-                Collection_purposes.delete_data(to);
+                Clearance_purposes.delete_data(to);
                 Alert.set(3, "");
                 ret_purposes();
                 tf_purpose.setText("");

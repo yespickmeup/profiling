@@ -5,6 +5,7 @@
  */
 package city_planning.reports;
 
+import city_planning.barangay_clearances.Dlg_report_barangay_clearance;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;

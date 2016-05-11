@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package city_planning.collections;
+package city_planning.business_clearances;
 
 import city_planning.util.MyConnection;
 import java.sql.Connection;
@@ -20,35 +20,35 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
  *
  * @author Guinness
  */
-public class Collection_purposes {
+public class Business_clearance_locations {
 
-    public static class to_collection_purposes {
+    public static class to_business_clearance_locations {
 
         public final int id;
-        public final String purpose;
+        public final String location;
 
-        public to_collection_purposes(int id, String purpose) {
+        public to_business_clearance_locations(int id, String location) {
             this.id = id;
-            this.purpose = purpose;
+            this.location = location;
         }
     }
 
-    public static void add_data(to_collection_purposes to_collection_purposes) {
+    public static void add_data(to_business_clearance_locations to_business_clearance_locations) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "insert into collection_purposes("
-                    + "purpose"
+            String s0 = "insert into business_clearance_locations("
+                    + "location"
                     + ")values("
-                    + ":purpose"
+                    + ":location"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("purpose", to_collection_purposes.purpose)
+                    .setString("location", to_business_clearance_locations.location)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Collection_purposes.class, "Successfully Added");
+            Lg.s(Business_clearance_locations.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -56,21 +56,21 @@ public class Collection_purposes {
         }
     }
 
-    public static void update_data(to_collection_purposes to_collection_purposes) {
+    public static void update_data(to_business_clearance_locations to_business_clearance_locations) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "update collection_purposes set "
-                    + "purpose= :purpose "
-                    + " where id='" + to_collection_purposes.id + "' "
+            String s0 = "update business_clearance_locations set "
+                    + "location= :location "
+                    + " where id='" + to_business_clearance_locations.id + "' "
                     + " ";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("purpose", to_collection_purposes.purpose)
+                    .setString("location", to_business_clearance_locations.location)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Collection_purposes.class, "Successfully Updated");
+            Lg.s(Business_clearance_locations.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -78,16 +78,16 @@ public class Collection_purposes {
         }
     }
 
-    public static void delete_data(to_collection_purposes to_collection_purposes) {
+    public static void delete_data(to_business_clearance_locations to_business_clearance_locations) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from collection_purposes  "
-                    + " where id='" + to_collection_purposes.id + "' "
+            String s0 = "delete from business_clearance_locations  "
+                    + " where id='" + to_business_clearance_locations.id + "' "
                     + " ";
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(Collection_purposes.class, "Successfully Deleted");
+            Lg.s(Business_clearance_locations.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -95,24 +95,24 @@ public class Collection_purposes {
         }
     }
 
-    public static List<to_collection_purposes> ret_data(String where) {
-        List<to_collection_purposes> datas = new ArrayList();
+    public static List<to_business_clearance_locations> ret_data(String where) {
+        List<to_business_clearance_locations> datas = new ArrayList();
 
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select "
                     + "id"
-                    + ",purpose"
-                    + " from collection_purposes"
+                    + ",location"
+                    + " from business_clearance_locations"
                     + " " + where;
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String purpose = rs.getString(2);
+                String location = rs.getString(2);
 
-                to_collection_purposes to = new to_collection_purposes(id, purpose);
+                to_business_clearance_locations to = new to_business_clearance_locations(id, location);
                 datas.add(to);
             }
             return datas;

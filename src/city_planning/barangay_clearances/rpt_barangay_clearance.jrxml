@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e6d202d-a8b3-4148-89fe-0e8d6e292215">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="21"/>
+	<parameter name="province" class="java.lang.String"/>
+	<parameter name="city" class="java.lang.String"/>
+	<parameter name="barangay" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="age" class="java.lang.String"/>
+	<parameter name="civil_status" class="java.lang.String"/>
+	<parameter name="date_issued" class="java.lang.String"/>
+	<parameter name="punong_barangay" class="java.lang.String"/>
+	<parameter name="or_no" class="java.lang.String"/>
+	<parameter name="date_paid" class="java.lang.String"/>
+	<parameter name="amount_paid" class="java.lang.String"/>
+	<parameter name="community_tax_no" class="java.lang.String"/>
+	<parameter name="issued_on" class="java.lang.String"/>
+	<parameter name="issued_at" class="java.lang.String"/>
+	<parameter name="body" class="java.lang.String"/>
+	<parameter name="footer" class="java.lang.String"/>
+	<parameter name="img_logo" class="java.lang.String"/>
+	<parameter name="img_citizen" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="610" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="143" y="26" width="290" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="143" y="42" width="290" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{province}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="143" y="58" width="290" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="143" y="74" width="290" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{barangay}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="143" y="105" width="290" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OFFICE OF THE PUNONG BARANGAY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="108" y="135" width="360" height="24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[B  A  R  A  N  G  A  Y    C  L  E  A  R  A  N  C  E]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="35" y="204" width="290" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TO WHOM IT MAY CONCERN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e8b7e2cf-f9ad-43bf-b343-67045cb8653e" x="35" y="231" width="485" height="70"/>
+				<textElement verticalAlignment="Top">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{body}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8b7e2cf-f9ad-43bf-b343-67045cb8653e" x="35" y="314" width="485" height="38"/>
+				<textElement verticalAlignment="Top">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{footer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="35" y="409" width="216" height="17"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Punong Barangay]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="35" y="393" width="216" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{punong_barangay}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="35" y="464" width="73" height="17"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[O.R. No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="35" y="480" width="73" height="17"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date Paid:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="35" y="496" width="73" height="17"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Amount Paid:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="108" y="464" width="143" height="17"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{or_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="108" y="481" width="143" height="17"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_paid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="108" y="497" width="143" height="17"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{amount_paid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="377" y="463" width="143" height="17"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{community_tax_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="266" y="479" width="111" height="17"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Issued On:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="377" y="480" width="143" height="17"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{issued_on}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="266" y="495" width="71" height="17"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Issued At:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3fe66961-00c6-4fd5-be1d-504e1743f541" x="266" y="463" width="111" height="17"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Community Tax No.:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="337" y="496" width="183" height="17"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{issued_at}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="29bf0cfd-07e1-4782-80e9-1bd1265b9ec5" x="35" y="26" width="108" height="109"/>
+				<imageExpression><![CDATA[$P{img_logo}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="29bf0cfd-07e1-4782-80e9-1bd1265b9ec5" x="433" y="26" width="108" height="79"/>
+				<imageExpression><![CDATA[$P{img_citizen}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

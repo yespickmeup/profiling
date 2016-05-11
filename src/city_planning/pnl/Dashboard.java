@@ -19,10 +19,14 @@ import city_planning.dlg.Dlg_search;
 import city_planning.educational_statuses.Dlg_educational_status;
 import city_planning.genders.Dlg_genders;
 import city_planning.kitchen_types.Dlg_kitchen_types;
+import static city_planning.pnl.MyMain.getSerialNumber;
 import city_planning.roof_types.Dlg_roof_types;
 import city_planning.schools.Dlg_schools;
 import city_planning.skills.Dlg_skills;
 import city_planning.toilet_types.Dlg_toilet_types;
+import city_planning.util.Alert;
+import city_planning.util.DeEncrypter;
+import city_planning.util.Dlg_get_hdd_serial;
 import city_planning.util.MyFrame;
 import city_planning.wall_types.Dlg_wall_types;
 import city_planning_transportation_available.Dlg_transportation_types;
@@ -32,6 +36,8 @@ import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
@@ -459,16 +465,13 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void tf_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_usernameActionPerformed
-
+      
         tf_password.grabFocus();
     }//GEN-LAST:event_tf_usernameActionPerformed
 
     private void tf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passwordActionPerformed
-        jPanel1.removeAll();
-        jPanel1.updateUI();
+        login();
 
-        cardLayout.show(pnl_main_holder, "2");
-        transactions_search();
     }//GEN-LAST:event_tf_passwordActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -489,7 +492,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel51MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        login();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
@@ -565,9 +568,42 @@ public class Dashboard extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
-
+        key();
         set_card_items();
         jPanel6.setVisible(false);
+    }
+    int count = 0;
+
+    private void key() {
+        tf_username.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                if (e.getKeyCode() == KeyEvent.VK_F10) {
+                    if (count == 2) {
+                        license_code();
+                        count = 0;
+                    }
+                    count++;
+                }
+            }
+        });
+    }
+
+    private void license_code() {
+        Window p = (Window) this;
+        Dlg_get_hdd_serial nd = Dlg_get_hdd_serial.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_get_hdd_serial.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_get_hdd_serial.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
     }
 
     CardLayout cardLayout = new CardLayout();
@@ -753,6 +789,20 @@ public class Dashboard extends javax.swing.JFrame {
         Point point = jLabel51.getLocationOnScreen();
         nd.setLocation(point.x - 125, point.y + 37);
         nd.setVisible(true);
+    }
+
+    private void login() {
+        String license_code = System.getProperty("license_code", "");
+        String hdd_license = DeEncrypter.encrypt(getSerialNumber());
+        if (!license_code.equals(hdd_license)) {
+            Alert.set(0, "Invalid license key, please register!");
+            return;
+        }
+        jPanel1.removeAll();
+        jPanel1.updateUI();
+
+        cardLayout.show(pnl_main_holder, "2");
+        transactions_search();
     }
 
     //<editor-fold defaultstate="collapsed" desc=" maintenance functions ">

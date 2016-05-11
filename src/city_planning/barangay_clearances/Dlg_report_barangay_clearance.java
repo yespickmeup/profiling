@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package city_planning.reports;
+package city_planning.barangay_clearances;
 
+import city_planning.reports.Srpt_bc;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -351,14 +352,14 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
-                          @Override
-                          public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                              disposed();
-                          }
-                      });
+                disposed();
+            }
+        });
     }
     // </editor-fold>
 
@@ -370,20 +371,37 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
 
             @Override
             public void run() {
-              
-                String Name = "Kenneth Arcinue";
-               
 
+                String province = "Province of Siquijor";
+                String city = "Municipality of Siquijor";
+                String barangay = "Barangay Siquijor";
+                String name = "Mr./Mrs./Ms., Jannele Tagsip Amores";
+                String age = "30 yrs of age";
+                String civil_status = "single";
+                String date_issued = "17th day of August 2015";
+                String punong_barangay = "Peck Dominguez Cortez";
+                String or_no = "20150818";
+                String date_paid = "August 17,2015";
+                String amount_paid = "Php 100.00";
+                String community_tax_no = "1234";
+                String issued_on = "August 17,2015";
+                String issued_at = "Poblacion, Siquijor, Siquijor";
+                String body = "This is to certify that " + name + ", " + age + ", Filipino, with residence and postal address at " + issued_at + ", is personally known to me to be a person of good"
+                        + " moral character in this community and to my knowledge has not been accused of any crime or misdemeanor.";
+                String footer = "This clearance is being issued upon request of " + name + " for whatever legal purpose this may serve or deem necessary.";
+                String home = System.getProperty("user.home");
+                String img_logo = home + "\\images\\barangay.png";
+                String img_citizen = home + "\\images\\Bcgrngy7i.png";
+                Srpt_barangay_clearance rpt = new Srpt_barangay_clearance(province, city, barangay, name, age, civil_status, date_issued, punong_barangay, or_no, date_paid, amount_paid, community_tax_no, issued_on, issued_at, body, footer, img_logo, img_citizen);
 
-                Srpt_bc rpt = new Srpt_bc(Name);
-                String jrxml = "rpt_bc.jrxml";
+                String jrxml = "rpt_barangay_clearance.jrxml";
                 report_without_fields(rpt, jrxml);
 
-                InputStream is = Srpt_bc.class.getResourceAsStream(jrxml);
+                InputStream is = Srpt_barangay_clearance.class.getResourceAsStream(jrxml);
                 try {
                     JasperReport jasperReport = JasperCompileManager.compileReport(is);
                     jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-                                                               setParameter(rpt), JasperUtil.emptyDatasource());
+                            setParameter(rpt), JasperUtil.emptyDatasource());
 
                 } catch (JRException ex) {
                     Logger.getLogger(Dlg_report_barangay_clearance.class.getName()).
@@ -397,7 +415,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
 
     }
 
-    private void report_without_fields(final Srpt_bc to, String jrxml_name) {
+    private void report_without_fields(final Srpt_barangay_clearance to, String jrxml_name) {
         pnl_report.removeAll();
         pnl_report.setLayout(new BorderLayout());
         try {
@@ -414,7 +432,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
         }
     }
 
-    public static JRViewer get_viewer_expenses(Srpt_bc to, String rpt_name) {
+    public static JRViewer get_viewer_expenses(Srpt_barangay_clearance to, String rpt_name) {
         try {
             return JasperUtil.getJasperViewer(
                     compileJasper(rpt_name),
@@ -429,7 +447,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     public static JasperReport compileJasper(String rpt_name) {
         try {
             String jrxml = rpt_name;
-            InputStream is = Srpt_bc.class.getResourceAsStream(jrxml);
+            InputStream is = Srpt_barangay_clearance.class.getResourceAsStream(jrxml);
             JasperReport jasper = JasperCompileManager.compileReport(is);
             return jasper;
         } catch (JRException e) {
