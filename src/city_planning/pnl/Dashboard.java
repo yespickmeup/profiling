@@ -12,7 +12,8 @@ import city_planning.building_types.Dlg_building_types;
 import city_planning.businesses.Dlg_businesses;
 import city_planning.certifications.Dlg_certifications;
 import city_planning.cities.Dlg_cities;
-import city_planning.collections.Dlg_collections;
+import city_planning.clearances.Dlg_clearance;
+
 import city_planning.communication_types.Dlg_communication;
 import city_planning.dlg.Dlg_search;
 
@@ -931,8 +932,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void transactions_collections() {
 
-        Dlg_collections dtc = new Dlg_collections();
-        MyFrame.set(dtc.getSurface(), jPanel1, "Collection");
+        Dlg_clearance dtc = new Dlg_clearance();
+        MyFrame.set(dtc.getSurface(), jPanel1, "Clearances");
     }
 
     private void transactions_achievements() {

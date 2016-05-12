@@ -145,6 +145,8 @@ id int auto_increment primary key
 ,amount_due double
 ,amount_tendered double
 ,punong_barangay varchar(255)
+,citizen_bday date
+,citizen_civil_status varchar(255)
 );
 
 drop table if exists business_clearance_applicants;

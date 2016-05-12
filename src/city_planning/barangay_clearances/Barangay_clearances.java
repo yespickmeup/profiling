@@ -53,8 +53,10 @@ public class Barangay_clearances {
         public final double amount_due;
         public final double amount_tendered;
         public final String punong_barangay;
+        public final String citizen_bday;
+        public final String citizen_civil_status;
 
-        public to_barangay_clearances(int id, String barangay_clearance_no, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String citizen, String citizen_id, String house_no, String household_no, String household_member_no, String transient_no, String purpose, int is_fixed, double amount_due, double amount_tendered, String punong_barangay) {
+        public to_barangay_clearances(int id, String barangay_clearance_no, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String citizen, String citizen_id, String house_no, String household_no, String household_member_no, String transient_no, String purpose, int is_fixed, double amount_due, double amount_tendered, String punong_barangay, String citizen_bday, String citizen_civil_status) {
             this.id = id;
             this.barangay_clearance_no = barangay_clearance_no;
             this.created_at = created_at;
@@ -83,6 +85,8 @@ public class Barangay_clearances {
             this.amount_due = amount_due;
             this.amount_tendered = amount_tendered;
             this.punong_barangay = punong_barangay;
+            this.citizen_bday = citizen_bday;
+            this.citizen_civil_status = citizen_civil_status;
         }
     }
 
@@ -117,6 +121,8 @@ public class Barangay_clearances {
                     + ",amount_due"
                     + ",amount_tendered"
                     + ",punong_barangay"
+                    + ",citizen_bday"
+                    + ",citizen_civil_status"
                     + ")values("
                     + ":barangay_clearance_no"
                     + ",:created_at"
@@ -145,6 +151,8 @@ public class Barangay_clearances {
                     + ",:amount_due"
                     + ",:amount_tendered"
                     + ",:punong_barangay"
+                    + ",:citizen_bday"
+                    + ",:citizen_civil_status"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -175,6 +183,8 @@ public class Barangay_clearances {
                     .setNumber("amount_due", to_barangay_clearances.amount_due)
                     .setNumber("amount_tendered", to_barangay_clearances.amount_tendered)
                     .setString("punong_barangay", to_barangay_clearances.punong_barangay)
+                    .setString("citizen_bday", to_barangay_clearances.citizen_bday)
+                    .setString("citizen_civil_status", to_barangay_clearances.citizen_civil_status)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -218,6 +228,8 @@ public class Barangay_clearances {
                     + ",amount_due= :amount_due "
                     + ",amount_tendered= :amount_tendered "
                     + ",punong_barangay= :punong_barangay"
+                    + ",citizen_bday= :citizen_bday"
+                    + ",citizen_civil_status= :citizen_civil_status"
                     + " where id='" + to_barangay_clearances.id + "' "
                     + " ";
 
@@ -249,6 +261,8 @@ public class Barangay_clearances {
                     .setNumber("amount_due", to_barangay_clearances.amount_due)
                     .setNumber("amount_tendered", to_barangay_clearances.amount_tendered)
                     .setString("punong_barangay", to_barangay_clearances.punong_barangay)
+                    .setString("citizen_bday", to_barangay_clearances.citizen_bday)
+                    .setString("citizen_civil_status", to_barangay_clearances.citizen_civil_status)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -312,6 +326,8 @@ public class Barangay_clearances {
                     + ",amount_due"
                     + ",amount_tendered"
                     + ",punong_barangay"
+                    + ",citizen_bday"
+                    + ",citizen_civil_status"
                     + " from barangay_clearances"
                     + " " + where;
 
@@ -345,8 +361,10 @@ public class Barangay_clearances {
                 int is_fixed = rs.getInt(25);
                 double amount_due = rs.getDouble(26);
                 double amount_tendered = rs.getDouble(27);
-                String punong_barangay=rs.getString(28);
-                to_barangay_clearances to = new to_barangay_clearances(id, barangay_clearance_no, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, citizen, citizen_id, house_no, household_no, household_member_no, transient_no, purpose, is_fixed, amount_due, amount_tendered,punong_barangay);
+                String punong_barangay = rs.getString(28);
+                String citizen_bday=rs.getString(29);
+                String citizen_civil_status=rs.getString(30);
+                to_barangay_clearances to = new to_barangay_clearances(id, barangay_clearance_no, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, citizen, citizen_id, house_no, household_no, household_member_no, transient_no, purpose, is_fixed, amount_due, amount_tendered, punong_barangay,citizen_bday,citizen_civil_status);
                 datas.add(to);
             }
             return datas;

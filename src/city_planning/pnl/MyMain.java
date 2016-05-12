@@ -155,6 +155,7 @@ public class MyMain {
             System.setProperty("charge_payment", prop.getProperty("charge_payment", "false"));
             System.setProperty("city_label", prop.getProperty("city_label", ""));
             System.setProperty("punong_barangay", prop.getProperty("punong_barangay", ""));
+            System.setProperty("community_tax_no", prop.getProperty("community_tax_no", ""));
 
             //
         } catch (IOException e) {

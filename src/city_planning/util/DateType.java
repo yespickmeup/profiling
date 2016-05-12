@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +40,7 @@ public class DateType {
     public static SimpleDateFormat slash_w_time = new SimpleDateFormat("MM/dd/yyyy HH:mm aa");
     public static SimpleDateFormat time3 = new SimpleDateFormat("hh:mm:ss aa");
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         System.out.println(sf1.format(new Date()));
     }
 
@@ -270,5 +271,79 @@ public class DateType {
             day = "0" + day;
         }
         return day;
+    }
+
+    public static String to_the_nth(String datetime) {
+
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.datetime.format(new Date());
+        }
+        try {
+            d = DateType.datetime.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        int dd = FitIn.toInt(DateType.d.format(d));
+        String month = DateType.m.format(d);
+        String year = DateType.y.format(d);
+
+        String day = "" + dd;
+
+        if (day.endsWith("1") && !day.endsWith("11")) {
+            day = day + "st";
+        } else if (day.endsWith("2") && !day.endsWith("12")) {
+            day = day + "nd";
+        } else if (day.endsWith("3") && !day.endsWith("13")) {
+            day = day + "rd";
+        } else {
+            day = day + "th";
+        }
+        day = day + " day of " + month + " " + year;
+        return day;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(count_age("1991-08-02"));
+    }
+
+    public static int count_age(String datetime) {
+
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.sf.format(new Date());
+        }
+        try {
+            d = DateType.sf.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+
+        GregorianCalendar birth = new GregorianCalendar();
+        birth.setTime(d);
+        int month = birth.get(GregorianCalendar.MONTH);
+        int day = birth.get(GregorianCalendar.DAY_OF_MONTH);
+
+        GregorianCalendar now = new GregorianCalendar();
+
+        int age = now.get(GregorianCalendar.YEAR) - birth.get(GregorianCalendar.YEAR);
+
+        int birthMonth = birth.get(GregorianCalendar.MONTH);
+        int birthDay = birth.get(GregorianCalendar.DAY_OF_MONTH);
+        int nowMonth = now.get(GregorianCalendar.MONTH);
+        int nowDay = now.get(GregorianCalendar.DAY_OF_MONTH);
+
+        if (nowMonth > birthMonth) {
+            age = age + 1;
+        } else if (nowMonth == birthMonth) {
+            if (nowDay >= birthDay) {
+                age = age + 1;
+            }
+        }
+        return age;
     }
 }

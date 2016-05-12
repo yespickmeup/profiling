@@ -5,7 +5,7 @@
  */
 package city_planning.barangay_clearances;
 
-import city_planning.reports.Srpt_bc;
+import city_planning.util.DateType;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import mijzcx.synapse.desk.utils.CloseDialog;
+import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.JasperUtil;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
@@ -205,7 +206,6 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         tf_assets = new Button.Success();
-        tf_assets1 = new Button.Info();
         pnl_report = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -223,22 +223,12 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
             }
         });
 
-        tf_assets1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/newspaper.png"))); // NOI18N
-        tf_assets1.setText("Generate");
-        tf_assets1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_assets1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -246,9 +236,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
 
@@ -318,10 +306,6 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
         print();
     }//GEN-LAST:event_tf_assetsActionPerformed
 
-    private void tf_assets1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_assets1ActionPerformed
-        init_report();
-    }//GEN-LAST:event_tf_assets1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -333,16 +317,15 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel pnl_report;
     private javax.swing.JButton tf_assets;
-    private javax.swing.JButton tf_assets1;
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
         init_key();
     }
 
-    public void do_pass() {
+    public void do_pass(Barangay_clearances.to_barangay_clearances barangay_clearance) {
 
-        init_report();
+        init_report(barangay_clearance);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -363,7 +346,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    private void init_report() {
+    private void init_report(final Barangay_clearances.to_barangay_clearances barangay_clearance) {
 
         jProgressBar1.setString("Loading...Please wait...");
         jProgressBar1.setIndeterminate(true);
@@ -371,21 +354,25 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
 
             @Override
             public void run() {
+                String city_label = System.getProperty("city_label", "Municipality");
+                String pb = System.getProperty("punong_barangay", "JOSE O. DE GUZMAN");
+                String ctn = System.getProperty("community_tax_no", "12345");
+                int ag = DateType.count_age(barangay_clearance.citizen_bday);
 
-                String province = "Province of Siquijor";
-                String city = "Municipality of Siquijor";
-                String barangay = "Barangay Siquijor";
-                String name = "Mr./Mrs./Ms., Jannele Tagsip Amores";
-                String age = "30 yrs of age";
-                String civil_status = "single";
-                String date_issued = "17th day of August 2015";
-                String punong_barangay = "Peck Dominguez Cortez";
-                String or_no = "20150818";
-                String date_paid = "August 17,2015";
-                String amount_paid = "Php 100.00";
-                String community_tax_no = "1234";
-                String issued_on = "August 17,2015";
-                String issued_at = "Poblacion, Siquijor, Siquijor";
+                String province = "Province of " + barangay_clearance.province;
+                String city = city_label + " of " + barangay_clearance.city;
+                String barangay = "Barangay " + barangay_clearance.barangay;
+                String name = "Mr./Mrs./Ms., " + barangay_clearance.citizen;
+                String age = "" + ag + " yrs of age";
+                String civil_status = barangay_clearance.citizen_civil_status;
+                String date_issued = DateType.to_the_nth(barangay_clearance.created_at);
+                String punong_barangay = pb;
+                String or_no = barangay_clearance.barangay_clearance_no;
+                String date_paid = DateType.convert_jan_1_2013_datetime2(barangay_clearance.created_at);
+                String amount_paid = "Php " + FitIn.fmt_wc_0(barangay_clearance.amount_due);
+                String community_tax_no = ctn;
+                String issued_on = DateType.convert_jan_1_2013_datetime2(barangay_clearance.created_at);
+                String issued_at = "Barangay ," + barangay_clearance.barangay + " " + barangay_clearance.city + " City";
                 String body = "This is to certify that " + name + ", " + age + ", Filipino, with residence and postal address at " + issued_at + ", is personally known to me to be a person of good"
                         + " moral character in this community and to my knowledge has not been accused of any crime or misdemeanor.";
                 String footer = "This clearance is being issued upon request of " + name + " for whatever legal purpose this may serve or deem necessary.";

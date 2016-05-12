@@ -1225,10 +1225,12 @@ public class Dlg_clearance extends javax.swing.JDialog {
         if (jCheckBox3.isSelected()) {
             is_fixed = 1;
         }
-
+        String pb = System.getProperty("punong_barangay", "JOSE O. DE GUZMAN");
         double amount_tendered = FitIn.toDouble(jTextField5.getText());
-        String punong_barangay = "";
-        final Barangay_clearances.to_barangay_clearances barangay_clearance = new Barangay_clearances.to_barangay_clearances(id, barangay_clearance_no, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, citizen, citizen_id, house_no, household_no, household_member_no, transient_no, purpose, is_fixed, amount_due, amount_tendered, punong_barangay);
+        String punong_barangay = pb;
+        String citizen_bday = household_member.bday;
+        String citizen_civil_status = household_member.marital_status;
+        final Barangay_clearances.to_barangay_clearances barangay_clearance = new Barangay_clearances.to_barangay_clearances(id, barangay_clearance_no, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, citizen, citizen_id, house_no, household_no, household_member_no, transient_no, purpose, is_fixed, amount_due, amount_tendered, punong_barangay, citizen_bday, citizen_civil_status);
         Barangay_clearances.add_data(barangay_clearance);
         clear_barangay_clearance_fields();
         household_member = null;
@@ -1248,7 +1250,7 @@ public class Dlg_clearance extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_report_barangay_clearance nd = Dlg_report_barangay_clearance.create(p, true);
         nd.setTitle("");
-        nd.do_pass();
+        nd.do_pass(barangay_clearance);
         nd.setCallback(new Dlg_report_barangay_clearance.Callback() {
 
             @Override
@@ -1270,7 +1272,7 @@ public class Dlg_clearance extends javax.swing.JDialog {
         tbl_barangay_clearances.setModel(tbl_barangay_clearances_M);
         tbl_barangay_clearances.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_barangay_clearances.setRowHeight(25);
-        int[] tbl_widths_barangay_clearances = {130, 100, 100, 80, 80, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_barangay_clearances = {130, 80, 100, 80, 60, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_barangay_clearances.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -1448,6 +1450,15 @@ public class Dlg_clearance extends javax.swing.JDialog {
         final Field.Search tf = (Field.Search) jTextField11;
         String where = " where location like '%" + tf.getText() + "%'";
         final List<Business_clearance_locations.to_business_clearance_locations> business_clearance_locations = Business_clearance_locations.ret_data(where);
+        if (business_clearance_locations.isEmpty()) {
+            if (!tf.getText().isEmpty()) {
+                Business_clearance_locations.to_business_clearance_locations to = new Business_clearance_locations.to_business_clearance_locations(0, tf.getText());
+                Business_clearance_locations.add_data(to);
+                init_business_clearance_locations();
+                return;
+            }
+        }
+
         Object[][] obj = new Object[business_clearance_locations.size()][1];
         int i = 0;
         for (Business_clearance_locations.to_business_clearance_locations to : business_clearance_locations) {
@@ -1553,7 +1564,7 @@ public class Dlg_clearance extends javax.swing.JDialog {
         tbl_business_clearances.setModel(tbl_business_clearances_M);
         tbl_business_clearances.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_business_clearances.setRowHeight(25);
-        int[] tbl_widths_business_clearances = {120, 60, 100, 80, 40, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_business_clearances = {120, 80, 100, 80, 60, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_business_clearances.length; i < n; i++) {
             if (i == 2 || i == 3) {
                 continue;
