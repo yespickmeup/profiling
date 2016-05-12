@@ -4664,7 +4664,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Initialize_table_household_members.init_tbl_household_member_prefered_works(tbl_household_member_prefered_works);
 
         try {
-            webcams = Webcam.getWebcams();
+            webcams = Webcam.getWebcams();          
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -4677,7 +4677,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 tf_household_no.grabFocus();
             }
         });
-
     }
 
     Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "");
@@ -6718,7 +6717,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
             try {
                 for (int i = 0; i < webcams.size(); i++) {
-                    Webcam webcam = webcams.get(i);
+                    Webcam webcam = webcams.get(0);
                     File file = new File(path + "\\" + my_household_member_transient_no + ".jpg");
                     ImageIO.write(webcam.getImage(), "JPG", file);
                 }
