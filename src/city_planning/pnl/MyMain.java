@@ -39,7 +39,7 @@ public class MyMain {
         try {
 
             Properties prop = new Properties();
-            String conf = "my_config_city_planning.conf";
+            String conf = "my_config_profiling.conf";
             String userHome = System.getProperty("user.home");
             File file = new File(userHome + "/" + conf);
             if (file.exists()) {
