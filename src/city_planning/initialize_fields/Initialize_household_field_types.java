@@ -6,7 +6,6 @@
 package city_planning.initialize_fields;
 
 import city_planning.household_concerns.Household_concerns;
-import city_planning.household_concerns.Household_concerns.to_household_member_concerns;
 import city_planning.household_problems.Household_problems;
 import static city_planning.initialize_fields.Initialize_household_field_types.problems;
 import city_planning.util.TableRenderer;

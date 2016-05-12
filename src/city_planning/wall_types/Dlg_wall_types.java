@@ -279,9 +279,9 @@ public class Dlg_wall_types extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,12 +304,12 @@ public class Dlg_wall_types extends javax.swing.JDialog {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_wall_type, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -319,10 +319,10 @@ public class Dlg_wall_types extends javax.swing.JDialog {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -330,7 +330,7 @@ public class Dlg_wall_types extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -364,7 +364,7 @@ public class Dlg_wall_types extends javax.swing.JDialog {
     }//GEN-LAST:event_tbl_wall_typesMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       delete_wall_types();
+        delete_wall_types();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -406,7 +406,7 @@ public class Dlg_wall_types extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -479,28 +479,27 @@ public class Dlg_wall_types extends javax.swing.JDialog {
                 case 0:
                     return tt.wall_type;
                 default:
-                    return tt.wall_type;
+                    return " " + tt.wall_type;
             }
         }
     }
 //</editor-fold> 
-    
-      private void ret_data() {
+
+    private void ret_data() {
         String where = " order by wall_type asc";
         List<to_wall_types> datas = Wall_types.ret_data(where);
         loadData_wall_types(datas);
     }
-
 
     private void add_wall_types() {
 
         int id = 0;
         String wall_type = tf_wall_type.getText();
 
-        to_wall_types to = new to_wall_types(id, wall_type,false);
+        to_wall_types to = new to_wall_types(id, wall_type, false);
         Wall_types.add_data(to);
         tf_wall_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Added!");
 
@@ -527,11 +526,11 @@ public class Dlg_wall_types extends javax.swing.JDialog {
         int id = to.id;
         String wall_type = tf_wall_type.getText();
 
-        to_wall_types to1 = new to_wall_types(id, wall_type,false);
+        to_wall_types to1 = new to_wall_types(id, wall_type, false);
         Wall_types.update_data(to1);
         tf_wall_type.setText("");
 
-       ret_data();
+        ret_data();
         System.out.println("Successfully updated!");
     }
 
@@ -549,5 +548,4 @@ public class Dlg_wall_types extends javax.swing.JDialog {
 
     }
 
-  
 }

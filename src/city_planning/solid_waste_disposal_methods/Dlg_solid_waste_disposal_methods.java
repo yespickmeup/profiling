@@ -197,7 +197,6 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         tf_disposal_method = new Field.Input();
         jTextField2 = new Field.Search();
-        jLabel5 = new Label.Separator();
         jButton1 = new Button.Warning();
         jButton2 = new Button.Info();
         jButton3 = new Button.Primary();
@@ -238,15 +237,16 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         jLabel3.setText("Status:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Solid Waste Disposal Methods:");
+        jLabel4.setText("Solid Waste Disposal Method:");
 
         tf_disposal_method.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disposal_method.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disposal_methodActionPerformed(evt);
+            }
+        });
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -281,10 +281,9 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,12 +306,12 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_disposal_method, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,12 +321,10 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -335,7 +332,7 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -357,20 +354,24 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       add_solid_waste_disposal_methods();
+        add_solid_waste_disposal_methods();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       update_solid_waste_disposal_methods();
+        update_solid_waste_disposal_methods();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tbl_solid_waste_disposal_methodsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_solid_waste_disposal_methodsMouseClicked
-       select_solid_waste_disposal_methods();
+        select_solid_waste_disposal_methods();
     }//GEN-LAST:event_tbl_solid_waste_disposal_methodsMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         delete_solid_waste_disposal_methods();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tf_disposal_methodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disposal_methodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_disposal_methodActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,7 +386,6 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -411,7 +411,7 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -432,9 +432,9 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         tbl_solid_waste_disposal_methods.setModel(tbl_solid_waste_disposal_methods_M);
         tbl_solid_waste_disposal_methods.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_solid_waste_disposal_methods.setRowHeight(25);
-        int[] tbl_widths_solid_waste_disposal_methods = {0, 100};
+        int[] tbl_widths_solid_waste_disposal_methods = {100, 0};
         for (int i = 0, n = tbl_widths_solid_waste_disposal_methods.length; i < n; i++) {
-            if (i == 1) {
+            if (i == 0) {
                 continue;
             }
             TableWidthUtilities.setColumnWidth(tbl_solid_waste_disposal_methods, i, tbl_widths_solid_waste_disposal_methods[i]);
@@ -455,7 +455,7 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
     public static class Tblsolid_waste_disposal_methodsModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Disposal_method", "disposal_method"
+            "Method", "disposal_method"
         };
 
         public Tblsolid_waste_disposal_methodsModel(ListModel listmodel) {
@@ -483,19 +483,19 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
             to_solid_waste_disposal_methods tt = (to_solid_waste_disposal_methods) getRow(row);
             switch (col) {
                 case 0:
-                    return tt.disposal_method;
+                    return " " + tt.disposal_method;
                 default:
                     return tt.disposal_method;
             }
         }
     }
 //</editor-fold> 
-     private void ret_data() {
+
+    private void ret_data() {
         String where = "order by disposal_method asc ";
         List<to_solid_waste_disposal_methods> datas = Solid_waste_disposal_methods.ret_data(where);
         loadData_solid_waste_disposal_methods(datas);
     }
-
 
     private void add_solid_waste_disposal_methods() {
 
@@ -505,7 +505,7 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         to_solid_waste_disposal_methods to = new to_solid_waste_disposal_methods(id, disposal_method);
         Solid_waste_disposal_methods.add_data(to);
         tf_disposal_method.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Added!");
 
@@ -536,8 +536,8 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         Solid_waste_disposal_methods.update_data(to1);
         tf_disposal_method.setText("");
 
-            ret_data();
-            System.out.println("Successfully Updated!");
+        ret_data();
+        System.out.println("Successfully Updated!");
     }
 
     private void delete_solid_waste_disposal_methods() {
@@ -549,11 +549,10 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         to_solid_waste_disposal_methods to = (to_solid_waste_disposal_methods) tbl_solid_waste_disposal_methods_ALM.get(row);
         Solid_waste_disposal_methods.delete_data(to);
         tf_disposal_method.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Deleted!");
 
     }
 
-   
 }

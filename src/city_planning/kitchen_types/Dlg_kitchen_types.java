@@ -25,8 +25,6 @@ import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 import synsoftech.fields.Label;
 
-
-
 /**
  *
  * @author Guinness
@@ -240,7 +238,7 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
         jLabel3.setText("Status:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("kitchen_types:");
+        jLabel4.setText("Type:");
 
         tf_kitchen_type.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -279,9 +277,9 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,12 +302,12 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_kitchen_type, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -321,8 +319,8 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -330,7 +328,7 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -406,7 +404,7 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -450,7 +448,7 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
     public static class Tblkitchen_typesModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "id", "Kitchen_type"
+            "id", "Type"
         };
 
         public Tblkitchen_typesModel(ListModel listmodel) {
@@ -480,11 +478,12 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
                 case 0:
                     return tt.kitchen_type;
                 default:
-                    return tt.kitchen_type;
+                    return " " + tt.kitchen_type;
             }
         }
     }
 //</editor-fold> 
+
     private void ret_data() {
         String where = "order by kitchen_type asc ";
         List<to_kitchen_types> datas = Kitchen_types.ret_data(where);
@@ -499,7 +498,7 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
         to_kitchen_types to = new to_kitchen_types(id, kitchen_type);
         Kitchen_types.add_data(to);
         tf_kitchen_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Added!");
 
@@ -529,7 +528,7 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
         to_kitchen_types to1 = new to_kitchen_types(id, kitchen_type);
         Kitchen_types.update_data(to1);
         tf_kitchen_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully updated!");
 
@@ -544,12 +543,10 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
         to_kitchen_types to = (to_kitchen_types) tbl_kitchen_types_ALM.get(row);
         Kitchen_types.delete_data(to);
         tf_kitchen_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Delete!");
 
     }
-
-    
 
 }

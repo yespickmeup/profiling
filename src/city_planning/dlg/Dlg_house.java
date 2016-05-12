@@ -6,7 +6,14 @@
 package city_planning.dlg;
 
 import city_planning.barangays.Barangays;
+import city_planning.barangays.Dlg_barangays;
+import city_planning.bathroom_types.Dlg_bathroom_types;
 import city_planning.building_types.Dlg_building_types;
+import city_planning.cities.Dlg_cities;
+import city_planning.communication_types.Dlg_communication;
+import city_planning.compartments.Dlg_compartments;
+import city_planning.cooking_lighting_types.Dlg_cooking_lightning_types;
+import city_planning.floor_types.Dlg_floor_types;
 import city_planning.household_assets.Household_assets;
 import city_planning.household_consumptions.Household_consumptions;
 import city_planning.household_expenditures.Household_expenditures;
@@ -15,9 +22,19 @@ import city_planning.households.Households;
 import city_planning.houses.Houses;
 import city_planning.initialize_fields.Initialize_house_field_types;
 import city_planning.initialize_fields.Initialize_search_record_field_types;
+import city_planning.kitchen_types.Dlg_kitchen_types;
+import city_planning.provinces.Dlg_provinces;
+import city_planning.puroks.Dlg_puroks;
+import city_planning.regions.Dlg_regions;
+import city_planning.roof_types.Dlg_roof_types;
+import city_planning.solid_waste_disposal_methods.Dlg_solid_waste_disposal_methods;
+import city_planning.toilet_types.Dlg_toilet_types;
+import city_planning.tranportation_types.Dlg_transportation_types;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
 import city_planning.util.Dlg_confirm_action;
+import city_planning.wall_types.Dlg_wall_types;
+import city_planning.water_sources.Dlg_water_sources;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -715,7 +732,7 @@ public class Dlg_house extends javax.swing.JDialog {
                     .addComponent(lbl_facilities2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_house_condition2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel200, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                        .addComponent(jLabel200, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_disposals, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -1230,11 +1247,11 @@ public class Dlg_house extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_barangayActionPerformed
 
     private void tf_purokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_purokActionPerformed
-        Initialize_house_field_types.init_puroks(tf_purok);
+        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
     }//GEN-LAST:event_tf_purokActionPerformed
 
     private void tf_purokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_purokMouseClicked
-        Initialize_house_field_types.init_puroks(tf_purok);
+        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
     }//GEN-LAST:event_tf_purokMouseClicked
 
     private void tf_roofsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_roofsActionPerformed
@@ -1539,6 +1556,46 @@ public class Dlg_house extends javax.swing.JDialog {
                 disposed();
             }
         });
+        tf_region.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    regions();
+                }
+            }
+        });
+        tf_province.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    provinces();
+                }
+            }
+        });
+        tf_city.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    cities();
+                }
+            }
+        });
+        tf_barangay.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    barangays();
+                }
+            }
+        });
+        tf_purok.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    puroks();
+                }
+            }
+        });
 
         tf_buildings.addKeyListener(new KeyAdapter() {
             @Override
@@ -1548,10 +1605,197 @@ public class Dlg_house extends javax.swing.JDialog {
                 }
             }
         });
+        tf_toilets.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    toilet_types();
+                }
+            }
+        });
+        tf_compartments.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    compartments();
+                }
+            }
+        });
+        tf_bathrooms.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    bathroom_types();
+                }
+            }
+        });
+        tf_disposals.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    waste_disposal();
+                }
+            }
+        });
+        tf_kitchens.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    kitchen_types();
+                }
+            }
+        });
+        tf_transportations.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    transportation_types();
+                }
+            }
+        });
+        tf_roofs.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    roof_types();
+                }
+            }
+        });
+        tf_walls.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    wall_types();
+                }
+            }
+        });
+        tf_floors.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    floor_types();
+                }
+            }
+        });
+        tf_communications.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    communication();
+                }
+            }
+        });
+        tf_lighting.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    lighting();
+                }
+            }
+        });
+        tf_cookings.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    lighting();
+                }
+            }
+        });
+        tf_drinking_water_src.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    water_sources();
+                }
+            }
+        });
+        tf_nearest_water_src.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    water_sources();
+                }
+            }
+        });
     }
 
     // </editor-fold>
     //<editor-fold defaultstate="collapsed" desc=" prompts ">
+    private void regions() {
+        Window p = (Window) this;
+        Dlg_regions nd = Dlg_regions.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_regions.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_regions.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void provinces() {
+        Window p = (Window) this;
+        Dlg_provinces nd = Dlg_provinces.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_provinces.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_provinces.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void cities() {
+        Window p = (Window) this;
+        Dlg_cities nd = Dlg_cities.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_cities.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_cities.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void barangays() {
+        Window p = (Window) this;
+        Dlg_barangays nd = Dlg_barangays.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_barangays.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_barangays.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void puroks() {
+        Window p = (Window) this;
+        Dlg_puroks nd = Dlg_puroks.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_puroks.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_puroks.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
     private void building_types() {
         Window p = (Window) this;
         Dlg_building_types nd = Dlg_building_types.create(p, true);
@@ -1561,6 +1805,189 @@ public class Dlg_house extends javax.swing.JDialog {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_building_types.OutputData data) {
                 closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void toilet_types() {
+        Window p = (Window) this;
+        Dlg_toilet_types nd = Dlg_toilet_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_toilet_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_toilet_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void compartments() {
+        Window p = (Window) this;
+        Dlg_compartments nd = Dlg_compartments.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_compartments.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_compartments.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void bathroom_types() {
+        Window p = (Window) this;
+        Dlg_bathroom_types nd = Dlg_bathroom_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_bathroom_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_bathroom_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void waste_disposal() {
+        Window p = (Window) this;
+        Dlg_solid_waste_disposal_methods nd = Dlg_solid_waste_disposal_methods.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_solid_waste_disposal_methods.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_solid_waste_disposal_methods.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void kitchen_types() {
+        Window p = (Window) this;
+        Dlg_kitchen_types nd = Dlg_kitchen_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_kitchen_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_kitchen_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void transportation_types() {
+        Window p = (Window) this;
+        Dlg_transportation_types nd = Dlg_transportation_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_transportation_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_transportation_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void roof_types() {
+        Window p = (Window) this;
+        Dlg_roof_types nd = Dlg_roof_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_roof_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_roof_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void wall_types() {
+        Window p = (Window) this;
+        Dlg_wall_types nd = Dlg_wall_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_wall_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_wall_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void floor_types() {
+        Window p = (Window) this;
+        Dlg_floor_types nd = Dlg_floor_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_floor_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_floor_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void communication() {
+        Window p = (Window) this;
+        Dlg_communication nd = Dlg_communication.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_communication.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_communication.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void lighting() {
+        Window p = (Window) this;
+        Dlg_cooking_lightning_types nd = Dlg_cooking_lightning_types.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_cooking_lightning_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_cooking_lightning_types.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void water_sources() {
+        Window p = (Window) this;
+        Dlg_water_sources nd = Dlg_water_sources.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_water_sources.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_water_sources.OutputData data) {
+                closeDialog.ok();
+
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1780,6 +2207,16 @@ public class Dlg_house extends javax.swing.JDialog {
         String purok_id = pur.getId();
         int status = 1;
         String house_no = tf_house_number.getText();
+        if (house_no.isEmpty()) {
+            Alert.set(0, "Input House Number!");
+            return;
+        }
+        String where = " where house_no='" + house_no + "' ";
+        List<Houses.to_houses> datas = Houses.ret_data(where);
+        if (!datas.isEmpty()) {
+            Alert.set(0, "Duplicate House No, Retry!");
+            return;
+        }
         int no_of_rooms = FitIn.toInt(tf_no_rooms.getText());
         String bldg_types = tf_buildings.getText();
         String bldg_permit = tf_bldg_permit.getText();
@@ -1832,6 +2269,10 @@ public class Dlg_house extends javax.swing.JDialog {
         String purok_id = pur.getId();
         int status = house.status;
         String house_no = house.house_no;
+        if (house_no.isEmpty()) {
+            Alert.set(0, "Input House Number!");
+            return;
+        }
         int no_of_rooms = FitIn.toInt(tf_no_rooms.getText());
         String bldg_types = tf_buildings.getText();
         String bldg_permit = tf_bldg_permit.getText();

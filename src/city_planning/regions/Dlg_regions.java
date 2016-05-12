@@ -7,9 +7,11 @@ package city_planning.regions;
 
 
 import city_planning.regions.Regions.to_regions;
+import city_planning.util.Dlg_confirm_action;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -23,7 +25,6 @@ import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
-import synsoftech.fields.Label;
 
 /**
  *
@@ -198,7 +199,6 @@ public class Dlg_regions extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         tf_region = new Field.Input();
         jTextField2 = new Field.Search();
-        jLabel5 = new Label.Separator();
         jButton1 = new Button.Warning();
         jButton2 = new Button.Info();
         jButton3 = new Button.Primary();
@@ -250,10 +250,6 @@ public class Dlg_regions extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,10 +278,9 @@ public class Dlg_regions extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -308,12 +303,12 @@ public class Dlg_regions extends javax.swing.JDialog {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_region, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -323,12 +318,10 @@ public class Dlg_regions extends javax.swing.JDialog {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -336,7 +329,7 @@ public class Dlg_regions extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -386,7 +379,6 @@ public class Dlg_regions extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -487,7 +479,7 @@ public class Dlg_regions extends javax.swing.JDialog {
                 case 0:
                     return tt.id;
                 default:
-                    return tt.region;
+                    return " "+tt.region;
             }
         }
     }
@@ -547,11 +539,24 @@ public class Dlg_regions extends javax.swing.JDialog {
         if (row < 0) {
             return;
         }
-        to_regions to = (to_regions) tbl_regions_ALM.get(row);
-        Regions.delete_data(to);
+       final to_regions to = (to_regions) tbl_regions_ALM.get(row);
+        Window p = (Window) this;
+        Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_confirm_action.Callback() {
+            
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                closeDialog.ok();
+                 Regions.delete_data(to);
         tf_region.setText("");
         ret_data();
         System.out.println("Successfully Deleted");
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+       
 
     }
 

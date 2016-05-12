@@ -6,31 +6,48 @@ package city_planning.pnl;
 
 import city_planning.achievements.Dlg_achievements;
 import city_planning.assets.Dlg_assets;
+import city_planning.barangays.Dlg_barangays;
+import city_planning.basic_needs.Dlg_basic_needs;
 import city_planning.bathroom_types.Dlg_bathroom_types;
 import city_planning.blood_types.Dlg_blood_types;
 import city_planning.building_types.Dlg_building_types;
 import city_planning.businesses.Dlg_businesses;
 import city_planning.certifications.Dlg_certifications;
 import city_planning.cities.Dlg_cities;
+import city_planning.citizenships.Dlg_citizenships;
 import city_planning.clearances.Dlg_clearance;
 
 import city_planning.communication_types.Dlg_communication;
+import city_planning.compartments.Dlg_compartments;
+import city_planning.cooking_lighting_types.Dlg_cooking_lightning_types;
+import city_planning.disabilities.Dlg_disabilities;
+import city_planning.disposal_methods.Dlg_disposal_methods;
 import city_planning.dlg.Dlg_search;
 
 import city_planning.educational_statuses.Dlg_educational_status;
+import city_planning.floor_types.Dlg_floor_types;
 import city_planning.genders.Dlg_genders;
 import city_planning.kitchen_types.Dlg_kitchen_types;
 import static city_planning.pnl.MyMain.getSerialNumber;
+import city_planning.professions.Dlg_professions;
+import city_planning.provinces.Dlg_provinces;
+import city_planning.puroks.Dlg_puroks;
+import city_planning.regions.Dlg_regions;
+import city_planning.religions.Dlg_religions;
 import city_planning.roof_types.Dlg_roof_types;
 import city_planning.schools.Dlg_schools;
 import city_planning.skills.Dlg_skills;
+import city_planning.solid_waste_disposal_methods.Dlg_solid_waste_disposal_methods;
+import city_planning.streets.Dlg_streets;
 import city_planning.toilet_types.Dlg_toilet_types;
 import city_planning.util.Alert;
 import city_planning.util.DeEncrypter;
 import city_planning.util.Dlg_get_hdd_serial;
 import city_planning.util.MyFrame;
 import city_planning.wall_types.Dlg_wall_types;
-import city_planning_transportation_available.Dlg_transportation_types;
+import city_planning.tranportation_types.Dlg_transportation_types;
+import city_planning.users.Dlg_users;
+import city_planning.water_sources.Dlg_water_sources;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -466,7 +483,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void tf_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_usernameActionPerformed
-      
+
         tf_password.grabFocus();
     }//GEN-LAST:event_tf_usernameActionPerformed
 
@@ -690,42 +707,30 @@ public class Dashboard extends javax.swing.JFrame {
                 }
 
                 //<editor-fold defaultstate="collapsed" desc=" transactions ">
-                if (data.stmt.equals("Accounts Payable")) {
-                    dlg_same_size();
+                if (data.stmt.equals("Profiles")) {
+                    transactions_profiles();
                 }
 
-                if (data.stmt.equals("Accounts Receivable")) {
-                    dlg_maximize();
+                if (data.stmt.equals("Clearances")) {
+                    transactions_clearances();
                 }
-                if (data.stmt.equals("Education")) {
 
-                }
-                if (data.stmt.equals("Achievements")) {
-                    transactions_search();
-                }
-                if (data.stmt.equals("assets")) {
-                    transactions_collections();
-                }
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" maintenance ">
-                if (data.stmt.equals("Assets")) {
-                    transactions_collections();
-                }
                 if (data.stmt.equals("Achievements")) {
-                    transactions_search();
+                    maintenance_achievements();
                 }
-
-                if (data.stmt.equals("Business")) {
-                    maintenance_businesses();
+                if (data.stmt.equals("Assets")) {
+                    maintenance_assets();
+                }
+                if (data.stmt.equals("Barangays")) {
+                    maintenance_barangays();
+                }
+                if (data.stmt.equals("Basic Needs")) {
+                    maintenance_basic_needs();
                 }
                 if (data.stmt.equals("Bathroom Types")) {
                     maintenance_bathroom_types();
-                }
-                if (data.stmt.equals("Certifications")) {
-                    maintenance_certifications();
-                }
-                if (data.stmt.equals("Cities")) {
-                    maintenance_cities();
                 }
                 if (data.stmt.equals("Blood Types")) {
                     maintenance_blood_types();
@@ -733,40 +738,87 @@ public class Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Building Types")) {
                     maintenance_building_types();
                 }
-                if (data.stmt.equals("Kitchen")) {
-                    maintenance_kitchen();
+                if (data.stmt.equals("Certifications")) {
+                    maintenance_certifications();
                 }
-                if (data.stmt.equals("Communication")) {
+                if (data.stmt.equals("Cities")) {
+                    maintenance_cities();
+                }
+                if (data.stmt.equals("Citizenships")) {
+                    maintenance_citizenships();
+                }
+
+                if (data.stmt.equals("Communication Types")) {
                     maintenance_communication();
                 }
-                if (data.stmt.equals("Education")) {
+                if (data.stmt.equals("Compartments")) {
+                    maintenance_compartments();
+                }
+                if (data.stmt.equals("Cooking Lightning Types")) {
+                    maintenance_cooking_lighting_types();
+                }
+                if (data.stmt.equals("Disabilities")) {
+                    maintenance_disabilities();
+                }
+                if (data.stmt.equals("Disposal Methods")) {
+                    maintenance_disposal_methods();
+                }
+                if (data.stmt.equals("Educational Statuses")) {
                     maintenance_educational_status();
                 }
-                if (data.stmt.equals("Genders")) {
-                    maintenance_genders();
+                if (data.stmt.equals("Floor Types")) {
+                    maintenance_floor_types();
+                }
+                if (data.stmt.equals("Kitchen Types")) {
+                    maintenance_kitchen();
+                }
+                if (data.stmt.equals("Professions")) {
+                    maintenance_professions();
+                }
+                if (data.stmt.equals("Provinces")) {
+                    maintenance_provinces();
+                }
+                if (data.stmt.equals("Puroks")) {
+                    maintenance_puroks();
+                }
+                if (data.stmt.equals("Regions")) {
+                    maintenance_regions();
+                }
+                if (data.stmt.equals("Religions")) {
+                    maintenance_religions();
+                }
+                if (data.stmt.equals("Roof Types")) {
+                    maintenance_roof_types();
+                }
+                if (data.stmt.equals("Schools")) {
+                    maintenance_school();
                 }
 
                 if (data.stmt.equals("Skills")) {
                     maintenance_skills();
                 }
-
-                if (data.stmt.equals("Transportation")) {
-                    maintenance_transportation_available();
+                if (data.stmt.equals("Solid Waste Disposal Methods")) {
+                    maintenance_solid_waste_disposal_methods();
                 }
-                if (data.stmt.equals("Roof")) {
-                    maintenance_roof_types();
+                if (data.stmt.equals("Streets")) {
+                    maintenance_streets();
                 }
-
-                if (data.stmt.equals("Wall")) {
-                    maintenance_wall_types();
-                }
-                if (data.stmt.equals("Toilet")) {
+                if (data.stmt.equals("Toilet Types")) {
                     maintenance_toilet_types();
                 }
-                if (data.stmt.equals("School")) {
-                    maintenance_school();
+                if (data.stmt.equals("Transportation Types")) {
+                    maintenance_transportation_available();
                 }
 
+                if (data.stmt.equals("Users")) {
+                    maintenance_users();
+                }
+                if (data.stmt.equals("Wall Types")) {
+                    maintenance_wall_types();
+                }
+                if (data.stmt.equals("Water Sources")) {
+                    maintenance_water_sources();
+                }
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" Reports ">
                 if (data.stmt.equals("Customers Report")) {
@@ -803,9 +855,23 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.updateUI();
 
         cardLayout.show(pnl_main_holder, "2");
-        transactions_search();
+
+    }
+    //<editor-fold defaultstate="collapsed" desc=" transaction functions ">
+
+    private void transactions_profiles() {
+
+        Dlg_search dtc = new Dlg_search();
+        MyFrame.set(dtc.getSurface(), jPanel1, "Search");
     }
 
+    private void transactions_clearances() {
+
+        Dlg_clearance dtc = new Dlg_clearance();
+        MyFrame.set(dtc.getSurface(), jPanel1, "Search");
+    }
+
+//</editor-fold>
     //<editor-fold defaultstate="collapsed" desc=" maintenance functions ">
     private void maintenance_assets() {
 
@@ -818,6 +884,18 @@ public class Dashboard extends javax.swing.JFrame {
 
         Dlg_achievements dtc = new Dlg_achievements();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Achievements", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_barangays() {
+
+        Dlg_barangays dtc = new Dlg_barangays();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Barangays", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_basic_needs() {
+
+        Dlg_basic_needs dtc = new Dlg_basic_needs();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Basic Needs", dtc.getWidth(), dtc.getHeight());
     }
 
     private void maintenance_blood() {
@@ -838,6 +916,30 @@ public class Dashboard extends javax.swing.JFrame {
         MyFrame.set2(dtc.getSurface(), jPanel1, "Communication", dtc.getWidth(), dtc.getHeight());
     }
 
+    private void maintenance_compartments() {
+
+        Dlg_compartments dtc = new Dlg_compartments();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Compartments", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_cooking_lighting_types() {
+
+        Dlg_cooking_lightning_types dtc = new Dlg_cooking_lightning_types();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Cooking Lighting Types", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_disabilities() {
+
+        Dlg_disabilities dtc = new Dlg_disabilities();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Disabilities", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_disposal_methods() {
+
+        Dlg_disposal_methods dtc = new Dlg_disposal_methods();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Disposal Methods", dtc.getWidth(), dtc.getHeight());
+    }
+
     private void maintenance_certifications() {
 
         Dlg_certifications dtc = new Dlg_certifications();
@@ -848,6 +950,12 @@ public class Dashboard extends javax.swing.JFrame {
 
         Dlg_cities dtc = new Dlg_cities();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Cities", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_citizenships() {
+
+        Dlg_citizenships dtc = new Dlg_citizenships();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Citizenships", dtc.getWidth(), dtc.getHeight());
     }
 
     private void maintenance_bathroom_types() {
@@ -874,6 +982,36 @@ public class Dashboard extends javax.swing.JFrame {
         MyFrame.set2(dtc.getSurface(), jPanel1, "Kitchen", dtc.getWidth(), dtc.getHeight());
     }
 
+    private void maintenance_professions() {
+
+        Dlg_professions dtc = new Dlg_professions();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Professions", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_provinces() {
+
+        Dlg_provinces dtc = new Dlg_provinces();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Provinces", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_puroks() {
+
+        Dlg_puroks dtc = new Dlg_puroks();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Puroks", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_regions() {
+
+        Dlg_regions dtc = new Dlg_regions();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Regions", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_religions() {
+
+        Dlg_religions dtc = new Dlg_religions();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Religions", dtc.getWidth(), dtc.getHeight());
+    }
+
     private void maintenance_genders() {
 
         Dlg_genders dtc = new Dlg_genders();
@@ -886,16 +1024,40 @@ public class Dashboard extends javax.swing.JFrame {
         MyFrame.set2(dtc.getSurface(), jPanel1, "Education", dtc.getWidth(), dtc.getHeight());
     }
 
+    private void maintenance_floor_types() {
+
+        Dlg_floor_types dtc = new Dlg_floor_types();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Floor Types", dtc.getWidth(), dtc.getHeight());
+    }
+
     private void maintenance_skills() {
 
         Dlg_skills dtc = new Dlg_skills();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Skills", dtc.getWidth(), dtc.getHeight());
     }
 
+    private void maintenance_solid_waste_disposal_methods() {
+
+        Dlg_solid_waste_disposal_methods dtc = new Dlg_solid_waste_disposal_methods();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Solid Waste Disposal Methods", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_streets() {
+
+        Dlg_streets dtc = new Dlg_streets();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Streets", dtc.getWidth(), dtc.getHeight());
+    }
+
     private void maintenance_transportation_available() {
 
         Dlg_transportation_types dtc = new Dlg_transportation_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Transportation", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_users() {
+
+        Dlg_users dtc = new Dlg_users();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Users", dtc.getWidth(), dtc.getHeight());
     }
 
     private void maintenance_roof_types() {
@@ -905,9 +1067,15 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     private void maintenance_wall_types() {
-
+        
         Dlg_wall_types dtc = new Dlg_wall_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Wall", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void maintenance_water_sources() {
+
+        Dlg_water_sources dtc = new Dlg_water_sources();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Water Sources", dtc.getWidth(), dtc.getHeight());
     }
 
     private void maintenance_toilet_types() {
@@ -923,35 +1091,4 @@ public class Dashboard extends javax.swing.JFrame {
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc=" transaction functions ">
-    private void transactions_search() {
-
-        Dlg_search dtc = new Dlg_search();
-        MyFrame.set(dtc.getSurface(), jPanel1, "Search");
-    }
-
-    private void transactions_collections() {
-
-        Dlg_clearance dtc = new Dlg_clearance();
-        MyFrame.set(dtc.getSurface(), jPanel1, "Clearances");
-    }
-
-    private void transactions_achievements() {
-
-        Dlg_achievements dtc = new Dlg_achievements();
-        MyFrame.set2(dtc.getSurface(), jPanel1, "Achievements", dtc.getWidth(), dtc.getHeight());
-    }
-
-    private void transactions_educational_statuses() {
-
-        Dlg_educational_status dtc = new Dlg_educational_status();
-        MyFrame.set2(dtc.getSurface(), jPanel1, "Education", dtc.getWidth(), dtc.getHeight());
-    }
-
-    private void transactions_assets() {
-
-        Dlg_assets dtc = new Dlg_assets();
-        MyFrame.set2(dtc.getSurface(), jPanel1, "Assets", dtc.getWidth(), dtc.getHeight());
-    }
-//</editor-fold>
 }

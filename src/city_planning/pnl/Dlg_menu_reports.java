@@ -190,6 +190,9 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -206,6 +209,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/team2.png"))); // NOI18N
+        jLabel7.setToolTipText("Barangay Clearances");
         jLabel7.setOpaque(true);
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -220,6 +224,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/logistics2.png"))); // NOI18N
+        jLabel8.setToolTipText("Business Clearances");
         jLabel8.setOpaque(true);
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -238,23 +243,77 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jXLabel1.setLineWrap(true);
         jXLabel1.setOpaque(true);
 
+        jLabel9.setBackground(new java.awt.Color(234, 234, 234));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/logistics2.png"))); // NOI18N
+        jLabel9.setToolTipText("Households ");
+        jLabel9.setOpaque(true);
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+        });
+
+        jLabel10.setBackground(new java.awt.Color(234, 234, 234));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/team2.png"))); // NOI18N
+        jLabel10.setToolTipText("Houses");
+        jLabel10.setOpaque(true);
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
+            }
+        });
+
+        jLabel11.setBackground(new java.awt.Color(234, 234, 234));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/logistics2.png"))); // NOI18N
+        jLabel11.setToolTipText("Household Members");
+        jLabel11.setOpaque(true);
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel11MouseEntered(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+            .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -295,13 +354,40 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         disposed();
     }//GEN-LAST:event_formWindowLostFocus
 
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11MouseEntered
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private org.jdesktop.swingx.JXLabel jXLabel1;
     // End of variables declaration//GEN-END:variables
@@ -315,7 +401,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
 
     private void hover() {
 
-        JLabel[] lbl = {jLabel7, jLabel8};
+        JLabel[] lbl = {jLabel7, jLabel8,jLabel10,jLabel9,jLabel11};
         for (final JLabel l : lbl) {
             l.addMouseListener(new MouseAdapter() {
                 @Override
@@ -339,7 +425,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
     }
 
     private void hide2() {
-        JLabel[] lbl = {jLabel7, jLabel8};
+        JLabel[] lbl = {jLabel7, jLabel8,jLabel10,jLabel9,jLabel11};
         for (JLabel l : lbl) {
             l.setEnabled(false);
         }
@@ -362,11 +448,11 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
 //            }
 //
 //        }
-        jLabel7.setEnabled(true);
-        jLabel7.setBackground(new java.awt.Color(96, 188, 219));
-
-        jLabel8.setEnabled(true);
-        jLabel8.setBackground(new java.awt.Color(96, 188, 219));
+//        jLabel7.setEnabled(true);
+//        jLabel7.setBackground(new java.awt.Color(96, 188, 219));
+//
+//        jLabel8.setEnabled(true);
+//        jLabel8.setBackground(new java.awt.Color(96, 188, 219));
     }
 
     public void do_pass() {

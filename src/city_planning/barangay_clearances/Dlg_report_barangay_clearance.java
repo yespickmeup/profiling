@@ -9,6 +9,7 @@ import city_planning.util.DateType;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -204,14 +205,17 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         tf_assets = new Button.Success();
-        pnl_report = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
+        pnl_report = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -240,19 +244,6 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
         );
 
-        pnl_report.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pnl_reportLayout = new javax.swing.GroupLayout(pnl_report);
-        pnl_report.setLayout(pnl_reportLayout);
-        pnl_reportLayout.setHorizontalGroup(
-            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 735, Short.MAX_VALUE)
-        );
-        pnl_reportLayout.setVerticalGroup(
-            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
-        );
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jProgressBar1.setString("");
@@ -265,7 +256,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(584, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,22 +272,46 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnl_report.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pnl_reportLayout = new javax.swing.GroupLayout(pnl_report);
+        pnl_report.setLayout(pnl_reportLayout);
+        pnl_reportLayout.setHorizontalGroup(
+            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnl_reportLayout.setVerticalGroup(
+            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 413, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnl_report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(pnl_report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -313,6 +328,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel pnl_report;
@@ -377,8 +393,16 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
                         + " moral character in this community and to my knowledge has not been accused of any crime or misdemeanor.";
                 String footer = "This clearance is being issued upon request of " + name + " for whatever legal purpose this may serve or deem necessary.";
                 String home = System.getProperty("user.home");
-                String img_logo = home + "\\images\\barangay.png";
-                String img_citizen = home + "\\images\\Bcgrngy7i.png";
+                String img_logo = home + "\\images_profiling\\barangay.png";
+                String img_citizen = home + "\\images_profiling\\" + barangay_clearance.barangay_id + "\\" + barangay_clearance.transient_no + ".jpg";
+                System.out.println(img_citizen);
+                File f = new File(img_citizen);
+                if (f.exists()) {
+                    img_citizen = home + "\\images_profiling\\" + barangay_clearance.barangay_id + "\\" + barangay_clearance.transient_no + ".jpg";
+                } else {
+                    img_citizen = home + "\\images_profiling\\Bcgrngy7i.png";
+                }
+
                 Srpt_barangay_clearance rpt = new Srpt_barangay_clearance(province, city, barangay, name, age, civil_status, date_issued, punong_barangay, or_no, date_paid, amount_paid, community_tax_no, issued_on, issued_at, body, footer, img_logo, img_citizen);
 
                 String jrxml = "rpt_barangay_clearance.jrxml";

@@ -392,25 +392,25 @@ public class Dlg_menu extends javax.swing.JDialog {
     }
 
     private void cp() {
-        Window p = (Window) this;
-        Dlg_menu_city_planning nd = Dlg_menu_city_planning.create(p, true);
-        nd.setTitle("");
-
-        nd.setCallback(new Dlg_menu_city_planning.Callback() {
-
-            @Override
-            public void ok(CloseDialog closeDialog, Dlg_menu_city_planning.OutputData data) {
-                closeDialog.ok();
-
-            }
-        });
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        int xSize = ((int) tk.getScreenSize().
-                getWidth());
-        int ySize = ((int) tk.getScreenSize().
-                getHeight());
-        nd.setSize(xSize, ySize);
-        nd.setVisible(true);
+//        Window p = (Window) this;
+//        Dlg_menu_city_planning nd = Dlg_menu_city_planning.create(p, true);
+//        nd.setTitle("");
+//
+//        nd.setCallback(new Dlg_menu_city_planning.Callback() {
+//
+//            @Override
+//            public void ok(CloseDialog closeDialog, Dlg_menu_city_planning.OutputData data) {
+//                closeDialog.ok();
+//
+//            }
+//        });
+//        Toolkit tk = Toolkit.getDefaultToolkit();
+//        int xSize = ((int) tk.getScreenSize().
+//                getWidth());
+//        int ySize = ((int) tk.getScreenSize().
+//                getHeight());
+//        nd.setSize(xSize, ySize);
+//        nd.setVisible(true);
        
     }
      private void peso() {

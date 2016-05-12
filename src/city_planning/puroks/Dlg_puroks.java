@@ -214,10 +214,8 @@ public class Dlg_puroks extends javax.swing.JDialog {
         tf_city = new Field.Combo();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         tf_barangay = new Field.Combo();
         tf_purok = new Field.Combo();
-        tf_street = new Field.Combo();
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -323,9 +321,6 @@ public class Dlg_puroks extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Purok:");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Street:");
-
         tf_barangay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_barangay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -340,26 +335,14 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
         tf_purok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        tf_street.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_street.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_streetMouseClicked(evt);
-            }
-        });
-        tf_street.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_streetActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -379,50 +362,41 @@ public class Dlg_puroks extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_purok, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tf_barangay)
-                            .addComponent(tf_street)
-                            .addComponent(tf_province, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tf_purok, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(tf_barangay))
+                            .addComponent(tf_province)
                             .addComponent(tf_city))
                         .addGap(4, 4, 4)))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tf_province, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(tf_city, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(tf_barangay, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(tf_purok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(tf_street, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_province, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_city, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_barangay, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_purok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,7 +405,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -439,7 +413,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -500,14 +474,6 @@ public class Dlg_puroks extends javax.swing.JDialog {
         init_barangays();
     }//GEN-LAST:event_tf_barangayMouseClicked
 
-    private void tf_streetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_streetActionPerformed
-        init_streets();
-    }//GEN-LAST:event_tf_streetActionPerformed
-
-    private void tf_streetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_streetMouseClicked
-        init_streets();
-    }//GEN-LAST:event_tf_streetMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -520,7 +486,6 @@ public class Dlg_puroks extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -535,7 +500,6 @@ public class Dlg_puroks extends javax.swing.JDialog {
     private javax.swing.JTextField tf_city;
     private javax.swing.JTextField tf_province;
     private javax.swing.JTextField tf_purok;
-    private javax.swing.JTextField tf_street;
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
@@ -747,28 +711,28 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
     private void init_streets() {
 
-        Object[][] obj = new Object[street.size()][1];
-        int i = 0;
-        for (Streets.to_streets to : street) {
-            obj[i][0] = " " + to.province;
-            i++;
-        }
-        JLabel[] labels = {};
-        int[] tbl_widths_customers = {tf_street.getWidth()};
-        String[] col_names = {"Name"};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.
-                setPopup(tf_street, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
-            @Override
-            public void ok(TableRenderer.OutputData data) {
-                Streets.to_streets to = street.get(data.selected_row);
-                Field.Combo field = (Field.Combo) tf_street;
-                field.setText(to.province);
-                field.setId("" + to.id);
-
-            }
-        });
+//        Object[][] obj = new Object[street.size()][1];
+//        int i = 0;
+//        for (Streets.to_streets to : street) {
+//            obj[i][0] = " " + to.province;
+//            i++;
+//        }
+//        JLabel[] labels = {};
+//        int[] tbl_widths_customers = {tf_street.getWidth()};
+//        String[] col_names = {"Name"};
+//        TableRenderer tr = new TableRenderer();
+//        TableRenderer.
+//                setPopup(tf_street, obj, labels, tbl_widths_customers, col_names);
+//        tr.setCallback(new TableRenderer.Callback() {
+//            @Override
+//            public void ok(TableRenderer.OutputData data) {
+//                Streets.to_streets to = street.get(data.selected_row);
+//                Field.Combo field = (Field.Combo) tf_street;
+//                field.setText(to.province);
+//                field.setId("" + to.id);
+//
+//            }
+//        });
     }
 
     //</editor-fold>
@@ -787,7 +751,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
         String barangay_id = ba.getId();
         String barangay = tf_barangay.getText();
         String purok = tf_purok.getText();
-        String street = tf_street.getText();
+        String street = "";
 
         to_puroks to = new to_puroks(id, province_id, province, city_id, city, barangay_id, barangay, purok, street);
         Puroks.add_data(to);
@@ -798,7 +762,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
         tf_barangay.setText("");
         tf_purok.setText("");
-        tf_street.setText("");
+     
         ret_data();
         System.out.println("Successfully");
     }
@@ -820,7 +784,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
         ba.setText(to.barangay_id);
         tf_barangay.setText(to.barangay);
         tf_purok.setText(to.purok);
-        tf_street.setText(to.street);
+       
 
     }
 
@@ -843,7 +807,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
         String barangay_id = ba.getId();
         String barangay = tf_barangay.getText();
         String purok = tf_purok.getText();
-        String street = tf_street.getText();
+        String street = "";
 
         to_puroks to1 = new to_puroks(id, province_id, province, city_id, city, barangay_id, barangay, purok, street);
         Puroks.update_data(to1);
@@ -854,7 +818,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
         tf_barangay.setText("");
         tf_purok.setText("");
-        tf_street.setText("");
+       
         ret_data();
         System.out.println("Successfully");
     }
@@ -874,7 +838,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
         tf_barangay.setText("");
         tf_purok.setText("");
-        tf_street.setText("");
+       
         ret_data();
         System.out.println("Successfully Deleted");
     }

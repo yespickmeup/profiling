@@ -276,9 +276,9 @@ public class Dlg_floor_types extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -301,12 +301,12 @@ public class Dlg_floor_types extends javax.swing.JDialog {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_floor_type, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -316,10 +316,10 @@ public class Dlg_floor_types extends javax.swing.JDialog {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -327,7 +327,7 @@ public class Dlg_floor_types extends javax.swing.JDialog {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -403,7 +403,7 @@ public class Dlg_floor_types extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -446,7 +446,7 @@ public class Dlg_floor_types extends javax.swing.JDialog {
     public static class Tblfloor_typesModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "floor_type", "floor_type"
+            "floor_type", "Type"
         };
 
         public Tblfloor_typesModel(ListModel listmodel) {
@@ -476,12 +476,12 @@ public class Dlg_floor_types extends javax.swing.JDialog {
                 case 0:
                     return tt.floor_type;
                 default:
-                    return tt.floor_type;
+                    return " " + tt.floor_type;
             }
         }
     }
 //</editor-fold> 
-     
+
     private void ret_data() {
         String where = " ";
         List<to_floor_types> datas = Floor_types.ret_data(where);
@@ -493,10 +493,10 @@ public class Dlg_floor_types extends javax.swing.JDialog {
         int id = 0;
         String floor_type = tf_floor_type.getText();
 
-        to_floor_types to = new to_floor_types(id, floor_type,false);
+        to_floor_types to = new to_floor_types(id, floor_type, false);
         Floor_types.add_data(to);
         tf_floor_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Added!");
 
@@ -523,10 +523,10 @@ public class Dlg_floor_types extends javax.swing.JDialog {
         int id = to.id;
         String floor_type = tf_floor_type.getText();
 
-        to_floor_types to1 = new to_floor_types(id, floor_type,false);
+        to_floor_types to1 = new to_floor_types(id, floor_type, false);
         Floor_types.update_data(to1);
         tf_floor_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Update!");
 
@@ -545,7 +545,5 @@ public class Dlg_floor_types extends javax.swing.JDialog {
         ret_data();
         System.out.println("Successfully Delete");
     }
-
-  
 
 }

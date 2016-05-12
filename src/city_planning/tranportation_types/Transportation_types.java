@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package city_planning_transportation_available;
+package city_planning.tranportation_types;
 
 import city_planning.util.MyConnection;
 import java.sql.Connection;

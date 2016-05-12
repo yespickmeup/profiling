@@ -5,6 +5,8 @@
  */
 package city_planning.dlg;
 
+import city_planning.citizenships.Dlg_citizenships;
+import city_planning.disabilities.Dlg_disabilities;
 import city_planning.household_member_competence_certificates.Household_member_competence_certificates;
 import city_planning.household_member_educational_backgrounds.Household_member_educational_backgrounds;
 import city_planning.household_member_employment_status.Household_member_employment_status;
@@ -17,7 +19,9 @@ import city_planning.household_member_vocational_experiences.Household_member_vo
 import city_planning.household_member_work_experiences.Household_member_work_experiences;
 import city_planning.household_members.Household_members;
 import city_planning.households.Households;
+import city_planning.houses.Houses;
 import city_planning.initialize_fields.Initialize_household_member_field_types;
+import city_planning.religions.Dlg_religions;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
 import city_planning.util.DateType;
@@ -28,8 +32,10 @@ import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -393,6 +399,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel133 = new javax.swing.JLabel();
         tf_household_member_no = new Field.Input();
         jButton3 = new Button.Default();
+        jButton4 = new Button.Default();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lbl_facilities9 = new javax.swing.JLabel();
@@ -905,11 +912,13 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton1.setText("Start");
@@ -934,9 +943,9 @@ public class Dlg_household_members extends javax.swing.JDialog {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1147,6 +1156,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         lbl_barangay1.setText("Barangay:");
 
         tf_barangay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_barangay.setFocusable(false);
         tf_barangay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_barangayMouseClicked(evt);
@@ -1163,6 +1173,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         lbl_purok1.setText("Purok:");
 
         tf_purok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_purok.setFocusable(false);
         tf_purok.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_purokMouseClicked(evt);
@@ -1179,6 +1190,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         lbl_barangay3.setText("Region:");
 
         tf_region.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_region.setFocusable(false);
         tf_region.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_regionMouseClicked(evt);
@@ -1195,6 +1207,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         lbl_barangay2.setText("Province:");
 
         tf_province.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_province.setFocusable(false);
         tf_province.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_provinceMouseClicked(evt);
@@ -1211,6 +1224,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         lbl_barangay4.setText("City/Municipality:");
 
         tf_city.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_city.setFocusable(false);
         tf_city.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_cityMouseClicked(evt);
@@ -1226,7 +1240,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel131.setText("House Number:");
 
         tf_house_no.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_house_no.setFocusable(false);
         tf_house_no.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_house_noMouseClicked(evt);
@@ -1275,6 +1288,13 @@ public class Dlg_household_members extends javax.swing.JDialog {
             }
         });
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/remove11.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
@@ -1295,17 +1315,20 @@ public class Dlg_household_members extends javax.swing.JDialog {
                             .addComponent(lbl_purok1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel19Layout.createSequentialGroup()
-                                .addComponent(tf_household_no)
-                                .addGap(1, 1, 1)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tf_household_member_no)
                             .addComponent(tf_region)
-                            .addComponent(tf_house_no)
                             .addComponent(tf_city)
                             .addComponent(tf_province, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tf_barangay)
-                            .addComponent(tf_purok, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(tf_purok, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tf_house_no, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_household_no))
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
         jPanel19Layout.setVerticalGroup(
@@ -1314,9 +1337,11 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(lbl_basic_Information1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel131, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_house_no, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel131, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_house_no, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1347,7 +1372,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_purok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_purok1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -4233,7 +4258,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_house_noMouseClicked
 
     private void tf_house_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_house_noActionPerformed
-        // TODO add your handling code here:
+        search_houses_no();
     }//GEN-LAST:event_tf_house_noActionPerformed
 
     private void tf_household_noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_household_noMouseClicked
@@ -4295,6 +4320,10 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         clear_hhm_no();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        clear_hhm_no();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4376,6 +4405,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -4660,6 +4690,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     String my_house_no = "";
     String my_household_no = "";
     String my_household_member_no = "";
+    String my_household_member_transient_no = "";
 
     public void do_pass_new(String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, Household_members.to_household_members household_member1) {
         household_member = household_member1;
@@ -4684,12 +4715,13 @@ public class Dlg_household_members extends javax.swing.JDialog {
         my_city = city;
         my_city_id = city_id;
         my_barangay = barangay;
-        my_barangay_id = barangay;
+        my_barangay_id = barangay_id;
         my_purok = purok;
         my_purok_id = purok_id;
 
         String transient_no = Household_members.increment_id();
         tf_household_member_no.setText(transient_no);
+        my_household_member_transient_no = transient_no;
     }
 
     public void do_pass(Household_members.to_household_members household_member1) {
@@ -4721,13 +4753,13 @@ public class Dlg_household_members extends javax.swing.JDialog {
         my_city = household_member1.city;
         my_city_id = household_member1.city_id;
         my_barangay = household_member1.barangay;
-        my_barangay_id = household_member1.barangay;
+        my_barangay_id = household_member1.barangay_id;
         my_purok = household_member1.purok;
         my_purok_id = household_member1.purok_id;
         my_house_no = household_member1.house_no;
         my_household_no = household_member1.household_no;
         my_household_member_no = household_member1.household_member_no;
-
+        my_household_member_transient_no = household_member1.transient_no;
         //<editor-fold defaultstate="collapsed" desc=" Basic Information ">
         tf_house_no.setText(household_member.house_no);
         tf_household_no.setText(household_member.household_no);
@@ -4758,12 +4790,21 @@ public class Dlg_household_members extends javax.swing.JDialog {
         my_household_no = household_member1.household_no;
         my_household_member_no = household_member.household_member_no;
         String home = System.getProperty("user.home", "C:\\Users\\Guinness");
-        System.out.println("House No: " + my_house_no);
-        System.out.println("Household No: " + my_household_no);
-        System.out.println("Household Member No: " + my_household_member_no);
-        String path = home + "\\images\\" + my_region + "\\" + my_province + "\\" + my_city + "\\" + my_barangay + "\\" + my_house_no + "\\" + my_household_no;
-        path = path + "\\" + household_member.image;
-        jLabel21.setIcon(new ImageIcon(path));
+      
+        String path = home + "\\images_profiling\\" + my_barangay_id;
+        path = path + "\\" + household_member.transient_no + ".jpg";
+        File f = new File(path);
+        if (f.exists()) {
+            ImageIcon icon = new ImageIcon(path);
+
+            ImageIcon imageIcon = new ImageIcon(icon.getImage().getScaledInstance(194, 129, Image.SCALE_DEFAULT));
+            jLabel21.setIcon(imageIcon);
+        } else {
+            ImageIcon imageIcon = new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/Bcgrngy7i.png")).getImage().getScaledInstance(194, 129, Image.SCALE_DEFAULT));
+            jLabel21.setIcon(imageIcon);
+        }
+
+        
         System.out.println(path);
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" Load Table Records ">
@@ -4892,13 +4933,82 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 disposed();
             }
         });
-              
+        tf_religions.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    religions();
+                }
+            }
+        });
+        tf_citizenship.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    citizenship();
+                }
+            }
+        });
+        tf_disabilities.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    disabilities();
+                }
+            }
+        });
     }
+
     // </editor-fold>
-    
-    
-    
-    
+    //<editor-fold defaultstate="collapsed" desc=" Prompts ">
+    private void religions() {
+        Window p = (Window) this;
+        Dlg_religions nd = Dlg_religions.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_religions.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_religions.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void citizenship() {
+        Window p = (Window) this;
+        Dlg_citizenships nd = Dlg_citizenships.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_citizenships.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_citizenships.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void disabilities() {
+        Window p = (Window) this;
+        Dlg_disabilities nd = Dlg_disabilities.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_disabilities.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_disabilities.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Household Member Health Status ">
     private void save_household_member_health_status() {
@@ -6587,8 +6697,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
 //            String home = "C:\\Users\\Guinness\\Desktop";
             System.out.println("House No: " + my_house_no);
             System.out.println("Household No: " + my_household_no);
-            System.out.println("Household Member No: " + my_household_member_no);
-            String path = home + "\\images\\" + my_region + "\\" + my_province + "\\" + my_city + "\\" + my_barangay + "\\" + my_house_no + "\\" + my_household_no;
+            System.out.println("Household Member No: " + my_household_member_transient_no);
+            String path = home + "\\images_profiling\\" + my_barangay_id;
             File files = new File(path);
             if (files.exists()) {
                 if (files.mkdirs()) {
@@ -6601,18 +6711,28 @@ public class Dlg_household_members extends javax.swing.JDialog {
             } else {
                 System.out.println("Failed to create directory!");
             }
-
+           
             try {
                 for (int i = 0; i < webcams.size(); i++) {
                     Webcam webcam = webcams.get(i);
-                    File file = new File(path + "\\" + my_household_member_no + ".jpg");
+                    File file = new File(path + "\\" + my_household_member_transient_no + ".jpg");
                     ImageIO.write(webcam.getImage(), "JPG", file);
                 }
 
-                tf_genders1.setText(my_household_member_no + ".jpg");
+                tf_genders1.setText(my_household_member_transient_no + ".jpg");
+                path=path + "\\" + my_household_member_transient_no + ".jpg";
+                File f = new File(path);
+                if (f.exists()) {
+                    ImageIcon icon = new ImageIcon(path);
 
+                    ImageIcon imageIcon = new ImageIcon(icon.getImage().getScaledInstance(194, 129, Image.SCALE_DEFAULT));
+                    jLabel21.setIcon(imageIcon);
+                } else {
+                    ImageIcon imageIcon = new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/Bcgrngy7i.png")).getImage().getScaledInstance(194, 129, Image.SCALE_DEFAULT));
+                    jLabel21.setIcon(imageIcon);
+                }
             } catch (IOException e1) {
-
+                System.out.println(e1);
             }
         }
         if (jButton1.getText().equalsIgnoreCase("Start")) {
@@ -6642,18 +6762,18 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
     }
 
-    List<Households.to_households> houses = new ArrayList();
+    List<Households.to_households> households = new ArrayList();
 
     private void search_household_no() {
         String where = " where household_no like '%" + tf_household_no.getText() + "%' ";
-        houses = Households.ret_data(where);
-        Object[][] obj = new Object[houses.size()][1];
+        households = Households.ret_data(where);
+        Object[][] obj = new Object[households.size()][1];
         int i = 0;
-        for (Households.to_households to : houses) {
+        for (Households.to_households to : households) {
             obj[i][0] = " " + to.household_no;
             i++;
         }
-        
+
         JLabel[] labels = {};
         int[] tbl_widths_customers = {tf_household_no.getWidth()};
         String[] col_names = {""};
@@ -6667,7 +6787,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Field.Combo cit = (Field.Combo) tf_city;
                 Field.Combo bar = (Field.Combo) tf_barangay;
                 Field.Combo pur = (Field.Combo) tf_purok;
-                Households.to_households to = houses.get(data.selected_row);
+                Households.to_households to = households.get(data.selected_row);
                 Field.Search field = (Field.Search) tf_house_no;
                 field.setText(to.house_no);
                 String where2 = " where household_no='" + to.household_no + "' ";
@@ -6675,6 +6795,52 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 tf_house_no.setText(to.house_no);
                 tf_household_no.setText(to.household_no);
                 tf_household_member_no.setText(to.household_no + "-" + (members.size() + 1));
+                reg.setText(to.region);
+                reg.setId(to.region_id);
+                prov.setText(to.province);
+                prov.setId(to.province_id);
+                cit.setText(to.city);
+                cit.setId(to.city_id);
+                bar.setText(to.barangay);
+                bar.setId(to.barangay_id);
+                pur.setText(to.purok);
+                pur.setId(to.purok_id);
+                tf_fname.grabFocus();
+            }
+        });
+    }
+
+    List<Houses.to_houses> houses = new ArrayList();
+
+    private void search_houses_no() {
+        String where = " where house_no like '%" + tf_house_no.getText() + "%' ";
+        houses = Houses.ret_data(where);
+        Object[][] obj = new Object[houses.size()][1];
+        int i = 0;
+        for (Houses.to_houses to : houses) {
+            obj[i][0] = " " + to.house_no;
+            i++;
+        }
+
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf_house_no.getWidth()};
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf_house_no, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo reg = (Field.Combo) tf_region;
+                Field.Combo prov = (Field.Combo) tf_province;
+                Field.Combo cit = (Field.Combo) tf_city;
+                Field.Combo bar = (Field.Combo) tf_barangay;
+                Field.Combo pur = (Field.Combo) tf_purok;
+                Houses.to_houses to = houses.get(data.selected_row);
+                Field.Search field = (Field.Search) tf_house_no;
+                field.setText(to.house_no);
+                tf_house_no.setText(to.house_no);
+                tf_household_no.setText("");
+                tf_household_member_no.setText("");
                 reg.setText(to.region);
                 reg.setId(to.region_id);
                 prov.setText(to.province);

@@ -5,7 +5,8 @@
  */
 package city_planning.dlg;
 
-import city_planning.building_types.Dlg_building_types;
+import city_planning.assets.Dlg_assets;
+import city_planning.basic_needs.Dlg_basic_needs;
 import city_planning.household_assets.Household_assets;
 import city_planning.household_concerns.Household_concerns;
 import city_planning.household_consumptions.Household_consumptions;
@@ -25,8 +26,6 @@ import city_planning.households.Households;
 import city_planning.houses.Houses;
 import city_planning.initialize_fields.Initialize_household_field_types;
 import city_planning.initialize_fields.Initialize_household_member_field_types;
-import city_planning.initialize_fields.Initialize_search_record_field_types;
-import city_planning.tenure.Tenure;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
 import city_planning.util.DateType;
@@ -43,7 +42,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
@@ -486,6 +484,7 @@ public class Dlg_households extends javax.swing.JDialog {
         jLabel48.setText("Tenure:");
 
         tf_tenure.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_tenure.setText("0");
         tf_tenure.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_tenureMouseClicked(evt);
@@ -567,6 +566,7 @@ public class Dlg_households extends javax.swing.JDialog {
         jLabel13.setText("month/s");
 
         tf_tenure1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_tenure1.setText("0");
         tf_tenure.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_tenureMouseClicked(evt);
@@ -2181,19 +2181,19 @@ public class Dlg_households extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void tf_tenureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_tenureActionPerformed
-        Initialize_household_member_field_types.init_tenure(tf_tenure);
+        Initialize_household_member_field_types.init_tenure_years(tf_tenure);
     }//GEN-LAST:event_tf_tenureActionPerformed
 
     private void tf_tenureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_tenureMouseClicked
-        Initialize_household_member_field_types.init_tenure(tf_tenure);
+        Initialize_household_member_field_types.init_tenure_years(tf_tenure);
     }//GEN-LAST:event_tf_tenureMouseClicked
 
     private void tf_tenure1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_tenure1MouseClicked
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_tenure_months(tf_tenure1);
     }//GEN-LAST:event_tf_tenure1MouseClicked
 
     private void tf_tenure1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_tenure1ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_tenure_months(tf_tenure1);
     }//GEN-LAST:event_tf_tenure1ActionPerformed
 
     private void tf_house_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_house_noActionPerformed
@@ -2496,7 +2496,10 @@ public class Dlg_households extends javax.swing.JDialog {
         bar.setId(household1.barangay_id);
         pur.setText(household1.purok);
         pur.setId(household1.purok_id);
-        tf_tenure.setText(household1.tenure);
+        String[] tenure = household1.tenure.split(",");
+        tf_tenure.setText(tenure[0]);
+        tf_tenure1.setText(tenure[1]);
+
         tf_monthly_rental.setText(FitIn.fmt_wc_0(household1.monthly_rental));
         if (household1.occupancy_types.equalsIgnoreCase("Owned")) {
             jCheckBox1.setSelected(true);
@@ -2560,11 +2563,65 @@ public class Dlg_households extends javax.swing.JDialog {
             }
         });
 
-       
-    }
-    // </editor-fold>
+        tf_Asset.addKeyListener(new KeyAdapter() {
 
-   
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    assets();
+                }
+
+            }
+        });
+        tf_Items.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    consumptions();
+                }
+
+            }
+        });
+
+    }
+
+    // </editor-fold>
+    //<editor-fold defaultstate="collapsed" desc=" Prompts ">
+    private void assets() {
+        Window p = (Window) this;
+        Dlg_assets nd = Dlg_assets.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_assets.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_assets.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void consumptions() {
+        Window p = (Window) this;
+        Dlg_basic_needs nd = Dlg_basic_needs.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_basic_needs.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_basic_needs.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Household Assets ">
     private void save_household_asset() {
@@ -3282,7 +3339,7 @@ public class Dlg_households extends javax.swing.JDialog {
         if (jCheckBox1.isSelected()) {
             occupancy_types = "Owned";
         }
-        String tenure = tf_tenure.getText();
+        String tenure = "" + FitIn.toInt(tf_tenure.getText()) + "," + FitIn.toInt(tf_tenure1.getText());
         int is_occupant_owns_the_lan = 0;
         if (jCheckBox3.isSelected()) {
             is_occupant_owns_the_lan = 1;
@@ -3323,6 +3380,10 @@ public class Dlg_households extends javax.swing.JDialog {
         String purok = pur.getText();
         String purok_id = pur.getId();
         String house_no = tf_house_no.getText();
+        if (house_no.isEmpty()) {
+            Alert.set(0, "Choose House Number!");
+            return;
+        }
         if (callback != null) {
             callback.ok(new CloseDialog(this), new OutputData(household_no, occupancy_types, tenure, is_occupant_owns_the_lan, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, house_no));
         }
@@ -3355,7 +3416,7 @@ public class Dlg_households extends javax.swing.JDialog {
         if (jCheckBox1.isSelected()) {
             occupancy_types = "Owned";
         }
-        String tenure = tf_tenure.getText();
+        String tenure = "" + FitIn.toInt(tf_tenure.getText()) + "," + FitIn.toInt(tf_tenure1.getText());
         int is_occupant_owns_the_lan = 0;
         if (jCheckBox3.isSelected()) {
             is_occupant_owns_the_lan = 1;

@@ -40,6 +40,26 @@ public class Initialize_search_record_field_types {
 
     }
 
+    public static void ret_data_regions() {
+        regions = Regions.ret_data(" order by region asc ");
+    }
+
+    public static void ret_data_provinces() {
+        provinces = Provinces.ret_data(" order by province asc ");
+    }
+
+    public static void ret_data_cities() {
+        cities = Cities.ret_data(" order by city asc ");
+    }
+
+    public static void ret_data_barangays() {
+        barangays = Barangays.ret_data(" order by barangay asc ");
+    }
+
+    public static void ret_data_puroks() {
+        puroks = Puroks.ret_data(" order by purok asc ");
+    }
+
     //<editor-fold defaultstate="collapsed" desc=" Regions "> 
     public static void init_regions(final JTextField tf) {
 

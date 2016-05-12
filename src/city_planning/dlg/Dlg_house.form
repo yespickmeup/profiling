@@ -361,7 +361,7 @@
                           <Component id="lbl_facilities2" alignment="0" max="32767" attributes="0"/>
                           <Component id="lbl_house_condition2" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel200" pref="254" max="32767" attributes="0"/>
+                              <Component id="jLabel200" min="-2" pref="254" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="tf_disposals" pref="218" max="32767" attributes="0"/>
                           </Group>
