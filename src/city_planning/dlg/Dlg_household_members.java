@@ -4663,6 +4663,11 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Initialize_table_household_members.init_tbl_household_member_work_experiences(tbl_household_member_work_experiences);
         Initialize_table_household_members.init_tbl_household_member_prefered_works(tbl_household_member_prefered_works);
 
+        try {
+            webcams = Webcam.getWebcams();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         jButton13.setVisible(false);
         jButton14.setVisible(false);
         jButton16.setVisible(false);
@@ -4790,7 +4795,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         my_household_no = household_member1.household_no;
         my_household_member_no = household_member.household_member_no;
         String home = System.getProperty("user.home", "C:\\Users\\Guinness");
-      
+
         String path = home + "\\images_profiling\\" + my_barangay_id;
         path = path + "\\" + household_member.transient_no + ".jpg";
         File f = new File(path);
@@ -4804,7 +4809,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
             jLabel21.setIcon(imageIcon);
         }
 
-        
         System.out.println(path);
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" Load Table Records ">
@@ -6686,7 +6690,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         //</editor-fold>
     }
     private final Dimension size = WebcamResolution.QQVGA.getSize();
-    private final List<Webcam> webcams = Webcam.getWebcams();
+    private List<Webcam> webcams = new ArrayList();
     private final List<WebcamPanel> panels = new ArrayList<>();
 
     private void init_camera() {
@@ -6711,7 +6715,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             } else {
                 System.out.println("Failed to create directory!");
             }
-           
+
             try {
                 for (int i = 0; i < webcams.size(); i++) {
                     Webcam webcam = webcams.get(i);
@@ -6720,7 +6724,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 }
 
                 tf_genders1.setText(my_household_member_transient_no + ".jpg");
-                path=path + "\\" + my_household_member_transient_no + ".jpg";
+                path = path + "\\" + my_household_member_transient_no + ".jpg";
                 File f = new File(path);
                 if (f.exists()) {
                     ImageIcon icon = new ImageIcon(path);
