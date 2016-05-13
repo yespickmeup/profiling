@@ -833,10 +833,10 @@ public class Households {
             Connection conn = MyConnection.connect();
             conn.setAutoCommit(false);
 
-            String stmt2 = "delete from household_assets where house_no='" + to_households.house_no + "' ";
-            String stmt3 = "delete from household_consumptions where house_no='" + to_households.house_no + "' ";
-            String stmt4 = "delete from household_expenditures where house_no='" + to_households.house_no + "' ";
-            String stmt17 = "delete from households where house_no='" + to_households.house_no + "' ";
+            String stmt2 = "delete from household_assets where household_no='" + to_households.household_no + "' ";
+            String stmt3 = "delete from household_consumptions where household_no='" + to_households.household_no + "' ";
+            String stmt4 = "delete from household_expenditures where household_no='" + to_households.household_no + "' ";
+            String stmt17 = "delete from households where household_no='" + to_households.household_no + "' ";
             PreparedStatement stmt = conn.prepareStatement(stmt2);
             stmt.addBatch(stmt2);
             stmt.addBatch(stmt2);

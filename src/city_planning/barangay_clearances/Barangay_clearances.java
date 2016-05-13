@@ -275,6 +275,28 @@ public class Barangay_clearances {
         }
     }
 
+    public static void void_data(to_barangay_clearances to_barangay_clearances) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update barangay_clearances set "
+                    + " status= :status "
+                    + " where id='" + to_barangay_clearances.id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setNumber("status", 0)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Barangay_clearances.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void delete_data(to_barangay_clearances to_barangay_clearances) {
         try {
             Connection conn = MyConnection.connect();
@@ -362,9 +384,9 @@ public class Barangay_clearances {
                 double amount_due = rs.getDouble(26);
                 double amount_tendered = rs.getDouble(27);
                 String punong_barangay = rs.getString(28);
-                String citizen_bday=rs.getString(29);
-                String citizen_civil_status=rs.getString(30);
-                to_barangay_clearances to = new to_barangay_clearances(id, barangay_clearance_no, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, citizen, citizen_id, house_no, household_no, household_member_no, transient_no, purpose, is_fixed, amount_due, amount_tendered, punong_barangay,citizen_bday,citizen_civil_status);
+                String citizen_bday = rs.getString(29);
+                String citizen_civil_status = rs.getString(30);
+                to_barangay_clearances to = new to_barangay_clearances(id, barangay_clearance_no, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, citizen, citizen_id, house_no, household_no, household_member_no, transient_no, purpose, is_fixed, amount_due, amount_tendered, punong_barangay, citizen_bday, citizen_civil_status);
                 datas.add(to);
             }
             return datas;

@@ -254,6 +254,28 @@ public class Business_clearances {
         }
     }
 
+    public static void void_data(to_business_clearances to_business_clearances) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update business_clearances set "
+                    + " status= :status "
+                    + " where id='" + to_business_clearances.id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setNumber("status", 0)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Business_clearances.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void delete_data(to_business_clearances to_business_clearances) {
         try {
             Connection conn = MyConnection.connect();

@@ -5,7 +5,7 @@
  */
 package city_planning.barangay_clearances;
 
-import city_planning.reports.Srpt_bc;
+import city_planning.reports_backup.Srpt_bc;
 import java.io.InputStream;
 import javax.swing.JFrame;
 import mijzcx.synapse.desk.utils.Application;

@@ -208,7 +208,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel7.setBackground(new java.awt.Color(234, 234, 234));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/team2.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/document.png"))); // NOI18N
         jLabel7.setToolTipText("Barangay Clearances");
         jLabel7.setOpaque(true);
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,7 +223,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel8.setBackground(new java.awt.Color(234, 234, 234));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/logistics2.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/diploma-of-vertical-design.png"))); // NOI18N
         jLabel8.setToolTipText("Business Clearances");
         jLabel8.setOpaque(true);
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -246,7 +246,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel9.setBackground(new java.awt.Color(234, 234, 234));
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/logistics2.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/houses.png"))); // NOI18N
         jLabel9.setToolTipText("Households ");
         jLabel9.setOpaque(true);
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -261,7 +261,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel10.setBackground(new java.awt.Color(234, 234, 234));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/team2.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/home-icon-silhouette.png"))); // NOI18N
         jLabel10.setToolTipText("Houses");
         jLabel10.setOpaque(true);
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,7 +276,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel11.setBackground(new java.awt.Color(234, 234, 234));
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/logistics2.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_menu_reports/family-of-four-in-front-of-their-home.png"))); // NOI18N
         jLabel11.setToolTipText("Household Members");
         jLabel11.setOpaque(true);
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {

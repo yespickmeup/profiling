@@ -17,6 +17,7 @@ import city_planning.business_clearances.Dlg_report_business_clearance;
 import city_planning.household_members.Household_members;
 import city_planning.users.MyUser;
 import city_planning.util.Alert;
+import city_planning.util.Dlg_confirm_action;
 import city_planning.util.TableRenderer;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
@@ -24,7 +25,6 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -1401,11 +1401,34 @@ public class Dlg_clearance extends javax.swing.JDialog {
         int col = tbl_barangay_clearances.getSelectedColumn();
         if (col == 4) {
             //void
+            void_barangay_clearance(clearance);
         }
         if (col == 5) {
             //preview
             preview_barangay_clearance(clearance);
         }
+
+    }
+
+    private void void_barangay_clearance(final Barangay_clearances.to_barangay_clearances clearance) {
+        if (clearance.status == 0) {
+            Alert.set(0, "Cannot proceed, transaction already cancelled!");
+            return;
+        }
+        Window p = (Window) this;
+        Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_confirm_action.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                closeDialog.ok();
+                Barangay_clearances.void_data(clearance);
+                ret_barangay_clearances();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
 
     }
     //</editor-fold>
@@ -1719,12 +1742,34 @@ public class Dlg_clearance extends javax.swing.JDialog {
         int col = tbl_business_clearances.getSelectedColumn();
         if (col == 4) {
             //void
+            void_business_clearance(business_clearance);
         }
         if (col == 5) {
             //preview
             preview_business_clearance(business_clearance);
         }
 
+    }
+
+    private void void_business_clearance(final Business_clearances.to_business_clearances business_clearance) {
+        if (business_clearance.status == 0) {
+            Alert.set(0, "Cannot proceed, transaction already cancelled!");
+            return;
+        }
+        Window p = (Window) this;
+        Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_confirm_action.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                closeDialog.ok();
+                Business_clearances.void_data(business_clearance);
+                ret_business_clearances();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
     }
     //</editor-fold>
 }

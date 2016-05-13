@@ -2000,6 +2000,8 @@ public class Dlg_search extends javax.swing.JDialog {
                 Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.clear();
                 Alert.set(1, "");
                 ret_household_members();
+                ret_households();
+                ret_houses();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -2070,6 +2072,8 @@ public class Dlg_search extends javax.swing.JDialog {
                     Household_members.delete_household_member(household_member);
                     Alert.set(3, "");
                     ret_household_members();
+                    ret_households();
+                    ret_houses();
                 }
             });
             nd.setLocationRelativeTo(this);
@@ -2349,6 +2353,7 @@ public class Dlg_search extends javax.swing.JDialog {
         }
         final to_houses house = (to_houses) tbl_houses_ALM.get(row);
         int col = tbl_houses.getSelectedColumn();
+        
         if (col == 5) {
             //edit
             Window p = (Window) this;
@@ -2632,6 +2637,7 @@ public class Dlg_search extends javax.swing.JDialog {
                 Households.add_data(household);
                 Alert.set(1, "");
                 ret_households();
+                ret_houses();
                 jProgressBar3.setString("Finished...");
                 jProgressBar3.setIndeterminate(false);
                 jButton6.setEnabled(true);
@@ -2681,6 +2687,7 @@ public class Dlg_search extends javax.swing.JDialog {
                     Households.delete_data(household);
                     Alert.set(3, "");
                     ret_households();
+                    ret_houses();
                     jProgressBar3.setString("Finished...");
                     jProgressBar3.setIndeterminate(false);
                     jButton6.setEnabled(true);
