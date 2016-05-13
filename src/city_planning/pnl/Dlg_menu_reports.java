@@ -401,13 +401,14 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
 
     private void hover() {
 
-        JLabel[] lbl = {jLabel7, jLabel8,jLabel10,jLabel9,jLabel11};
+        JLabel[] lbl = {jLabel7, jLabel8, jLabel10, jLabel9, jLabel11};
         for (final JLabel l : lbl) {
+            l.setBackground(new java.awt.Color(216, 137, 184));
             l.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(16, 88, 197));
+                        l.setBackground(new java.awt.Color(185, 106, 154));
                     }
 
                 }
@@ -415,7 +416,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(96, 188, 219));
+                        l.setBackground(new java.awt.Color(216, 137, 184));
                     }
 
                 }
@@ -425,9 +426,9 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
     }
 
     private void hide2() {
-        JLabel[] lbl = {jLabel7, jLabel8,jLabel10,jLabel9,jLabel11};
+        JLabel[] lbl = {jLabel7, jLabel8, jLabel10, jLabel9, jLabel11};
         for (JLabel l : lbl) {
-            l.setEnabled(false);
+            l.setEnabled(true);
         }
     }
 
@@ -466,7 +467,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {

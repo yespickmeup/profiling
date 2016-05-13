@@ -1231,11 +1231,12 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
         JLabel[] lbl = {jLabel7, jLabel8, jLabel9, jLabel10, jLabel11, jLabel12, jLabel13, jLabel14, jLabel15, jLabel16, jLabel17, jLabel18, jLabel19, jLabel20, jLabel21, jLabel22, jLabel23, jLabel24, jLabel25, jLabel26, jLabel27, jLabel28, jLabel29, jLabel30, jLabel31, jLabel32, jLabel33, jLabel34, jLabel35, jLabel36, jLabel37, jLabel38, jLabel39, jLabel40
         };
         for (final JLabel l : lbl) {
+            l.setBackground(new java.awt.Color(216, 137, 184));
             l.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(16, 88, 197));
+                        l.setBackground(new java.awt.Color(185, 106, 154));
                     }
                     String tooltip = l.getToolTipText();
                     label(tooltip, l);
@@ -1244,7 +1245,7 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(96, 188, 219));
+                        l.setBackground(new java.awt.Color(216, 137, 184));
                     }
 
                 }

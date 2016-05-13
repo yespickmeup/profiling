@@ -342,11 +342,12 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
     private void hover() {
         JLabel[] lbl = {jLabel9, jLabel8};
         for (final JLabel l : lbl) {
+             l.setBackground(new java.awt.Color(216, 137, 184));
             l.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(16, 88, 197));
+                        l.setBackground(new java.awt.Color(185, 106, 154));
                     }
 
                 }
@@ -354,7 +355,7 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(96, 188, 219));
+                        l.setBackground(new java.awt.Color(216, 137, 184));
                     }
                 }
             });
