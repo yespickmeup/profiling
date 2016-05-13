@@ -709,7 +709,7 @@ public class Dlg_barangays extends javax.swing.JDialog {
         Field.Combo prov = (Field.Combo) tf_province;
         Field.Combo cit = (Field.Combo) tf_city;
 
-        int id = 0;
+        int id = to.id;
         String barangay = tf_barangay.getText();
 
         int city_id = FitIn.toInt(cit.getId());
