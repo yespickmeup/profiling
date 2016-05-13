@@ -390,9 +390,10 @@ public class Dlg_water_sources extends javax.swing.JDialog {
         init_tbl_water_sources(tbl_water_sources);
         ret_data();
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -481,6 +482,12 @@ public class Dlg_water_sources extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void ret_data() {
         String where = " order by water_source asc";
         List<to_water_sources> datas = Water_sources.ret_data(where);
@@ -498,6 +505,9 @@ public class Dlg_water_sources extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Added!");
+            if (is_callback_triggered == 1) {
+                ok1();
+            }
     }
 
     private void select_water_sources() {
@@ -527,7 +537,9 @@ public class Dlg_water_sources extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Update!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_water_sources() {
@@ -542,7 +554,9 @@ public class Dlg_water_sources extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Delete!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
 }

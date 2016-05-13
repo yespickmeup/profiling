@@ -516,9 +516,10 @@ public class Dlg_barangays extends javax.swing.JDialog {
         init_tbl_barangays(tbl_barangays);
 
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -621,6 +622,12 @@ public class Dlg_barangays extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_barangays() {
 
         Field.Combo reg = (Field.Combo) tf_region;
@@ -643,6 +650,9 @@ public class Dlg_barangays extends javax.swing.JDialog {
         Alert.set(1, city);
 
         tf_barangay.grabFocus();
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_barangays() {
@@ -714,6 +724,9 @@ public class Dlg_barangays extends javax.swing.JDialog {
 
         Barangays.update_data(to1);
         Alert.set(2, "");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_barangays() {
@@ -726,6 +739,9 @@ public class Dlg_barangays extends javax.swing.JDialog {
         Barangays.delete_data(to);
         Alert.set(3, "");
 
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void ret_data() {

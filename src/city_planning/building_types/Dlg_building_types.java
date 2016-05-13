@@ -5,7 +5,6 @@
  */
 package city_planning.building_types;
 
-
 import city_planning.building_types.Building_types.to_building_types;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
@@ -391,9 +390,10 @@ public class Dlg_building_types extends javax.swing.JDialog {
         init_tbl_building_types(tbl_building_types);
         ret_data();
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -403,7 +403,7 @@ public class Dlg_building_types extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -475,21 +475,26 @@ public class Dlg_building_types extends javax.swing.JDialog {
             to_building_types tt = (to_building_types) getRow(row);
             switch (col) {
                 case 0:
-                    return " "+tt.building_type;
+                    return " " + tt.building_type;
                 default:
-                    return " "+tt.building_type;
+                    return " " + tt.building_type;
             }
         }
     }
 //</editor-fold> 
 
-     private void ret_data() {
-         String where = " order by building_type asc ";
-         List<to_building_types> datas = Building_types.ret_data(where);
-         loadData_building_types(datas);
-     }
-    
-    
+    private void ret_data() {
+        String where = " order by building_type asc ";
+        List<to_building_types> datas = Building_types.ret_data(where);
+        loadData_building_types(datas);
+    }
+
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_building_types() {
 
         int id = 0;
@@ -501,7 +506,9 @@ public class Dlg_building_types extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Succeessfully Added!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_building_types() {
@@ -527,13 +534,14 @@ public class Dlg_building_types extends javax.swing.JDialog {
 
         to_building_types to1 = new to_building_types(id, building_type);
         Building_types.update_data(to1);
-        
-        
+
         tf_building_type.setText("");
 
         ret_data();
         System.out.println("Successfully Update!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_building_types() {
@@ -548,8 +556,9 @@ public class Dlg_building_types extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Delete!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
-  
 }

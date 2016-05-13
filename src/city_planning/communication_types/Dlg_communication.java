@@ -391,9 +391,10 @@ public class Dlg_communication extends javax.swing.JDialog {
         init_tbl_communication_types(tbl_communication_types);
         data_disbursements();
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -483,6 +484,12 @@ public class Dlg_communication extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void data_disbursements() {
         String where = "";
         List<Communication_types.to_communication_types> datas = Communication_types.ret_data(where);
@@ -499,6 +506,9 @@ public class Dlg_communication extends javax.swing.JDialog {
         tf_communication_type.setText("");
         data_disbursements();
         System.out.println("Successfully Added!");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_communication_types() {
@@ -519,7 +529,7 @@ public class Dlg_communication extends javax.swing.JDialog {
             return;
         }
         to_communication_types to = (to_communication_types) tbl_communication_types_ALM.get(row);
-        int id = 0;
+        int id = to.id;
         String communication_type = tf_communication_type.getText();
 
         to_communication_types to1 = new to_communication_types(id, communication_type, false);
@@ -527,6 +537,9 @@ public class Dlg_communication extends javax.swing.JDialog {
         tf_communication_type.setText("");
         data_disbursements();
         System.out.println("Successfully Updated!");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_communication_types() {
@@ -540,5 +553,8 @@ public class Dlg_communication extends javax.swing.JDialog {
         tf_communication_type.setText("");
         data_disbursements();
         System.out.println("Successfully Delete!");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 }

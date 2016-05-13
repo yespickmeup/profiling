@@ -399,9 +399,10 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         init_tbl_solid_waste_disposal_methods(tbl_solid_waste_disposal_methods);
         ret_data();
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -497,6 +498,12 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
         loadData_solid_waste_disposal_methods(datas);
     }
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_solid_waste_disposal_methods() {
 
         int id = 0;
@@ -508,7 +515,9 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Added!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_solid_waste_disposal_methods() {
@@ -538,6 +547,9 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Updated!");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_solid_waste_disposal_methods() {
@@ -552,6 +564,9 @@ public class Dlg_solid_waste_disposal_methods extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Deleted!");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
 
     }
 

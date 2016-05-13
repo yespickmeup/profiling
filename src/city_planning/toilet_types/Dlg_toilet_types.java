@@ -24,8 +24,6 @@ import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 import synsoftech.fields.Label;
 
-
-
 /**
  *
  * @author Guinness
@@ -393,9 +391,10 @@ public class Dlg_toilet_types extends javax.swing.JDialog {
         ret_data();
 
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -405,7 +404,7 @@ public class Dlg_toilet_types extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -476,18 +475,24 @@ public class Dlg_toilet_types extends javax.swing.JDialog {
             to_toilet_types tt = (to_toilet_types) getRow(row);
             switch (col) {
                 case 0:
-                    return " "+tt.toilet_type;
+                    return " " + tt.toilet_type;
                 default:
-                    return " "+tt.toilet_type;
+                    return " " + tt.toilet_type;
             }
         }
     }
 //</editor-fold> 
-    
-     private void ret_data() {
+
+    private void ret_data() {
         String where = " order by toilet_type asc";
         List<to_toilet_types> datas = Toilet_types.ret_data(where);
         loadData_toilet_types(datas);
+    }
+
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
     }
 
     private void add_toilet_types() {
@@ -498,10 +503,12 @@ public class Dlg_toilet_types extends javax.swing.JDialog {
         to_toilet_types to = new to_toilet_types(id, toilet_type);
         Toilet_types.add_data(to);
         tf_toilet_type.setText("");
-        
-        ret_data();
-         System.out.println("Successfully Added!");
 
+        ret_data();
+        System.out.println("Successfully Added!");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_toilet_types() {
@@ -528,10 +535,12 @@ public class Dlg_toilet_types extends javax.swing.JDialog {
         to_toilet_types to1 = new to_toilet_types(id, toilet_type);
         Toilet_types.update_data(to1);
         tf_toilet_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Update!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_toilet_types() {
@@ -543,12 +552,12 @@ public class Dlg_toilet_types extends javax.swing.JDialog {
         to_toilet_types to = (to_toilet_types) tbl_toilet_types_ALM.get(row);
         Toilet_types.delete_data(to);
         tf_toilet_type.setText("");
-        
+
         ret_data();
         System.out.println("Successfully Delete!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
-
-   
 
 }

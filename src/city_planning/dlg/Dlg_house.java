@@ -1725,11 +1725,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_regions nd = Dlg_regions.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_regions.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_regions.OutputData data) {
-                closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_regions();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1740,11 +1741,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_provinces nd = Dlg_provinces.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_provinces.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_provinces.OutputData data) {
-                closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_provinces();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1755,11 +1757,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_cities nd = Dlg_cities.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_cities.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_cities.OutputData data) {
-                closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_cities();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1770,11 +1773,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_barangays nd = Dlg_barangays.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_barangays.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_barangays.OutputData data) {
-                closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_barangays();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1785,11 +1789,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_puroks nd = Dlg_puroks.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_puroks.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_puroks.OutputData data) {
-                closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_puroks();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1800,11 +1805,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_building_types nd = Dlg_building_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_building_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_building_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_building();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1815,11 +1821,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_toilet_types nd = Dlg_toilet_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_toilet_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_toilet_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_toilet();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1830,11 +1837,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_compartments nd = Dlg_compartments.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_compartments.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_compartments.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_compartments();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1845,11 +1853,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_bathroom_types nd = Dlg_bathroom_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_bathroom_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_bathroom_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_bathroom();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1860,11 +1869,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_solid_waste_disposal_methods nd = Dlg_solid_waste_disposal_methods.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_solid_waste_disposal_methods.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_solid_waste_disposal_methods.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_solid();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1875,11 +1885,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_kitchen_types nd = Dlg_kitchen_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_kitchen_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_kitchen_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_kitchen();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1890,11 +1901,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_transportation_types nd = Dlg_transportation_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_transportation_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_transportation_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_transportation();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1905,11 +1917,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_roof_types nd = Dlg_roof_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_roof_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_roof_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_roofs();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1920,11 +1933,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_wall_types nd = Dlg_wall_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_wall_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_wall_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_walls();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1935,11 +1949,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_floor_types nd = Dlg_floor_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_floor_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_floor_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_floor();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1950,11 +1965,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_communication nd = Dlg_communication.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_communication.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_communication.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_communication();
 
             }
         });
@@ -1966,11 +1982,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_cooking_lightning_types nd = Dlg_cooking_lightning_types.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_cooking_lightning_types.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_cooking_lightning_types.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_cooking();
 
             }
         });
@@ -1982,11 +1999,12 @@ public class Dlg_house extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_water_sources nd = Dlg_water_sources.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_water_sources.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_water_sources.OutputData data) {
-                closeDialog.ok();
+                Initialize_house_field_types.ret_data_water();
 
             }
         });

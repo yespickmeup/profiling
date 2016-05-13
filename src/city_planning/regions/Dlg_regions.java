@@ -6,6 +6,7 @@
 package city_planning.regions;
 
 
+import city_planning.assets.Dlg_assets;
 import city_planning.regions.Regions.to_regions;
 import city_planning.util.Dlg_confirm_action;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
@@ -393,9 +394,9 @@ public class Dlg_regions extends javax.swing.JDialog {
         ret_data();
 
     }
-
+    int is_callback_triggered=0;
     public void do_pass() {
-
+        is_callback_triggered=1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -484,7 +485,11 @@ public class Dlg_regions extends javax.swing.JDialog {
         }
     }
 //</editor-fold> 
-
+     private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new Dlg_regions.OutputData());
+        }
+    }
     private void ret_data() {
         String where = " order by region asc";
         List<to_regions> datas = Regions.ret_data(where);
@@ -501,7 +506,9 @@ public class Dlg_regions extends javax.swing.JDialog {
         tf_region.setText("");
         ret_data();
         System.out.println("Successfully Added");
-
+            if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_regions() {
@@ -530,7 +537,9 @@ public class Dlg_regions extends javax.swing.JDialog {
         tf_region.setText("");
         ret_data();
         System.out.println("Successfully Updated");
-
+            if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_regions() {
@@ -552,6 +561,9 @@ public class Dlg_regions extends javax.swing.JDialog {
         tf_region.setText("");
         ret_data();
         System.out.println("Successfully Deleted");
+            if (is_callback_triggered == 1) {
+            ok1();
+        }
             }
         });
         nd.setLocationRelativeTo(this);

@@ -220,6 +220,11 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
 
             }
         ));
+        tbl_transportation_types.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_transportation_typesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_transportation_types);
 
         jLabel1.setText("No. of rows:");
@@ -356,6 +361,10 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
         delete_transportation_types();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tbl_transportation_typesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_transportation_typesMouseClicked
+        select_transportation_types();
+    }//GEN-LAST:event_tbl_transportation_typesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -388,9 +397,10 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
         List<Transportation_types.to_transportation_types> datas = Transportation_types.ret_data(where);
         loadData_transportation_types(datas);
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -480,6 +490,12 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_transportation_types() {
 
         int id = 0;
@@ -490,7 +506,9 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
         tf_transportation_type.setText("");
         ret_data();
         System.out.println("Successfully Added");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_transportation_types() {
@@ -511,7 +529,7 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
             return;
         }
         to_transportation_types to = (to_transportation_types) tbl_transportation_types_ALM.get(row);
-        int id = 0;
+        int id = to.id;
         String transportation_type = tf_transportation_type.getText();
 
         to_transportation_types to1 = new to_transportation_types(id, transportation_type, false);
@@ -519,6 +537,9 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
         tf_transportation_type.setText("");
         ret_data();
         System.out.println("Successfully Updated");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_transportation_types() {
@@ -532,6 +553,9 @@ public class Dlg_transportation_types extends javax.swing.JDialog {
         tf_transportation_type.setText("");
         ret_data();
         System.out.println("Successfully Delete");
+         if(is_callback_triggered==1){
+            ok1();
+        }
     }
 
 }

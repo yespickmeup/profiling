@@ -1329,7 +1329,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-       ret_houses();
+        ret_houses();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void tbl_housesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_housesMouseClicked
@@ -1381,7 +1381,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-       ret_households();
+        ret_households();
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1393,7 +1393,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tbl_householdsMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-      ret_houses();
+        ret_houses();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -1639,11 +1639,12 @@ public class Dlg_search extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_regions nd = Dlg_regions.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_regions.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_regions.OutputData data) {
-                closeDialog.ok();
+                    Initialize_search_record_field_types.ret_data_regions();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1654,11 +1655,12 @@ public class Dlg_search extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_provinces nd = Dlg_provinces.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_provinces.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_provinces.OutputData data) {
-                closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_provinces();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1669,11 +1671,13 @@ public class Dlg_search extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_cities nd = Dlg_cities.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_cities.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_cities.OutputData data) {
                 closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_cities();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1684,11 +1688,13 @@ public class Dlg_search extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_barangays nd = Dlg_barangays.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_barangays.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_barangays.OutputData data) {
                 closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_barangays();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1699,11 +1705,13 @@ public class Dlg_search extends javax.swing.JDialog {
         Window p = (Window) this;
         Dlg_puroks nd = Dlg_puroks.create(p, true);
         nd.setTitle("");
+        nd.do_pass();
         nd.setCallback(new Dlg_puroks.Callback() {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_puroks.OutputData data) {
                 closeDialog.ok();
+                Initialize_search_record_field_types.ret_data_puroks();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -2384,7 +2392,6 @@ public class Dlg_search extends javax.swing.JDialog {
         }
     }
 //</editor-fold>
-
     //<editor-fold defaultstate="collapsed" desc=" households "> 
     public static ArrayListModel tbl_households_ALM;
     public static TblhouseholdsModel tbl_households_M;

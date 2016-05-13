@@ -473,9 +473,10 @@ public class Dlg_cities extends javax.swing.JDialog {
         Initialize_house_field_types.ret_data();
         Initialize_search_record_field_types.ret_data();
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -485,7 +486,7 @@ public class Dlg_cities extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -569,6 +570,12 @@ public class Dlg_cities extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void ret_data() {
         String where = "order by city asc";
         List<to_cities> datas = Cities.ret_data(where);
@@ -592,6 +599,9 @@ public class Dlg_cities extends javax.swing.JDialog {
 
         ret_data();
         Alert.set(1, "");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_cities() {
@@ -635,6 +645,9 @@ public class Dlg_cities extends javax.swing.JDialog {
 
         ret_data();
         Alert.set(2, "");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_cities() {
@@ -648,6 +661,9 @@ public class Dlg_cities extends javax.swing.JDialog {
 
         ret_data();
         Alert.set(3, "");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
 }

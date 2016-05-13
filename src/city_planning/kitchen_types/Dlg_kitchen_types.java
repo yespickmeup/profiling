@@ -392,9 +392,10 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
         ret_data();
 
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -490,6 +491,12 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
         loadData_kitchen_types(datas);
     }
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_kitchen_types() {
 
         int id = 0;
@@ -501,7 +508,9 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Added!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_kitchen_types() {
@@ -531,7 +540,9 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully updated!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_kitchen_types() {
@@ -546,7 +557,9 @@ public class Dlg_kitchen_types extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Delete!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
 }

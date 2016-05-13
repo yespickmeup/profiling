@@ -8,6 +8,7 @@ package city_planning.assets;
 
 
 import city_planning.assets.Assets.to_assets;
+import city_planning.water_sources.Dlg_water_sources;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
@@ -384,8 +385,9 @@ public class Dlg_assets extends javax.swing.JDialog {
         ret_data();
     }
 
+    int is_callback_triggered=0;
     public void do_pass() {
-
+        is_callback_triggered=1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -475,6 +477,13 @@ public class Dlg_assets extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+     private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new Dlg_assets.OutputData());
+        }
+    }
+    
+    
     private void add_assets() {
 
         int id = 0;
@@ -485,7 +494,9 @@ public class Dlg_assets extends javax.swing.JDialog {
         tf_assets.setText("");
         ret_data();
         System.out.println("Sureccessfully Added");
-
+           if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_assets() {
@@ -514,7 +525,9 @@ public class Dlg_assets extends javax.swing.JDialog {
         tf_assets.setText("");
         ret_data();
         System.out.println("Successfully Updated");
-
+           if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_assets() {
@@ -528,6 +541,9 @@ public class Dlg_assets extends javax.swing.JDialog {
         tf_assets.setText("");
         ret_data();
         System.out.println("Successfully Deleted");
+           if (is_callback_triggered == 1) {
+            ok1();
+        }
 
     }
 

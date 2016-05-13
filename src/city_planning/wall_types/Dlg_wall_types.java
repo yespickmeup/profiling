@@ -394,9 +394,10 @@ public class Dlg_wall_types extends javax.swing.JDialog {
         ret_data();
 
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -485,6 +486,12 @@ public class Dlg_wall_types extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void ret_data() {
         String where = " order by wall_type asc";
         List<to_wall_types> datas = Wall_types.ret_data(where);
@@ -502,7 +509,9 @@ public class Dlg_wall_types extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully Added!");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_wall_types() {
@@ -532,6 +541,9 @@ public class Dlg_wall_types extends javax.swing.JDialog {
 
         ret_data();
         System.out.println("Successfully updated!");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_wall_types() {
@@ -545,6 +557,9 @@ public class Dlg_wall_types extends javax.swing.JDialog {
         tf_wall_type.setText("");
         ret_data();
         System.out.println("Successfully Delete");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
 
     }
 

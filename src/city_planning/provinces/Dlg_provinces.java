@@ -393,11 +393,11 @@ public class Dlg_provinces extends javax.swing.JDialog {
 
     private void tf_regionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_regionActionPerformed
         Initialize_search_record_field_types.init_regions(tf_region);
-        
+
     }//GEN-LAST:event_tf_regionActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-       ret_data();
+        ret_data();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
@@ -430,9 +430,10 @@ public class Dlg_provinces extends javax.swing.JDialog {
         init_tbl_provinces(tbl_provinces);
         ret_data();
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -442,7 +443,7 @@ public class Dlg_provinces extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -526,6 +527,12 @@ public class Dlg_provinces extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_provinces() {
         Field.Combo region = (Field.Combo) tf_region;
         if (region.getText().isEmpty()) {
@@ -539,7 +546,9 @@ public class Dlg_provinces extends javax.swing.JDialog {
         tf_province.setText("");
         ret_data();
         Alert.set(1, "");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_provinces() {
@@ -575,6 +584,9 @@ public class Dlg_provinces extends javax.swing.JDialog {
 
         ret_data();
         Alert.set(2, "");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_provinces() {
@@ -589,6 +601,9 @@ public class Dlg_provinces extends javax.swing.JDialog {
 
         ret_data();
         Alert.set(3, "");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void ret_data() {

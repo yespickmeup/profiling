@@ -6,6 +6,7 @@
 package city_planning.roof_types;
 
 import city_planning.roof_types.Roof_types.to_roof_types;
+import city_planning.tranportation_types.Dlg_transportation_types;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
@@ -376,12 +377,13 @@ public class Dlg_roof_types extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
+        init_key();
         init_tbl_roof_types(tbl_roof_types);
         data_disbursements();
     }
-
+    int is_callback_triggered=0;
     public void do_pass() {
-
+        is_callback_triggered=1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -471,6 +473,11 @@ public class Dlg_roof_types extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+          private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new Dlg_roof_types.OutputData());
+        }
+    }
     private void add_roof_types() {
 
         int id = 0;
@@ -481,6 +488,9 @@ public class Dlg_roof_types extends javax.swing.JDialog {
         tf_roof_type.setText("");
         data_disbursements();
         System.out.println("Successfully Saved!");
+          if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_roof_types() {
@@ -509,6 +519,9 @@ public class Dlg_roof_types extends javax.swing.JDialog {
         tf_roof_type.setText("");
         data_disbursements();
         System.out.println("Successfully Updated!");
+          if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_roof_types() {
@@ -522,6 +535,9 @@ public class Dlg_roof_types extends javax.swing.JDialog {
         tf_roof_type.setText("");
         data_disbursements();
         System.out.println("Successfully Deleted!");
+          if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void data_disbursements() {

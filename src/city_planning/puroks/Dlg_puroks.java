@@ -512,8 +512,10 @@ public class Dlg_puroks extends javax.swing.JDialog {
         street = Streets.ret_data("order by street asc");
     }
 
-    public void do_pass() {
+    int is_callback_triggered = 0;
 
+    public void do_pass() {
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -523,7 +525,7 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -616,6 +618,12 @@ public class Dlg_puroks extends javax.swing.JDialog {
         }
     }
 //</editor-fold> 
+
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
 
     private void ret_data() {
         String where = "";
@@ -762,9 +770,12 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
         tf_barangay.setText("");
         tf_purok.setText("");
-     
+
         ret_data();
         System.out.println("Successfully");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_puroks() {
@@ -784,7 +795,6 @@ public class Dlg_puroks extends javax.swing.JDialog {
         ba.setText(to.barangay_id);
         tf_barangay.setText(to.barangay);
         tf_purok.setText(to.purok);
-       
 
     }
 
@@ -818,9 +828,12 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
         tf_barangay.setText("");
         tf_purok.setText("");
-       
+
         ret_data();
         System.out.println("Successfully");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_puroks() {
@@ -838,9 +851,12 @@ public class Dlg_puroks extends javax.swing.JDialog {
 
         tf_barangay.setText("");
         tf_purok.setText("");
-       
+
         ret_data();
         System.out.println("Successfully Deleted");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
 }

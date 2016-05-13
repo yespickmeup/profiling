@@ -386,9 +386,10 @@ public class Dlg_cooking_lightning_types extends javax.swing.JDialog {
         List<Cooking_lighting_types.to_cooking_lighting_types> datas = Cooking_lighting_types.ret_data(where);
         loadData_cooking_lighting_types(datas);
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -478,6 +479,12 @@ public class Dlg_cooking_lightning_types extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_cooking_lighting_types() {
 
         int id = 0;
@@ -488,6 +495,9 @@ public class Dlg_cooking_lightning_types extends javax.swing.JDialog {
         tf_cooking_lighting_type.setText("");
         ret_data();
         System.out.println("Successfully Added");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_cooking_lighting_types() {
@@ -508,7 +518,7 @@ public class Dlg_cooking_lightning_types extends javax.swing.JDialog {
             return;
         }
         to_cooking_lighting_types to = (to_cooking_lighting_types) tbl_cooking_lighting_types_ALM.get(row);
-        int id = 0;
+        int id = to.id;
         String cooking_lighting_type = tf_cooking_lighting_type.getText();
 
         to_cooking_lighting_types to1 = new to_cooking_lighting_types(id, cooking_lighting_type);
@@ -516,6 +526,9 @@ public class Dlg_cooking_lightning_types extends javax.swing.JDialog {
         tf_cooking_lighting_type.setText("");
         ret_data();
         System.out.println("Successfully Update");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_cooking_lighting_types() {
@@ -529,6 +542,9 @@ public class Dlg_cooking_lightning_types extends javax.swing.JDialog {
         tf_cooking_lighting_type.setText("");
         ret_data();
         System.out.println("Successfully Deleted");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
 
     }
 

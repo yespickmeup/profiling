@@ -400,9 +400,10 @@ public class Dlg_compartments extends javax.swing.JDialog {
         init_key();
         init_tbl_compartments(tbl_compartments);
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -484,7 +485,7 @@ public class Dlg_compartments extends javax.swing.JDialog {
             to_compartments tt = (to_compartments) getRow(row);
             switch (col) {
                 case 0:
-                    return " "+tt.compartment;
+                    return " " + tt.compartment;
                 default:
                     return tt.compartment;
             }
@@ -498,6 +499,12 @@ public class Dlg_compartments extends javax.swing.JDialog {
         jLabel2.setText("" + datas.size());
     }
 
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
+
     private void add_compartments() {
 
         int id = 0;
@@ -507,7 +514,9 @@ public class Dlg_compartments extends javax.swing.JDialog {
         Compartments.add_data(to);
         Alert.set(1, compartment);
         tf_compartment.setText("");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_compartments() {
@@ -535,7 +544,9 @@ public class Dlg_compartments extends javax.swing.JDialog {
         Compartments.update_data(to1);
         Alert.set(1, compartment);
         tf_compartment.setText("");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_compartments() {
@@ -556,6 +567,9 @@ public class Dlg_compartments extends javax.swing.JDialog {
                 closeDialog.ok();
                 Compartments.delete_data(to);
                 tf_compartment.setText("");
+                if (is_callback_triggered == 1) {
+                    ok1();
+                }
             }
         });
         nd.setLocationRelativeTo(this);

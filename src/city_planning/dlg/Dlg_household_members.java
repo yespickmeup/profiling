@@ -653,7 +653,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel12.setText("First Name:");
 
         tf_fname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_fname.setText("Juan");
         tf_fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_fnameActionPerformed(evt);
@@ -661,13 +660,10 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_mname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_mname.setText("Dela");
 
         tf_lname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_lname.setText("Cruz");
 
         tf_sname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_sname.setText("Jr.");
         tf_sname.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_snameMouseClicked(evt);
@@ -746,13 +742,11 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel103.setText("Occupancy Year/s:");
 
         tf_occupancy_years.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_occupancy_years.setText("10 years");
 
         jLabel102.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel102.setText("Height:");
 
         tf_height.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_height.setText("150");
 
         jLabel124.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel124.setText("cm");
@@ -761,7 +755,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel104.setText("Weight:");
 
         jTextField48.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField48.setText("50");
         jTextField48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField48ActionPerformed(evt);
@@ -772,13 +765,10 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel125.setText("kg");
 
         tf_birth_place.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_birth_place.setText("Dumaguete City");
 
         tf_present_address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_present_address.setText("Tanjay City");
 
         tf_relation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_relation.setText("Son");
         tf_relation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_relationMouseClicked(evt);
@@ -857,7 +847,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_languages_spoken.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_languages_spoken.setText("English");
         tf_languages_spoken.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_languages_spokenMouseClicked(evt);
@@ -870,7 +859,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_email_address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_email_address.setText("juan.dela.cruz@gmail.com");
         tf_email_address.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_email_addressMouseClicked(evt);
@@ -878,7 +866,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_is_registered_voter.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_is_registered_voter.setText("23444444444444444444234");
 
         jLabel113.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel113.setText("Blood Type:");
@@ -1409,7 +1396,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel233.setText("Educatonal Status:");
 
         tf_educational_status.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_educational_status.setText("Educational Status");
         tf_educational_status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_educational_statusActionPerformed(evt);
@@ -1420,7 +1406,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel234.setText("Name of School:");
 
         tf_name_of_school.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_name_of_school.setText("Name of School");
         tf_name_of_school.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_name_of_schoolActionPerformed(evt);
@@ -1431,7 +1416,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel235.setText("Achievements:");
 
         tf_achievements.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_achievements.setText("Achievements");
         tf_achievements.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_achievementsActionPerformed(evt);
@@ -1442,7 +1426,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel236.setText("Highest Grade Completed:");
 
         tf_highest_grade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_highest_grade.setText("Highest Grade Completed");
 
         jLabel237.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel237.setText("Date Graduated:");
@@ -1574,10 +1557,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel238.setText("Name of Training:");
 
         tf_name_of_training.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_name_of_training.setText("Name of Training");
 
         tf_certificate_received.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_certificate_received.setText("Certificate Received");
 
         jLabel239.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel239.setText("Certificate Received:");
@@ -1586,7 +1567,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel240.setText("Skills Required:");
 
         tf_skills_required.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_skills_required.setText("Skills Required");
         tf_skills_required.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_skills_requiredActionPerformed(evt);
@@ -1597,7 +1577,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel241.setText("School/Agency:");
 
         tf_name_of_school_or_agency.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_name_of_school_or_agency.setText("School/Agency");
         tf_name_of_school_or_agency.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_name_of_school_or_agencyActionPerformed(evt);
@@ -1608,7 +1587,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel242.setText("Period of Training:");
 
         tf_period_of_training.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_period_of_training.setText("Period of Training");
         tf_period_of_training.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_period_of_trainingActionPerformed(evt);
@@ -1805,7 +1783,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel120.setText("Disabilities:");
 
         tf_disabilities.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities.setText("Disabilities");
         tf_disabilities.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_disabilitiesMouseClicked(evt);
@@ -1818,7 +1795,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_name_of_doctor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_name_of_doctor.setText("Name of Doctor");
         tf_name_of_doctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_name_of_doctorActionPerformed(evt);
@@ -1826,7 +1802,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_cause_of_disability.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_cause_of_disability.setText("Cause");
         tf_cause_of_disability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_cause_of_disabilityActionPerformed(evt);
@@ -1854,7 +1829,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jScrollPane3.setViewportView(tbl_household_member_health_statuses);
 
         tf_level_of_disability.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_level_of_disability.setText("Level of Disability");
         tf_level_of_disability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_level_of_disabilityActionPerformed(evt);
@@ -1985,19 +1959,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel248.setText("Company:");
 
         tf_company.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_company.setText("Company");
 
         jLabel249.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel249.setText("Address:");
 
         tf_company_address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_company_address.setText("Address");
 
         jLabel251.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel251.setText("Position:");
 
         tf_work_position.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_work_position.setText("Position");
         tf_work_position.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_work_positionActionPerformed(evt);
@@ -2038,7 +2009,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel253.setText("Description:");
 
         tf_work_description.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_work_description.setText("Description");
         tf_work_description.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_work_descriptionActionPerformed(evt);
@@ -2277,19 +2247,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel243.setText("Certificate:");
 
         tf_certificate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_certificate.setText("Certificate");
 
         jLabel244.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel244.setText("Rating:");
 
         tf_rating.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_rating.setText("Rating");
 
         jLabel245.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel245.setText("Issued by:");
 
         tf_issued_by.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_issued_by.setText("Issued by:");
         tf_issued_by.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_issued_byActionPerformed(evt);
@@ -2416,7 +2383,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel246.setText("Title:");
 
         tf_title.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_title.setText("Title");
 
         jLabel250.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel250.setText("Expiry:");
@@ -2660,7 +2626,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel257.setText("Position:");
 
         tf_position.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_position.setText("Position");
         tf_position.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_positionActionPerformed(evt);
@@ -2671,7 +2636,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel258.setText("Description:");
 
         jTextField145.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField145.setText("Description");
         jTextField145.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField145ActionPerformed(evt);
@@ -2688,7 +2652,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_comapany.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_comapany.setText("Company");
         tf_comapany.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_comapanyActionPerformed(evt);
@@ -2704,7 +2667,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
         tf_ofw_business_name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_ofw_business_name.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tf_ofw_business_name.setText("Name of Business");
 
         jLabel260.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel260.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2712,7 +2674,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
         tf_ofw_business_address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_ofw_business_address.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tf_ofw_business_address.setText("Business Address");
 
         jLabel261.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel261.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2720,7 +2681,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
         tf_ofw_mailing_address.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_ofw_mailing_address.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tf_ofw_mailing_address.setText("Mailing Address");
 
         jLabel262.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel262.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2728,7 +2688,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
         tf_ofw_type_of_business.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_ofw_type_of_business.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tf_ofw_type_of_business.setText("Type of Business");
         tf_ofw_type_of_business.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_ofw_type_of_businessActionPerformed(evt);
@@ -2739,7 +2698,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel264.setText("Financial Assistant Amount:");
 
         tf_ofw_financial_assistance_amount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_ofw_financial_assistance_amount.setText("1000");
         tf_ofw_financial_assistance_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_ofw_financial_assistance_amountActionPerformed(evt);
@@ -2756,7 +2714,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel267.setText("Reason for Migration:");
 
         tf_ofw_country.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_ofw_country.setText("Country");
         tf_ofw_country.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_ofw_countryActionPerformed(evt);
@@ -2764,7 +2721,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_ofw_job.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_ofw_job.setText("Profession/Job");
         tf_ofw_job.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_ofw_jobActionPerformed(evt);
@@ -2772,7 +2728,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         tf_ofw_reason_for_migration.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_ofw_reason_for_migration.setText("Reason for Migration");
         tf_ofw_reason_for_migration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_ofw_reason_for_migrationActionPerformed(evt);
@@ -3611,7 +3566,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         tf_medication_date_started.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         tf_prescription.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_prescription.setText("Prescription");
 
         jLabel128.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel128.setText("End Date:");
@@ -3620,7 +3574,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         tf_medication_date_ended.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         tf_dosage.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_dosage.setText("Dose");
 
         jLabel129.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel129.setText("Dose:");

@@ -34,7 +34,7 @@ public class MyMain {
     }
 
     private static void ret_config() {
-        String home = System.getProperty("user.home") + "\\my_config_city_planning.conf";
+        String home = System.getProperty("user.home") + "\\my_config_profiling.conf";
 
         try {
 

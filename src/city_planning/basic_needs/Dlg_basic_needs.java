@@ -380,9 +380,10 @@ public class Dlg_basic_needs extends javax.swing.JDialog {
         init_tbl_basic_needs(tbl_basic_needs);
         ret_data();
     }
+    int is_callback_triggered = 0;
 
     public void do_pass() {
-
+        is_callback_triggered = 1;
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -392,7 +393,7 @@ public class Dlg_basic_needs extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -466,11 +467,17 @@ public class Dlg_basic_needs extends javax.swing.JDialog {
                 case 0:
                     return tt.basic_needs;
                 default:
-                    return " "+tt.basic_needs;
+                    return " " + tt.basic_needs;
             }
         }
     }
 //</editor-fold> 
+
+    private void ok1() {
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData());
+        }
+    }
 
     private void add_basic_needs() {
 
@@ -482,7 +489,9 @@ public class Dlg_basic_needs extends javax.swing.JDialog {
         tf_basic_needs.setText("");
         ret_data();
         System.out.println("Successfully Added");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void select_basic_needs() {
@@ -511,7 +520,9 @@ public class Dlg_basic_needs extends javax.swing.JDialog {
         tf_basic_needs.setText("");
         ret_data();
         System.out.println("Successfully Updated");
-
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
     }
 
     private void delete_basic_needs() {
@@ -525,6 +536,9 @@ public class Dlg_basic_needs extends javax.swing.JDialog {
         tf_basic_needs.setText("");
         ret_data();
         System.out.println("Successfully Deleted");
+        if (is_callback_triggered == 1) {
+            ok1();
+        }
 
     }
 
