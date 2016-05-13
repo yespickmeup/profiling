@@ -19,10 +19,97 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="64bd89fe-198c-4987-a9b3-84e33b3f3bb3" x="0" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Clearance No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1947a85-fa41-4d21-a084-411ecdcee6ef" x="100" y="0" width="63" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0cc71f26-5dd9-4c2e-a2b3-00592e30ade5" x="163" y="0" width="137" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Citizen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8931b4e1-cc2b-41c0-af12-8821dae8b519" x="300" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Purpose]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7866b0fb-5803-4499-8b93-484b234c33e4" x="400" y="0" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c22ac75f-47b9-4134-9b84-94949341afda" x="0" y="0" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clearance_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ef6e3bd2-2274-4851-b9b7-1c3b5a325de4" x="100" y="0" width="63" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="27d9ccb3-d682-4f37-8f7d-156be6a81f6e" x="163" y="0" width="137" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{citizen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8caf4ba0-c784-4045-a990-0863a7045558" x="300" y="0" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purpose}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="df7ba08f-d83b-4278-8839-9d02db63f018" x="400" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>

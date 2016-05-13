@@ -34,6 +34,7 @@ import city_planning.provinces.Dlg_provinces;
 import city_planning.puroks.Dlg_puroks;
 import city_planning.regions.Dlg_regions;
 import city_planning.religions.Dlg_religions;
+import city_planning.reports.Dlg_report_barangay_clearances;
 import city_planning.roof_types.Dlg_roof_types;
 import city_planning.schools.Dlg_schools;
 import city_planning.skills.Dlg_skills;
@@ -812,8 +813,8 @@ public class Dashboard extends javax.swing.JFrame {
                 }
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" Reports ">
-                if (data.stmt.equals("Customers Report")) {
-
+                if (data.stmt.equals("Barangay Clearances")) {
+                    report_barangay_clearances();
                 }
 
                 //</editor-fold>
@@ -838,7 +839,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void login() {
         String license_code = System.getProperty("license_code", "");
         String hdd_license = DeEncrypter.encrypt(getSerialNumber());
-       
+
         if (!license_code.equals(hdd_license)) {
             Alert.set(0, "Invalid license key, please register!");
             return;
@@ -1081,6 +1082,13 @@ public class Dashboard extends javax.swing.JFrame {
         Dlg_schools dtc = new Dlg_schools();
         MyFrame.set2(dtc.getSurface(), jPanel1, "School", dtc.getWidth(), dtc.getHeight());
     }
-    //</editor-fold>
 
+    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc=" Reports ">
+    private void report_barangay_clearances() {
+        Dlg_report_barangay_clearances dtc = new Dlg_report_barangay_clearances();
+       
+        MyFrame.set(dtc.getSurface(), jPanel1, "Barangay Clearances");
+    }
+    //</editor-fold>
 }

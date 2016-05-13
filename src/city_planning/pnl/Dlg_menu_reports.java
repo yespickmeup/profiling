@@ -335,19 +335,19 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ok("Customers Report", jLabel7);
+        ok("Barangay Clearances", jLabel7);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        ok("Services Report", jLabel8);
+        ok("Business Clearances", jLabel8);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        label("Customers Report", jLabel7);
+        label("Barangay Clearances", jLabel7);
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        label("Services Report", jLabel8);
+        label("Business Clearances", jLabel8);
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus

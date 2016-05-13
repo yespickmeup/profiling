@@ -107,7 +107,7 @@ public class Srpt_barangay_clearances {
         List<Srpt_barangay_clearances.field> fields = new ArrayList();
         for (Barangay_clearances.to_barangay_clearances to : datas) {
             String clearance_no = to.barangay_clearance_no;
-            String date = DateType.convert_jan_1_2013_datetime(to.created_at);
+            String date = DateType.convert_slash_datetime(to.created_at);
             String citizen = to.citizen;
             String purpose = to.purpose;
             int is_fixed = to.is_fixed;
@@ -117,7 +117,7 @@ public class Srpt_barangay_clearances {
         }
         Srpt_barangay_clearances rpt = new Srpt_barangay_clearances();
         rpt.fields.addAll(fields);
-        String jrxml = "rpt_sample_report_with_fields.jrxml";
+        String jrxml = "rpt_barangay_clearances.jrxml";
         JRViewer viewer = get_viewer(rpt, jrxml);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
