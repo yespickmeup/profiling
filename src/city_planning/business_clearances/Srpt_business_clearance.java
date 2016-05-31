@@ -64,8 +64,8 @@ public class Srpt_business_clearance {
         String clearance_no = "12345";
         String punong_barangay = "JOSE O. DE GUZMAN";
         String home = System.getProperty("user.home");
-        String img_city = home + "\\images\\city.png";;
-        String img_barangay = home + "\\images\\barangay.png";;
+        String img_city = home + "\\images\\city.png";
+        String img_barangay = home + "\\images\\barangay.png";
         Srpt_business_clearance rpt = new Srpt_business_clearance(province, city, barangay, applicant, business_name, location, valid_on, issued_on, issued_at, clearance_no, punong_barangay, img_city, img_barangay);
         String jrxml = "rpt_business_clearance.jrxml";
         JRViewer viewer = get_viewer(rpt, jrxml);
