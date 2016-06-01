@@ -607,7 +607,6 @@ public class Dlg_households extends javax.swing.JDialog {
         });
 
         tf_barangay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_barangay.setFocusable(false);
         tf_barangay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_barangayMouseClicked(evt);
@@ -628,7 +627,6 @@ public class Dlg_households extends javax.swing.JDialog {
         lbl_barangay4.setText("City/Municipality:");
 
         tf_city.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_city.setFocusable(false);
         tf_city.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_cityMouseClicked(evt);
@@ -641,7 +639,6 @@ public class Dlg_households extends javax.swing.JDialog {
         });
 
         tf_province.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_province.setFocusable(false);
         tf_province.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_provinceMouseClicked(evt);
@@ -662,7 +659,6 @@ public class Dlg_households extends javax.swing.JDialog {
         lbl_barangay3.setText("Region:");
 
         tf_region.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_region.setFocusable(false);
         tf_region.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_regionMouseClicked(evt);

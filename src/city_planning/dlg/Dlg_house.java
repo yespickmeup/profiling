@@ -393,7 +393,6 @@ public class Dlg_house extends javax.swing.JDialog {
         lbl_barangay1.setText("Barangay:");
 
         tf_barangay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_barangay.setFocusable(false);
         tf_barangay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_barangayMouseClicked(evt);
@@ -427,7 +426,6 @@ public class Dlg_house extends javax.swing.JDialog {
         lbl_barangay3.setText("Region:");
 
         tf_region.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_region.setFocusable(false);
         tf_region.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_regionMouseClicked(evt);
@@ -444,7 +442,6 @@ public class Dlg_house extends javax.swing.JDialog {
         lbl_barangay2.setText("Province:");
 
         tf_province.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_province.setFocusable(false);
         tf_province.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_provinceMouseClicked(evt);
@@ -461,7 +458,6 @@ public class Dlg_house extends javax.swing.JDialog {
         lbl_barangay4.setText("City/Municipality:");
 
         tf_city.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_city.setFocusable(false);
         tf_city.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_cityMouseClicked(evt);
@@ -1179,7 +1175,7 @@ public class Dlg_house extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tf_barangayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_barangayMouseClicked
-//        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
+        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
     }//GEN-LAST:event_tf_barangayMouseClicked
 
     private void tf_house_numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_house_numberActionPerformed
@@ -1247,15 +1243,15 @@ public class Dlg_house extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tf_barangayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_barangayActionPerformed
-//        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
+        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
     }//GEN-LAST:event_tf_barangayActionPerformed
 
     private void tf_purokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_purokActionPerformed
-//        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
+        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
     }//GEN-LAST:event_tf_purokActionPerformed
 
     private void tf_purokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_purokMouseClicked
-//        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
+        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
     }//GEN-LAST:event_tf_purokMouseClicked
 
     private void tf_roofsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_roofsActionPerformed
@@ -1311,27 +1307,27 @@ public class Dlg_house extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_transportationsActionPerformed
 
     private void tf_regionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_regionMouseClicked
-//        Initialize_search_record_field_types.init_regions(tf_region);
+        Initialize_search_record_field_types.init_regions(tf_region);
     }//GEN-LAST:event_tf_regionMouseClicked
 
     private void tf_regionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_regionActionPerformed
-//        Initialize_search_record_field_types.init_regions(tf_region);
+        Initialize_search_record_field_types.init_regions(tf_region);
     }//GEN-LAST:event_tf_regionActionPerformed
 
     private void tf_provinceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_provinceMouseClicked
-//        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
+        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
     }//GEN-LAST:event_tf_provinceMouseClicked
 
     private void tf_provinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_provinceActionPerformed
-//        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
+        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
     }//GEN-LAST:event_tf_provinceActionPerformed
 
     private void tf_cityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_cityMouseClicked
-//        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
+        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
     }//GEN-LAST:event_tf_cityMouseClicked
 
     private void tf_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cityActionPerformed
-//        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
+        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
     }//GEN-LAST:event_tf_cityActionPerformed
 
     private void tf_assets1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_assets1ActionPerformed

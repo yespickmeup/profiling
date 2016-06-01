@@ -6834,8 +6834,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Field.Search field = (Field.Search) tf_house_no;
                 field.setText(to.house_no);
                 tf_house_no.setText(to.house_no);
-                tf_household_no.setText("");
-                tf_household_member_no.setText("");
+               
                 reg.setText(to.region);
                 reg.setId(to.region_id);
                 prov.setText(to.province);
