@@ -268,3 +268,69 @@ id int auto_increment primary key
 ,created_by varchar(255)
 ,updated_by varchar(255)
 );
+
+
+drop table if exists users;
+create table users(
+id int auto_increment primary key
+,created_at datetime
+,updated_at datetime
+,created_by varchar(255)
+,updated_by varchar(255)
+,screen_name varchar(255)
+,user_name varchar(255)
+,password varchar(255)
+,status int 
+,region varchar(255)
+,region_id varchar(255)
+,province varchar(255)
+,province_id varchar(255)
+,city varchar(255)
+,city_id varchar(255)
+,barangay varchar(255)
+,barangay_id varchar(255)
+);
+
+drop table if exists user_default_previleges;
+create table user_default_previleges(
+id int auto_increment primary key
+,account varchar(255)
+,name varchar(255)
+);
+insert into user_default_previleges(account,name)values
+('Transactions','Profiles')
+,('Transactions','Clearances')
+,('Maintenance','Basic Settings')
+,('Maintenance','Location')
+,('Maintenance','Users')
+,('Reports','Barangay Clearances')
+,('Reports','Business Clearances')
+,('Reports','Houses')
+,('Reports','Households')
+,('Reports','Household Members')
+,('Reports','Survey Form')
+;
+
+
+
+drop table if exists user_previleges;
+create table user_previleges(
+id int auto_increment primary key
+,created_at datetime
+,updated_at datetime
+,created_by varchar(255)
+,updated_by varchar(255)
+,status int 
+,user_id varchar(255)
+,user_name varchar(255)
+,region varchar(255)
+,region_id varchar(255)
+,province varchar(255)
+,province_id varchar(255)
+,city varchar(255)
+,city_id varchar(255)
+,barangay varchar(255)
+,barangay_id varchar(255)
+,account varchar(255)
+,previlege  varchar(255)
+);

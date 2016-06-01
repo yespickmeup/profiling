@@ -15,6 +15,7 @@ import city_planning.household_member_prefered_works.Household_member_prefered_w
 import city_planning.household_member_skills.Household_member_skills;
 import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
 import city_planning.household_member_work_experiences.Household_member_work_experiences;
+import city_planning.users.MyUser;
 import city_planning.util.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,8 +87,9 @@ public class Household_members {
         public Household_member_skills.to_household_member_skills skills;
         public String image;
         public String transient_no;
+        public String contact_no;
 
-        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String transient_no) {
+        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String transient_no, String contact_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -139,6 +141,23 @@ public class Household_members {
             this.skills = skills;
             this.image = image;
             this.transient_no = transient_no;
+            this.contact_no = contact_no;
+        }
+
+        public String getTransient_no() {
+            return transient_no;
+        }
+
+        public void setTransient_no(String transient_no) {
+            this.transient_no = transient_no;
+        }
+
+        public String getContact_no() {
+            return contact_no;
+        }
+
+        public void setContact_no(String contact_no) {
+            this.contact_no = contact_no;
         }
 
         public String getImage() {
@@ -439,6 +458,7 @@ public class Household_members {
                     + ",voters_id_no"
                     + ",image"
                     + ",transient_no"
+                    + ",contact_no"
                     + ")values("
                     + ":created_at"
                     + ",:updated_at"
@@ -480,6 +500,7 @@ public class Household_members {
                     + ",:voters_id_no"
                     + ",:image"
                     + ",:transient_no"
+                    + ",:contact_no"
                     + ")";
 
             hm = SqlStringUtil.parse(hm)
@@ -523,6 +544,7 @@ public class Household_members {
                     .setString("voters_id_no", household_member.voters_id_no)
                     .setString("image", household_member.image)
                     .setString("transient_no", household_member.transient_no)
+                    .setString("contact_no", household_member.contact_no)
                     .ok();
             PreparedStatement stmt = conn.prepareStatement(hm);
 
@@ -1715,6 +1737,7 @@ public class Household_members {
                     + ",house_no= :house_no "
                     + ",household_no= :household_no "
                     + ",household_member_no= :household_member_no "
+                    + ",contact_no= :contact_no"
                     + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
 
@@ -1753,6 +1776,7 @@ public class Household_members {
                     .setString("house_no", to_household_members.house_no)
                     .setString("household_no", to_household_members.household_no)
                     .setString("household_member_no", to_household_members.household_member_no)
+                    .setString("contact_no", to_household_members.contact_no)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -2426,10 +2450,10 @@ public class Household_members {
                 count = rs2.getInt(1);
             }
             count--;
-           
+
             String h3 = "update households set no_of_household_members = '" + count + "' where household_no='" + to_household_members.household_no + "' ";
             stmt.addBatch(h3);
-          
+
             int count2 = 0;
             String hh3 = "select count(id) from household_members where house_no='" + to_household_members.house_no + "' ";
             Statement stmtt3 = conn.createStatement();
@@ -2510,6 +2534,7 @@ public class Household_members {
                     + ",voters_id_no"
                     + ",image"
                     + ",transient_no"
+                    + ",contact_no"
                     + " from household_members"
                     + " " + where;
 
@@ -2557,7 +2582,8 @@ public class Household_members {
                 String voters_id_no = rs.getString(39);
                 String image = rs.getString(40);
                 String transient_no = rs.getString(41);
-                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no);
+                String contact_no = rs.getString(42);
+                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
                 datas.add(to);
             }
             return datas;
@@ -2573,7 +2599,7 @@ public class Household_members {
     }
 
     public static String increment_id() {
-        String id = "TRN-000000000000";
+        String id = "TRN" + MyUser.getBarangay_id() + "-000000000000";
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select max(id) from household_members  ";
@@ -2581,7 +2607,7 @@ public class Household_members {
             ResultSet rs = stmt.executeQuery(s0);
             if (rs.next()) {
                 id = rs.getString(1);
-                String s2 = "select transient_no from household_members where id='" + id + "'";
+                String s2 = "select transient_no from household_members where id='" + id + "' and barangay_id ='" + MyUser.getBarangay_id() + "' ";
                 Statement stmt2 = conn.createStatement();
                 ResultSet rs2 = stmt2.executeQuery(s2);
                 if (rs2.next()) {
@@ -2589,7 +2615,7 @@ public class Household_members {
                 }
             }
             if (id == null) {
-                id = "TRN-000000000000";
+                id = "TRN" + MyUser.getBarangay_id() + "-000000000000";
             }
             id = ReceiptIncrementor.increment(id);
             return id;

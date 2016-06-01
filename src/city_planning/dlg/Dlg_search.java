@@ -329,6 +329,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox1.setText("All");
+        jCheckBox1.setEnabled(false);
 
         lbl_barangay3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_barangay3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -336,8 +337,10 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox3.setText("All");
+        jCheckBox3.setEnabled(false);
 
         tf_region.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_region.setFocusable(false);
         tf_region.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_regionMouseClicked(evt);
@@ -350,6 +353,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_city.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_city.setFocusable(false);
         tf_city.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_cityMouseClicked(evt);
@@ -371,11 +375,14 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox2.setText("All");
+        jCheckBox2.setEnabled(false);
 
         jCheckBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox4.setText("All");
+        jCheckBox4.setEnabled(false);
 
         tf_province.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_province.setFocusable(false);
         tf_province.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_provinceMouseClicked(evt);
@@ -388,6 +395,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_barangay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_barangay.setFocusable(false);
         tf_barangay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_barangayMouseClicked(evt);
@@ -400,6 +408,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_purok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_purok.setFocusable(false);
         tf_purok.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_purokMouseClicked(evt);
@@ -413,6 +422,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox5.setText("All");
+        jCheckBox5.setEnabled(false);
 
         lbl_barangay6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_barangay6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -621,6 +631,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox6.setText("All");
+        jCheckBox6.setEnabled(false);
 
         lbl_barangay8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_barangay8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -628,8 +639,10 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox7.setText("All");
+        jCheckBox7.setEnabled(false);
 
         tf_region1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_region1.setFocusable(false);
         tf_region1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_region1MouseClicked(evt);
@@ -642,6 +655,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_city1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_city1.setFocusable(false);
         tf_city1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_city1MouseClicked(evt);
@@ -663,11 +677,14 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox8.setText("All");
+        jCheckBox8.setEnabled(false);
 
         jCheckBox9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox9.setText("All");
+        jCheckBox9.setEnabled(false);
 
         tf_province1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_province1.setFocusable(false);
         tf_province1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_province1MouseClicked(evt);
@@ -680,6 +697,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_barangay1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_barangay1.setFocusable(false);
         tf_barangay1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_barangay1MouseClicked(evt);
@@ -692,6 +710,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_purok1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_purok1.setFocusable(false);
         tf_purok1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_purok1MouseClicked(evt);
@@ -705,6 +724,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox10.setText("All");
+        jCheckBox10.setEnabled(false);
 
         lbl_barangay11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_barangay11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -913,6 +933,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox11.setText("All");
+        jCheckBox11.setEnabled(false);
 
         lbl_barangay14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_barangay14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -920,8 +941,10 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox12.setText("All");
+        jCheckBox12.setEnabled(false);
 
         tf_region2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_region2.setFocusable(false);
         tf_region2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_region2MouseClicked(evt);
@@ -934,6 +957,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_city2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_city2.setFocusable(false);
         tf_city2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_city2MouseClicked(evt);
@@ -955,11 +979,14 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox13.setText("All");
+        jCheckBox13.setEnabled(false);
 
         jCheckBox14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox14.setText("All");
+        jCheckBox14.setEnabled(false);
 
         tf_province2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_province2.setFocusable(false);
         tf_province2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_province2MouseClicked(evt);
@@ -972,6 +999,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_barangay2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_barangay2.setFocusable(false);
         tf_barangay2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_barangay2MouseClicked(evt);
@@ -984,6 +1012,7 @@ public class Dlg_search extends javax.swing.JDialog {
         });
 
         tf_purok2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_purok2.setFocusable(false);
         tf_purok2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_purok2MouseClicked(evt);
@@ -997,6 +1026,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jCheckBox15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox15.setText("All");
+        jCheckBox15.setEnabled(false);
 
         lbl_barangay17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_barangay17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1229,43 +1259,43 @@ public class Dlg_search extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tf_regionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_regionMouseClicked
-        Initialize_search_record_field_types.init_regions(tf_region);
+//        Initialize_search_record_field_types.init_regions(tf_region);
     }//GEN-LAST:event_tf_regionMouseClicked
 
     private void tf_regionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_regionActionPerformed
-        Initialize_search_record_field_types.init_regions(tf_region);
+//        Initialize_search_record_field_types.init_regions(tf_region);
     }//GEN-LAST:event_tf_regionActionPerformed
 
     private void tf_cityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_cityMouseClicked
-        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
+//        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
     }//GEN-LAST:event_tf_cityMouseClicked
 
     private void tf_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cityActionPerformed
-        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
+//        Initialize_search_record_field_types.init_cities(tf_city, tf_region, tf_province);
     }//GEN-LAST:event_tf_cityActionPerformed
 
     private void tf_provinceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_provinceMouseClicked
-        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
+//        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
     }//GEN-LAST:event_tf_provinceMouseClicked
 
     private void tf_provinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_provinceActionPerformed
-        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
+//        Initialize_search_record_field_types.init_provinces(tf_province, tf_region);
     }//GEN-LAST:event_tf_provinceActionPerformed
 
     private void tf_barangayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_barangayMouseClicked
-        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
+//        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
     }//GEN-LAST:event_tf_barangayMouseClicked
 
     private void tf_barangayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_barangayActionPerformed
-        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
+//        Initialize_search_record_field_types.init_barangays(tf_barangay, tf_region, tf_province, tf_city);
     }//GEN-LAST:event_tf_barangayActionPerformed
 
     private void tf_purokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_purokMouseClicked
-        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
+//        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
     }//GEN-LAST:event_tf_purokMouseClicked
 
     private void tf_purokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_purokActionPerformed
-        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
+//        Initialize_search_record_field_types.init_puroks(tf_purok, tf_region, tf_province, tf_city, tf_barangay);
     }//GEN-LAST:event_tf_purokActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1297,7 +1327,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_city1MouseClicked
 
     private void tf_city1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_city1ActionPerformed
-        Initialize_search_record_field_types.init_cities(tf_city1, tf_region1, tf_province1);
+//        Initialize_search_record_field_types.init_cities(tf_city1, tf_region1, tf_province1);
     }//GEN-LAST:event_tf_city1ActionPerformed
 
     private void tf_province1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_province1MouseClicked
@@ -1305,7 +1335,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_province1MouseClicked
 
     private void tf_province1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_province1ActionPerformed
-        Initialize_search_record_field_types.init_provinces(tf_province1, tf_region1);
+//        Initialize_search_record_field_types.init_provinces(tf_province1, tf_region1);
     }//GEN-LAST:event_tf_province1ActionPerformed
 
     private void tf_barangay1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_barangay1MouseClicked
@@ -1313,7 +1343,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_barangay1MouseClicked
 
     private void tf_barangay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_barangay1ActionPerformed
-        Initialize_search_record_field_types.init_barangays(tf_barangay1, tf_region1, tf_province1, tf_city1);
+//        Initialize_search_record_field_types.init_barangays(tf_barangay1, tf_region1, tf_province1, tf_city1);
     }//GEN-LAST:event_tf_barangay1ActionPerformed
 
     private void tf_purok1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_purok1MouseClicked
@@ -1321,7 +1351,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_purok1MouseClicked
 
     private void tf_purok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_purok1ActionPerformed
-        Initialize_search_record_field_types.init_puroks(tf_purok1, tf_region1, tf_province1, tf_city1, tf_barangay1);
+//        Initialize_search_record_field_types.init_puroks(tf_purok1, tf_region1, tf_province1, tf_city1, tf_barangay1);
     }//GEN-LAST:event_tf_purok1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1341,7 +1371,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_region2MouseClicked
 
     private void tf_region2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_region2ActionPerformed
-        Initialize_search_record_field_types.init_regions(tf_region2);
+//        Initialize_search_record_field_types.init_regions(tf_region2);
     }//GEN-LAST:event_tf_region2ActionPerformed
 
     private void tf_city2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_city2MouseClicked
@@ -1349,7 +1379,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_city2MouseClicked
 
     private void tf_city2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_city2ActionPerformed
-        Initialize_search_record_field_types.init_cities(tf_city2, tf_region2, tf_province2);
+//        Initialize_search_record_field_types.init_cities(tf_city2, tf_region2, tf_province2);
     }//GEN-LAST:event_tf_city2ActionPerformed
 
     private void tf_province2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_province2MouseClicked
@@ -1357,7 +1387,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_province2MouseClicked
 
     private void tf_province2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_province2ActionPerformed
-        Initialize_search_record_field_types.init_provinces(tf_province2, tf_region2);
+//        Initialize_search_record_field_types.init_provinces(tf_province2, tf_region2);
     }//GEN-LAST:event_tf_province2ActionPerformed
 
     private void tf_barangay2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_barangay2MouseClicked
@@ -1365,7 +1395,7 @@ public class Dlg_search extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_barangay2MouseClicked
 
     private void tf_barangay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_barangay2ActionPerformed
-        Initialize_search_record_field_types.init_barangays(tf_barangay2, tf_region2, tf_province2, tf_city2);
+//        Initialize_search_record_field_types.init_barangays(tf_barangay2, tf_region2, tf_province2, tf_city2);
     }//GEN-LAST:event_tf_barangay2ActionPerformed
 
     private void tf_purok2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_purok2MouseClicked
@@ -1644,7 +1674,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_regions.OutputData data) {
-                    Initialize_search_record_field_types.ret_data_regions();
+                Initialize_search_record_field_types.ret_data_regions();
             }
         });
         nd.setLocationRelativeTo(this);
@@ -1907,7 +1937,7 @@ public class Dlg_search extends javax.swing.JDialog {
         Field.Combo ci = (Field.Combo) tf_city;
         Field.Combo ba = (Field.Combo) tf_barangay;
         Field.Combo pu = (Field.Combo) tf_purok;
-        Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "");
+        Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "");
 
         String region = re.getText();
         String region_id = re.getId();
@@ -1924,6 +1954,10 @@ public class Dlg_search extends javax.swing.JDialog {
         nd.setTitle("");
         nd.do_pass_new(region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, household_member);
         nd.setCallback(new Dlg_household_members.Callback() {
+            @Override
+            public void update(CloseDialog closeDialog) {
+                closeDialog.ok();
+            }
 
             @Override
             public void ok(CloseDialog closeDialog, Dlg_household_members.OutputData data) {
@@ -1981,13 +2015,14 @@ public class Dlg_search extends javax.swing.JDialog {
 
                 String household_member_no = data.household_member_no;
                 String transient_no = Household_members.increment_id();
+                String contact_no = data.contact_no;
                 String where = " where transient_no='" + transient_no + "'";
                 List<Household_members.to_household_members> datas = Household_members.ret_data(where);
                 if (!datas.isEmpty()) {
                     Alert.set(0, "Duplicate TR Entry, Try Again!");
                     return;
                 }
-                Household_members.to_household_members household_member = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no);
+                Household_members.to_household_members household_member = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
                 Household_members.add_data(household_member);
 
                 Initialize_table_household_members.tbl_household_member_work_experiences_ALM.clear();
@@ -2055,7 +2090,15 @@ public class Dlg_search extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_household_members.OutputData data) {
                     closeDialog.ok();
+
                 }
+
+                @Override
+                public void update(CloseDialog closeDialog) {
+                 
+                    ret_household_members();
+                }
+
             });
             nd.setLocationRelativeTo(this);
             nd.setVisible(true);
@@ -2353,7 +2396,7 @@ public class Dlg_search extends javax.swing.JDialog {
         }
         final to_houses house = (to_houses) tbl_houses_ALM.get(row);
         int col = tbl_houses.getSelectedColumn();
-        
+
         if (col == 5) {
             //edit
             Window p = (Window) this;

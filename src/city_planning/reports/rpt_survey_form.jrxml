@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e6d202d-a8b3-4148-89fe-0e8d6e292215">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="399"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="province" class="java.lang.String"/>
 	<parameter name="city" class="java.lang.String"/>
 	<parameter name="barangay" class="java.lang.String"/>
@@ -114,7 +114,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Full Name:]]></text>
@@ -240,7 +240,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Gender:]]></text>
@@ -282,7 +282,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Marital Status:]]></text>
@@ -310,7 +310,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Birth Date:]]></text>
@@ -324,7 +324,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Birth Place:]]></text>
@@ -352,7 +352,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Present Address:]]></text>
@@ -394,7 +394,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Height [cm]:]]></text>
@@ -408,7 +408,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Weight [kg]:]]></text>
@@ -464,7 +464,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Citizenship:]]></text>
@@ -520,7 +520,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Email Address:]]></text>
@@ -548,7 +548,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Contact No.:]]></text>
@@ -618,7 +618,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[House Number:]]></text>
@@ -632,7 +632,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Household Number:]]></text>
@@ -766,7 +766,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Blood Type:]]></text>

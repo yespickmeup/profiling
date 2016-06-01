@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e6d202d-a8b3-4148-89fe-0e8d6e292215">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="399"/>
 	<parameter name="province" class="java.lang.String"/>
 	<parameter name="city" class="java.lang.String"/>
 	<parameter name="barangay" class="java.lang.String"/>
@@ -820,7 +820,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Seing a Doctor?]]></text>
@@ -932,7 +932,7 @@
 					<rightPen lineWidth="0.2"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12" isBold="false"/>
+					<font size="12" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[Status:]]></text>

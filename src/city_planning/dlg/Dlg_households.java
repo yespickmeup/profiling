@@ -3193,7 +3193,11 @@ public class Dlg_households extends javax.swing.JDialog {
         nd.setTitle("");
         nd.do_pass_new(my_region, my_region_id, my_province, my_province_id, my_city, my_city_id, my_barangay, my_barangay_id, my_purok, my_purok_id, null);
         nd.setCallback(new Dlg_household_members.Callback() {
-
+            @Override
+            public void update(CloseDialog closeDialog) {
+                  closeDialog.ok();
+            }
+            
             @Override
             public void ok(CloseDialog closeDialog, Dlg_household_members.OutputData data) {
                 closeDialog.ok();
@@ -3249,7 +3253,8 @@ public class Dlg_households extends javax.swing.JDialog {
                 Household_member_skills.to_household_member_skills skills = data.skills;
                 String image = data.image;
                 String transient_no = "";
-                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no);
+                String contact_no=data.contact_no;    
+                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no,contact_no);
 
                 Initialize_table_households.tbl_household_members_ALM.add(household_members);
                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();
@@ -3274,7 +3279,11 @@ public class Dlg_households extends javax.swing.JDialog {
             nd.setTitle("");
             nd.do_pass(household_member);
             nd.setCallback(new Dlg_household_members.Callback() {
-
+                @Override
+                public void update(CloseDialog closeDialog) {
+                     closeDialog.ok();
+                }
+                
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_household_members.OutputData data) {
                     closeDialog.ok();

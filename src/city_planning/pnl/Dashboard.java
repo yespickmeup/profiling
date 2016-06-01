@@ -6,6 +6,7 @@ package city_planning.pnl;
 
 import city_planning.achievements.Dlg_achievements;
 import city_planning.assets.Dlg_assets;
+import city_planning.barangays.Barangays;
 import city_planning.barangays.Dlg_barangays;
 import city_planning.basic_needs.Dlg_basic_needs;
 import city_planning.bathroom_types.Dlg_bathroom_types;
@@ -35,6 +36,7 @@ import city_planning.puroks.Dlg_puroks;
 import city_planning.regions.Dlg_regions;
 import city_planning.religions.Dlg_religions;
 import city_planning.reports.Dlg_report_barangay_clearances;
+import city_planning.reports.Dlg_survey_form;
 import city_planning.roof_types.Dlg_roof_types;
 import city_planning.schools.Dlg_schools;
 import city_planning.skills.Dlg_skills;
@@ -48,6 +50,8 @@ import city_planning.util.MyFrame;
 import city_planning.wall_types.Dlg_wall_types;
 import city_planning.tranportation_types.Dlg_transportation_types;
 import city_planning.users.Dlg_users;
+import city_planning.users.MyUser;
+import city_planning.users.Users;
 import city_planning.water_sources.Dlg_water_sources;
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -59,6 +63,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import javax.swing.*;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
@@ -179,7 +184,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText(" Profiling");
         jLabel7.setOpaque(true);
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -460,7 +464,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -476,7 +480,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void tf_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_usernameActionPerformed
-
+        
         tf_password.grabFocus();
     }//GEN-LAST:event_tf_usernameActionPerformed
 
@@ -531,7 +535,7 @@ public class Dashboard extends javax.swing.JFrame {
          * Create and display the form
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
-
+            
             @Override
             public void run() {
                 Dashboard aw = new Dashboard();
@@ -579,16 +583,52 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void myInit() {
         key();
+        ret_default_location();
         set_card_items();
         jPanel6.setVisible(false);
     }
+    
+    String my_region = "";
+    String my_region_id = "";
+    String my_province = "";
+    String my_province_id = "";
+    String my_city = "";
+    String my_city_id = "";
+    String my_barangay = "";
+    String my_barangay_id = "";
+    String my_purok = "";
+    String my_purok_id = "";
+    
+    private void ret_default_location() {
+        
+        String where = " where is_default=1";
+        List<Barangays.to_barangays> datas = Barangays.ret_data(where);
+        Barangays.to_barangays location = datas.get(0);
+        my_region = location.region;
+        my_region_id = "" + location.region_id;
+        my_province = location.province;
+        my_province_id = "" + location.province_id;
+        my_city = location.city;
+        my_city_id = "" + location.city_id;
+        my_barangay = location.barangay;
+        my_barangay_id = "" + location.id;
+        
+        MyUser.setRegion(my_region);
+        MyUser.setRegion_id(my_region_id);
+        MyUser.setProvince(my_province);
+        MyUser.setProvince_id(my_province_id);
+        MyUser.setCity(my_city);
+        MyUser.setCity_id(my_city_id);
+        MyUser.setBarangay(my_barangay);
+        MyUser.setBarangay_id(my_barangay_id);
+    }
     int count = 0;
-
+    
     private void key() {
         tf_username.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-
+                
                 if (e.getKeyCode() == KeyEvent.VK_F10) {
                     if (count == 2) {
                         license_code();
@@ -599,33 +639,33 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private void license_code() {
         Window p = (Window) this;
         Dlg_get_hdd_serial nd = Dlg_get_hdd_serial.create(p, true);
         nd.setTitle("");
         nd.setCallback(new Dlg_get_hdd_serial.Callback() {
-
+            
             @Override
             public void ok(CloseDialog closeDialog, Dlg_get_hdd_serial.OutputData data) {
                 closeDialog.ok();
-
+                
             }
         });
         nd.setLocationRelativeTo(this);
         nd.setVisible(true);
     }
-
+    
     CardLayout cardLayout = new CardLayout();
-
+    
     private void set_card_items() {
         cardLayout = (CardLayout) pnl_main_holder.getLayout();
-
+        
         cardLayout.addLayoutComponent("1", pnl_login);
         cardLayout.addLayoutComponent("2", jPanel1);
-
+        
     }
-
+    
     private void hover() {
         JLabel[] lbl = {};
         for (final JLabel l : lbl) {
@@ -636,9 +676,9 @@ public class Dashboard extends javax.swing.JFrame {
                     if (l.isEnabled()) {
                         l.setBackground(new java.awt.Color(255, 255, 255));
                     }
-
+                    
                 }
-
+                
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (l.isEnabled()) {
@@ -648,39 +688,39 @@ public class Dashboard extends javax.swing.JFrame {
             });
         }
     }
-
+    
     public JDesktopPane pane() {
         return jPanel1;
-
+        
     }
-
+    
     private void dlg_same_size() {
 //        Dlg_users dtc = new Dlg_users();
 //        MyFrame.set2(dtc.getSurface(), jPanel1, "Users");
     }
-
+    
     private void dlg_maximize() {
         Dlg_search rpt = new Dlg_search();
         MyFrame.set(rpt.getSurface(), jPanel1, "City Planning");
     }
-
+    
     private void menu() {
-
+        
         Window p = (Window) this;
         Dlg_menu nd = Dlg_menu.create(p, true);
         nd.setTitle("");
         nd.setCallback(new Dlg_menu.Callback() {
-
+            
             @Override
             public void minimize(CloseDialog closeDialog, Dlg_menu.OutputData data) {
                 closeDialog.ok();
                 Dashboard.this.setState(Frame.ICONIFIED);
             }
-
+            
             @Override
             public void ok1(CloseDialog closeDialog, Dlg_menu.OutputData data) {
                 closeDialog.ok();
-
+                
                 if (data.stmt.equals("standby")) {
                     JLabel[] lbl = {jLabel10, jLabel16};
                     for (final JLabel l : lbl) {
@@ -688,9 +728,9 @@ public class Dashboard extends javax.swing.JFrame {
                     }
                     jPanel6.setVisible(false);
                     cardLayout.show(pnl_main_holder, "1");
-
+                    
                 }
-
+                
                 if (data.stmt.equals("logout")) {
                     System.exit(1);
                 }
@@ -702,7 +742,7 @@ public class Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Profiles")) {
                     transactions_profiles();
                 }
-
+                
                 if (data.stmt.equals("Clearances")) {
                     transactions_clearances();
                 }
@@ -739,7 +779,7 @@ public class Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Citizenships")) {
                     maintenance_citizenships();
                 }
-
+                
                 if (data.stmt.equals("Communication Types")) {
                     maintenance_communication();
                 }
@@ -785,7 +825,7 @@ public class Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Schools")) {
                     maintenance_school();
                 }
-
+                
                 if (data.stmt.equals("Skills")) {
                     maintenance_skills();
                 }
@@ -801,7 +841,7 @@ public class Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Transportation Types")) {
                     maintenance_transportation_available();
                 }
-
+                
                 if (data.stmt.equals("Users")) {
                     maintenance_users();
                 }
@@ -816,16 +856,18 @@ public class Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Barangay Clearances")) {
                     report_barangay_clearances();
                 }
-
+                if (data.stmt.equals("Survey Form")) {
+                    report_survey_form();
+                }
                 //</editor-fold>
             }
-
+            
             @Override
             public void standby(CloseDialog closeDialog, Dlg_menu.OutputData data) {
-
+                
                 closeDialog.ok();
             }
-
+            
             @Override
             public void logout(CloseDialog closeDialog, Dlg_menu.OutputData data) {
                 closeDialog.ok();
@@ -835,31 +877,60 @@ public class Dashboard extends javax.swing.JFrame {
         nd.setLocation(point.x - 125, point.y + 37);
         nd.setVisible(true);
     }
-
+    
     private void login() {
         String license_code = System.getProperty("license_code", "");
         String hdd_license = DeEncrypter.encrypt(getSerialNumber());
-
+        
         if (!license_code.equals(hdd_license)) {
             Alert.set(0, "Invalid license key, please register!");
             return;
         }
-        jPanel1.removeAll();
-        jPanel1.updateUI();
-
-        cardLayout.show(pnl_main_holder, "2");
-
+        String user_name = tf_username.getText();
+        String password = tf_password.getText();
+        if (user_name.isEmpty() || password.isEmpty()) {
+            Alert.set(0, "Field must not be empty!");
+            tf_username.grabFocus();
+            return;
+        }
+        password = DeEncrypter.encrypt(password);
+        String where = " ";
+        List<Users.to_users> datas = Users.ret_data(where);
+        int exist = 0;
+        for (Users.to_users user : datas) {
+            String my_user = user.user_name;
+            String my_password = user.password;
+            if (my_user.equals(user_name) && my_password.equals(password) && user.barangay_id.equals(my_barangay_id)) {
+                MyUser.setUser_id("" + user.id);
+                MyUser.setUser_name(user.user_name);
+                MyUser.setUser_screen_name(user.screen_name);
+                exist = 1;
+                break;
+            }
+        }
+        if (exist == 1) {
+            tf_username.setText("");
+            tf_password.setText("");
+            jPanel1.removeAll();
+            jPanel1.updateUI();
+            cardLayout.show(pnl_main_holder, "2");
+            
+        } else {
+            Alert.set(0, "Username/password did not matched!");
+            tf_username.grabFocus();
+        }
+        
     }
     //<editor-fold defaultstate="collapsed" desc=" transaction functions ">
 
     private void transactions_profiles() {
-
+        
         Dlg_search dtc = new Dlg_search();
         MyFrame.set(dtc.getSurface(), jPanel1, "Search");
     }
-
+    
     private void transactions_clearances() {
-
+        
         Dlg_clearance dtc = new Dlg_clearance();
         MyFrame.set(dtc.getSurface(), jPanel1, "Search");
     }
@@ -867,218 +938,218 @@ public class Dashboard extends javax.swing.JFrame {
 //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc=" maintenance functions ">
     private void maintenance_assets() {
-
+        
         Dlg_assets dtc = new Dlg_assets();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Assets", dtc.getWidth(), dtc.getHeight());
-
+        
     }
-
+    
     private void maintenance_achievements() {
-
+        
         Dlg_achievements dtc = new Dlg_achievements();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Achievements", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_barangays() {
-
+        
         Dlg_barangays dtc = new Dlg_barangays();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Barangays", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_basic_needs() {
-
+        
         Dlg_basic_needs dtc = new Dlg_basic_needs();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Basic Needs", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_blood() {
-
+        
         Dlg_blood_types dtc = new Dlg_blood_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Blood", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_businesses() {
-
+        
         Dlg_businesses dtc = new Dlg_businesses();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Business", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_communication() {
-
+        
         Dlg_communication dtc = new Dlg_communication();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Communication", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_compartments() {
-
+        
         Dlg_compartments dtc = new Dlg_compartments();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Compartments", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_cooking_lighting_types() {
-
+        
         Dlg_cooking_lightning_types dtc = new Dlg_cooking_lightning_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Cooking Lighting Types", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_disabilities() {
-
+        
         Dlg_disabilities dtc = new Dlg_disabilities();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Disabilities", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_disposal_methods() {
-
+        
         Dlg_disposal_methods dtc = new Dlg_disposal_methods();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Disposal Methods", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_certifications() {
-
+        
         Dlg_certifications dtc = new Dlg_certifications();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Certifications", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_cities() {
-
+        
         Dlg_cities dtc = new Dlg_cities();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Cities", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_citizenships() {
-
+        
         Dlg_citizenships dtc = new Dlg_citizenships();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Citizenships", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_bathroom_types() {
-
+        
         Dlg_bathroom_types dtc = new Dlg_bathroom_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Bathroom", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_blood_types() {
-
+        
         Dlg_blood_types dtc = new Dlg_blood_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Blood", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_building_types() {
-
+        
         Dlg_building_types dtc = new Dlg_building_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Building", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_kitchen() {
-
+        
         Dlg_kitchen_types dtc = new Dlg_kitchen_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Kitchen", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_professions() {
-
+        
         Dlg_professions dtc = new Dlg_professions();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Professions", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_provinces() {
-
+        
         Dlg_provinces dtc = new Dlg_provinces();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Provinces", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_puroks() {
-
+        
         Dlg_puroks dtc = new Dlg_puroks();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Puroks", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_regions() {
-
+        
         Dlg_regions dtc = new Dlg_regions();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Regions", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_religions() {
-
+        
         Dlg_religions dtc = new Dlg_religions();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Religions", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_genders() {
-
+        
         Dlg_genders dtc = new Dlg_genders();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Genders", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_educational_status() {
-
+        
         Dlg_educational_status dtc = new Dlg_educational_status();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Education", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_floor_types() {
-
+        
         Dlg_floor_types dtc = new Dlg_floor_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Floor Types", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_skills() {
-
+        
         Dlg_skills dtc = new Dlg_skills();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Skills", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_solid_waste_disposal_methods() {
-
+        
         Dlg_solid_waste_disposal_methods dtc = new Dlg_solid_waste_disposal_methods();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Solid Waste Disposal Methods", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_streets() {
-
+        
         Dlg_streets dtc = new Dlg_streets();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Streets", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_transportation_available() {
-
+        
         Dlg_transportation_types dtc = new Dlg_transportation_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Transportation", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_users() {
-
+        
         Dlg_users dtc = new Dlg_users();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Users", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_roof_types() {
-
+        
         Dlg_roof_types dtc = new Dlg_roof_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Roof", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_wall_types() {
-
+        
         Dlg_wall_types dtc = new Dlg_wall_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Wall", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_water_sources() {
-
+        
         Dlg_water_sources dtc = new Dlg_water_sources();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Water Sources", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_toilet_types() {
-
+        
         Dlg_toilet_types dtc = new Dlg_toilet_types();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Toilet", dtc.getWidth(), dtc.getHeight());
     }
-
+    
     private void maintenance_school() {
-
+        
         Dlg_schools dtc = new Dlg_schools();
         MyFrame.set2(dtc.getSurface(), jPanel1, "School", dtc.getWidth(), dtc.getHeight());
     }
@@ -1087,8 +1158,14 @@ public class Dashboard extends javax.swing.JFrame {
     //<editor-fold defaultstate="collapsed" desc=" Reports ">
     private void report_barangay_clearances() {
         Dlg_report_barangay_clearances dtc = new Dlg_report_barangay_clearances();
-       
+        
         MyFrame.set(dtc.getSurface(), jPanel1, "Barangay Clearances");
+    }
+    
+    private void report_survey_form() {
+        Dlg_survey_form dtc = new Dlg_survey_form();
+        
+        MyFrame.set(dtc.getSurface(), jPanel1, "Survey Form");
     }
     //</editor-fold>
 }

@@ -18,7 +18,7 @@ import net.sf.jasperreports.swing.JRViewer;
  *
  * @author Guinness
  */
-public class Srpt_survey_form_h1_1 {
+public class Srpt_survey_form_hh_1 {
 
     public final String province;
     public final String city;
@@ -27,7 +27,7 @@ public class Srpt_survey_form_h1_1 {
     public final String img_city;
     public final String img_barangay;
 
-    public Srpt_survey_form_h1_1(String province, String city, String barangay, String img_city, String img_barangay) {
+    public Srpt_survey_form_hh_1(String province, String city, String barangay, String img_city, String img_barangay) {
         this.province = province;
         this.city = city;
         this.barangay = barangay;
@@ -36,21 +36,17 @@ public class Srpt_survey_form_h1_1 {
     }
 
     public static void main(String[] args) {
-
         String province = "Province of Negros Oriental";
         String city = "City of Dumaguete";
         String barangay = "Barangay Poblacion 7";
-
         String home = System.getProperty("user.home");
         String img_city = home + "\\images\\city.png";
         String img_barangay = home + "\\images\\barangay.png";
         Srpt_survey_form_h1 rpt = new Srpt_survey_form_h1(province, city, barangay, img_city, img_barangay);
-
-        String jrxml = "rpt_survey_form_h1.jrxml";
+        String jrxml = "rpt_survey_form_hh_1.jrxml";
         JRViewer viewer = get_viewer(rpt, jrxml);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     public static JasperReport compileJasper(String jrxml) {
