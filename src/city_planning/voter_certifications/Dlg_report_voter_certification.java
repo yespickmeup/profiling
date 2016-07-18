@@ -1,10 +1,11 @@
-package city_planning.business_clearances;
+package city_planning.voter_certifications;
 
 import city_planning.util.DateType;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -26,7 +27,7 @@ import synsoftech.fields.Button;
  *
  * @author Guinness
  */
-public class Dlg_report_business_clearance extends javax.swing.JDialog {
+public class Dlg_report_voter_certification extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_report_template
@@ -75,33 +76,33 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_report_business_clearance(java.awt.Frame parent, boolean modal) {
+    private Dlg_report_voter_certification(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_report_business_clearance(java.awt.Dialog parent, boolean modal) {
+    private Dlg_report_voter_certification(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_report_business_clearance() {
+    public Dlg_report_voter_certification() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_report_business_clearance myRef;
+    private Dlg_report_voter_certification myRef;
 
-    private void setThisRef(Dlg_report_business_clearance myRef) {
+    private void setThisRef(Dlg_report_voter_certification myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_report_business_clearance> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_report_voter_certification> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -109,7 +110,7 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_report_business_clearance create(java.awt.Window parent, boolean modal) {
+    public static Dlg_report_voter_certification create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -119,14 +120,14 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_report_business_clearance create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_report_voter_certification create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_report_business_clearance dialog = dialogContainer.get(parent);
+            Dlg_report_voter_certification dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_report_business_clearance((java.awt.Frame) parent, false);
+                dialog = new Dlg_report_voter_certification((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -140,10 +141,10 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_report_business_clearance dialog = dialogContainer.get(parent);
+            Dlg_report_voter_certification dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_report_business_clearance((java.awt.Dialog) parent, false);
+                dialog = new Dlg_report_voter_certification((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -170,7 +171,7 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_report_business_clearance dialog = Dlg_report_business_clearance.create(new javax.swing.JFrame(), true);
+        Dlg_report_voter_certification dialog = Dlg_report_voter_certification.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -342,8 +343,8 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
         init_key();
     }
 
-    public void do_pass(Business_clearances.to_business_clearances business_clearance) {
-        init_report(business_clearance);
+    public void do_pass(Voter_certifications.to_voter_certifications voter_certification) {
+        init_report(voter_certification);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -364,7 +365,7 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    private void init_report(final Business_clearances.to_business_clearances business_clearance) {
+    private void init_report(final Voter_certifications.to_voter_certifications voter_certification) {
 
         jProgressBar1.setString("Loading...Please wait...");
         jProgressBar1.setIndeterminate(true);
@@ -373,32 +374,30 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
             public void run() {
                 String city_label = System.getProperty("city_label", "Municipality");
                 String pb = System.getProperty("punong_barangay", "JOSE O. DE GUZMAN");
-                String province = "Province of " + business_clearance.province;
-                String city = city_label + " of " + business_clearance.city;
-                String barangay = "Barangay " + business_clearance.barangay;
-                String applicant = business_clearance.applicant;
-                String business_name = business_clearance.business_name;
-                String location = business_clearance.business_location;
-                String valid_on = DateType.convert_jan_1_2013_sf(business_clearance.valid_on);
-                String issued_on = DateType.convert_jan_1_2013_datetime2(business_clearance.issued_on);
-                String issued_at = "Barangay ," + business_clearance.barangay + " " + business_clearance.city + " City";
-                String clearance_no = business_clearance.business_clearance_no;
+                String province = "Province of " + voter_certification.province;
+                String city = city_label + " of " + voter_certification.city;
+                String barangay = "Barangay " + voter_certification.barangay;
+                String citizen = voter_certification.voter;
+                String day = DateType.to_the_nth2(DateType.datetime.format(new Date()));
+                String month = DateType.to_the_nth3(DateType.datetime.format(new Date()));
                 String punong_barangay = pb;
                 String home = System.getProperty("user.home");
-                String img_city = home + "\\images_profiling\\city.png";;
-                String img_barangay = home + "\\images_profiling\\barangay.png";;
-                Srpt_business_clearance rpt = new Srpt_business_clearance(province, city, barangay, applicant, business_name, location, valid_on, issued_on, issued_at, clearance_no, punong_barangay, img_city, img_barangay);
-                String jrxml = "rpt_business_clearance.jrxml";
+                String img_city = home + "\\images_profiling\\city.png";
+                String img_barangay = home + "\\images_profiling\\barangay.png";
+                String certify = "Citizen, and a registered voter of " + barangay + ". She/he has no criminal offense or pending case recorded in this office.";
+                String certify2 = "                                                                               at " + barangay + ", " + city + ", Philippines.";
+                String purpose = voter_certification.purpose;
+                Srpt_voter_certification rpt = new Srpt_voter_certification(province, city, barangay, citizen, day, month, punong_barangay, img_city, img_barangay, certify, certify2, purpose);
+                String jrxml = "rpt_voter_certification.jrxml";
                 report_without_fields(rpt, jrxml);
-
-                InputStream is = Srpt_business_clearance.class.getResourceAsStream(jrxml);
+                InputStream is = Srpt_voter_certification.class.getResourceAsStream(jrxml);
                 try {
                     JasperReport jasperReport = JasperCompileManager.compileReport(is);
                     jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
                             setParameter(rpt), JasperUtil.emptyDatasource());
 
                 } catch (JRException ex) {
-                    Logger.getLogger(Dlg_report_business_clearance.class.getName()).
+                    Logger.getLogger(Dlg_report_voter_certification.class.getName()).
                             log(Level.SEVERE, null, ex);
                 }
                 jProgressBar1.setString("Finished...");
@@ -409,7 +408,7 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
 
     }
 
-    private void report_without_fields(final Srpt_business_clearance to, String jrxml_name) {
+    private void report_without_fields(final Srpt_voter_certification to, String jrxml_name) {
         pnl_report.removeAll();
         pnl_report.setLayout(new BorderLayout());
         try {
@@ -426,7 +425,7 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
         }
     }
 
-    public static JRViewer get_viewer_expenses(Srpt_business_clearance to, String rpt_name) {
+    public static JRViewer get_viewer_expenses(Srpt_voter_certification to, String rpt_name) {
         try {
             return JasperUtil.getJasperViewer(
                     compileJasper(rpt_name),
@@ -441,7 +440,7 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
     public static JasperReport compileJasper(String rpt_name) {
         try {
             String jrxml = rpt_name;
-            InputStream is = Srpt_business_clearance.class.getResourceAsStream(jrxml);
+            InputStream is = Srpt_voter_certification.class.getResourceAsStream(jrxml);
             JasperReport jasper = JasperCompileManager.compileReport(is);
             return jasper;
         } catch (JRException e) {

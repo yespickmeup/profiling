@@ -190,7 +190,7 @@ public class loading extends javax.swing.JDialog {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(185, 106, 154));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("[   Profiling   ]");
+        jLabel15.setText("[Profiles]");
 
         jLabel16.setBackground(new java.awt.Color(185, 106, 154));
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N

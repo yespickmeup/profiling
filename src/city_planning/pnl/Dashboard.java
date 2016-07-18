@@ -248,7 +248,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel15.setBackground(new java.awt.Color(185, 106, 154));
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(185, 106, 154));
-        jLabel15.setText("Profiling");
+        jLabel15.setText("Profiles");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(185, 106, 154));

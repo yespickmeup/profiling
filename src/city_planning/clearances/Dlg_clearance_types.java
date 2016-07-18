@@ -202,7 +202,6 @@ public class Dlg_clearance_types extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         tf_collection_type = new Field.Input();
         jTextField4 = new Field.Search();
-        jLabel10 = new Label.Separator();
         jButton3 = new Button.Warning();
         jButton4 = new Button.Info();
         jButton5 = new Button.Primary();
@@ -257,10 +256,6 @@ public class Dlg_clearance_types extends javax.swing.JDialog {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,7 +300,6 @@ public class Dlg_clearance_types extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -357,11 +351,9 @@ public class Dlg_clearance_types extends javax.swing.JDialog {
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -421,7 +413,6 @@ public class Dlg_clearance_types extends javax.swing.JDialog {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -595,7 +586,7 @@ public class Dlg_clearance_types extends javax.swing.JDialog {
         }
         to_collection_types to = (to_collection_types) tbl_collection_types_ALM.get(row);
         int id = to.id;
-        String collection_type = tf_collection_type.getText();
+        String collection_type = to.clearance_type;
         int is_fixed = 0;
         if (jCheckBox1.isSelected()) {
             is_fixed = 1;
@@ -629,15 +620,15 @@ public class Dlg_clearance_types extends javax.swing.JDialog {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
                 closeDialog.ok();
-                Clearance_types.delete_data(to);
-                Alert.set(3, "");
-                ret_collection_types();
-                tf_collection_type.setText("");
-                tf_amount_due.setText("");
-                tf_collection_type.grabFocus();
-                if (is_callback_triggered == 1) {
-                    ok1();
-                }
+//                Clearance_types.delete_data(to);
+//                Alert.set(3, "");
+//                ret_collection_types();
+//                tf_collection_type.setText("");
+//                tf_amount_due.setText("");
+//                tf_collection_type.grabFocus();
+//                if (is_callback_triggered == 1) {
+//                    ok1();
+//                }
             }
         });
         nd.setLocationRelativeTo(this);

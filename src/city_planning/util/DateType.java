@@ -306,6 +306,72 @@ public class DateType {
 
     }
 
+    public static String to_the_nth2(String datetime) {
+
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.datetime.format(new Date());
+        }
+        try {
+            d = DateType.datetime.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        int dd = FitIn.toInt(DateType.d.format(d));
+        String month = DateType.m.format(d);
+        String year = DateType.y.format(d);
+
+        String day = "" + dd;
+
+        if (day.endsWith("1") && !day.endsWith("11")) {
+            day = day + "st";
+        } else if (day.endsWith("2") && !day.endsWith("12")) {
+            day = day + "nd";
+        } else if (day.endsWith("3") && !day.endsWith("13")) {
+            day = day + "rd";
+        } else {
+            day = day + "th";
+        }
+        day = day + " day";
+        return day;
+
+    }
+
+    public static String to_the_nth3(String datetime) {
+
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.datetime.format(new Date());
+        }
+        try {
+            d = DateType.datetime.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        int dd = FitIn.toInt(DateType.d.format(d));
+        String month = DateType.m.format(d);
+        String year = DateType.y.format(d);
+
+        String day = "" + dd;
+
+        if (day.endsWith("1") && !day.endsWith("11")) {
+            day = day + "st";
+        } else if (day.endsWith("2") && !day.endsWith("12")) {
+            day = day + "nd";
+        } else if (day.endsWith("3") && !day.endsWith("13")) {
+            day = day + "rd";
+        } else {
+            day = day + "th";
+        }
+        day = month + ", " + year;
+        return day;
+
+    }
+
     public static void main(String[] args) {
         System.out.println(count_age("1991-08-02"));
     }

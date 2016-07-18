@@ -4784,7 +4784,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         my_household_no = household_member1.household_no;
         my_household_member_no = household_member.household_member_no;
         String home = System.getProperty("user.home", "C:\\Users\\Guinness");
-
         String path = home + "\\images_profiling\\" + my_barangay_id;
         path = path + "\\" + household_member.transient_no + ".jpg";
         File f = new File(path);

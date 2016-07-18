@@ -99,7 +99,7 @@
               <Color blue="9a" green="6a" red="b9" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="[   Profiling   ]"/>
+            <Property name="text" type="java.lang.String" value="[Profiles]"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
