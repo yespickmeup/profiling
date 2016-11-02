@@ -1574,6 +1574,23 @@ public class Dlg_search extends javax.swing.JDialog {
                 disposed();
             }
         });
+        KeyMapping.mapKeyWIFW(getSurface(),
+                KeyEvent.VK_F1, new KeyAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int row = jTabbedPane1.getSelectedIndex();
+                if (row == 0) {
+                    add_new_household_member();
+                }
+                if (row == 1) {
+                    new_house();
+                }
+                if (row == 2) {
+                    new_household();
+                }
+            }
+        });
         JTextField[] tf_r = {tf_region, tf_region1, tf_region2};
         for (JTextField tf : tf_r) {
             tf.addKeyListener(new KeyAdapter() {
@@ -2065,7 +2082,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
                 @Override
                 public void update(CloseDialog closeDialog) {
-                 
+
                     ret_household_members();
                 }
 

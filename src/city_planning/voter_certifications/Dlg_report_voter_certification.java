@@ -385,7 +385,7 @@ public class Dlg_report_voter_certification extends javax.swing.JDialog {
                 String img_city = home + "\\images_profiling\\city.png";
                 String img_barangay = home + "\\images_profiling\\barangay.png";
                 String certify = "Citizen, and a registered voter of " + barangay + ". She/he has no criminal offense or pending case recorded in this office.";
-                String certify2 = "                                                                               at " + barangay + ", " + city + ", Philippines.";
+                String certify2 = "                                                                                      at " + barangay + ", " + city + ", Philippines.";
                 String purpose = voter_certification.purpose;
                 Srpt_voter_certification rpt = new Srpt_voter_certification(province, city, barangay, citizen, day, month, punong_barangay, img_city, img_barangay, certify, certify2, purpose);
                 String jrxml = "rpt_voter_certification.jrxml";

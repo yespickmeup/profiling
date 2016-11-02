@@ -385,8 +385,8 @@ public class Dlg_report_business_clearance extends javax.swing.JDialog {
                 String clearance_no = business_clearance.business_clearance_no;
                 String punong_barangay = pb;
                 String home = System.getProperty("user.home");
-                String img_city = home + "\\images_profiling\\city.png";;
-                String img_barangay = home + "\\images_profiling\\barangay.png";;
+                String img_city = home + "\\images_profiling\\city.png";
+                String img_barangay = home + "\\images_profiling\\barangay.png";
                 Srpt_business_clearance rpt = new Srpt_business_clearance(province, city, barangay, applicant, business_name, location, valid_on, issued_on, issued_at, clearance_no, punong_barangay, img_city, img_barangay);
                 String jrxml = "rpt_business_clearance.jrxml";
                 report_without_fields(rpt, jrxml);

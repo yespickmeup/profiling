@@ -660,8 +660,8 @@ public class Dlg_survey_form extends javax.swing.JDialog {
                 String city = "City of Dumaguete";
                 String barangay = "Barangay Poblacion 7";
                 String home = System.getProperty("user.home");
-                String img_city = home + "\\images\\city.png";
-                String img_barangay = home + "\\images\\barangay.png";
+                String img_city = home + "\\images_profiling\\city.png";
+                String img_barangay = home + "\\images_profiling\\barangay.png";
                 Srpt_survey_form_h1 rpt = new Srpt_survey_form_h1(province, city, barangay, img_city, img_barangay);
                 String jrxml = "rpt_survey_form_h1.jrxml";
                 report_house(rpt, jrxml);
@@ -753,8 +753,8 @@ public class Dlg_survey_form extends javax.swing.JDialog {
                 String city = "City of Dumaguete";
                 String barangay = "Barangay Poblacion 7";
                 String home = System.getProperty("user.home");
-                String img_city = home + "\\images\\city.png";
-                String img_barangay = home + "\\images\\barangay.png";
+                String img_city = home + "\\images_profiling\\city.png";
+                String img_barangay = home + "\\images_profiling\\barangay.png";
                 Srpt_survey_form_h1 rpt = new Srpt_survey_form_h1(province, city, barangay, img_city, img_barangay);
                 String jrxml = "rpt_survey_form_hh_1.jrxml";
                 report_household(rpt, jrxml);
@@ -847,8 +847,8 @@ public class Dlg_survey_form extends javax.swing.JDialog {
                 String barangay = "Barangay Poblacion 7";
 
                 String home = System.getProperty("user.home");
-                String img_city = home + "\\images\\city.png";
-                String img_barangay = home + "\\images\\barangay.png";
+                String img_city = home + "\\images_profiling\\city.png";
+                String img_barangay = home + "\\images_profiling\\barangay.png";
                 Srpt_survey_form_hhm1 rpt = new Srpt_survey_form_hhm1(province, city, barangay, img_city, img_barangay);
 
                 String jrxml = "rpt_survey_form.jrxml";

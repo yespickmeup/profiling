@@ -180,19 +180,19 @@
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="jLabel104" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField48" min="-2" pref="35" max="-2" attributes="0"/>
+                                              <Component id="jTextField48" min="-2" pref="55" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel125" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jLabel113" min="-2" pref="76" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="tf_blood_type" min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="tf_blood_type" min="-2" pref="55" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="tf_present_address" alignment="0" max="32767" attributes="0"/>
                                           <Component id="tf_birth_place" alignment="1" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="tf_religions" pref="157" max="32767" attributes="0"/>
+                                                  <Component id="tf_religions" max="32767" attributes="0"/>
                                                   <Component id="tf_relation" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -203,7 +203,7 @@
                                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="tf_others_relations" max="32767" attributes="0"/>
-                                                  <Component id="tf_citizenship" pref="101" max="32767" attributes="0"/>
+                                                  <Component id="tf_citizenship" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Component id="tf_email_address" max="32767" attributes="0"/>

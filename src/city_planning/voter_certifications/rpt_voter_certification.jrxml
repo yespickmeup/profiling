@@ -144,7 +144,7 @@
 				<text><![CDATA[ of]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="203" y="251" width="92" height="17"/>
+				<reportElement uuid="aa1eed52-5e0f-4770-83c5-c1b813bdecb2" x="203" y="251" width="113" height="17"/>
 				<box>
 					<bottomPen lineWidth="0.2"/>
 				</box>
