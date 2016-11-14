@@ -1701,6 +1701,14 @@ public class Dlg_house extends javax.swing.JDialog {
                 }
             }
         });
+         tf_water_sources.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F1) {
+                    water_sources();
+                }
+            }
+        });
         tf_drinking_water_src.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

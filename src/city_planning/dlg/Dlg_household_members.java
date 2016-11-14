@@ -2724,7 +2724,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
 
         jLabel264.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel264.setText("Financial Assistant Amount:");
+        jLabel264.setText("Financial Assistance Amount:");
 
         tf_ofw_financial_assistance_amount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_ofw_financial_assistance_amount.addActionListener(new java.awt.event.ActionListener() {

@@ -75,6 +75,9 @@ public class MyMain {
             System.setProperty("cloud_password", prop.getProperty("cloud_password", "password"));
             System.setProperty("cloud_db", prop.getProperty("cloud_db", "db_algorithm"));
             System.setProperty("hdd_drive", prop.getProperty("hdd_drive", ""));
+            System.setProperty("community_tax_no", prop.getProperty("community_tax_no", ""));
+            
+            
 
             //
         } catch (IOException e) {

@@ -379,7 +379,7 @@ public class Dlg_report_barangay_clearance extends javax.swing.JDialog {
                 String city = city_label + " of " + barangay_clearance.city;
                 String barangay = "Barangay " + barangay_clearance.barangay;
                 String name = "Mr./Mrs./Ms., " + barangay_clearance.citizen;
-                String age = "" + ag + " yrs of age";
+                String age = "" + ag + " yr/s of age";
                 String civil_status = barangay_clearance.citizen_civil_status;
                 String date_issued = DateType.to_the_nth(barangay_clearance.created_at);
                 String punong_barangay = pb;
