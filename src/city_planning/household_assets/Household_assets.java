@@ -272,7 +272,9 @@ public class Household_assets {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at=created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at=updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);

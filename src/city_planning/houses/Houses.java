@@ -2508,7 +2508,9 @@ public class Houses {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -2543,9 +2545,9 @@ public class Houses {
                 double nearest_water_source_distance = rs.getDouble(35);
                 String latitude = rs.getString(36);
                 String longtitude = rs.getString(37);
-                int no_of_households=rs.getInt(38);
-                int no_of_household_members=rs.getInt(39);
-                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList(), latitude, longtitude,no_of_households,no_of_household_members);
+                int no_of_households = rs.getInt(38);
+                int no_of_household_members = rs.getInt(39);
+                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList(), latitude, longtitude, no_of_households, no_of_household_members);
                 datas.add(to);
             }
             return datas;

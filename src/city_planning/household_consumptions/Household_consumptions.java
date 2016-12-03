@@ -42,9 +42,9 @@ public class Household_consumptions {
         public final int status;
         public final String house_no;
         public final String household_no;
-        public  String consumption_date;
-        public  String items;
-        public  double amount;
+        public String consumption_date;
+        public String items;
+        public double amount;
 
         public to_household_consumptions(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String consumption_date, String items, double amount) {
             this.id = id;
@@ -93,7 +93,7 @@ public class Household_consumptions {
         public void setAmount(double amount) {
             this.amount = amount;
         }
-        
+
     }
 
     public static void add_data(to_household_consumptions to_household_consumptions) {
@@ -288,7 +288,9 @@ public class Household_consumptions {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);

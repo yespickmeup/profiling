@@ -52,7 +52,8 @@ public class Household_member_competence_certificates {
         public String issued_by;
         public String date_issued;
         public String transient_no;
-        public to_household_member_competence_certificates(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String certificate, String rating, String issued_by, String date_issued,String transient_no) {
+
+        public to_household_member_competence_certificates(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String certificate, String rating, String issued_by, String date_issued, String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -80,8 +81,17 @@ public class Household_member_competence_certificates {
             this.rating = rating;
             this.issued_by = issued_by;
             this.date_issued = date_issued;
+            this.transient_no=transient_no;
         }
 
+        public String getTransient_no() {
+            return transient_no;
+        }
+
+        public void setTransient_no(String transient_no) {
+            this.transient_no = transient_no;
+        }
+        
         public String getCertificate() {
             return certificate;
         }
@@ -204,7 +214,7 @@ public class Household_member_competence_certificates {
                     .setString("rating", to_household_member_competence_certificates.rating)
                     .setString("issued_by", to_household_member_competence_certificates.issued_by)
                     .setString("date_issued", to_household_member_competence_certificates.date_issued)
-                    .setString("transient_no", to_household_member_competence_certificates.transient_no)                    
+                    .setString("transient_no", to_household_member_competence_certificates.transient_no)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -348,7 +358,9 @@ public class Household_member_competence_certificates {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -373,8 +385,8 @@ public class Household_member_competence_certificates {
                 String rating = rs.getString(25);
                 String issued_by = rs.getString(26);
                 String date_issued = rs.getString(27);
-                String transient_no=rs.getString(28);
-                to_household_member_competence_certificates to = new to_household_member_competence_certificates(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, certificate, rating, issued_by, date_issued,transient_no);
+                String transient_no = rs.getString(28);
+                to_household_member_competence_certificates to = new to_household_member_competence_certificates(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, certificate, rating, issued_by, date_issued, transient_no);
                 datas.add(to);
             }
             return datas;

@@ -63,8 +63,9 @@ public class Household_member_employment_status {
         public final String ofw_job;
         public final String ofw_reason_for_migration;
         public final String transient_no;
-        public to_household_member_employment_status(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, int employment_status, String employment_type, String unemployment_type, String company, String work_position, String work_description, int is_looking_for_work, String ofw_business_name, String ofw_business_address, String ofw_mailing_address, String ofw_type_of_business, double ofw_financial_assistance_amount, String ofw_country, String ofw_job, String ofw_reason_for_migration,String transient_no) {
-            
+
+        public to_household_member_employment_status(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, int employment_status, String employment_type, String unemployment_type, String company, String work_position, String work_description, int is_looking_for_work, String ofw_business_name, String ofw_business_address, String ofw_mailing_address, String ofw_type_of_business, double ofw_financial_assistance_amount, String ofw_country, String ofw_job, String ofw_reason_for_migration, String transient_no) {
+
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -103,7 +104,7 @@ public class Household_member_employment_status {
             this.ofw_country = ofw_country;
             this.ofw_job = ofw_job;
             this.ofw_reason_for_migration = ofw_reason_for_migration;
-            this.transient_no=transient_no;
+            this.transient_no = transient_no;
         }
     }
 
@@ -228,8 +229,7 @@ public class Household_member_employment_status {
                     .setString("ofw_country", to_household_member_employment_status.ofw_country)
                     .setString("ofw_job", to_household_member_employment_status.ofw_job)
                     .setString("ofw_reason_for_migration", to_household_member_employment_status.ofw_reason_for_migration)
-                      .setString("transient_no", to_household_member_employment_status.transient_no)
-                    
+                    .setString("transient_no", to_household_member_employment_status.transient_no)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -400,13 +400,15 @@ public class Household_member_employment_status {
                     + ",transient_no"
                     + " from household_member_employment_status"
                     + " " + where;
-         
+
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -442,8 +444,8 @@ public class Household_member_employment_status {
                 String ofw_country = rs.getString(36);
                 String ofw_job = rs.getString(37);
                 String ofw_reason_for_migration = rs.getString(38);
-                String transient_no=rs.getString(39);
-                to_household_member_employment_status to = new to_household_member_employment_status(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, employment_status, employment_type, unemployment_type, company, work_position, work_description, is_looking_for_work, ofw_business_name, ofw_business_address, ofw_mailing_address, ofw_type_of_business, ofw_financial_assistance_amount, ofw_country, ofw_job, ofw_reason_for_migration,transient_no);
+                String transient_no = rs.getString(39);
+                to_household_member_employment_status to = new to_household_member_employment_status(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, employment_status, employment_type, unemployment_type, company, work_position, work_description, is_looking_for_work, ofw_business_name, ofw_business_address, ofw_mailing_address, ofw_type_of_business, ofw_financial_assistance_amount, ofw_country, ofw_job, ofw_reason_for_migration, transient_no);
                 datas.add(to);
             }
             return datas;

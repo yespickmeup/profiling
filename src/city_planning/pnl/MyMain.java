@@ -35,7 +35,11 @@ public class MyMain {
 
     private static void ret_config() {
         String home = System.getProperty("user.home") + "\\my_config_profiling.conf";
-
+        String os = System.getProperty("os.name", "");
+        System.out.println("os: " + os);
+        if (!os.equalsIgnoreCase("Linux")) {
+            home = System.getProperty("user.home") + "/my_config_profiling.conf";
+        }
         try {
 
             Properties prop = new Properties();
@@ -59,6 +63,7 @@ public class MyMain {
                 System.setProperty("city_label", setting.city_label);
                 System.setProperty("punong_barangay", setting.punong_barangay);
             }
+
             System.out.println(home);
             System.setProperty("pool_host", prop.getProperty("pool_host", "localhost"));
             System.out.println("local_ip: " + System.getProperty("local_ip"));
@@ -76,8 +81,6 @@ public class MyMain {
             System.setProperty("cloud_db", prop.getProperty("cloud_db", "db_algorithm"));
             System.setProperty("hdd_drive", prop.getProperty("hdd_drive", ""));
             System.setProperty("community_tax_no", prop.getProperty("community_tax_no", ""));
-            
-            
 
             //
         } catch (IOException e) {

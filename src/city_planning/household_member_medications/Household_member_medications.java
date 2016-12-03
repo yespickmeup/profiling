@@ -52,7 +52,8 @@ public class Household_member_medications {
         public String medication_date_started;
         public String medication_date_ended;
         public String transient_no;
-        public to_household_member_medications(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String prescription, String dosage, String medication_date_started, String medication_date_ended,String transient_no) {
+
+        public to_household_member_medications(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String prescription, String dosage, String medication_date_started, String medication_date_ended, String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -80,7 +81,7 @@ public class Household_member_medications {
             this.dosage = dosage;
             this.medication_date_started = medication_date_started;
             this.medication_date_ended = medication_date_ended;
-            this.transient_no=transient_no;
+            this.transient_no = transient_no;
         }
 
         public String getPrescription() {
@@ -206,7 +207,6 @@ public class Household_member_medications {
                     .setString("medication_date_started", to_household_member_medications.medication_date_started)
                     .setString("medication_date_ended", to_household_member_medications.medication_date_ended)
                     .setString("transient_no", to_household_member_medications.transient_no)
-                    
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -350,7 +350,9 @@ public class Household_member_medications {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -375,8 +377,8 @@ public class Household_member_medications {
                 String dosage = rs.getString(25);
                 String medication_date_started = rs.getString(26);
                 String medication_date_ended = rs.getString(27);
-                String transient_no=rs.getString(28);
-                to_household_member_medications to = new to_household_member_medications(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, prescription, dosage, medication_date_started, medication_date_ended,transient_no);
+                String transient_no = rs.getString(28);
+                to_household_member_medications to = new to_household_member_medications(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, prescription, dosage, medication_date_started, medication_date_ended, transient_no);
                 datas.add(to);
             }
             return datas;

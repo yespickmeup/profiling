@@ -8,19 +8,10 @@ package city_planning.households;
 import city_planning.household_assets.Household_assets;
 import city_planning.household_consumptions.Household_consumptions;
 import city_planning.household_expenditures.Household_expenditures;
-import city_planning.household_member_competence_certificates.Household_member_competence_certificates;
-import city_planning.household_member_educational_backgrounds.Household_member_educational_backgrounds;
-import city_planning.household_member_employment_status.Household_member_employment_status;
-import city_planning.household_member_health_statuses.Household_member_health_statuses;
-import city_planning.household_member_licences.Household_member_licences;
-import city_planning.household_member_medications.Household_member_medications;
-import city_planning.household_member_prefered_works.Household_member_prefered_works;
-import city_planning.household_member_skills.Household_member_skills;
-import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
-import city_planning.household_member_work_experiences.Household_member_work_experiences;
 import city_planning.household_members.Household_members;
 import city_planning.houses.Houses;
 import city_planning.util.MyConnection;
+import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,10 +31,15 @@ public class Households {
     public static class to_households {
 
         public final int id;
+
         public final String created_at;
+
         public final String updated_at;
+
         public final String created_by;
+
         public final String updated_by;
+
         public final String region;
         public final String region_id;
         public final String province;
@@ -129,6 +125,14 @@ public class Households {
             this.no_of_household_members = no_of_household_members;
         }
 
+        public int getNo_of_household_members() {
+            return no_of_household_members;
+        }
+
+        public void setNo_of_household_members(int no_of_household_members) {
+            this.no_of_household_members = no_of_household_members;
+        }
+        
         public String getOccupancy_types() {
             return occupancy_types;
         }
@@ -923,7 +927,9 @@ public class Households {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -959,8 +965,8 @@ public class Households {
                 String hunger_rating = rs.getString(36);
                 String environmental_contamination_rating = rs.getString(37);
                 String health_disparities_rating = rs.getString(38);
-                int no_of_household_members=rs.getInt(39);
-                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members,no_of_household_members);
+                int no_of_household_members = rs.getInt(39);
+                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
                 datas.add(to);
             }
             return datas;

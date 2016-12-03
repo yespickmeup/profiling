@@ -301,7 +301,9 @@ public class Household_member_prefered_works {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -323,8 +325,8 @@ public class Household_member_prefered_works {
                 String lname = rs.getString(22);
                 String sname = rs.getString(23);
                 String work = rs.getString(24);
-                String transient_no=rs.getString(25);
-                to_household_member_prefered_works to = new to_household_member_prefered_works(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, work,transient_no);
+                String transient_no = rs.getString(25);
+                to_household_member_prefered_works to = new to_household_member_prefered_works(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, work, transient_no);
                 datas.add(to);
             }
             return datas;

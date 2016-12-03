@@ -42,7 +42,7 @@ public class Household_expenditures {
         public final int status;
         public final String house_no;
         public final String household_no;
-        public  String expenditure_date;
+        public String expenditure_date;
         public double fuel_expenses;
         public double internet_services;
         public double medical_expenses;
@@ -105,7 +105,7 @@ public class Household_expenditures {
         public void setExpenditure_date(String expenditure_date) {
             this.expenditure_date = expenditure_date;
         }
-        
+
         public double getFuel_expenses() {
             return fuel_expenses;
         }
@@ -512,7 +512,9 @@ public class Household_expenditures {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
