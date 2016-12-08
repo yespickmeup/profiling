@@ -136,69 +136,67 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="tf_monthly_rental" min="-2" pref="257" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="jLabel46" max="32767" attributes="0"/>
-                                                      <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="jLabel46" max="32767" attributes="0"/>
+                                                  <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel45" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                                  <Component id="jLabel48" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jCheckBox1" min="-2" pref="73" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="tf_tenure" min="-2" pref="106" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="tf_tenure1" min="-2" pref="100" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel45" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
-                                                      <Component id="jLabel48" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="lbl_barangay1" max="32767" attributes="0"/>
+                                                      <Component id="lbl_barangay4" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lbl_barangay2" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lbl_barangay3" max="32767" attributes="0"/>
+                                                      <Component id="lbl_purok1" min="-2" pref="122" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="jCheckBox1" min="-2" pref="73" max="-2" attributes="0"/>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="tf_tenure" min="-2" pref="106" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="tf_tenure1" min="-2" pref="100" max="-2" attributes="0"/>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="jLabel12" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                          <Component id="lbl_barangay1" max="32767" attributes="0"/>
-                                                          <Component id="lbl_barangay4" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="lbl_barangay2" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="lbl_barangay3" max="32767" attributes="0"/>
-                                                          <Component id="lbl_purok1" min="-2" pref="122" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="jLabel12" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="tf_house_no" max="32767" attributes="0"/>
-                                                      <Component id="tf_barangay" alignment="1" max="32767" attributes="0"/>
-                                                      <Component id="tf_city" alignment="1" max="32767" attributes="0"/>
-                                                      <Component id="tf_province" alignment="1" max="32767" attributes="0"/>
-                                                      <Component id="tf_region" max="32767" attributes="0"/>
-                                                      <Component id="tf_purok" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="tf_household_no" alignment="0" pref="335" max="32767" attributes="0"/>
-                                                  </Group>
+                                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="tf_house_no" max="32767" attributes="0"/>
+                                                  <Component id="tf_barangay" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="tf_city" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="tf_province" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="tf_region" max="32767" attributes="0"/>
+                                                  <Component id="tf_purok" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="tf_household_no" alignment="0" pref="335" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -912,24 +910,24 @@
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel74" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                                   <Component id="jLabel75" min="-2" pref="107" max="-2" attributes="0"/>
                                               </Group>
+                                              <Component id="jLabel74" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField40" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                                              <Component id="jTextField39" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                                              <Component id="jTextField39" min="-2" pref="91" max="-2" attributes="0"/>
+                                              <Component id="jTextField40" min="-2" pref="90" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel76" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                                  <Component id="jTextField30" max="32767" attributes="0"/>
+                                                  <Component id="jTextField30" pref="183" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -1011,26 +1009,23 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="jLabel66" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                                      <Component id="jTextField31" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="jLabel75" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel67" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                                  <Component id="jTextField32" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                                  <Component id="jLabel74" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                                  <Component id="jLabel66" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                                  <Component id="jTextField31" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabel75" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                                  <Component id="jTextField40" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jTextField40" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="jTextField39" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel67" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="jTextField32" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="jLabel74" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="jTextField39" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
@@ -1776,17 +1771,39 @@
                                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                                       <Component id="jButton17" min="-2" pref="133" max="-2" attributes="0"/>
                                                       <Group type="102" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="tf_street_maintenance" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                                              <Component id="tf_drainage" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="1" attributes="0">
+                                                              <Group type="102" attributes="0">
+                                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                                          <Component id="tf_street_maintenance" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                                                          <Component id="tf_drainage" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <Component id="tf_adolescent_pregnancy" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
+                                                                      <Component id="tf_child_abuse_and_neglect" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <Group type="102" alignment="1" attributes="0">
+                                                                  <Component id="tf_crime" min="-2" pref="99" max="-2" attributes="0"/>
+                                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                                              </Group>
                                                           </Group>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="0" attributes="0">
                                                               <Group type="102" alignment="0" attributes="0">
-                                                                  <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                                      <Component id="jLabel228" min="-2" pref="193" max="-2" attributes="0"/>
-                                                                      <Group type="102" alignment="1" attributes="0">
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                                      <Component id="jLabel82" min="-2" pref="128" max="-2" attributes="0"/>
+                                                                      <Component id="jLabel84" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                                                                      <Component id="jLabel83" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                                                                  <Component id="jLabel85" min="-2" pref="191" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <Group type="102" attributes="0">
+                                                                  <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                                      <Group type="102" alignment="0" attributes="0">
+                                                                          <Component id="jLabel227" min="-2" max="-2" attributes="0"/>
+                                                                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                                                           <Group type="103" groupAlignment="1" attributes="0">
                                                                               <Component id="tf_ambulance_service" min="-2" pref="99" max="-2" attributes="0"/>
                                                                               <Component id="tf_domestic_violence" min="-2" pref="99" max="-2" attributes="0"/>
@@ -1796,16 +1813,19 @@
                                                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                                           <Component id="jLabel229" min="-2" pref="193" max="-2" attributes="0"/>
                                                                       </Group>
+                                                                      <Group type="102" alignment="1" attributes="0">
+                                                                          <Component id="jLabel231" min="-2" pref="114" max="-2" attributes="0"/>
+                                                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                                              <Component id="tf_health_disparities" min="-2" pref="99" max="-2" attributes="0"/>
+                                                                              <Group type="102" attributes="0">
+                                                                                  <Component id="tf_hunger" min="-2" pref="99" max="-2" attributes="0"/>
+                                                                                  <EmptySpace max="-2" attributes="0"/>
+                                                                                  <Component id="jLabel228" min="-2" pref="193" max="-2" attributes="0"/>
+                                                                              </Group>
+                                                                          </Group>
+                                                                      </Group>
                                                                   </Group>
-                                                              </Group>
-                                                              <Group type="102" alignment="0" attributes="0">
-                                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                                      <Component id="jLabel82" min="-2" pref="128" max="-2" attributes="0"/>
-                                                                      <Component id="jLabel84" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                                                      <Component id="jLabel83" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel85" min="-2" pref="191" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
                                                           <EmptySpace max="-2" attributes="0"/>
@@ -1824,35 +1844,11 @@
                                                   <Component id="jLabel225" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel224" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="tf_crime" min="-2" pref="99" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="jLabel230" min="-2" pref="193" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="tf_adolescent_pregnancy" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                                          <Component id="tf_child_abuse_and_neglect" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel227" min="-2" pref="125" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="jLabel231" min="-2" pref="125" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="tf_health_disparities" min="-2" pref="99" max="-2" attributes="0"/>
-                                                                  <Component id="tf_hunger" min="-2" pref="99" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
+                                              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                                              <Component id="jLabel230" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="66" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1922,36 +1918,29 @@
                               <Component id="jLabel229" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="tf_enviromental_contamination" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel225" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="tf_child_abuse_and_neglect" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Component id="jLabel231" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Component id="tf_hunger" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel225" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="tf_child_abuse_and_neglect" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel228" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="tf_drug_abuse" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel231" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="tf_hunger" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel228" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="tf_drug_abuse" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel226" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="tf_crime" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="jLabel230" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="tf_health_disparities" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton17" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace pref="151" max="32767" attributes="0"/>
+                          <EmptySpace pref="160" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

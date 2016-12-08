@@ -39,14 +39,15 @@ public class Household_consumptions {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final String household_no;
         public String consumption_date;
         public String items;
         public double amount;
 
-        public to_household_consumptions(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String consumption_date, String items, double amount) {
+        public to_household_consumptions(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String consumption_date, String items, double amount) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -63,11 +64,28 @@ public class Household_consumptions {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.consumption_date = consumption_date;
             this.items = items;
             this.amount = amount;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
         }
 
         public String getConsumption_date() {
@@ -200,6 +218,7 @@ public class Household_consumptions {
                     + ",consumption_date= :consumption_date "
                     + ",items= :items "
                     + ",amount= :amount "
+                    + ",is_uploaded= :is_uploaded"
                     + " where id='" + to_household_consumptions.id + "' "
                     + " ";
 
@@ -224,6 +243,7 @@ public class Household_consumptions {
                     .setString("consumption_date", to_household_consumptions.consumption_date)
                     .setString("items", to_household_consumptions.items)
                     .setNumber("amount", to_household_consumptions.amount)
+                    .setNumber("is_uploaded", to_household_consumptions.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -280,6 +300,7 @@ public class Household_consumptions {
                     + ",consumption_date"
                     + ",items"
                     + ",amount"
+                    + ",is_uploaded"
                     + " from household_consumptions"
                     + " " + where;
 
@@ -309,8 +330,8 @@ public class Household_consumptions {
                 String consumption_date = rs.getString(19);
                 String items = rs.getString(20);
                 double amount = rs.getDouble(21);
-
-                to_household_consumptions to = new to_household_consumptions(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, consumption_date, items, amount);
+                int is_uploaded = rs.getInt(22);
+                to_household_consumptions to = new to_household_consumptions(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, consumption_date, items, amount);
                 datas.add(to);
             }
             return datas;

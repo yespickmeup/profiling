@@ -39,7 +39,8 @@ public class Household_member_prefered_works {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final String household_no;
         public final String household_member_no;
@@ -50,7 +51,7 @@ public class Household_member_prefered_works {
         public String work;
         public String transient_no;
 
-        public to_household_member_prefered_works(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String work, String transient_no) {
+        public to_household_member_prefered_works(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String work, String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -67,6 +68,7 @@ public class Household_member_prefered_works {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.household_member_no = household_member_no;
@@ -75,6 +77,30 @@ public class Household_member_prefered_works {
             this.lname = lname;
             this.sname = sname;
             this.work = work;
+            this.transient_no = transient_no;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
+        }
+
+        public String getTransient_no() {
+            return transient_no;
+        }
+
+        public void setTransient_no(String transient_no) {
             this.transient_no = transient_no;
         }
 
@@ -206,6 +232,7 @@ public class Household_member_prefered_works {
                     + ",lname= :lname "
                     + ",sname= :sname "
                     + ",work= :work "
+                    + ",is_uploaded= :is_uploaded"
                     + " where id='" + to_household_member_prefered_works.id + "' "
                     + " ";
 
@@ -233,6 +260,7 @@ public class Household_member_prefered_works {
                     .setString("lname", to_household_member_prefered_works.lname)
                     .setString("sname", to_household_member_prefered_works.sname)
                     .setString("work", to_household_member_prefered_works.work)
+                    .setNumber("is_uploaded", to_household_member_prefered_works.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -293,6 +321,7 @@ public class Household_member_prefered_works {
                     + ",sname"
                     + ",work"
                     + ",transient_no"
+                    + ",is_uploaded"
                     + " from household_member_prefered_works"
                     + " " + where;
 
@@ -326,7 +355,8 @@ public class Household_member_prefered_works {
                 String sname = rs.getString(23);
                 String work = rs.getString(24);
                 String transient_no = rs.getString(25);
-                to_household_member_prefered_works to = new to_household_member_prefered_works(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, work, transient_no);
+                int is_uploaded = rs.getInt(26);
+                to_household_member_prefered_works to = new to_household_member_prefered_works(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, work, transient_no);
                 datas.add(to);
             }
             return datas;

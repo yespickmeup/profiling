@@ -54,7 +54,8 @@ public class Houses {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final int no_of_rooms;
         public final String bldg_types;
@@ -80,7 +81,7 @@ public class Houses {
         public final int no_of_households;
         public final int no_of_household_members;
 
-        public to_houses(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households, String latitude, String longtitude, int no_of_households, int no_of_household_members) {
+        public to_houses(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, int no_of_rooms, String bldg_types, String bldg_permit, String toilet_types, String compartments, String bathroom_types, String waste_disposal_methods, String kitchen_types, String trans_types, String construction_roof_types, String construction_wall_types, String construction_floor_types, String construction_communication_types, String lighting_fuels, String cooking_fuels, String water_sources, double drinking_water_source_distance, double nearest_water_source_distance, List<Households.to_households> households, String latitude, String longtitude, int no_of_households, int no_of_household_members) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -97,6 +98,7 @@ public class Houses {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.no_of_rooms = no_of_rooms;
             this.bldg_types = bldg_types;
@@ -121,6 +123,22 @@ public class Houses {
             this.longtitude = longtitude;
             this.no_of_households = no_of_households;
             this.no_of_household_members = no_of_household_members;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
         }
 
         public List<Households.to_households> getHouseholds() {
@@ -1890,7 +1908,6 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
-                    + ",status= :status "
                     + ",house_no= :house_no "
                     + ",no_of_rooms= :no_of_rooms "
                     + ",bldg_types= :bldg_types "
@@ -1912,6 +1929,8 @@ public class Houses {
                     + ",nearest_water_source_distance= :nearest_water_source_distance "
                     + ",latitude= :latitude "
                     + ",longtitude= :longtitude "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where id='" + to_houses.id + "' "
                     + " ";
 
@@ -1930,7 +1949,6 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
-                    .setNumber("status", to_houses.status)
                     .setString("house_no", to_houses.house_no)
                     .setNumber("no_of_rooms", to_houses.no_of_rooms)
                     .setString("bldg_types", to_houses.bldg_types)
@@ -1952,6 +1970,8 @@ public class Houses {
                     .setNumber("nearest_water_source_distance", to_houses.nearest_water_source_distance)
                     .setString("latitude", to_houses.latitude)
                     .setString("longtitude", to_houses.longtitude)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -1970,6 +1990,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -1983,7 +2005,10 @@ public class Houses {
                     .setString("barangay", to_houses.barangay)
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
-                    .setString("purok_id", to_houses.purok_id).ok();
+                    .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
+                    .ok();
 
             stmt.addBatch(s2);
 
@@ -2000,6 +2025,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2014,6 +2041,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s3);
             //</editor-fold>
@@ -2029,6 +2058,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2043,6 +2074,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s4);
             //</editor-fold>
@@ -2058,6 +2091,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2072,6 +2107,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s5);
             //</editor-fold>
@@ -2087,6 +2124,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2101,6 +2140,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s6);
             //</editor-fold>
@@ -2117,6 +2158,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2131,6 +2174,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s7);
             //</editor-fold>
@@ -2146,6 +2191,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2160,6 +2207,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s8);
             //</editor-fold>
@@ -2175,6 +2224,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2189,6 +2240,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s9);
             //</editor-fold>
@@ -2204,6 +2257,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2218,6 +2273,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s10);
             //</editor-fold>
@@ -2233,6 +2290,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2247,6 +2306,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s11);
             //</editor-fold>
@@ -2262,6 +2323,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2276,6 +2339,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s12);
             //</editor-fold>
@@ -2291,6 +2356,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2305,6 +2372,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s13);
             //</editor-fold>
@@ -2320,6 +2389,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2334,6 +2405,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s14);
             //</editor-fold>
@@ -2349,6 +2422,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2363,6 +2438,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s15);
             //</editor-fold>
@@ -2378,6 +2455,8 @@ public class Houses {
                     + ",barangay_id= :barangay_id "
                     + ",purok= :purok "
                     + ",purok_id= :purok_id "
+                    + ",status= :status "
+                    + ",is_uploaded= :is_uploaded"
                     + " where house_no='" + to_houses.house_no + "' "
                     + " ";
 
@@ -2392,6 +2471,8 @@ public class Houses {
                     .setString("barangay_id", to_houses.barangay_id)
                     .setString("purok", to_houses.purok)
                     .setString("purok_id", to_houses.purok_id)
+                    .setNumber("status", to_houses.status)
+                    .setNumber("is_uploaded", to_houses.is_uploaded)
                     .ok();
             stmt.addBatch(s16);
             //</editor-fold>
@@ -2500,6 +2581,7 @@ public class Houses {
                     + ",longtitude"
                     + ",no_of_households"
                     + ",no_of_household_members"
+                    + ",is_uploaded"
                     + " from houses"
                     + " " + where;
 
@@ -2547,7 +2629,8 @@ public class Houses {
                 String longtitude = rs.getString(37);
                 int no_of_households = rs.getInt(38);
                 int no_of_household_members = rs.getInt(39);
-                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList(), latitude, longtitude, no_of_households, no_of_household_members);
+                int is_uploaded = rs.getInt(40);
+                to_houses to = new to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, new ArrayList(), latitude, longtitude, no_of_households, no_of_household_members);
                 datas.add(to);
             }
             return datas;

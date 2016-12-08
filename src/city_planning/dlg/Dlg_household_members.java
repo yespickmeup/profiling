@@ -1010,7 +1010,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                     .addComponent(jLabel15)
                                     .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, Short.MAX_VALUE)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
                                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2154,7 +2154,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel255.setText("Work:");
 
         tf_work.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_work.setText("Work");
 
         tbl_household_member_prefered_works.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2806,7 +2805,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                         .addComponent(cb_status_unemployed2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 23, Short.MAX_VALUE)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addComponent(cb_status_unemployed1)
@@ -2834,9 +2833,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                 .addGap(105, 105, 105)
                                 .addComponent(jRadioButton8)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel264, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_ofw_financial_assistance_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel15Layout.createSequentialGroup()
@@ -2848,7 +2846,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(tf_ofw_job)
                                 .addComponent(tf_ofw_reason_for_migration)
-                                .addComponent(tf_ofw_country, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)))))
+                                .addComponent(tf_ofw_country, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))))
+                    .addComponent(tf_ofw_financial_assistance_amount))
                 .addGap(64, 64, 64))
         );
         jPanel15Layout.setVerticalGroup(
@@ -4642,6 +4641,9 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
     private void myInit() {
         init_key();
+        Field.Combo pur = (Field.Combo) tf_purok;
+        pur.setText("");
+        pur.setId("");
         Initialize_table_household_members.init_tbl_household_member_health_statuses(tbl_household_member_health_statuses);
         Initialize_table_household_members.init_tbl_household_member_medications(tbl_household_member_medications);
         Initialize_table_household_members.init_tbl_household_member_educational_backgrounds(tbl_household_member_educational_backgrounds);
@@ -4667,7 +4669,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
     }
 
-    Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "");
+    Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "");
 
     String my_region = "";
     String my_region_id = "";
@@ -5022,6 +5024,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
@@ -5042,7 +5045,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String level_of_disability = tf_level_of_disability.getText();
             String cause_of_disability = tf_cause_of_disability.getText();
             String transient_no = household_member.transient_no;
-            Household_member_health_statuses.to_household_member_health_statuses health_status1 = new Household_member_health_statuses.to_household_member_health_statuses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, is_seing_a_doctor, status, name_of_doctor, disabilities, level_of_disability, cause_of_disability, transient_no);
+            Household_member_health_statuses.to_household_member_health_statuses health_status1 = new Household_member_health_statuses.to_household_member_health_statuses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, is_seing_a_doctor, status, name_of_doctor, disabilities, level_of_disability, cause_of_disability, transient_no);
 
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_health_statuses_ALM.add(health_status1);
@@ -5074,6 +5077,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = health_statuses.purok;
             String purok_id = health_statuses.purok_id;
             int status = health_statuses.status;
+            int is_uploaded = health_statuses.is_uploaded;
             String house_no = health_statuses.house_no;
             String household_no = health_statuses.household_no;
             String household_member_no = health_statuses.household_member_no;
@@ -5105,6 +5109,17 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Initialize_table_household_members.tbl_household_member_health_statuses_M.fireTableDataChanged();
 
             } else {
+
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                health_statuses.setStatus(status);
+                health_statuses.setIs_uploaded(is_uploaded);
                 Household_member_health_statuses.update_data(health_statuses);
                 String where = " where household_member_no='" + health_statuses.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_heath_status(where);
@@ -5200,6 +5215,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
@@ -5213,7 +5229,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String medication_date_started = DateType.sf.format(tf_medication_date_started.getDate());
             String medication_date_ended = DateType.sf.format(tf_medication_date_ended.getDate());
             String transient_no = household_member.transient_no;
-            Household_member_medications.to_household_member_medications health_medication = new Household_member_medications.to_household_member_medications(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, prescription, dosage, medication_date_started, medication_date_ended, transient_no);
+            Household_member_medications.to_household_member_medications health_medication = new Household_member_medications.to_household_member_medications(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, prescription, dosage, medication_date_started, medication_date_ended, transient_no);
 
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_medications_ALM.add(health_medication);
@@ -5247,6 +5263,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = health_medications.purok;
             String purok_id = health_medications.purok_id;
             int status = health_medications.status;
+            int is_uploaded = health_medications.is_uploaded;
             String house_no = health_medications.house_no;
             String household_no = health_medications.household_no;
             String household_member_no = health_medications.household_member_no;
@@ -5269,6 +5286,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Initialize_table_household_members.tbl_household_member_medications_M.fireTableDataChanged();
 
             } else {
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                health_medications.setStatus(status);
+                health_medications.setIs_uploaded(is_uploaded);
                 Household_member_medications.update_data(health_medications);
                 String where = " where household_member_no='" + health_medications.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_medications(where);
@@ -5356,6 +5383,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
@@ -5370,7 +5398,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             double highest_grade = FitIn.toDouble(tf_highest_grade.getText());
             String year_graduated = DateType.sf.format(tf_year_graduated.getDate());
             String transient_no = household_member.transient_no;
-            Household_member_educational_backgrounds.to_household_member_educational_backgrounds educational_back = new Household_member_educational_backgrounds.to_household_member_educational_backgrounds(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, educational_status, name_of_school, achievements, highest_grade, year_graduated, transient_no);
+            Household_member_educational_backgrounds.to_household_member_educational_backgrounds educational_back = new Household_member_educational_backgrounds.to_household_member_educational_backgrounds(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, educational_status, name_of_school, achievements, highest_grade, year_graduated, transient_no);
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.add(educational_back);
                 jLabel6.setText("" + Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.size());
@@ -5403,6 +5431,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = educational_back.purok;
             String purok_id = educational_back.purok_id;
             int status = educational_back.status;
+            int is_uploaded = educational_back.is_uploaded;
             String house_no = educational_back.house_no;
             String household_no = educational_back.household_no;
             String household_member_no = educational_back.household_member_no;
@@ -5428,6 +5457,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
             } else {
 
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                educational_back.setStatus(status);
+                educational_back.setIs_uploaded(is_uploaded);
                 Household_member_educational_backgrounds.update_data(educational_back);
                 String where = " where household_member_no='" + educational_back.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_educational_backgrounds(where);
@@ -5519,6 +5558,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
@@ -5534,7 +5574,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String name_of_school = tf_name_of_school_or_agency.getText();
             String period_of_training = tf_period_of_training.getText();
             String transient_no = household_member.transient_no;
-            Household_member_vocational_experiences.to_household_member_vocational_experiences vocational_experience = new Household_member_vocational_experiences.to_household_member_vocational_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, name_of_training, certificate_received, skills_required, name_of_school, period_of_training, transient_no);
+            Household_member_vocational_experiences.to_household_member_vocational_experiences vocational_experience = new Household_member_vocational_experiences.to_household_member_vocational_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, name_of_training, certificate_received, skills_required, name_of_school, period_of_training, transient_no);
 
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_vocational_experiences_ALM.add(vocational_experience);
@@ -5568,6 +5608,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = vocational_experience.purok;
             String purok_id = vocational_experience.purok_id;
             int status = vocational_experience.status;
+            int is_uploaded = vocational_experience.is_uploaded;
             String house_no = vocational_experience.house_no;
             String household_no = vocational_experience.household_no;
             String household_member_no = vocational_experience.household_member_no;
@@ -5593,6 +5634,17 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Initialize_table_household_members.tbl_household_member_vocational_experiences_M.fireTableDataChanged();
 
             } else {
+
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                vocational_experience.setStatus(status);
+                vocational_experience.setIs_uploaded(is_uploaded);
                 Household_member_vocational_experiences.update_data(vocational_experience);
                 String where = " where household_member_no='" + vocational_experience.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_vocational_experiences(where);
@@ -5680,6 +5732,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
@@ -5694,7 +5747,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String issued_by = tf_issued_by.getText();
             String date_issued = DateType.sf.format(tf_date_issued.getDate());
             String transient_no = household_member.transient_no;
-            Household_member_competence_certificates.to_household_member_competence_certificates competence_certificate = new Household_member_competence_certificates.to_household_member_competence_certificates(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, certificate, rating, issued_by, date_issued, transient_no);
+            Household_member_competence_certificates.to_household_member_competence_certificates competence_certificate = new Household_member_competence_certificates.to_household_member_competence_certificates(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, certificate, rating, issued_by, date_issued, transient_no);
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.add(competence_certificate);
                 jLabel10.setText("" + Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.size());
@@ -5727,6 +5780,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = competence_certificate.purok;
             String purok_id = competence_certificate.purok_id;
             int status = competence_certificate.status;
+            int is_uploaded = competence_certificate.is_uploaded;
             String house_no = competence_certificate.house_no;
             String household_no = competence_certificate.household_no;
             String household_member_no = competence_certificate.household_member_no;
@@ -5749,6 +5803,17 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Initialize_table_household_members.tbl_household_member_competence_certificates_M.fireTableDataChanged();
 
             } else {
+
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                competence_certificate.setStatus(status);
+                competence_certificate.setIs_uploaded(is_uploaded);
                 Household_member_competence_certificates.update_data(competence_certificate);
                 String where = " where household_member_no='" + competence_certificate.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_competence_certificates(where);
@@ -5838,31 +5903,27 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
-
             String fname = tf_fname.getText();
             String mname = tf_mname.getText();
             String lname = tf_lname.getText();
             String sname = tf_sname.getText();
-
             String title = tf_title.getText();
             String expiry = DateType.sf.format(tf_expiry.getDate());
             String transient_no = household_member.transient_no;
-            Household_member_licences.to_household_member_licenses license = new Household_member_licences.to_household_member_licenses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, title, expiry, transient_no);
 
+            Household_member_licences.to_household_member_licenses license = new Household_member_licences.to_household_member_licenses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, title, expiry, transient_no);
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_licenses_ALM.add(license);
                 jLabel16.setText("" + Initialize_table_household_members.tbl_household_member_licenses_ALM.size());
-
             } else {
-
                 Household_member_licences.add_data(license);
                 String where = " where household_member_no='" + license.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_licences(where);
                 jLabel16.setText("" + Initialize_table_household_members.tbl_household_member_competence_certificates_ALM.size());
-
             }
             Alert.set(1, "");
         } else {
@@ -5884,6 +5945,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = license.purok;
             String purok_id = license.purok_id;
             int status = license.status;
+            int is_uploaded = license.is_uploaded;
             String house_no = license.house_no;
             String household_no = license.household_no;
             String household_member_no = license.household_member_no;
@@ -5902,6 +5964,17 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Initialize_table_household_members.tbl_household_member_licenses_M.fireTableDataChanged();
 
             } else {
+
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                license.setStatus(status);
+                license.setIs_uploaded(is_uploaded);
                 Household_member_licences.update_data(license);
                 String where = " where household_member_no='" + license.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_licences(where);
@@ -5918,7 +5991,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
             return;
         }
         final Household_member_licences.to_household_member_licenses license = (Household_member_licences.to_household_member_licenses) Initialize_table_household_members.tbl_household_member_licenses_ALM.get(row);
-
         int col = tbl_household_member_licenses.getSelectedColumn();
         if (col == 2) {
             tf_title.setText(license.title);
@@ -5927,26 +5999,22 @@ public class Dlg_household_members extends javax.swing.JDialog {
             } catch (ParseException ex) {
                 Logger.getLogger(Dlg_household_members.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
         if (col == 3) {
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
             nd.setCallback(new Dlg_confirm_action.Callback() {
-
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
                     closeDialog.ok();
                     if (household_member.id == 0) {
                         Initialize_table_household_members.tbl_household_member_licenses_ALM.remove(row);
                         Initialize_table_household_members.tbl_household_member_licenses_M.fireTableDataChanged();
-
                     } else {
                         Household_member_licences.delete_data(license);
                         String where = " where household_member_no='" + license.household_member_no + "'";
                         Initialize_table_household_members.ret_household_member_licences(where);
-
                     }
                     Alert.set(3, "");
                     jLabel16.setText("" + Initialize_table_household_members.tbl_household_member_licenses_ALM.size());
@@ -5987,6 +6055,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
+
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
@@ -6003,7 +6073,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String work_started = DateType.sf.format(tf_work_started.getDate());
             String work_ended = DateType.sf.format(tf_work_ended.getDate());
             String transient_no = household_member.transient_no;
-            Household_member_work_experiences.to_household_member_work_experiences work_experience = new Household_member_work_experiences.to_household_member_work_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, company, company_address, work_position, work_description, work_started, work_ended, transient_no);
+
+            Household_member_work_experiences.to_household_member_work_experiences work_experience = new Household_member_work_experiences.to_household_member_work_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, company, company_address, work_position, work_description, work_started, work_ended, transient_no);
 
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_work_experiences_ALM.add(work_experience);
@@ -6035,6 +6106,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = work_experience.purok;
             String purok_id = work_experience.purok_id;
             int status = work_experience.status;
+            int is_uploaded = work_experience.is_uploaded;
             String house_no = work_experience.house_no;
             String household_no = work_experience.household_no;
             String household_member_no = work_experience.household_member_no;
@@ -6050,10 +6122,21 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String work_started = DateType.sf.format(tf_work_started.getDate());
             String work_ended = DateType.sf.format(tf_work_ended.getDate());
             String transient_no = household_member.transient_no;
-            Household_member_work_experiences.to_household_member_work_experiences work_experience1 = new Household_member_work_experiences.to_household_member_work_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, company, company_address, work_position, work_description, work_started, work_ended, transient_no);
+            Household_member_work_experiences.to_household_member_work_experiences work_experience1 = new Household_member_work_experiences.to_household_member_work_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, company, company_address, work_position, work_description, work_started, work_ended, transient_no);
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_work_experiences_M.fireTableDataChanged();
             } else {
+
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                work_experience1.setStatus(status);
+                work_experience1.setIs_uploaded(is_uploaded);
                 Household_member_work_experiences.update_data(work_experience1);
                 String where = " where household_member_no='" + work_experience.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_work_experiences(where);
@@ -6147,6 +6230,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = household_member.purok;
             String purok_id = household_member.purok_id;
             int status = 0;
+            int is_uploaded = 0;
             String house_no = household_member.house_no;
             String household_no = household_member.household_no;
             String household_member_no = household_member.household_member_no;
@@ -6158,7 +6242,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
             String work = tf_work.getText();
             String transient_no = household_member.transient_no;
-            Household_member_prefered_works.to_household_member_prefered_works prefered_work = new Household_member_prefered_works.to_household_member_prefered_works(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, work, transient_no);
+            Household_member_prefered_works.to_household_member_prefered_works prefered_work = new Household_member_prefered_works.to_household_member_prefered_works(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, work, transient_no);
 
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_prefered_works_ALM.add(prefered_work);
@@ -6190,6 +6274,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             String purok = prefered_work.purok;
             String purok_id = prefered_work.purok_id;
             int status = prefered_work.status;
+            int is_uploaded = prefered_work.is_uploaded;
             String house_no = prefered_work.house_no;
             String household_no = prefered_work.household_no;
             String household_member_no = prefered_work.household_member_no;
@@ -6204,6 +6289,17 @@ public class Dlg_household_members extends javax.swing.JDialog {
             if (household_member.id == 0) {
                 Initialize_table_household_members.tbl_household_member_prefered_works_M.fireTableDataChanged();
             } else {
+
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                prefered_work.setStatus(status);
+                prefered_work.setIs_uploaded(is_uploaded);
                 Household_member_prefered_works.update_data(prefered_work);
                 String where = " where household_member_no='" + prefered_work.household_member_no + "'";
                 Initialize_table_household_members.ret_household_member_prefered_works(where);
@@ -6288,6 +6384,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String purok = "";
         String purok_id = "";
         int status = 0;
+        int is_uploaded = 0;
+
         String house_no = hn.getText();
         String household_no = hhn.getText();
         String household_member_no = tf_household_member_no.getText();
@@ -6368,7 +6466,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String ofw_job = tf_ofw_job.getText();
         String ofw_reason_for_migration = tf_ofw_reason_for_migration.getText();
         String transient_no = household_member.transient_no;
-        Household_member_employment_status.to_household_member_employment_status employment_status1 = new Household_member_employment_status.to_household_member_employment_status(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, employment_status, employment_type, unemployment_type, company, work_position, work_description, is_looking_for_work, ofw_business_name, ofw_business_address, ofw_mailing_address, ofw_type_of_business, ofw_financial_assistance_amount, ofw_country, ofw_job, ofw_reason_for_migration, transient_no);
+        Household_member_employment_status.to_household_member_employment_status employment_status1 = new Household_member_employment_status.to_household_member_employment_status(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, employment_status, employment_type, unemployment_type, company, work_position, work_description, is_looking_for_work, ofw_business_name, ofw_business_address, ofw_mailing_address, ofw_type_of_business, ofw_financial_assistance_amount, ofw_country, ofw_job, ofw_reason_for_migration, transient_no);
 
         int ps_teaching = get_status(cb_ps_teaching);
         int ps_negotiating = get_status(cb_ps_negotiating);
@@ -6424,7 +6522,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         int is_expressing = get_status(cb_is_expressing);
         int is_organizing = get_status(organizing);
         String contact_no = tf_contact_no.getText();
-        Household_member_skills.to_household_member_skills skills = new Household_member_skills.to_household_member_skills(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, ps_teaching, ps_negotiating, ps_diverting, ps_persuading, ps_promoting, ps_selling, ps_leading, ps_speaking, ps_serving, ps_helping, ps_encouraging, ps_motivating, ds_coordinating, ds_analyzing, ds_planning, ds_compiling, ds_computing, ds_recording, ds_checking, ds_researching, ds_testing, ds_comparing, ds_tabulating, ds_posting, ds_copying, ts_machine_work, ts_setting_up, ts_assembling, ts_operating, ts_driving, ts_repairing, ts_manipulating, ts_materials_handling, ts_producing, ts_inspecting, ts_warehousing, ts_building, ts_precision_working, ts_restoring, ts_feeding, is_implementing, is_synthesizing, is_interpreting, is_instruction, is_speculating, is_anticipating, is_inventing, is_discovering, is_predicting, is_theorizing, is_innovating, is_expressing, is_organizing, transient_no
+        Household_member_skills.to_household_member_skills skills = new Household_member_skills.to_household_member_skills(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, ps_teaching, ps_negotiating, ps_diverting, ps_persuading, ps_promoting, ps_selling, ps_leading, ps_speaking, ps_serving, ps_helping, ps_encouraging, ps_motivating, ds_coordinating, ds_analyzing, ds_planning, ds_compiling, ds_computing, ds_recording, ds_checking, ds_researching, ds_testing, ds_comparing, ds_tabulating, ds_posting, ds_copying, ts_machine_work, ts_setting_up, ts_assembling, ts_operating, ts_driving, ts_repairing, ts_manipulating, ts_materials_handling, ts_producing, ts_inspecting, ts_warehousing, ts_building, ts_precision_working, ts_restoring, ts_feeding, is_implementing, is_synthesizing, is_interpreting, is_instruction, is_speculating, is_anticipating, is_inventing, is_discovering, is_predicting, is_theorizing, is_innovating, is_expressing, is_organizing, transient_no
         );
 
         for (WebcamPanel panel : panels) {
@@ -6468,6 +6566,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String purok = pur.getText();
         String purok_id = pur.getId();
         int status = household_member.status;
+        int is_uploaded = household_member.is_uploaded;
         String house_no = tf_house_no.getText();
         String household_no = tf_household_no.getText();
         String household_member_no = tf_household_member_no.getText();
@@ -6504,8 +6603,18 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String image = tf_genders1.getText();
         String contact_no = tf_contact_no.getText();
         String transient_no = household_member.transient_no;
-        Household_members.to_household_members household_mem = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
+        if (status == 0 && is_uploaded == 0) {
+            status = 2;
+        } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+            status = 1;
+            is_uploaded = 0;
+        } else {
+            is_uploaded = 0;
+        }
+        Household_members.to_household_members household_mem = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
         Household_members.update_data(household_mem);
+        System.out.println("Status: " + status);
+        System.out.println("Uploaded: " + is_uploaded);
         Alert.set(2, "");
         if (is_callback_triggered == 1) {
             ok_update();
@@ -6517,6 +6626,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private void update_household_member_employment_status() {
 
         //<editor-fold defaultstate="collapsed" desc=" Employment Status ">
+        List< Household_member_employment_status.to_household_member_employment_status> lists = Household_member_employment_status.ret_data("where household_member_no='" + household_member.household_member_no + "'");
+        Household_member_employment_status.to_household_member_employment_status list = (Household_member_employment_status.to_household_member_employment_status) lists.get(0);
         int id = household_member.id;
         String created_at = household_member.created_at;
         String updated_at = household_member.updated_at;
@@ -6532,7 +6643,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String barangay_id = household_member.barangay_id;
         String purok = household_member.purok;
         String purok_id = household_member.purok_id;
-        int status = household_member.status;
+        int status = list.status;
+        int is_uploaded = list.is_uploaded;
         String house_no = household_member.house_no;
         String household_no = household_member.house_no;
         String household_member_no = household_member.household_member_no;
@@ -6587,7 +6699,17 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String ofw_job = tf_ofw_job.getText();
         String ofw_reason_for_migration = tf_ofw_reason_for_migration.getText();
         String transient_no = household_member.transient_no;
-        Household_member_employment_status.to_household_member_employment_status employment_status1 = new Household_member_employment_status.to_household_member_employment_status(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, employment_status, employment_type, unemployment_type, company, work_position, work_description, is_looking_for_work, ofw_business_name, ofw_business_address, ofw_mailing_address, ofw_type_of_business, ofw_financial_assistance_amount, ofw_country, ofw_job, ofw_reason_for_migration, transient_no);
+
+        if (status == 0 && is_uploaded == 0) {
+            status = 2;
+        } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+            status = 1;
+            is_uploaded = 0;
+        } else {
+            is_uploaded = 0;
+        }
+
+        Household_member_employment_status.to_household_member_employment_status employment_status1 = new Household_member_employment_status.to_household_member_employment_status(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, employment_status, employment_type, unemployment_type, company, work_position, work_description, is_looking_for_work, ofw_business_name, ofw_business_address, ofw_mailing_address, ofw_type_of_business, ofw_financial_assistance_amount, ofw_country, ofw_job, ofw_reason_for_migration, transient_no);
         Household_member_employment_status.update_data(employment_status1);
         Alert.set(2, "");
         //</editor-fold>
@@ -6597,6 +6719,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private void update_household_member_skills() {
 
         //<editor-fold defaultstate="collapsed" desc=" Skills ">
+        List<Household_member_skills.to_household_member_skills> lists = Household_member_skills.ret_data("where household_member_no='" + household_member.household_member_no + "'");
+        Household_member_skills.to_household_member_skills list = (Household_member_skills.to_household_member_skills) lists.get(0);
         int id = household_member.id;
         String created_at = household_member.created_at;
         String updated_at = household_member.updated_at;
@@ -6612,7 +6736,10 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String barangay_id = household_member.barangay_id;
         String purok = household_member.purok;
         String purok_id = household_member.purok_id;
-        int status = household_member.status;
+
+        int status = list.status;
+        int is_uploaded = list.is_uploaded;
+
         String house_no = household_member.house_no;
         String household_no = household_member.house_no;
         String household_member_no = household_member.household_member_no;
@@ -6674,7 +6801,20 @@ public class Dlg_household_members extends javax.swing.JDialog {
         int is_expressing = get_status(cb_is_expressing);
         int is_organizing = get_status(organizing);
         String transient_no = household_member.transient_no;
-        Household_member_skills.to_household_member_skills skills = new Household_member_skills.to_household_member_skills(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, ps_teaching, ps_negotiating, ps_diverting, ps_persuading, ps_promoting, ps_selling, ps_leading, ps_speaking, ps_serving, ps_helping, ps_encouraging, ps_motivating, ds_coordinating, ds_analyzing, ds_planning, ds_compiling, ds_computing, ds_recording, ds_checking, ds_researching, ds_testing, ds_comparing, ds_tabulating, ds_posting, ds_copying, ts_machine_work, ts_setting_up, ts_assembling, ts_operating, ts_driving, ts_repairing, ts_manipulating, ts_materials_handling, ts_producing, ts_inspecting, ts_warehousing, ts_building, ts_precision_working, ts_restoring, ts_feeding, is_implementing, is_synthesizing, is_interpreting, is_instruction, is_speculating, is_anticipating, is_inventing, is_discovering, is_predicting, is_theorizing, is_innovating, is_expressing, is_organizing, transient_no);
+
+        System.out.println("Status: " + status);
+        System.out.println("is_uploaded: " + is_uploaded);
+        if (status == 0 && is_uploaded == 0) {
+            status = 2;
+        } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+            status = 1;
+            is_uploaded = 0;
+        } else {
+            is_uploaded = 0;
+        }
+        System.out.println("Status: " + status);
+        System.out.println("is_uploaded: " + is_uploaded);
+        Household_member_skills.to_household_member_skills skills = new Household_member_skills.to_household_member_skills(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, ps_teaching, ps_negotiating, ps_diverting, ps_persuading, ps_promoting, ps_selling, ps_leading, ps_speaking, ps_serving, ps_helping, ps_encouraging, ps_motivating, ds_coordinating, ds_analyzing, ds_planning, ds_compiling, ds_computing, ds_recording, ds_checking, ds_researching, ds_testing, ds_comparing, ds_tabulating, ds_posting, ds_copying, ts_machine_work, ts_setting_up, ts_assembling, ts_operating, ts_driving, ts_repairing, ts_manipulating, ts_materials_handling, ts_producing, ts_inspecting, ts_warehousing, ts_building, ts_precision_working, ts_restoring, ts_feeding, is_implementing, is_synthesizing, is_interpreting, is_instruction, is_speculating, is_anticipating, is_inventing, is_discovering, is_predicting, is_theorizing, is_innovating, is_expressing, is_organizing, transient_no);
         Household_member_skills.update_data(skills);
         Alert.set(2, "");
 
@@ -6833,7 +6973,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Field.Search field = (Field.Search) tf_house_no;
                 field.setText(to.house_no);
                 tf_house_no.setText(to.house_no);
-               
+
                 reg.setText(to.region);
                 reg.setId(to.region_id);
                 prov.setText(to.province);

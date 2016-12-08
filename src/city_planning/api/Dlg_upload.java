@@ -24,8 +24,9 @@ import city_planning.households.Households;
 import city_planning.houses.Houses;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import static com.lowagie.text.pdf.PdfFileSpecification.url;
+import com.google.gson.JsonParser;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -36,6 +37,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -381,8 +383,7 @@ public class Dlg_upload extends javax.swing.JDialog {
     }
 
     private void ret_data() {
-        String where = " where status = 0 and is_uploaded=0"
-                + " or status=1 and is_uploaded=0";
+        String where = " where is_uploaded=0";
 
         //<editor-fold defaultstate="collapsed" desc=" list ">
         List<Households.to_households> households = Households.ret_data(where);
@@ -476,8 +477,7 @@ public class Dlg_upload extends javax.swing.JDialog {
         int total_new = 0;
         int total_update = 0;
         for (Households.to_households household : households) {
-            if (household.status == 0) {
-
+            if (household.status == 0 || household.status == 2) {
                 households_0.add(household);
                 new_households++;
                 total_new++;
@@ -489,7 +489,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_assets.to_household_assets household_asset : household_assets) {
-            if (household_asset.status == 0) {
+            if (household_asset.status == 0 || household_asset.status == 2) {
                 household_assets_0.add(household_asset);
                 new_household_assets++;
                 total_new++;
@@ -501,7 +501,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_consumptions.to_household_consumptions household_consumption : household_consumptions) {
-            if (household_consumption.status == 0) {
+            if (household_consumption.status == 0 || household_consumption.status == 2) {
                 household_consumptions_0.add(household_consumption);
                 new_household_consumptions++;
                 total_new++;
@@ -513,7 +513,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_expenditures.to_household_expenditures household_expenditure : household_expenditures) {
-            if (household_expenditure.status == 0) {
+            if (household_expenditure.status == 0 || household_expenditure.status == 2) {
                 household_expenditures_0.add(household_expenditure);
                 new_household_expenditures++;
                 total_new++;
@@ -525,7 +525,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_members.to_household_members household_member : household_members) {
-            if (household_member.status == 0) {
+            if (household_member.status == 0 || household_member.status == 2) {
                 household_members_0.add(household_member);
                 new_household_members++;
                 total_new++;
@@ -537,7 +537,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_competence_certificates.to_household_member_competence_certificates household_member_competence_certificate : household_member_competence_certificates) {
-            if (household_member_competence_certificate.status == 0) {
+            if (household_member_competence_certificate.status == 0 || household_member_competence_certificate.status == 2) {
                 household_member_competence_certificates_0.add(household_member_competence_certificate);
                 new_household_member_competence_certificates++;
                 total_new++;
@@ -549,7 +549,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_educational_backgrounds.to_household_member_educational_backgrounds household_member_educational_background : household_member_educational_backgrounds) {
-            if (household_member_educational_background.status == 0) {
+            if (household_member_educational_background.status == 0 || household_member_educational_background.status == 2) {
                 household_member_educational_backgrounds_0.add(household_member_educational_background);
                 new_household_member_educational_backgrounds++;
                 total_new++;
@@ -561,7 +561,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_employment_status.to_household_member_employment_status household_member_employment_statu : household_member_employment_status) {
-            if (household_member_employment_statu.status == 0) {
+            if (household_member_employment_statu.status == 0 || household_member_employment_statu.status == 2) {
                 household_member_employment_status_0.add(household_member_employment_statu);
                 new_household_member_employment_status++;
                 total_new++;
@@ -573,7 +573,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_health_statuses.to_household_member_health_statuses household_member_health_status : household_member_health_statuses) {
-            if (household_member_health_status.status == 0) {
+            if (household_member_health_status.status == 0 || household_member_health_status.status == 2) {
                 household_member_health_statuses_0.add(household_member_health_status);
                 new_household_member_health_statuses++;
                 total_new++;
@@ -585,7 +585,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_licences.to_household_member_licenses household_member_licence : household_member_licenses) {
-            if (household_member_licence.status == 0) {
+            if (household_member_licence.status == 0 || household_member_licence.status == 2) {
                 household_member_licenses_0.add(household_member_licence);
                 new_household_member_licenses++;
                 total_new++;
@@ -597,7 +597,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_medications.to_household_member_medications household_member_medication : household_member_medications) {
-            if (household_member_medication.status == 0) {
+            if (household_member_medication.status == 0 || household_member_medication.status == 2) {
                 household_member_medications_0.add(household_member_medication);
                 new_household_member_medications++;
                 total_new++;
@@ -609,7 +609,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_prefered_works.to_household_member_prefered_works household_member_prefered_work : household_member_prefered_works) {
-            if (household_member_prefered_work.status == 0) {
+            if (household_member_prefered_work.status == 0 || household_member_prefered_work.status == 2) {
                 household_member_prefered_works_0.add(household_member_prefered_work);
                 new_household_member_prefered_works++;
                 total_new++;
@@ -621,7 +621,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_skills.to_household_member_skills household_member_skill : household_member_skills) {
-            if (household_member_skill.status == 0) {
+            if (household_member_skill.status == 0 || household_member_skill.status == 2) {
                 household_member_skills_0.add(household_member_skill);
                 new_household_member_skills++;
                 total_new++;
@@ -633,7 +633,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_vocational_experiences.to_household_member_vocational_experiences household_member_vocational_experience : household_member_vocational_experiences) {
-            if (household_member_vocational_experience.status == 0) {
+            if (household_member_vocational_experience.status == 0 || household_member_vocational_experience.status == 2) {
                 household_member_vocational_experiences_0.add(household_member_vocational_experience);
                 new_household_member_vocational_experiences++;
                 total_new++;
@@ -645,7 +645,7 @@ public class Dlg_upload extends javax.swing.JDialog {
             }
         }
         for (Household_member_work_experiences.to_household_member_work_experiences household_member_work_experience : household_member_work_experiences) {
-            if (household_member_work_experience.status == 0) {
+            if (household_member_work_experience.status == 0 || household_member_work_experience.status == 2) {
                 household_member_work_experiences_0.add(household_member_work_experience);
                 new_household_member_work_experiences++;
                 total_new++;
@@ -660,7 +660,7 @@ public class Dlg_upload extends javax.swing.JDialog {
 
         }
         for (Houses.to_houses house : houses) {
-            if (house.status == 0) {
+            if (house.status == 0 || house.status == 2) {
                 houses_0.add(house);
                 new_houses++;
                 total_new++;
@@ -801,16 +801,54 @@ public class Dlg_upload extends javax.swing.JDialog {
             System.out.println("\nSending 'POST' request to URL : " + url);
             System.out.println("Response Code : " + responseCode);
             System.out.println("Response Message : " + message);
-            String line;
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
+            String line = reader.readLine();
+//            System.out.println("return: " + line);
+            
             writer.close();
             reader.close();
+
+            JsonParser parser = new JsonParser();
+            JsonObject jObj = (JsonObject) parser.parse(line);
+            
+            String[] r_households = getIds(jObj, "households");
+            String[] r_household_assets = getIds(jObj, "household_assets");
+            String[] r_household_consumptions = getIds(jObj, "household_consumptions");
+            String[] r_household_expenditures = getIds(jObj, "household_expenditures");
+            String[] r_household_members = getIds(jObj, "household_members");
+            String[] r_household_member_competence_certificates = getIds(jObj, "household_member_competence_certificates");
+            String[] r_household_member_educational_backgrounds = getIds(jObj, "household_member_educational_backgrounds");
+            String[] r_household_member_employment_status = getIds(jObj, "household_member_employment_status");
+            String[] r_household_member_health_statuses = getIds(jObj, "household_member_health_statuses");
+            String[] r_household_member_licenses = getIds(jObj, "household_member_licenses");
+            String[] r_household_member_medications = getIds(jObj, "household_member_medications");
+            String[] r_household_member_prefered_works = getIds(jObj, "household_member_prefered_works");
+            String[] r_household_member_skills = getIds(jObj, "household_member_skills");
+            String[] r_household_member_vocational_experiences = getIds(jObj, "household_member_vocational_experiences");
+            String[] r_household_member_work_experiences = getIds(jObj, "household_member_work_experiences");
+            String[] r_houses = getIds(jObj, "houses");
+
+            int status = 0;
+            int is_uploaded = 1;
+            Households.update_upload_status(status, is_uploaded, r_households, r_household_assets, r_household_consumptions, r_household_expenditures, r_household_members, r_household_member_competence_certificates, r_household_member_educational_backgrounds, r_household_member_employment_status, r_household_member_health_statuses, r_household_member_licenses, r_household_member_medications, r_household_member_prefered_works, r_household_member_skills, r_household_member_vocational_experiences, r_household_member_work_experiences, r_houses);
+            
         } catch (IOException ex) {
             Logger.getLogger(Dlg_upload.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private String[] getIds(JsonObject jObj, String name) {
+
+        JsonElement l = jObj.get(name);
+        String element = l.toString();
+        String[] a = {};
+        if (!element.equals("[]")) {
+            element = element.replace("[", "");
+            element = element.replace("]", "");
+            a = element.split(",");
+        }
+        return a;
     }
 
     public void do_pass() {

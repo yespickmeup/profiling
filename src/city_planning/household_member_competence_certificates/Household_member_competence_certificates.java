@@ -39,7 +39,8 @@ public class Household_member_competence_certificates {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final String household_no;
         public final String household_member_no;
@@ -53,7 +54,7 @@ public class Household_member_competence_certificates {
         public String date_issued;
         public String transient_no;
 
-        public to_household_member_competence_certificates(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String certificate, String rating, String issued_by, String date_issued, String transient_no) {
+        public to_household_member_competence_certificates(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String certificate, String rating, String issued_by, String date_issued, String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -70,6 +71,7 @@ public class Household_member_competence_certificates {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.household_member_no = household_member_no;
@@ -81,7 +83,23 @@ public class Household_member_competence_certificates {
             this.rating = rating;
             this.issued_by = issued_by;
             this.date_issued = date_issued;
-            this.transient_no=transient_no;
+            this.transient_no = transient_no;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
         }
 
         public String getTransient_no() {
@@ -91,7 +109,7 @@ public class Household_member_competence_certificates {
         public void setTransient_no(String transient_no) {
             this.transient_no = transient_no;
         }
-        
+
         public String getCertificate() {
             return certificate;
         }
@@ -228,6 +246,7 @@ public class Household_member_competence_certificates {
     }
 
     public static void update_data(to_household_member_competence_certificates to_household_member_competence_certificates) {
+       
         try {
             Connection conn = MyConnection.connect();
             String s0 = "update household_member_competence_certificates set "
@@ -257,9 +276,9 @@ public class Household_member_competence_certificates {
                     + ",rating= :rating "
                     + ",issued_by= :issued_by "
                     + ",date_issued= :date_issued "
+                    + ",is_uploaded= :is_uploaded"
                     + " where id='" + to_household_member_competence_certificates.id + "' "
                     + " ";
-
             s0 = SqlStringUtil.parse(s0)
                     .setString("created_at", to_household_member_competence_certificates.created_at)
                     .setString("updated_at", to_household_member_competence_certificates.updated_at)
@@ -287,6 +306,7 @@ public class Household_member_competence_certificates {
                     .setString("rating", to_household_member_competence_certificates.rating)
                     .setString("issued_by", to_household_member_competence_certificates.issued_by)
                     .setString("date_issued", to_household_member_competence_certificates.date_issued)
+                    .setNumber("is_uploaded", to_household_member_competence_certificates.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -350,6 +370,7 @@ public class Household_member_competence_certificates {
                     + ",issued_by"
                     + ",date_issued"
                     + ",transient_no"
+                    + ",is_uploaded"
                     + " from household_member_competence_certificates"
                     + " " + where;
 
@@ -386,7 +407,8 @@ public class Household_member_competence_certificates {
                 String issued_by = rs.getString(26);
                 String date_issued = rs.getString(27);
                 String transient_no = rs.getString(28);
-                to_household_member_competence_certificates to = new to_household_member_competence_certificates(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, certificate, rating, issued_by, date_issued, transient_no);
+                int is_uploaded = rs.getInt(29);
+                to_household_member_competence_certificates to = new to_household_member_competence_certificates(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, certificate, rating, issued_by, date_issued, transient_no);
                 datas.add(to);
             }
             return datas;

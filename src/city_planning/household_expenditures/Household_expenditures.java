@@ -39,7 +39,8 @@ public class Household_expenditures {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final String household_no;
         public String expenditure_date;
@@ -60,7 +61,7 @@ public class Household_expenditures {
         public double cable_services;
         public double social_obligations;
 
-        public to_household_expenditures(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String expenditure_date, double fuel_expenses, double internet_services, double medical_expenses, double cigarretes, double hobbies_clubs, double load_expenses, double electric_gas_expenses, double books_newspapers_expenses, double gambling, double personal_care, double misc, double alcohol, double vacation, double water_bill, double cable_services, double social_obligations) {
+        public to_household_expenditures(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String expenditure_date, double fuel_expenses, double internet_services, double medical_expenses, double cigarretes, double hobbies_clubs, double load_expenses, double electric_gas_expenses, double books_newspapers_expenses, double gambling, double personal_care, double misc, double alcohol, double vacation, double water_bill, double cable_services, double social_obligations) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -77,6 +78,7 @@ public class Household_expenditures {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.expenditure_date = expenditure_date;
@@ -96,6 +98,22 @@ public class Household_expenditures {
             this.water_bill = water_bill;
             this.cable_services = cable_services;
             this.social_obligations = social_obligations;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
         }
 
         public String getExpenditure_date() {
@@ -396,6 +414,7 @@ public class Household_expenditures {
                     + ",water_bill= :water_bill "
                     + ",cable_services= :cable_services "
                     + ",social_obligations= :social_obligations "
+                    + ",is_uploaded= :is_uploaded"
                     + " where id='" + to_household_expenditures.id + "' "
                     + " ";
 
@@ -434,6 +453,7 @@ public class Household_expenditures {
                     .setNumber("water_bill", to_household_expenditures.water_bill)
                     .setNumber("cable_services", to_household_expenditures.cable_services)
                     .setNumber("social_obligations", to_household_expenditures.social_obligations)
+                    .setNumber("is_uploaded", to_household_expenditures.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -504,6 +524,7 @@ public class Household_expenditures {
                     + ",water_bill"
                     + ",cable_services"
                     + ",social_obligations"
+                    + ",is_uploaded"
                     + " from household_expenditures"
                     + " " + where;
 
@@ -547,8 +568,8 @@ public class Household_expenditures {
                 double water_bill = rs.getDouble(33);
                 double cable_services = rs.getDouble(34);
                 double social_obligations = rs.getDouble(35);
-
-                to_household_expenditures to = new to_household_expenditures(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, expenditure_date, fuel_expenses, internet_services, medical_expenses, cigarretes, hobbies_clubs, load_expenses, electric_gas_expenses, books_newspapers_expenses, gambling, personal_care, misc, alcohol, vacation, water_bill, cable_services, social_obligations);
+                int is_uploaded = rs.getInt(36);
+                to_household_expenditures to = new to_household_expenditures(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, expenditure_date, fuel_expenses, internet_services, medical_expenses, cigarretes, hobbies_clubs, load_expenses, electric_gas_expenses, books_newspapers_expenses, gambling, personal_care, misc, alcohol, vacation, water_bill, cable_services, social_obligations);
                 datas.add(to);
             }
             return datas;

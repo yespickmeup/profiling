@@ -52,6 +52,7 @@ public class Household_members {
         public final String purok;
         public final String purok_id;
         public final int status;
+        public final int is_uploaded;
         public final String house_no;
         public final String household_no;
         public final String household_member_no;
@@ -89,7 +90,7 @@ public class Household_members {
         public String transient_no;
         public String contact_no;
 
-        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String transient_no, String contact_no) {
+        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String transient_no, String contact_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -106,6 +107,7 @@ public class Household_members {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.household_member_no = household_member_no;
@@ -1738,6 +1740,8 @@ public class Household_members {
                     + ",household_no= :household_no "
                     + ",household_member_no= :household_member_no "
                     + ",contact_no= :contact_no"
+                    + ",status= :status"
+                    + ",is_uploaded= :is_uploaded"
                     + " where transient_no='" + to_household_members.transient_no + "' "
                     + " ";
 
@@ -1777,6 +1781,8 @@ public class Household_members {
                     .setString("household_no", to_household_members.household_no)
                     .setString("household_member_no", to_household_members.household_member_no)
                     .setString("contact_no", to_household_members.contact_no)
+                    .setNumber("status", to_household_members.status)
+                    .setNumber("is_uploaded", to_household_members.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -2535,6 +2541,7 @@ public class Household_members {
                     + ",image"
                     + ",transient_no"
                     + ",contact_no"
+                    + ",is_uploaded"
                     + " from household_members"
                     + " " + where;
 
@@ -2546,7 +2553,7 @@ public class Household_members {
                 created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
                 updated_at = updated_at.replace(".0", "");
-            
+
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -2586,7 +2593,8 @@ public class Household_members {
                 String image = rs.getString(40);
                 String transient_no = rs.getString(41);
                 String contact_no = rs.getString(42);
-                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
+                int is_uploaded = rs.getInt(43);
+                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
                 datas.add(to);
             }
             return datas;

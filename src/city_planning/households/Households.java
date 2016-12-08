@@ -31,15 +31,10 @@ public class Households {
     public static class to_households {
 
         public final int id;
-
         public final String created_at;
-
         public final String updated_at;
-
         public final String created_by;
-
         public final String updated_by;
-
         public final String region;
         public final String region_id;
         public final String province;
@@ -50,7 +45,8 @@ public class Households {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final String household_no;
         public String occupancy_types;
@@ -79,7 +75,7 @@ public class Households {
         public List<Household_members.to_household_members> household_members;
         public int no_of_household_members;
 
-        public to_households(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members, int no_of_household_members) {
+        public to_households(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members, int no_of_household_members) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -96,6 +92,7 @@ public class Households {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.occupancy_types = occupancy_types;
@@ -125,6 +122,22 @@ public class Households {
             this.no_of_household_members = no_of_household_members;
         }
 
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
+        }
+
         public int getNo_of_household_members() {
             return no_of_household_members;
         }
@@ -132,7 +145,7 @@ public class Households {
         public void setNo_of_household_members(int no_of_household_members) {
             this.no_of_household_members = no_of_household_members;
         }
-        
+
         public String getOccupancy_types() {
             return occupancy_types;
         }
@@ -779,6 +792,7 @@ public class Households {
                     + ",hunger_rating= :hunger_rating "
                     + ",environmental_contamination_rating= :environmental_contamination_rating "
                     + ",health_disparities_rating= :health_disparities_rating "
+                    + ",is_uploaded= :is_uploaded"
                     + " where household_no='" + to_households.household_no + "' "
                     + " ";
 
@@ -820,6 +834,7 @@ public class Households {
                     .setString("hunger_rating", to_households.hunger_rating)
                     .setString("environmental_contamination_rating", to_households.environmental_contamination_rating)
                     .setString("health_disparities_rating", to_households.health_disparities_rating)
+                    .setNumber("is_uploaded", to_households.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -919,6 +934,7 @@ public class Households {
                     + ",environmental_contamination_rating"
                     + ",health_disparities_rating"
                     + ",no_of_household_members"
+                    + ",is_uploaded"
                     + " from households"
                     + " " + where;
 
@@ -966,7 +982,8 @@ public class Households {
                 String environmental_contamination_rating = rs.getString(37);
                 String health_disparities_rating = rs.getString(38);
                 int no_of_household_members = rs.getInt(39);
-                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
+                int is_uploaded = rs.getInt(40);
+                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
                 datas.add(to);
             }
             return datas;
@@ -977,4 +994,168 @@ public class Households {
         }
     }
 
+    public static void update_upload_status(int status, int is_uploaded,
+            String[] r_households,
+            String[] r_household_assets,
+            String[] r_household_consumptions,
+            String[] r_household_expenditures,
+            String[] r_household_members,
+            String[] r_household_member_competence_certificates,
+            String[] r_household_member_educational_backgrounds,
+            String[] r_household_member_employment_status,
+            String[] r_household_member_health_statuses,
+            String[] r_household_member_licenses,
+            String[] r_household_member_medications,
+            String[] r_household_member_prefered_works,
+            String[] r_household_member_skills,
+            String[] r_household_member_vocational_experiences,
+            String[] r_household_member_work_experiences,
+            String[] r_houses
+    ) {
+        try {
+            Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+
+            PreparedStatement stmt = conn.prepareStatement("");
+
+            for (String id : r_households) {
+                String s0 = "update households set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_assets) {
+                String s0 = "update household_assets set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_consumptions) {
+                String s0 = "update household_consumptions set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_expenditures) {
+                String s0 = "update household_expenditures set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_members) {
+                String s0 = "update household_members set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_competence_certificates) {
+                String s0 = "update household_member_competence_certificates set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_educational_backgrounds) {
+                String s0 = "update household_member_educational_backgrounds set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_employment_status) {
+                String s0 = "update household_member_employment_status set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_health_statuses) {
+                String s0 = "update household_member_health_statuses set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_licenses) {
+                String s0 = "update household_member_licenses set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+
+            for (String id : r_household_member_medications) {
+                String s0 = "update household_member_medications set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_prefered_works) {
+                String s0 = "update household_member_prefered_works set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_skills) {
+                String s0 = "update household_member_skills set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_vocational_experiences) {
+                String s0 = "update household_member_vocational_experiences set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_household_member_work_experiences) {
+                String s0 = "update household_member_work_experiences set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+            for (String id : r_houses) {
+                String s0 = "update houses set "
+                        + "status= '" + status + "' "
+                        + ",is_uploaded= '" + is_uploaded + "' "
+                        + " where id='" + id + "' "
+                        + " ";
+                stmt.addBatch(s0);
+            }
+
+            int[] count = stmt.executeBatch();
+            System.out.println("count: " + count.length);
+            conn.commit();
+            Lg.s(Households.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
 }

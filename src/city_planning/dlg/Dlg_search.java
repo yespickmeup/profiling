@@ -92,6 +92,7 @@ public class Dlg_search extends javax.swing.JDialog {
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
     private Dlg_search(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+
         setUndecorated(true);
         initComponents();
         myInit();
@@ -99,6 +100,7 @@ public class Dlg_search extends javax.swing.JDialog {
 
     private Dlg_search(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
+
         setUndecorated(true);
         initComponents();
         myInit();
@@ -229,6 +231,34 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        lbl_barangay13 = new javax.swing.JLabel();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        lbl_barangay14 = new javax.swing.JLabel();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        tf_region2 = new Field.Combo();
+        tf_city2 = new Field.Combo();
+        lbl_barangay15 = new javax.swing.JLabel();
+        lbl_barangay16 = new javax.swing.JLabel();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        tf_province2 = new Field.Combo();
+        tf_barangay2 = new Field.Combo();
+        tf_purok2 = new Field.Combo();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        lbl_barangay17 = new javax.swing.JLabel();
+        jButton6 = new Button.Primary();
+        lbl_barangay18 = new javax.swing.JLabel();
+        jTextField3 = new Field.Input();
+        jButton7 = new Button.Default();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbl_households = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jProgressBar3 = new javax.swing.JProgressBar();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         lbl_barangay1 = new javax.swing.JLabel();
@@ -285,34 +315,6 @@ public class Dlg_search extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jProgressBar2 = new javax.swing.JProgressBar();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        lbl_barangay13 = new javax.swing.JLabel();
-        jCheckBox11 = new javax.swing.JCheckBox();
-        lbl_barangay14 = new javax.swing.JLabel();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        tf_region2 = new Field.Combo();
-        tf_city2 = new Field.Combo();
-        lbl_barangay15 = new javax.swing.JLabel();
-        lbl_barangay16 = new javax.swing.JLabel();
-        jCheckBox13 = new javax.swing.JCheckBox();
-        jCheckBox14 = new javax.swing.JCheckBox();
-        tf_province2 = new Field.Combo();
-        tf_barangay2 = new Field.Combo();
-        tf_purok2 = new Field.Combo();
-        jCheckBox15 = new javax.swing.JCheckBox();
-        lbl_barangay17 = new javax.swing.JLabel();
-        jButton6 = new Button.Primary();
-        lbl_barangay18 = new javax.swing.JLabel();
-        jTextField3 = new Field.Input();
-        jButton7 = new Button.Default();
-        jPanel10 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbl_households = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jProgressBar3 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -320,6 +322,298 @@ public class Dlg_search extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbl_barangay13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_barangay13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_barangay13.setText("Region:");
+
+        jCheckBox11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox11.setText("All");
+
+        lbl_barangay14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_barangay14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_barangay14.setText("City/Municipality:");
+
+        jCheckBox12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox12.setText("All");
+
+        tf_region2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_region2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_region2MouseClicked(evt);
+            }
+        });
+        tf_region2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_region2ActionPerformed(evt);
+            }
+        });
+
+        tf_city2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_city2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_city2MouseClicked(evt);
+            }
+        });
+        tf_city2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_city2ActionPerformed(evt);
+            }
+        });
+
+        lbl_barangay15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_barangay15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_barangay15.setText("Province:");
+
+        lbl_barangay16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_barangay16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_barangay16.setText("Barangay:");
+
+        jCheckBox13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox13.setText("All");
+
+        jCheckBox14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox14.setText("All");
+
+        tf_province2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_province2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_province2MouseClicked(evt);
+            }
+        });
+        tf_province2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_province2ActionPerformed(evt);
+            }
+        });
+
+        tf_barangay2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_barangay2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_barangay2MouseClicked(evt);
+            }
+        });
+        tf_barangay2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_barangay2ActionPerformed(evt);
+            }
+        });
+
+        tf_purok2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_purok2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_purok2MouseClicked(evt);
+            }
+        });
+        tf_purok2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_purok2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox15.setText("All");
+
+        lbl_barangay17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_barangay17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_barangay17.setText("Purok:");
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/new-file.png"))); // NOI18N
+        jButton6.setText("New [F1]");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        lbl_barangay18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_barangay18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_barangay18.setText("Search:");
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/tool.png"))); // NOI18N
+        jButton7.setText("Go");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lbl_barangay17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_barangay14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_barangay13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_region2, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbl_barangay15)
+                                        .addGap(5, 5, 5))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_city2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbl_barangay16)))
+                                .addGap(4, 4, 4)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_barangay2, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_province2))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
+                                .addComponent(jCheckBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_purok2))))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(lbl_barangay18, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_barangay13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_region2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox11)
+                    .addComponent(lbl_barangay15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_province2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox13))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_barangay14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_city2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCheckBox12))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_barangay16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCheckBox14)
+                        .addComponent(tf_barangay2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_barangay17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_purok2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_barangay18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(5, 5, 5))
+        );
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+
+        tbl_households.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbl_households.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_householdsMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbl_households);
+
+        jLabel7.setText("No. of rows:");
+
+        jLabel8.setText("0");
+
+        jLabel9.setText("Status:");
+
+        jProgressBar3.setString("");
+        jProgressBar3.setStringPainted(true);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("HOUSEHOLDS", jPanel3);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -910,298 +1204,6 @@ public class Dlg_search extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("HOUSES", jPanel2);
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbl_barangay13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_barangay13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_barangay13.setText("Region:");
-
-        jCheckBox11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox11.setText("All");
-
-        lbl_barangay14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_barangay14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_barangay14.setText("City/Municipality:");
-
-        jCheckBox12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox12.setText("All");
-
-        tf_region2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_region2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_region2MouseClicked(evt);
-            }
-        });
-        tf_region2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_region2ActionPerformed(evt);
-            }
-        });
-
-        tf_city2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_city2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_city2MouseClicked(evt);
-            }
-        });
-        tf_city2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_city2ActionPerformed(evt);
-            }
-        });
-
-        lbl_barangay15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_barangay15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_barangay15.setText("Province:");
-
-        lbl_barangay16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_barangay16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_barangay16.setText("Barangay:");
-
-        jCheckBox13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox13.setText("All");
-
-        jCheckBox14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox14.setText("All");
-
-        tf_province2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_province2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_province2MouseClicked(evt);
-            }
-        });
-        tf_province2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_province2ActionPerformed(evt);
-            }
-        });
-
-        tf_barangay2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_barangay2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_barangay2MouseClicked(evt);
-            }
-        });
-        tf_barangay2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_barangay2ActionPerformed(evt);
-            }
-        });
-
-        tf_purok2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_purok2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_purok2MouseClicked(evt);
-            }
-        });
-        tf_purok2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_purok2ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox15.setText("All");
-
-        lbl_barangay17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_barangay17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_barangay17.setText("Purok:");
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/new-file.png"))); // NOI18N
-        jButton6.setText("New [F1]");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        lbl_barangay18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_barangay18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_barangay18.setText("Search:");
-
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/tool.png"))); // NOI18N
-        jButton7.setText("Go");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lbl_barangay17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_barangay14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_barangay13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel9Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_region2, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbl_barangay15)
-                                        .addGap(5, 5, 5))
-                                    .addGroup(jPanel9Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_city2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbl_barangay16)))
-                                .addGap(4, 4, 4)
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel9Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_barangay2, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE))
-                                    .addGroup(jPanel9Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_province2))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                .addComponent(jCheckBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_purok2))))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(lbl_barangay18, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_barangay13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_region2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox11)
-                    .addComponent(lbl_barangay15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_province2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox13))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_barangay14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tf_city2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox12))
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_barangay16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox14)
-                        .addComponent(tf_barangay2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_barangay17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_purok2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_barangay18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 5, 5))
-        );
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-
-        tbl_households.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tbl_households.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_householdsMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tbl_households);
-
-        jLabel7.setText("No. of rows:");
-
-        jLabel8.setText("0");
-
-        jLabel9.setText("Status:");
-
-        jProgressBar3.setString("");
-        jProgressBar3.setStringPainted(true);
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("HOUSEHOLDS", jPanel3);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1495,6 +1497,9 @@ public class Dlg_search extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
+        Field.Combo pur = (Field.Combo) tf_purok;
+        pur.setText("");
+        pur.setId("");
         ret_default_location();
         init_tbl_houses(tbl_houses);
         init_tbl_households(tbl_households);
@@ -1929,7 +1934,7 @@ public class Dlg_search extends javax.swing.JDialog {
         Field.Combo ci = (Field.Combo) tf_city;
         Field.Combo ba = (Field.Combo) tf_barangay;
         Field.Combo pu = (Field.Combo) tf_purok;
-        Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "");
+        Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "");
 
         String region = re.getText();
         String region_id = re.getId();
@@ -1970,9 +1975,9 @@ public class Dlg_search extends javax.swing.JDialog {
                 String purok = data.purok;
                 String purok_id = data.purok_id;
                 int status = 0;
+                int is_uploaded = 0;
                 String house_no = data.house_no;
                 String household_no = data.household_no;
-
                 String fname = data.fname;
                 String mname = data.mname;
                 String lname = data.lname;
@@ -2014,7 +2019,7 @@ public class Dlg_search extends javax.swing.JDialog {
                     Alert.set(0, "Duplicate TR Entry, Try Again!");
                     return;
                 }
-                Household_members.to_household_members household_member = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
+                Household_members.to_household_members household_member = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
                 Household_members.add_data(household_member);
 
                 Initialize_table_household_members.tbl_household_member_work_experiences_ALM.clear();
@@ -2296,7 +2301,7 @@ public class Dlg_search extends javax.swing.JDialog {
         Field.Combo ba = (Field.Combo) tf_barangay;
         Field.Combo pu = (Field.Combo) tf_purok;
 
-        Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList(), "", "", 0, 0);
+        Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList(), "", "", 0, 0);
 
         String region = re.getText();
         String region_id = re.getId();
@@ -2334,6 +2339,7 @@ public class Dlg_search extends javax.swing.JDialog {
                 String purok = data.purok;
                 String purok_id = data.purok_id;
                 int status = 0;
+                int is_uploaded = 0;
                 String house_no = data.house_no;
                 String where = " where house_no='" + house_no + "' ";
                 List<Houses.to_houses> datas = Houses.ret_data(where);
@@ -2364,7 +2370,7 @@ public class Dlg_search extends javax.swing.JDialog {
                 String longtitude = data.longtitude;
                 int no_of_households = 0;
                 int no_of_household_members = 0;
-                final Houses.to_houses house = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude, no_of_households, no_of_household_members);
+                final Houses.to_houses house = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude, no_of_households, no_of_household_members);
                 jProgressBar2.setString("Loading...Please wait...");
                 jProgressBar2.setIndeterminate(true);
                 jButton4.setEnabled(false);
@@ -2632,6 +2638,7 @@ public class Dlg_search extends javax.swing.JDialog {
                 String purok = data.purok;
                 String purok_id = data.purok_id;
                 int status = 0;
+                int is_uploaded = 0;
                 String house_no = data.house_no;
                 String household_no = data.household_no;
                 String where = " where household_no='" + household_no + "' limit 1";
@@ -2665,7 +2672,7 @@ public class Dlg_search extends javax.swing.JDialog {
                 List<Household_consumptions.to_household_consumptions> household_consumptions = data.household_consumptions;
                 List<Household_members.to_household_members> household_members = data.household_members;
                 int no_of_household_members = 0;
-                Households.to_households household = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
+                Households.to_households household = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
                 jProgressBar3.setString("Loading...Please wait...");
                 jProgressBar3.setIndeterminate(true);
                 jButton6.setEnabled(false);

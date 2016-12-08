@@ -39,13 +39,14 @@ public class Household_assets {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final String household_no;
-        public  double qty;
-        public  String assets;
+        public double qty;
+        public String assets;
 
-        public to_household_assets(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, double qty, String assets) {
+        public to_household_assets(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, double qty, String assets) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -62,10 +63,27 @@ public class Household_assets {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.qty = qty;
             this.assets = assets;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
         }
 
         public double getQty() {
@@ -83,7 +101,7 @@ public class Household_assets {
         public void setAssets(String assets) {
             this.assets = assets;
         }
-        
+
     }
 
     public static void add_data(to_household_assets to_household_assets) {
@@ -186,6 +204,7 @@ public class Household_assets {
                     + ",household_no= :household_no "
                     + ",qty= :qty "
                     + ",assets= :assets "
+                    + ",is_uploaded= :is_uploaded"
                     + " where id='" + to_household_assets.id + "' "
                     + " ";
 
@@ -209,6 +228,7 @@ public class Household_assets {
                     .setString("household_no", to_household_assets.household_no)
                     .setNumber("qty", to_household_assets.qty)
                     .setString("assets", to_household_assets.assets)
+                    .setNumber("is_uploaded", to_household_assets.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -264,6 +284,7 @@ public class Household_assets {
                     + ",household_no"
                     + ",qty"
                     + ",assets"
+                    + ",is_uploaded"
                     + " from household_assets"
                     + " " + where;
 
@@ -272,9 +293,9 @@ public class Household_assets {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String created_at = rs.getString(2);
-                created_at=created_at.replace(".0", "");
+                created_at = created_at.replace(".0", "");
                 String updated_at = rs.getString(3);
-                updated_at=updated_at.replace(".0", "");
+                updated_at = updated_at.replace(".0", "");
                 String created_by = rs.getString(4);
                 String updated_by = rs.getString(5);
                 String region = rs.getString(6);
@@ -292,8 +313,8 @@ public class Household_assets {
                 String household_no = rs.getString(18);
                 double qty = rs.getDouble(19);
                 String assets = rs.getString(20);
-
-                to_household_assets to = new to_household_assets(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, qty, assets);
+                int is_uploaded = rs.getInt(21);
+                to_household_assets to = new to_household_assets(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, qty, assets);
                 datas.add(to);
             }
             return datas;

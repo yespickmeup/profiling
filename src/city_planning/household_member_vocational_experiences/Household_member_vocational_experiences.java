@@ -39,7 +39,8 @@ public class Household_member_vocational_experiences {
         public final String barangay_id;
         public final String purok;
         public final String purok_id;
-        public final int status;
+        public int status;
+        public int is_uploaded;
         public final String house_no;
         public final String household_no;
         public final String household_member_no;
@@ -54,7 +55,7 @@ public class Household_member_vocational_experiences {
         public String period_of_training;
         public String transient_no;
 
-        public to_household_member_vocational_experiences(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String name_of_training, String certificate_received, String skills_required, String name_of_school, String period_of_training, String transient_no) {
+        public to_household_member_vocational_experiences(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String name_of_training, String certificate_received, String skills_required, String name_of_school, String period_of_training, String transient_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -71,6 +72,7 @@ public class Household_member_vocational_experiences {
             this.purok = purok;
             this.purok_id = purok_id;
             this.status = status;
+            this.is_uploaded = is_uploaded;
             this.house_no = house_no;
             this.household_no = household_no;
             this.household_member_no = household_member_no;
@@ -83,6 +85,30 @@ public class Household_member_vocational_experiences {
             this.skills_required = skills_required;
             this.name_of_school = name_of_school;
             this.period_of_training = period_of_training;
+            this.transient_no = transient_no;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getIs_uploaded() {
+            return is_uploaded;
+        }
+
+        public void setIs_uploaded(int is_uploaded) {
+            this.is_uploaded = is_uploaded;
+        }
+
+        public String getTransient_no() {
+            return transient_no;
+        }
+
+        public void setTransient_no(String transient_no) {
             this.transient_no = transient_no;
         }
 
@@ -263,6 +289,7 @@ public class Household_member_vocational_experiences {
                     + ",skills_required= :skills_required "
                     + ",name_of_school= :name_of_school "
                     + ",period_of_training= :period_of_training "
+                    + ",is_uploaded= :is_uploaded"
                     + " where id='" + to_household_member_vocational_experiences.id + "' "
                     + " ";
 
@@ -294,6 +321,7 @@ public class Household_member_vocational_experiences {
                     .setString("skills_required", to_household_member_vocational_experiences.skills_required)
                     .setString("name_of_school", to_household_member_vocational_experiences.name_of_school)
                     .setString("period_of_training", to_household_member_vocational_experiences.period_of_training)
+                    .setNumber("is_uploaded", to_household_member_vocational_experiences.is_uploaded)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -358,6 +386,7 @@ public class Household_member_vocational_experiences {
                     + ",name_of_school"
                     + ",period_of_training"
                     + ",transient_no"
+                    + ",is_uploaded"
                     + " from household_member_vocational_experiences"
                     + " " + where;
 
@@ -395,7 +424,8 @@ public class Household_member_vocational_experiences {
                 String name_of_school = rs.getString(27);
                 String period_of_training = rs.getString(28);
                 String transient_no = rs.getString(29);
-                to_household_member_vocational_experiences to = new to_household_member_vocational_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, household_member_no, fname, mname, lname, sname, name_of_training, certificate_received, skills_required, name_of_school, period_of_training, transient_no);
+                int is_uploaded = rs.getInt(30);
+                to_household_member_vocational_experiences to = new to_household_member_vocational_experiences(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, name_of_training, certificate_received, skills_required, name_of_school, period_of_training, transient_no);
                 datas.add(to);
             }
             return datas;

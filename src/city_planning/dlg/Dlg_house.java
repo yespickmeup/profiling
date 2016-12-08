@@ -1441,13 +1441,16 @@ public class Dlg_house extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         ret_default_location();
+        Field.Combo pur = (Field.Combo) tf_purok;
+        pur.setText("");
+        pur.setId("");
         Initialize_table_households.init_tbl_households(tbl_households);
         jPanel5.setVisible(false);
         jButton13.setVisible(false);
         tf_house_number.grabFocus();
     }
 
-    Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList(), "", "", 0, 0);
+    Houses.to_houses house = new Houses.to_houses(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, new ArrayList(), "", "", 0, 0);
 
     public void do_pass(Houses.to_houses house1) {
         house = house1;
@@ -1701,7 +1704,7 @@ public class Dlg_house extends javax.swing.JDialog {
                 }
             }
         });
-         tf_water_sources.addKeyListener(new KeyAdapter() {
+        tf_water_sources.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_F1) {
@@ -2088,6 +2091,7 @@ public class Dlg_house extends javax.swing.JDialog {
                     String purok = pur.getText();
                     String purok_id = pur.getId();
                     int status = 0;
+                    int is_uploaded = 0;
                     String house_no = tf_house_number.getText();
                     String household_no = data.household_no;
                     String occupancy_types = data.occupancy_types;
@@ -2114,12 +2118,10 @@ public class Dlg_house extends javax.swing.JDialog {
                     List<Household_expenditures.to_household_expenditures> household_expenditures = data.household_expenditures;
                     List<Household_consumptions.to_household_consumptions> household_consumptions = data.household_consumptions;
                     List<Household_members.to_household_members> household_members = data.household_members;
-                    Households.to_households household = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, 0);
+                    Households.to_households household = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, 0);
                     Initialize_table_households.tbl_households_ALM.add(household);
                     Initialize_table_households.tbl_households_M.fireTableDataChanged();
                     jLabel2.setText("" + Initialize_table_households.tbl_households_ALM.size());
-                } else {
-
                 }
             }
         }
@@ -2266,6 +2268,7 @@ public class Dlg_house extends javax.swing.JDialog {
         String longtitude = tf_nearest_water_src2.getText();
         int no_of_households = 0;
         int no_of_household_members = 0;
+       
         if (callback != null) {
             callback.ok(new CloseDialog(this), new OutputData(region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude));
         }
@@ -2294,6 +2297,7 @@ public class Dlg_house extends javax.swing.JDialog {
         String purok = pur.getText();
         String purok_id = pur.getId();
         int status = house.status;
+        int is_uploaded = house.is_uploaded;
         String house_no = house.house_no;
         if (house_no.isEmpty()) {
             Alert.set(0, "Input House Number!");
@@ -2320,7 +2324,17 @@ public class Dlg_house extends javax.swing.JDialog {
         List<Households.to_households> households = new ArrayList();
         String latitude = tf_nearest_water_src1.getText();
         String longtitude = tf_nearest_water_src2.getText();
-        Houses.to_houses hou = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude, 0, 0);
+
+        if (status == 0 && is_uploaded == 0) {
+            status = 2;
+        } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+            status = 1;
+            is_uploaded = 0;
+        } else {
+            is_uploaded = 0;
+        }
+
+        Houses.to_houses hou = new Houses.to_houses(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude, 0, 0);
         Houses.update_data(hou);
         Alert.set(2, "");
         //</editor-fold>
