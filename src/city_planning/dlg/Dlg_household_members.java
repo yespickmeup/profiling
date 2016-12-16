@@ -6017,7 +6017,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Initialize_table_household_members.init_tbl_household_member_licenses(tbl_household_member_licenses);
         Initialize_table_household_members.init_tbl_household_member_work_experiences(tbl_household_member_work_experiences);
         Initialize_table_household_members.init_tbl_household_member_prefered_works(tbl_household_member_prefered_works);
-
+        
         try {
             webcams = Webcam.getWebcams();
         } catch (Exception e) {
@@ -6369,6 +6369,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }
     //</editor-fold>
 
+    
     //<editor-fold defaultstate="collapsed" desc=" Household Member Health Status ">
     private void save_household_member_health_status() {
         int row = tbl_household_member_health_statuses.getSelectedRow();
@@ -7723,6 +7724,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }
 
     //</editor-fold>
+    
+    
     private void ok() {
 
         //<editor-fold defaultstate="collapsed" desc=" callback ">
@@ -8320,7 +8323,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             obj[i][0] = " " + to.house_no;
             i++;
         }
-
+        
         JLabel[] labels = {};
         int[] tbl_widths_customers = {tf_house_no.getWidth()};
         String[] col_names = {""};
@@ -8338,7 +8341,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 Field.Search field = (Field.Search) tf_house_no;
                 field.setText(to.house_no);
                 tf_house_no.setText(to.house_no);
-
                 reg.setText(to.region);
                 reg.setId(to.region_id);
                 prov.setText(to.province);
