@@ -11,6 +11,8 @@ import city_planning.genders.Genders;
 import city_planning.household_relations.Household_relations;
 import static city_planning.initialize_fields.Initialize_household_member_field_types.blood_types;
 import city_planning.marital_statuses.Marital_statuses;
+import city_planning.medical_diseases.Medical_diseases;
+import city_planning.mental_problems.Mental_problems;
 import city_planning.religions.Religions;
 import city_planning.roof_types.Roof_types;
 import city_planning.tenure.Tenure;
@@ -39,6 +41,9 @@ public class Initialize_household_member_field_types {
     static List<Roof_types.to_roof_types> languages_spoken = new ArrayList();
     static List<Tenure.to_tenure> tenure_years = new ArrayList();
     static List<Tenure.to_tenure> tenure_months = new ArrayList();
+    static List<Medical_diseases.to_medical_diseases> medical_diseases = new ArrayList();
+    static List<Mental_problems.to_mental_problems> mental_problems = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> displacements = new ArrayList();
 
     public static void ret_data_disabilities() {
         disabilities = Disabilities.ret_data(" order by disability asc ");
@@ -48,6 +53,8 @@ public class Initialize_household_member_field_types {
 
         disabilities = Disabilities.ret_data(" order by disability asc ");
         religions = Religions.ret_data("order by religion asc");
+        medical_diseases = Medical_diseases.ret_data("order by medical_disease asc");
+        mental_problems = Mental_problems.ret_data("order by mental_problem asc");
         //<editor-fold defaultstate="collapsed" desc=" genders ">
         Genders.to_genders g1 = new Genders.to_genders(0, "Male");
         Genders.to_genders g2 = new Genders.to_genders(0, "Female");
@@ -166,7 +173,16 @@ public class Initialize_household_member_field_types {
         languages_spoken.add(ls12);
         languages_spoken.add(ls13);
         //</editor-fold>
-
+        //<editor-fold defaultstate="collapsed" desc=" displacements ">
+        Marital_statuses.to_marital_statuses d1 = new Marital_statuses.to_marital_statuses(0, "Natural/Manmade Disaster");
+        Marital_statuses.to_marital_statuses d2 = new Marital_statuses.to_marital_statuses(0, "Armed Conflict");
+        Marital_statuses.to_marital_statuses d3 = new Marital_statuses.to_marital_statuses(0, "Infrastructure Development Project");
+        Marital_statuses.to_marital_statuses d4 = new Marital_statuses.to_marital_statuses(0, "Other");
+        displacements.add(d1);
+        displacements.add(d2);
+        displacements.add(d3);
+        displacements.add(d4);
+        //</editor-fold>
     }
 
     //<editor-fold defaultstate="collapsed" desc=" Disabilities "> 
@@ -440,6 +456,171 @@ public class Initialize_household_member_field_types {
                 Roof_types.to_roof_types to = languages_spoken.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.roof_type);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" Medical Diseases ">
+    public static void init_medical_diseases(final JTextField tf) {
+
+        Object[][] obj = new Object[medical_diseases.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Medical_diseases.to_medical_diseases to : medical_diseases) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.medical_disease)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.medical_disease;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Medical_diseases.to_medical_diseases to = medical_diseases.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.medical_disease);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" Mental Problems ">
+    public static void init_mental_problems(final JTextField tf) {
+
+        Object[][] obj = new Object[mental_problems.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Mental_problems.to_mental_problems to : mental_problems) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.mental_problem)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.mental_problem;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Mental_problems.to_mental_problems to = mental_problems.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.mental_problem);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" Mental Problems ">
+    public static void init_displacements(final JTextField tf) {
+
+        Object[][] obj = new Object[displacements.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : displacements) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = displacements.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
                 field.setId("" + to.id);
                 String values = "";
                 List<CheckBox.list> datas = data.output;

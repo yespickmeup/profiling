@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,7 +11,11 @@
 
 alter table household_members add experienced_displacement int default 0;
 alter table household_members add experienced_displacement_reasons varchar(255);
-alter table household_members add indigenous_people varchar(255);
+alter table household_members add has_received_programs int default 0;
+alter table household_members add received_programs text;
+alter table household_members add received_programs_id_numbers text;
+alter table household_members add is_indigenous_people int default 0;
+alter table household_members add indigenous_people_group varchar(255);
 alter table household_members add is_pregnant int default 0;
 alter table household_members add solo_parent int default 0;
 alter table household_members add relation_to_nuclear_family varchar(255);
@@ -22,10 +26,6 @@ alter table household_members add has_walking_problem int default 0;
 alter table household_members add has_remembering_problem int default 0;
 alter table household_members add has_self_caring_problem int default 0;
 alter table household_members add has_communicating_problem int default 0;
-
-
-
-
 alter table household_members add hs_present_medical_diseases varchar(255);
 alter table household_members add hs_past_medical_history varchar(255);
 alter table household_members add hs_family_history_diseases varchar(255);
@@ -36,7 +36,6 @@ alter table household_members add hs_alcohol_history_no_of_bottles int default 0
 alter table household_members add hs_ellicit_drugs int default 0;
 alter table household_members add hs_medical_problems varchar(255);
 alter table household_members add hs_pwd varchar(255);
-
 alter table household_members add hs_immunization_children_bcg date;
 alter table household_members add hs_immunization_children_opv1 date;
 alter table household_members add hs_immunization_children_opv2 date;
@@ -61,12 +60,10 @@ alter table household_members add hs_immunization_pregnant_tt4 date;
 alter table household_members add hs_immunization_pregnant_tt5 date;
 alter table household_members add hs_immunization_elderly_pneumococcal_vaccine date;
 alter table household_members add hs_immunization_elderly_flu_vaccine date;
-
 alter table household_members add hs_pregnant_lmp date;
 alter table household_members add hs_pregnant_edc date;
 alter table household_members add hs_pregnant_gp date;
 alter table household_members add hs_pregnant_tpal date;
-
 alter table household_members add hs_post_partum_date_of_delivery date;
 alter table household_members add hs_post_partum_place_of_delivery varchar(255);
 alter table household_members add hs_post_partum_type_of_delivery varchar(255);
@@ -74,12 +71,10 @@ alter table household_members add hs_post_partum_attended_by varchar(255);
 alter table household_members add hs_post_partum_outcome varchar(255);
 alter table household_members add hs_post_partum_initiated_breasfeeding date;
 alter table household_members add hs_post_partum_given_vitamic_a date;
-
 alter table household_members add hs_family_planning varchar(255);
 alter table household_members add hs_tb_program_checklist varchar(255);
 alter table household_members add hs_tb_program_treatment varchar(255);
 alter table household_members add hs_tb_program_treatment_outcome varchar(255);
-
 alter table household_members add hs_natality_birthweight varchar(255);
 alter table household_members add hs_natality_attended_by varchar(255);
 alter table household_members add hs_natality_place_of_delivery varchar(255);

@@ -17,6 +17,8 @@ import city_planning.household_member_licences.Household_member_licences;
 import city_planning.household_member_licences.Household_member_licences.to_household_member_licenses;
 import city_planning.household_member_medications.Household_member_medications;
 import city_planning.household_member_medications.Household_member_medications.to_household_member_medications;
+import city_planning.household_member_past_surgical_history.Household_member_past_surgical_history;
+import city_planning.household_member_past_surgical_history.Household_member_past_surgical_history.to_household_member_past_surgical_history;
 import city_planning.household_member_prefered_works.Household_member_prefered_works;
 import city_planning.household_member_prefered_works.Household_member_prefered_works.to_household_member_prefered_works;
 import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
@@ -1172,5 +1174,125 @@ public class Initialize_table_household_members {
         loadData_household_member_employment_status(datas);
         //</editor-fold> 
     }
+    //<editor-fold defaultstate="collapsed" desc=" household_member_past_surgical_history "> 
+    public static ArrayListModel tbl_household_member_past_surgical_history_ALM;
+    public static Tblhousehold_member_past_surgical_historyModel tbl_household_member_past_surgical_history_M;
+
+    public static void init_tbl_household_member_past_surgical_history(JTable tbl_household_member_past_surgical_history) {
+        tbl_household_member_past_surgical_history_ALM = new ArrayListModel();
+        tbl_household_member_past_surgical_history_M = new Tblhousehold_member_past_surgical_historyModel(tbl_household_member_past_surgical_history_ALM);
+        tbl_household_member_past_surgical_history.setModel(tbl_household_member_past_surgical_history_M);
+        tbl_household_member_past_surgical_history.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tbl_household_member_past_surgical_history.setRowHeight(25);
+        int[] tbl_widths_household_member_past_surgical_history = {80, 100, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        for (int i = 0, n = tbl_widths_household_member_past_surgical_history.length; i < n; i++) {
+            if (i == 1) {
+                continue;
+            }
+            TableWidthUtilities.setColumnWidth(tbl_household_member_past_surgical_history, i, tbl_widths_household_member_past_surgical_history[i]);
+        }
+        Dimension d = tbl_household_member_past_surgical_history.getTableHeader().getPreferredSize();
+        d.height = 25;
+        tbl_household_member_past_surgical_history.getTableHeader().setPreferredSize(d);
+        tbl_household_member_past_surgical_history.getTableHeader().setFont(new java.awt.Font("Arial", 0, 12));
+        tbl_household_member_past_surgical_history.setRowHeight(25);
+        tbl_household_member_past_surgical_history.setFont(new java.awt.Font("Arial", 0, 12));
+    }
+
+    public static void loadData_household_member_past_surgical_history(List<to_household_member_past_surgical_history> acc) {
+        tbl_household_member_past_surgical_history_ALM.clear();
+        tbl_household_member_past_surgical_history_ALM.addAll(acc);
+    }
+
+    public static class Tblhousehold_member_past_surgical_historyModel extends AbstractTableAdapter {
+
+        public static String[] COLUMNS = {
+            "Date", "Surgery", "", "", "updated_by", "region", "region_id", "province", "province_id", "city", "city_id", "barangay", "barangay_id", "purok", "purok_id", "status", "is_uploaded", "house_no", "household_no", "household_member_no", "fname", "mname", "lname", "sname", "operation", "date_of_operation"
+        };
+
+        public Tblhousehold_member_past_surgical_historyModel(ListModel listmodel) {
+            super(listmodel, COLUMNS);
+        }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 100) {
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public Class getColumnClass(int col) {
+            if (col == 1000) {
+                return Boolean.class;
+            }
+            return Object.class;
+        }
+
+        @Override
+        public Object getValueAt(int row, int col) {
+            to_household_member_past_surgical_history tt = (to_household_member_past_surgical_history) getRow(row);
+            switch (col) {
+                case 0:
+                    return " " + DateType.convert_slash_datetime2(tt.date_of_operation);
+                case 1:
+                    return " " + tt.operation;
+                case 2:
+                    return " Edit";
+                case 3:
+                    return " Delete";
+                case 4:
+                    return tt.updated_by;
+                case 5:
+                    return tt.region;
+                case 6:
+                    return tt.region_id;
+                case 7:
+                    return tt.province;
+                case 8:
+                    return tt.province_id;
+                case 9:
+                    return tt.city;
+                case 10:
+                    return tt.city_id;
+                case 11:
+                    return tt.barangay;
+                case 12:
+                    return tt.barangay_id;
+                case 13:
+                    return tt.purok;
+                case 14:
+                    return tt.purok_id;
+                case 15:
+                    return tt.status;
+                case 16:
+                    return tt.is_uploaded;
+                case 17:
+                    return tt.house_no;
+                case 18:
+                    return tt.household_no;
+                case 19:
+                    return tt.household_member_no;
+                case 20:
+                    return tt.fname;
+                case 21:
+                    return tt.mname;
+                case 22:
+                    return tt.lname;
+                case 23:
+                    return tt.sname;
+                case 24:
+                    return tt.operation;
+                default:
+                    return tt.date_of_operation;
+            }
+        }
+    }
+    public static void ret_household_member_past_surgical_history(String where){
+        List<to_household_member_past_surgical_history> surgeries = Household_member_past_surgical_history.ret_data(where);
+        loadData_household_member_past_surgical_history(surgeries);
+    }
+//</editor-fold> 
 
 }

@@ -25,7 +25,8 @@ delete from household_member_prefered_works;
 delete from household_member_skills;
 delete from household_member_vocational_experiences;
 delete from household_member_work_experiences;
-
+delete from household_member_past_surgical_history;
+delete from household_member_other_details;
 
 
 alter table houses add latitude varchar(255);

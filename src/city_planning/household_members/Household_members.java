@@ -11,6 +11,8 @@ import city_planning.household_member_employment_status.Household_member_employm
 import city_planning.household_member_health_statuses.Household_member_health_statuses;
 import city_planning.household_member_licences.Household_member_licences;
 import city_planning.household_member_medications.Household_member_medications;
+import city_planning.household_member_other_details.Household_member_other_details;
+import city_planning.household_member_past_surgical_history.Household_member_past_surgical_history;
 import city_planning.household_member_prefered_works.Household_member_prefered_works;
 import city_planning.household_member_skills.Household_member_skills;
 import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
@@ -89,8 +91,10 @@ public class Household_members {
         public String image;
         public String transient_no;
         public String contact_no;
+        public List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries;
+        public Household_member_other_details.to_household_member_other_details other_details;
 
-        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String transient_no, String contact_no) {
+        public to_household_members(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String household_member_no, String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experiences, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String transient_no, String contact_no, List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries, Household_member_other_details.to_household_member_other_details other_details) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -144,6 +148,24 @@ public class Household_members {
             this.image = image;
             this.transient_no = transient_no;
             this.contact_no = contact_no;
+            this.surgeries = surgeries;
+            this.other_details = other_details;
+        }
+
+        public Household_member_other_details.to_household_member_other_details getOther_details() {
+            return other_details;
+        }
+
+        public void setOther_details(Household_member_other_details.to_household_member_other_details other_details) {
+            this.other_details = other_details;
+        }
+
+        public List<Household_member_past_surgical_history.to_household_member_past_surgical_history> getSurgeries() {
+            return surgeries;
+        }
+
+        public void setSurgeries(List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries) {
+            this.surgeries = surgeries;
         }
 
         public String getTransient_no() {
@@ -1661,7 +1683,384 @@ public class Household_members {
                     .ok();
             stmt.addBatch(hhs);
             //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" insert household member past surgical history ">
+            List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries = household_member.surgeries;
+            for (Household_member_past_surgical_history.to_household_member_past_surgical_history surgery : surgeries) {
+                String hmpsh = "insert into household_member_past_surgical_history("
+                        + "created_at"
+                        + ",updated_at"
+                        + ",created_by"
+                        + ",updated_by"
+                        + ",region"
+                        + ",region_id"
+                        + ",province"
+                        + ",province_id"
+                        + ",city"
+                        + ",city_id"
+                        + ",barangay"
+                        + ",barangay_id"
+                        + ",purok"
+                        + ",purok_id"
+                        + ",status"
+                        + ",is_uploaded"
+                        + ",house_no"
+                        + ",household_no"
+                        + ",household_member_no"
+                        + ",fname"
+                        + ",mname"
+                        + ",lname"
+                        + ",sname"
+                        + ",operation"
+                        + ",date_of_operation"
+                        + ",transient_no"
+                        + ")values("
+                        + ":created_at"
+                        + ",:updated_at"
+                        + ",:created_by"
+                        + ",:updated_by"
+                        + ",:region"
+                        + ",:region_id"
+                        + ",:province"
+                        + ",:province_id"
+                        + ",:city"
+                        + ",:city_id"
+                        + ",:barangay"
+                        + ",:barangay_id"
+                        + ",:purok"
+                        + ",:purok_id"
+                        + ",:status"
+                        + ",:is_uploaded"
+                        + ",:house_no"
+                        + ",:household_no"
+                        + ",:household_member_no"
+                        + ",:fname"
+                        + ",:mname"
+                        + ",:lname"
+                        + ",:sname"
+                        + ",:operation"
+                        + ",:date_of_operation"
+                        + ",:transient_no"
+                        + ")";
 
+                hmpsh = SqlStringUtil.parse(hmpsh)
+                        .setString("created_at", household_member.created_at)
+                        .setString("updated_at", household_member.updated_at)
+                        .setString("created_by", household_member.created_by)
+                        .setString("updated_by", household_member.updated_by)
+                        .setString("region", household_member.region)
+                        .setString("region_id", household_member.region_id)
+                        .setString("province", household_member.province)
+                        .setString("province_id", household_member.province_id)
+                        .setString("city", household_member.city)
+                        .setString("city_id", household_member.city_id)
+                        .setString("barangay", household_member.barangay)
+                        .setString("barangay_id", household_member.barangay_id)
+                        .setString("purok", household_member.purok)
+                        .setString("purok_id", household_member.purok_id)
+                        .setNumber("status", household_member.status)
+                        .setNumber("is_uploaded", household_member.is_uploaded)
+                        .setString("house_no", household_member.house_no)
+                        .setString("household_no", household_member.household_no)
+                        .setString("household_member_no", household_member.household_member_no)
+                        .setString("fname", household_member.fname)
+                        .setString("mname", household_member.mname)
+                        .setString("lname", household_member.lname)
+                        .setString("sname", household_member.sname)
+                        .setString("operation", surgery.operation)
+                        .setString("date_of_operation", surgery.date_of_operation)
+                        .setString("transient_no", household_member.transient_no)
+                        .ok();
+                stmt.addBatch(hmpsh);
+            }
+            //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" insert household member other details ">
+            String hmod = "insert into household_member_other_details("
+                    + "created_at"
+                    + ",updated_at"
+                    + ",created_by"
+                    + ",updated_by"
+                    + ",region"
+                    + ",region_id"
+                    + ",province"
+                    + ",province_id"
+                    + ",city"
+                    + ",city_id"
+                    + ",barangay"
+                    + ",barangay_id"
+                    + ",purok"
+                    + ",purok_id"
+                    + ",status"
+                    + ",is_uploaded"
+                    + ",house_no"
+                    + ",household_no"
+                    + ",household_member_no"
+                    + ",fname"
+                    + ",mname"
+                    + ",lname"
+                    + ",sname"
+                    + ",transient_no"
+                    + ",experienced_displacement"
+                    + ",experienced_displacement_reasons"
+                    + ",has_received_programs"
+                    + ",received_programs"
+                    + ",received_programs_id_numbers"
+                    + ",is_indigenous_people"
+                    + ",indigenous_people_group"
+                    + ",is_pregnant"
+                    + ",solo_parent"
+                    + ",relation_to_nuclear_family"
+                    + ",has_disability"
+                    + ",has_seeing_problem"
+                    + ",has_hearing_problem"
+                    + ",has_walking_problem"
+                    + ",has_remembering_problem"
+                    + ",has_self_caring_problem"
+                    + ",has_communicating_problem"
+                    + ",hs_present_medical_diseases"
+                    + ",hs_past_medical_history"
+                    + ",hs_family_history_diseases"
+                    + ",hs_smoking_history_status"
+                    + ",hs_smoking_history_no_of_packs"
+                    + ",hs_alcohol_history_status"
+                    + ",hs_alcohol_history_no_of_bottles"
+                    + ",hs_ellicit_drugs"
+                    + ",hs_medical_problems"
+                    + ",hs_pwd"
+                    + ",hs_immunization_children_bcg"
+                    + ",hs_immunization_children_opv1"
+                    + ",hs_immunization_children_opv2"
+                    + ",hs_immunization_children_opv3"
+                    + ",hs_immunization_children_hepa_within_24_hours"
+                    + ",hs_immunization_children_hepa_greater_24_hours"
+                    + ",hs_immunization_children_penta1"
+                    + ",hs_immunization_children_penta2"
+                    + ",hs_immunization_children_penta3"
+                    + ",hs_immunization_children_mcv1"
+                    + ",hs_immunization_children_mcv2"
+                    + ",hs_immunization_children_fic"
+                    + ",hs_immunization_children_protected_at_birth"
+                    + ",hs_immunization_children_exclusive_breastfeeding"
+                    + ",hs_immunization_young_women_hpv"
+                    + ",hs_immunization_young_women_mmr"
+                    + ",hs_immunization_young_women_td"
+                    + ",hs_immunization_pregnant_tt1"
+                    + ",hs_immunization_pregnant_tt2"
+                    + ",hs_immunization_pregnant_tt3"
+                    + ",hs_immunization_pregnant_tt4"
+                    + ",hs_immunization_pregnant_tt5"
+                    + ",hs_immunization_elderly_pneumococcal_vaccine"
+                    + ",hs_immunization_elderly_flu_vaccine"
+                    + ",hs_pregnant_lmp"
+                    + ",hs_pregnant_edc"
+                    + ",hs_pregnant_gp"
+                    + ",hs_pregnant_tpal"
+                    + ",hs_post_partum_date_of_delivery"
+                    + ",hs_post_partum_place_of_delivery"
+                    + ",hs_post_partum_type_of_delivery"
+                    + ",hs_post_partum_attended_by"
+                    + ",hs_post_partum_outcome"
+                    + ",hs_post_partum_initiated_breasfeeding"
+                    + ",hs_post_partum_given_vitamic_a"
+                    + ",hs_family_planning"
+                    + ",hs_tb_program_checklist"
+                    + ",hs_tb_program_treatment"
+                    + ",hs_tb_program_treatment_outcome"
+                    + ",hs_natality_birthweight"
+                    + ",hs_natality_attended_by"
+                    + ",hs_natality_place_of_delivery"
+                    + ")values("
+                    + ":created_at"
+                    + ",:updated_at"
+                    + ",:created_by"
+                    + ",:updated_by"
+                    + ",:region"
+                    + ",:region_id"
+                    + ",:province"
+                    + ",:province_id"
+                    + ",:city"
+                    + ",:city_id"
+                    + ",:barangay"
+                    + ",:barangay_id"
+                    + ",:purok"
+                    + ",:purok_id"
+                    + ",:status"
+                    + ",:is_uploaded"
+                    + ",:house_no"
+                    + ",:household_no"
+                    + ",:household_member_no"
+                    + ",:fname"
+                    + ",:mname"
+                    + ",:lname"
+                    + ",:sname"
+                    + ",:transient_no"
+                    + ",:experienced_displacement"
+                    + ",:experienced_displacement_reasons"
+                    + ",:has_received_programs"
+                    + ",:received_programs"
+                    + ",:received_programs_id_numbers"
+                    + ",:is_indigenous_people"
+                    + ",:indigenous_people_group"
+                    + ",:is_pregnant"
+                    + ",:solo_parent"
+                    + ",:relation_to_nuclear_family"
+                    + ",:has_disability"
+                    + ",:has_seeing_problem"
+                    + ",:has_hearing_problem"
+                    + ",:has_walking_problem"
+                    + ",:has_remembering_problem"
+                    + ",:has_self_caring_problem"
+                    + ",:has_communicating_problem"
+                    + ",:hs_present_medical_diseases"
+                    + ",:hs_past_medical_history"
+                    + ",:hs_family_history_diseases"
+                    + ",:hs_smoking_history_status"
+                    + ",:hs_smoking_history_no_of_packs"
+                    + ",:hs_alcohol_history_status"
+                    + ",:hs_alcohol_history_no_of_bottles"
+                    + ",:hs_ellicit_drugs"
+                    + ",:hs_medical_problems"
+                    + ",:hs_pwd"
+                    + ",:hs_immunization_children_bcg"
+                    + ",:hs_immunization_children_opv1"
+                    + ",:hs_immunization_children_opv2"
+                    + ",:hs_immunization_children_opv3"
+                    + ",:hs_immunization_children_hepa_within_24_hours"
+                    + ",:hs_immunization_children_hepa_greater_24_hours"
+                    + ",:hs_immunization_children_penta1"
+                    + ",:hs_immunization_children_penta2"
+                    + ",:hs_immunization_children_penta3"
+                    + ",:hs_immunization_children_mcv1"
+                    + ",:hs_immunization_children_mcv2"
+                    + ",:hs_immunization_children_fic"
+                    + ",:hs_immunization_children_protected_at_birth"
+                    + ",:hs_immunization_children_exclusive_breastfeeding"
+                    + ",:hs_immunization_young_women_hpv"
+                    + ",:hs_immunization_young_women_mmr"
+                    + ",:hs_immunization_young_women_td"
+                    + ",:hs_immunization_pregnant_tt1"
+                    + ",:hs_immunization_pregnant_tt2"
+                    + ",:hs_immunization_pregnant_tt3"
+                    + ",:hs_immunization_pregnant_tt4"
+                    + ",:hs_immunization_pregnant_tt5"
+                    + ",:hs_immunization_elderly_pneumococcal_vaccine"
+                    + ",:hs_immunization_elderly_flu_vaccine"
+                    + ",:hs_pregnant_lmp"
+                    + ",:hs_pregnant_edc"
+                    + ",:hs_pregnant_gp"
+                    + ",:hs_pregnant_tpal"
+                    + ",:hs_post_partum_date_of_delivery"
+                    + ",:hs_post_partum_place_of_delivery"
+                    + ",:hs_post_partum_type_of_delivery"
+                    + ",:hs_post_partum_attended_by"
+                    + ",:hs_post_partum_outcome"
+                    + ",:hs_post_partum_initiated_breasfeeding"
+                    + ",:hs_post_partum_given_vitamic_a"
+                    + ",:hs_family_planning"
+                    + ",:hs_tb_program_checklist"
+                    + ",:hs_tb_program_treatment"
+                    + ",:hs_tb_program_treatment_outcome"
+                    + ",:hs_natality_birthweight"
+                    + ",:hs_natality_attended_by"
+                    + ",:hs_natality_place_of_delivery"
+                    + ")";
+
+            hmod = SqlStringUtil.parse(hmod)
+                    .setString("created_at", household_member.created_at)
+                    .setString("updated_at", household_member.updated_at)
+                    .setString("created_by", household_member.created_by)
+                    .setString("updated_by", household_member.updated_by)
+                    .setString("region", household_member.region)
+                    .setString("region_id", household_member.region_id)
+                    .setString("province", household_member.province)
+                    .setString("province_id", household_member.province_id)
+                    .setString("city", household_member.city)
+                    .setString("city_id", household_member.city_id)
+                    .setString("barangay", household_member.barangay)
+                    .setString("barangay_id", household_member.barangay_id)
+                    .setString("purok", household_member.purok)
+                    .setString("purok_id", household_member.purok_id)
+                    .setNumber("status", household_member.status)
+                    .setNumber("is_uploaded", household_member.is_uploaded)
+                    .setString("house_no", household_member.house_no)
+                    .setString("household_no", household_member.household_no)
+                    .setString("household_member_no", household_member.household_member_no)
+                    .setString("fname", household_member.fname)
+                    .setString("mname", household_member.mname)
+                    .setString("lname", household_member.lname)
+                    .setString("sname", household_member.sname)
+                    .setString("transient_no", household_member.transient_no)
+                    .setNumber("experienced_displacement", household_member.other_details.experienced_displacement)
+                    .setString("experienced_displacement_reasons", household_member.other_details.experienced_displacement_reasons)
+                    .setNumber("has_received_programs", household_member.other_details.has_received_programs)
+                    .setString("received_programs", household_member.other_details.received_programs)
+                    .setString("received_programs_id_numbers", household_member.other_details.received_programs_id_numbers)
+                    .setNumber("is_indigenous_people", household_member.other_details.is_indigenous_people)
+                    .setString("indigenous_people_group", household_member.other_details.indigenous_people_group)
+                    .setNumber("is_pregnant", household_member.other_details.is_pregnant)
+                    .setNumber("solo_parent", household_member.other_details.solo_parent)
+                    .setString("relation_to_nuclear_family", household_member.other_details.relation_to_nuclear_family)
+                    .setNumber("has_disability", household_member.other_details.has_disability)
+                    .setNumber("has_seeing_problem", household_member.other_details.has_seeing_problem)
+                    .setNumber("has_hearing_problem", household_member.other_details.has_hearing_problem)
+                    .setNumber("has_walking_problem", household_member.other_details.has_walking_problem)
+                    .setNumber("has_remembering_problem", household_member.other_details.has_remembering_problem)
+                    .setNumber("has_self_caring_problem", household_member.other_details.has_self_caring_problem)
+                    .setNumber("has_communicating_problem", household_member.other_details.has_communicating_problem)
+                    .setString("hs_present_medical_diseases", household_member.other_details.hs_present_medical_diseases)
+                    .setString("hs_past_medical_history", household_member.other_details.hs_past_medical_history)
+                    .setString("hs_family_history_diseases", household_member.other_details.hs_family_history_diseases)
+                    .setNumber("hs_smoking_history_status", household_member.other_details.hs_smoking_history_status)
+                    .setNumber("hs_smoking_history_no_of_packs", household_member.other_details.hs_smoking_history_no_of_packs)
+                    .setNumber("hs_alcohol_history_status", household_member.other_details.hs_alcohol_history_status)
+                    .setNumber("hs_alcohol_history_no_of_bottles", household_member.other_details.hs_alcohol_history_no_of_bottles)
+                    .setNumber("hs_ellicit_drugs", household_member.other_details.hs_ellicit_drugs)
+                    .setString("hs_medical_problems", household_member.other_details.hs_medical_problems)
+                    .setString("hs_pwd", household_member.other_details.hs_pwd)
+                    .setString("hs_immunization_children_bcg", household_member.other_details.hs_immunization_children_bcg)
+                    .setString("hs_immunization_children_opv1", household_member.other_details.hs_immunization_children_opv1)
+                    .setString("hs_immunization_children_opv2", household_member.other_details.hs_immunization_children_opv2)
+                    .setString("hs_immunization_children_opv3", household_member.other_details.hs_immunization_children_opv3)
+                    .setString("hs_immunization_children_hepa_within_24_hours", household_member.other_details.hs_immunization_children_hepa_within_24_hours)
+                    .setString("hs_immunization_children_hepa_greater_24_hours", household_member.other_details.hs_immunization_children_hepa_greater_24_hours)
+                    .setString("hs_immunization_children_penta1", household_member.other_details.hs_immunization_children_penta1)
+                    .setString("hs_immunization_children_penta2", household_member.other_details.hs_immunization_children_penta2)
+                    .setString("hs_immunization_children_penta3", household_member.other_details.hs_immunization_children_penta3)
+                    .setString("hs_immunization_children_mcv1", household_member.other_details.hs_immunization_children_mcv1)
+                    .setString("hs_immunization_children_mcv2", household_member.other_details.hs_immunization_children_mcv2)
+                    .setString("hs_immunization_children_fic", household_member.other_details.hs_immunization_children_fic)
+                    .setString("hs_immunization_children_protected_at_birth", household_member.other_details.hs_immunization_children_protected_at_birth)
+                    .setString("hs_immunization_children_exclusive_breastfeeding", household_member.other_details.hs_immunization_children_exclusive_breastfeeding)
+                    .setString("hs_immunization_young_women_hpv", household_member.other_details.hs_immunization_young_women_hpv)
+                    .setString("hs_immunization_young_women_mmr", household_member.other_details.hs_immunization_young_women_mmr)
+                    .setString("hs_immunization_young_women_td", household_member.other_details.hs_immunization_young_women_td)
+                    .setString("hs_immunization_pregnant_tt1", household_member.other_details.hs_immunization_pregnant_tt1)
+                    .setString("hs_immunization_pregnant_tt2", household_member.other_details.hs_immunization_pregnant_tt2)
+                    .setString("hs_immunization_pregnant_tt3", household_member.other_details.hs_immunization_pregnant_tt3)
+                    .setString("hs_immunization_pregnant_tt4", household_member.other_details.hs_immunization_pregnant_tt4)
+                    .setString("hs_immunization_pregnant_tt5", household_member.other_details.hs_immunization_pregnant_tt5)
+                    .setString("hs_immunization_elderly_pneumococcal_vaccine", household_member.other_details.hs_immunization_elderly_pneumococcal_vaccine)
+                    .setString("hs_immunization_elderly_flu_vaccine", household_member.other_details.hs_immunization_elderly_flu_vaccine)
+                    .setString("hs_pregnant_lmp", household_member.other_details.hs_pregnant_lmp)
+                    .setString("hs_pregnant_edc", household_member.other_details.hs_pregnant_edc)
+                    .setString("hs_pregnant_gp", household_member.other_details.hs_pregnant_gp)
+                    .setString("hs_pregnant_tpal", household_member.other_details.hs_pregnant_tpal)
+                    .setString("hs_post_partum_date_of_delivery", household_member.other_details.hs_post_partum_date_of_delivery)
+                    .setString("hs_post_partum_place_of_delivery", household_member.other_details.hs_post_partum_place_of_delivery)
+                    .setString("hs_post_partum_type_of_delivery", household_member.other_details.hs_post_partum_type_of_delivery)
+                    .setString("hs_post_partum_attended_by", household_member.other_details.hs_post_partum_attended_by)
+                    .setString("hs_post_partum_outcome", household_member.other_details.hs_post_partum_outcome)
+                    .setString("hs_post_partum_initiated_breasfeeding", household_member.other_details.hs_post_partum_initiated_breasfeeding)
+                    .setString("hs_post_partum_given_vitamic_a", household_member.other_details.hs_post_partum_given_vitamic_a)
+                    .setString("hs_family_planning", household_member.other_details.hs_family_planning)
+                    .setString("hs_tb_program_checklist", household_member.other_details.hs_tb_program_checklist)
+                    .setString("hs_tb_program_treatment", household_member.other_details.hs_tb_program_treatment)
+                    .setString("hs_tb_program_treatment_outcome", household_member.other_details.hs_tb_program_treatment_outcome)
+                    .setString("hs_natality_birthweight", household_member.other_details.hs_natality_birthweight)
+                    .setString("hs_natality_attended_by", household_member.other_details.hs_natality_attended_by)
+                    .setString("hs_natality_place_of_delivery", household_member.other_details.hs_natality_place_of_delivery)
+                    .ok();
+            stmt.addBatch(hmod);
+            //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" update household member count ">
             int count = 0;
             String h2 = "select count(id) from household_members where household_no='" + household_member.household_no + "' ";
@@ -2229,7 +2628,127 @@ public class Household_members {
 
             stmt.addBatch(s11);
             //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" surgical history ">
+            String s12 = "update household_member_past_surgical_history  set "
+                    + " fname= :fname "
+                    + ",mname= :mname "
+                    + ",lname= :lname "
+                    + ",sname= :sname "
+                    + ",region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
+                    + " ";
 
+            s12 = SqlStringUtil.parse(s12)
+                    .setString("fname", to_household_members.fname)
+                    .setString("mname", to_household_members.mname)
+                    .setString("lname", to_household_members.lname)
+                    .setString("sname", to_household_members.sname)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
+                    .ok();
+
+            stmt.addBatch(s12);
+            //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" other details ">
+            String s13 = "update household_member_other_details set "
+                    + " region= :region "
+                    + ",region_id= :region_id "
+                    + ",province= :province "
+                    + ",province_id= :province_id "
+                    + ",city= :city "
+                    + ",city_id= :city_id "
+                    + ",barangay= :barangay "
+                    + ",barangay_id= :barangay_id "
+                    + ",purok= :purok "
+                    + ",purok_id= :purok_id "
+                    + ",house_no= :house_no "
+                    + ",household_no= :household_no "
+                    + ",household_member_no= :household_member_no "
+                    + ",fname= :fname "
+                    + ",mname= :mname "
+                    + ",lname= :lname "
+                    + ",sname= :sname "
+                    + ",experienced_displacement= :experienced_displacement "
+                    + ",experienced_displacement_reasons= :experienced_displacement_reasons "
+                    + ",has_received_programs= :has_received_programs "
+                    + ",received_programs= :received_programs "
+                    + ",received_programs_id_numbers= :received_programs_id_numbers "
+                    + ",is_indigenous_people= :is_indigenous_people "
+                    + ",indigenous_people_group= :indigenous_people_group "
+                    + ",is_pregnant= :is_pregnant "
+                    + ",solo_parent= :solo_parent "
+                    + ",relation_to_nuclear_family= :relation_to_nuclear_family "
+                    + ",has_disability= :has_disability "
+                    + ",has_seeing_problem= :has_seeing_problem "
+                    + ",has_hearing_problem= :has_hearing_problem "
+                    + ",has_walking_problem= :has_walking_problem "
+                    + ",has_remembering_problem= :has_remembering_problem "
+                    + ",has_self_caring_problem= :has_self_caring_problem "
+                    + ",has_communicating_problem= :has_communicating_problem "
+                    + " where transient_no='" + to_household_members.transient_no + "' "
+                    + " ";
+
+            s13 = SqlStringUtil.parse(s13)
+                    .setString("region", to_household_members.region)
+                    .setString("region_id", to_household_members.region_id)
+                    .setString("province", to_household_members.province)
+                    .setString("province_id", to_household_members.province_id)
+                    .setString("city", to_household_members.city)
+                    .setString("city_id", to_household_members.city_id)
+                    .setString("barangay", to_household_members.barangay)
+                    .setString("barangay_id", to_household_members.barangay_id)
+                    .setString("purok", to_household_members.purok)
+                    .setString("purok_id", to_household_members.purok_id)
+                    .setString("house_no", to_household_members.house_no)
+                    .setString("household_no", to_household_members.household_no)
+                    .setString("household_member_no", to_household_members.household_member_no)
+                    .setString("fname", to_household_members.fname)
+                    .setString("mname", to_household_members.mname)
+                    .setString("lname", to_household_members.lname)
+                    .setString("sname", to_household_members.sname)
+                    .setNumber("experienced_displacement", to_household_members.other_details.experienced_displacement)
+                    .setString("experienced_displacement_reasons", to_household_members.other_details.experienced_displacement_reasons)
+                    .setNumber("has_received_programs", to_household_members.other_details.has_received_programs)
+                    .setString("received_programs", to_household_members.other_details.received_programs)
+                    .setString("received_programs_id_numbers", to_household_members.other_details.received_programs_id_numbers)
+                    .setNumber("is_indigenous_people", to_household_members.other_details.is_indigenous_people)
+                    .setString("indigenous_people_group", to_household_members.other_details.indigenous_people_group)
+                    .setNumber("is_pregnant", to_household_members.other_details.is_pregnant)
+                    .setNumber("solo_parent", to_household_members.other_details.solo_parent)
+                    .setString("relation_to_nuclear_family", to_household_members.other_details.relation_to_nuclear_family)
+                    .setNumber("has_disability", to_household_members.other_details.has_disability)
+                    .setNumber("has_seeing_problem", to_household_members.other_details.has_seeing_problem)
+                    .setNumber("has_hearing_problem", to_household_members.other_details.has_hearing_problem)
+                    .setNumber("has_walking_problem", to_household_members.other_details.has_walking_problem)
+                    .setNumber("has_remembering_problem", to_household_members.other_details.has_remembering_problem)
+                    .setNumber("has_self_caring_problem", to_household_members.other_details.has_self_caring_problem)
+                    .setNumber("has_communicating_problem", to_household_members.other_details.has_communicating_problem)
+                    .ok();
+            stmt.addBatch(s13);
+            //</editor-fold>
             stmt.executeBatch();
             conn.commit();
 
@@ -2495,7 +3014,8 @@ public class Household_members {
         List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works = new ArrayList();
         Household_member_employment_status.to_household_member_employment_status employment_status = null;
         Household_member_skills.to_household_member_skills skills = null;
-
+        List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries = new ArrayList();
+        Household_member_other_details.to_household_member_other_details other_details = null;
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select "
@@ -2594,7 +3114,7 @@ public class Household_members {
                 String transient_no = rs.getString(41);
                 String contact_no = rs.getString(42);
                 int is_uploaded = rs.getInt(43);
-                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
+                to_household_members to = new to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no, surgeries, other_details);
                 datas.add(to);
             }
             return datas;

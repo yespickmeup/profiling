@@ -17,6 +17,8 @@ import city_planning.household_member_employment_status.Household_member_employm
 import city_planning.household_member_health_statuses.Household_member_health_statuses;
 import city_planning.household_member_licences.Household_member_licences;
 import city_planning.household_member_medications.Household_member_medications;
+import city_planning.household_member_other_details.Household_member_other_details;
+import city_planning.household_member_past_surgical_history.Household_member_past_surgical_history;
 import city_planning.household_member_prefered_works.Household_member_prefered_works;
 import city_planning.household_member_skills.Household_member_skills;
 import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
@@ -24,7 +26,6 @@ import city_planning.household_member_work_experiences.Household_member_work_exp
 import city_planning.household_members.Household_members;
 import city_planning.households.Households;
 import city_planning.houses.Houses;
-import city_planning.initialize_fields.Initialize_house_field_types;
 import city_planning.initialize_fields.Initialize_household_field_types;
 import city_planning.initialize_fields.Initialize_household_member_field_types;
 import city_planning.users.MyUser;
@@ -52,10 +53,12 @@ import mijzcx.synapse.desk.utils.ReceiptIncrementor;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 
+
 /**
  *
  * @author Guinness
  */
+
 public class Dlg_households extends javax.swing.JDialog {
 
     /**
@@ -3505,7 +3508,9 @@ public class Dlg_households extends javax.swing.JDialog {
                 String image = data.image;
                 String transient_no = "";
                 String contact_no = data.contact_no;
-                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
+                  List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries = data.surgeries;
+                  Household_member_other_details.to_household_member_other_details other_details=data.other_details;
+                Household_members.to_household_members household_members = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no,surgeries,other_details);
 
                 Initialize_table_households.tbl_household_members_ALM.add(household_members);
                 Initialize_table_households.tbl_household_members_M.fireTableDataChanged();

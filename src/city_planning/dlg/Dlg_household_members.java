@@ -13,6 +13,8 @@ import city_planning.household_member_employment_status.Household_member_employm
 import city_planning.household_member_health_statuses.Household_member_health_statuses;
 import city_planning.household_member_licences.Household_member_licences;
 import city_planning.household_member_medications.Household_member_medications;
+import city_planning.household_member_other_details.Household_member_other_details;
+import city_planning.household_member_past_surgical_history.Household_member_past_surgical_history;
 import city_planning.household_member_prefered_works.Household_member_prefered_works;
 import city_planning.household_member_skills.Household_member_skills;
 import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
@@ -28,8 +30,10 @@ import city_planning.util.DateType;
 import city_planning.util.Dlg_confirm_action;
 import city_planning.util.TableRenderer;
 import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamException;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
+import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -41,6 +45,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import java.util.Date;
 import java.util.List;
@@ -133,9 +138,11 @@ public class Dlg_household_members extends javax.swing.JDialog {
         public final String household_no;
         public final String household_member_no;
         public final String contact_no;
+        public final List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries;
+        public final Household_member_other_details.to_household_member_other_details other_details;
 
-        public OutputData(String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experience, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, String house_no, String household_no, String household_member_no, String contact_no
-        ) {
+        public OutputData(String fname, String mname, String lname, String sname, String gender, String marital_status, String bday, double occupancy_years, String height, String weight, String birth_place, String present_address, String relation_to_household, String religion, String citizenship, String email_address, String blood_type, String languages_spoken, int is_registered_voter, String voters_id_no, List<Household_member_health_statuses.to_household_member_health_statuses> health_statuses, List<Household_member_medications.to_household_member_medications> health_medications, List<Household_member_educational_backgrounds.to_household_member_educational_backgrounds> educational_backgrounds, List<Household_member_vocational_experiences.to_household_member_vocational_experiences> vocational_experiences, List<Household_member_competence_certificates.to_household_member_competence_certificates> competence_certificates, List<Household_member_licences.to_household_member_licenses> licenses, List<Household_member_work_experiences.to_household_member_work_experiences> work_experience, List<Household_member_prefered_works.to_household_member_prefered_works> prefered_works, Household_member_employment_status.to_household_member_employment_status employment_status, Household_member_skills.to_household_member_skills skills, String image, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, String house_no, String household_no, String household_member_no, String contact_no,
+                List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries, Household_member_other_details.to_household_member_other_details other_details) {
             this.fname = fname;
             this.mname = mname;
             this.lname = lname;
@@ -181,7 +188,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
             this.household_no = household_no;
             this.household_member_no = household_member_no;
             this.contact_no = contact_no;
-
+            this.surgeries = surgeries;
+            this.other_details = other_details;
         }
 
     }
@@ -334,8 +342,148 @@ public class Dlg_household_members extends javax.swing.JDialog {
         buttonGroup10 = new javax.swing.ButtonGroup();
         buttonGroup11 = new javax.swing.ButtonGroup();
         buttonGroup12 = new javax.swing.ButtonGroup();
+        buttonGroup13 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        tf_fname = new Field.Input();
+        tf_mname = new Field.Input();
+        tf_lname = new Field.Input();
+        tf_sname = new Field.Combo();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        tf_genders = new Field.Combo();
+        tf_maritals = new Field.Combo();
+        tf_genders1 = new Field.Input();
+        jLabel117 = new javax.swing.JLabel();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
+        tf_bday = new com.toedter.calendar.JDateChooser();
+        jLabel105 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        tf_occupancy_years = new Field.Input();
+        jLabel102 = new javax.swing.JLabel();
+        tf_height = new Field.Input();
+        jLabel124 = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
+        jTextField48 = new Field.Input();
+        jLabel125 = new javax.swing.JLabel();
+        tf_birth_place = new Field.Input();
+        tf_present_address = new Field.Input();
+        tf_relation = new Field.Combo();
+        tf_others_relations = new Field.Input();
+        tf_citizenship = new Field.Input();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel112 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel130 = new javax.swing.JLabel();
+        tf_religions = new Field.Combo();
+        tf_blood_type = new Field.Combo();
+        tf_others_language = new Field.Input();
+        tf_languages_spoken = new Field.Combo();
+        tf_email_address = new Field.Input();
+        tf_is_registered_voter = new Field.Input();
+        jLabel113 = new javax.swing.JLabel();
+        jLabel115 = new javax.swing.JLabel();
+        jLabel116 = new javax.swing.JLabel();
+        cb_is_registered_voter = new javax.swing.JCheckBox();
+        jLabel114 = new javax.swing.JLabel();
+        jLabel111 = new javax.swing.JLabel();
+        jButton13 = new Button.Info();
+        jPanel20 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel134 = new javax.swing.JLabel();
+        tf_contact_no = new Field.Input();
+        jLabel195 = new javax.swing.JLabel();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        tf_others_language1 = new Field.Combo();
+        jLabel196 = new javax.swing.JLabel();
+        jLabel197 = new javax.swing.JLabel();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        tf_others_language2 = new Field.Input();
+        jLabel198 = new javax.swing.JLabel();
+        jLabel199 = new javax.swing.JLabel();
+        tf_others_language3 = new Field.Input();
+        jLabel200 = new javax.swing.JLabel();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jLabel201 = new javax.swing.JLabel();
+        tf_others_language4 = new Field.Combo();
+        jLabel202 = new javax.swing.JLabel();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jLabel203 = new javax.swing.JLabel();
+        jLabel204 = new javax.swing.JLabel();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jPanel19 = new javax.swing.JPanel();
+        lbl_basic_Information1 = new javax.swing.JLabel();
+        lbl_barangay1 = new javax.swing.JLabel();
+        tf_barangay = new Field.Combo();
+        lbl_purok1 = new javax.swing.JLabel();
+        tf_purok = new Field.Combo();
+        lbl_barangay3 = new javax.swing.JLabel();
+        tf_region = new Field.Combo();
+        lbl_barangay2 = new javax.swing.JLabel();
+        tf_province = new Field.Combo();
+        lbl_barangay4 = new javax.swing.JLabel();
+        tf_city = new Field.Combo();
+        jLabel131 = new javax.swing.JLabel();
+        tf_house_no = new Field.Search();
+        jLabel132 = new javax.swing.JLabel();
+        tf_household_no = new Field.Search();
+        jLabel133 = new javax.swing.JLabel();
+        tf_household_member_no = new Field.Input();
+        jButton3 = new Button.Default();
+        jButton4 = new Button.Default();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lbl_facilities9 = new javax.swing.JLabel();
+        jLabel233 = new javax.swing.JLabel();
+        tf_educational_status = new Field.Input();
+        jLabel234 = new javax.swing.JLabel();
+        tf_name_of_school = new Field.Input();
+        jLabel235 = new javax.swing.JLabel();
+        tf_achievements = new Field.Input();
+        jLabel236 = new javax.swing.JLabel();
+        tf_highest_grade = new Field.Input();
+        jLabel237 = new javax.swing.JLabel();
+        tf_year_graduated = new com.toedter.calendar.JDateChooser();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tbl_household_member_educational_backgrounds = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        tf_assets4 = new Button.Default();
+        tf_assets5 = new Button.Primary();
+        jPanel7 = new javax.swing.JPanel();
+        lbl_facilities10 = new javax.swing.JLabel();
+        jLabel238 = new javax.swing.JLabel();
+        tf_name_of_training = new Field.Input();
+        tf_certificate_received = new Field.Input();
+        jLabel239 = new javax.swing.JLabel();
+        jLabel240 = new javax.swing.JLabel();
+        tf_skills_required = new Field.Input();
+        jLabel241 = new javax.swing.JLabel();
+        tf_name_of_school_or_agency = new Field.Input();
+        jLabel242 = new javax.swing.JLabel();
+        tf_period_of_training = new Field.Input();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tbl_household_member_vocational_experiences = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tf_assets6 = new Button.Primary();
+        tf_assets7 = new Button.Default();
         jPanel3 = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel22 = new javax.swing.JPanel();
@@ -400,6 +548,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jCheckBox13 = new javax.swing.JCheckBox();
         jCheckBox14 = new javax.swing.JCheckBox();
         jCheckBox15 = new javax.swing.JCheckBox();
+        jLabel206 = new javax.swing.JLabel();
+        jLabel207 = new javax.swing.JLabel();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jCheckBox30 = new javax.swing.JCheckBox();
+        jLabel208 = new javax.swing.JLabel();
+        tf_disabilities15 = new Field.Combo();
+        jLabel209 = new javax.swing.JLabel();
+        tf_disabilities16 = new Field.Combo();
+        jButton15 = new Button.Info();
         jPanel23 = new javax.swing.JPanel();
         jLabel135 = new javax.swing.JLabel();
         tf_medical_diseases = new Field.Combo();
@@ -433,7 +591,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel141 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_household_member_past_surgical_history = new javax.swing.JTable();
         tf_assets17 = new Button.Default();
         tf_assets16 = new Button.Primary();
         jLabel137 = new javax.swing.JLabel();
@@ -456,7 +614,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel145 = new javax.swing.JLabel();
         jLabel138 = new javax.swing.JLabel();
         tf_disabilities4 = new Field.Combo();
-        tf_disabilities5 = new Field.Combo();
+        tf_disabilities5 = new Field.Input();
         jLabel139 = new javax.swing.JLabel();
         jLabel149 = new javax.swing.JLabel();
         jLabel150 = new javax.swing.JLabel();
@@ -486,119 +644,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel161 = new javax.swing.JLabel();
         jDateChooser14 = new com.toedter.calendar.JDateChooser();
         jLabel163 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        tf_fname = new Field.Input();
-        tf_mname = new Field.Input();
-        tf_lname = new Field.Input();
-        tf_sname = new Field.Combo();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        tf_genders = new Field.Combo();
-        tf_maritals = new Field.Combo();
-        tf_genders1 = new Field.Input();
-        jLabel117 = new javax.swing.JLabel();
-        jLabel100 = new javax.swing.JLabel();
-        jLabel101 = new javax.swing.JLabel();
-        tf_bday = new com.toedter.calendar.JDateChooser();
-        jLabel105 = new javax.swing.JLabel();
-        jLabel103 = new javax.swing.JLabel();
-        tf_occupancy_years = new Field.Input();
-        jLabel102 = new javax.swing.JLabel();
-        tf_height = new Field.Input();
-        jLabel124 = new javax.swing.JLabel();
-        jLabel104 = new javax.swing.JLabel();
-        jTextField48 = new Field.Input();
-        jLabel125 = new javax.swing.JLabel();
-        tf_birth_place = new Field.Input();
-        tf_present_address = new Field.Input();
-        tf_relation = new Field.Combo();
-        tf_others_relations = new Field.Input();
-        tf_citizenship = new Field.Input();
-        jLabel108 = new javax.swing.JLabel();
-        jLabel112 = new javax.swing.JLabel();
-        jLabel107 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
-        jLabel106 = new javax.swing.JLabel();
-        jLabel130 = new javax.swing.JLabel();
-        tf_religions = new Field.Combo();
-        tf_blood_type = new Field.Combo();
-        tf_others_language = new Field.Input();
-        tf_languages_spoken = new Field.Combo();
-        tf_email_address = new Field.Input();
-        tf_is_registered_voter = new Field.Input();
-        jLabel113 = new javax.swing.JLabel();
-        jLabel115 = new javax.swing.JLabel();
-        jLabel116 = new javax.swing.JLabel();
-        cb_is_registered_voter = new javax.swing.JCheckBox();
-        jLabel114 = new javax.swing.JLabel();
-        jLabel111 = new javax.swing.JLabel();
-        jButton13 = new Button.Info();
-        jPanel20 = new javax.swing.JPanel();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel134 = new javax.swing.JLabel();
-        tf_contact_no = new Field.Input();
-        jPanel19 = new javax.swing.JPanel();
-        lbl_basic_Information1 = new javax.swing.JLabel();
-        lbl_barangay1 = new javax.swing.JLabel();
-        tf_barangay = new Field.Combo();
-        lbl_purok1 = new javax.swing.JLabel();
-        tf_purok = new Field.Combo();
-        lbl_barangay3 = new javax.swing.JLabel();
-        tf_region = new Field.Combo();
-        lbl_barangay2 = new javax.swing.JLabel();
-        tf_province = new Field.Combo();
-        lbl_barangay4 = new javax.swing.JLabel();
-        tf_city = new Field.Combo();
-        jLabel131 = new javax.swing.JLabel();
-        tf_house_no = new Field.Search();
-        jLabel132 = new javax.swing.JLabel();
-        tf_household_no = new Field.Search();
-        jLabel133 = new javax.swing.JLabel();
-        tf_household_member_no = new Field.Input();
-        jButton3 = new Button.Default();
-        jButton4 = new Button.Default();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        lbl_facilities9 = new javax.swing.JLabel();
-        jLabel233 = new javax.swing.JLabel();
-        tf_educational_status = new Field.Input();
-        jLabel234 = new javax.swing.JLabel();
-        tf_name_of_school = new Field.Input();
-        jLabel235 = new javax.swing.JLabel();
-        tf_achievements = new Field.Input();
-        jLabel236 = new javax.swing.JLabel();
-        tf_highest_grade = new Field.Input();
-        jLabel237 = new javax.swing.JLabel();
-        tf_year_graduated = new com.toedter.calendar.JDateChooser();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tbl_household_member_educational_backgrounds = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        tf_assets4 = new Button.Default();
-        tf_assets5 = new Button.Primary();
-        jPanel7 = new javax.swing.JPanel();
-        lbl_facilities10 = new javax.swing.JLabel();
-        jLabel238 = new javax.swing.JLabel();
-        tf_name_of_training = new Field.Input();
-        tf_certificate_received = new Field.Input();
-        jLabel239 = new javax.swing.JLabel();
-        jLabel240 = new javax.swing.JLabel();
-        tf_skills_required = new Field.Input();
-        jLabel241 = new javax.swing.JLabel();
-        tf_name_of_school_or_agency = new Field.Input();
-        jLabel242 = new javax.swing.JLabel();
-        tf_period_of_training = new Field.Input();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tbl_household_member_vocational_experiences = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        tf_assets6 = new Button.Primary();
-        tf_assets7 = new Button.Default();
+        jDateChooser18 = new com.toedter.calendar.JDateChooser();
+        jLabel205 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lbl_facilities8 = new javax.swing.JLabel();
         jLabel126 = new javax.swing.JLabel();
@@ -784,1201 +831,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jPanel22.setBackground(java.awt.Color.white);
-        jPanel22.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        jLabel189.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel189.setText("Given Vit A:");
-
-        jLabel188.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel188.setText("Initiated Breastfeeding:");
-
-        jLabel183.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel183.setText("Date of Del:");
-
-        jLabel182.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel182.setText("J.) Post Partum:");
-
-        jLabel187.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel187.setText("Attended by:");
-
-        tf_disabilities11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities11MouseClicked(evt);
-            }
-        });
-        tf_disabilities11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities11ActionPerformed(evt);
-            }
-        });
-
-        tf_disabilities10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities10MouseClicked(evt);
-            }
-        });
-        tf_disabilities10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities10ActionPerformed(evt);
-            }
-        });
-
-        jLabel186.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel186.setText("Type of Del:");
-
-        tf_disabilities9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities9MouseClicked(evt);
-            }
-        });
-        tf_disabilities9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities9ActionPerformed(evt);
-            }
-        });
-
-        jLabel185.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel185.setText("Place of Del:");
-
-        buttonGroup10.add(jCheckBox11);
-        jCheckBox11.setText("Abortion");
-
-        buttonGroup10.add(jCheckBox10);
-        jCheckBox10.setText("Fetal Death");
-
-        buttonGroup10.add(jCheckBox9);
-        jCheckBox9.setText("Live Birth");
-
-        jLabel184.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel184.setText("Outcome:");
-
-        jLabel177.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel177.setText("I.) Pregnant:");
-
-        jLabel178.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel178.setText("LMP:");
-
-        jLabel179.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel179.setText("EDC:");
-
-        jLabel180.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel180.setText("GP:");
-
-        jLabel181.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel181.setText("TPAL:");
-
-        jLabel175.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel175.setText("TT1:");
-
-        jLabel176.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel176.setText("TT2:");
-
-        jLabel169.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel169.setText("For Elderly:");
-
-        jLabel168.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel168.setText("For Pregnant: Tetanus Toxoid: Status:");
-
-        jLabel173.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel173.setText("TT1:");
-
-        jLabel174.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel174.setText("TT2:");
-
-        jLabel172.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel172.setText("TT5:");
-
-        jLabel171.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel171.setText("TT4:");
-
-        jLabel170.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel170.setText("TT3:");
-
-        jLabel164.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel164.setText("For Young Women:");
-
-        jLabel165.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel165.setText("HPV:");
-
-        jLabel166.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel166.setText("MMR:");
-
-        jLabel167.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel167.setText("Td:");
-
-        jLabel190.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel190.setText("K.) Family Planning");
-
-        jLabel191.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel191.setText("(Present Acceptor 15-49 y.o )");
-
-        tf_disabilities12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities12MouseClicked(evt);
-            }
-        });
-        tf_disabilities12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities12ActionPerformed(evt);
-            }
-        });
-
-        jLabel192.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel192.setText("L.) TB Program:");
-
-        tf_disabilities13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities13MouseClicked(evt);
-            }
-        });
-        tf_disabilities13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities13ActionPerformed(evt);
-            }
-        });
-
-        jLabel193.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel193.setText("Treatment:");
-
-        tf_disabilities14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities14MouseClicked(evt);
-            }
-        });
-        tf_disabilities14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities14ActionPerformed(evt);
-            }
-        });
-
-        jLabel194.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel194.setText("Treatment Outcome:");
-
-        buttonGroup11.add(jCheckBox12);
-        jCheckBox12.setText("Cured");
-
-        buttonGroup11.add(jCheckBox13);
-        jCheckBox13.setText("Failure");
-
-        buttonGroup11.add(jCheckBox14);
-        jCheckBox14.setText("Relapse");
-
-        buttonGroup11.add(jCheckBox15);
-        jCheckBox15.setText("Return and default");
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel183, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser30, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel184, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser15, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel166, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser16, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jDateChooser17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel22Layout.createSequentialGroup()
-                                        .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(162, 162, 162)
-                                        .addComponent(jLabel171, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel176, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                                            .addComponent(jLabel180, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(8, 8, 8)))
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jDateChooser25, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                                        .addComponent(jDateChooser20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jDateChooser23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel22Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel172, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel181, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addComponent(jLabel179)
-                                .addGap(18, 18, 18)
-                                .addComponent(jDateChooser27, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser21, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                            .addComponent(jDateChooser29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel188, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jDateChooser31, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel189)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser32, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel186, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_disabilities10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel187)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_disabilities11))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel185, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_disabilities9))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel192, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(jLabel193, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_disabilities13)
-                            .addComponent(tf_disabilities14)))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel191)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_disabilities12))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel164, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel169)
-                            .addComponent(jLabel177, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
-                                        .addComponent(jLabel178, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jDateChooser26, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
-                                        .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jDateChooser24, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel22Layout.createSequentialGroup()
-                                        .addComponent(jLabel173, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDateChooser22, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDateChooser19, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel174, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel182, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel190, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(jLabel194)
-                        .addGap(2, 2, 2)
-                        .addComponent(jCheckBox12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel164, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel173, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel174, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel171, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel172, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel169, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel176, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel177, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel178, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel179, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel180, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel181, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel182, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel183, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel184, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBox9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel185, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_disabilities9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel186, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_disabilities10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel187, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_disabilities11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel189, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel188, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jDateChooser32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jDateChooser31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel190, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel191, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_disabilities12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel192, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_disabilities13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel193, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_disabilities14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel194, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel23.setBackground(java.awt.Color.white);
-
-        jLabel135.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel135.setText("A.) Present Medical Disease:");
-
-        tf_medical_diseases.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_medical_diseases.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_medical_diseasesMouseClicked(evt);
-            }
-        });
-        tf_medical_diseases.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_medical_diseasesActionPerformed(evt);
-            }
-        });
-
-        tf_disabilities2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities2MouseClicked(evt);
-            }
-        });
-        tf_disabilities2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities2ActionPerformed(evt);
-            }
-        });
-
-        jLabel136.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel136.setText("B.) Past Medical History:");
-
-        tbl_household_member_health_statuses.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tbl_household_member_health_statuses.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_household_member_health_statusesMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tbl_household_member_health_statuses);
-
-        jLabel2.setText("0");
-
-        jLabel1.setText("No. of rows:");
-
-        tf_assets1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/new-file.png"))); // NOI18N
-        tf_assets1.setText("New");
-        tf_assets1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_assets1ActionPerformed(evt);
-            }
-        });
-
-        tf_assets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/download-arrow.png"))); // NOI18N
-        tf_assets.setText("Save");
-        tf_assets.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_assetsActionPerformed(evt);
-            }
-        });
-
-        lbl_facilities7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbl_facilities7.setText("[HEALTH STATUS]");
-
-        jLabel118.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel118.setText("Seeing a Doctor?");
-
-        buttonGroup1.add(tf_is_seeing_a_doctor_yes);
-        tf_is_seeing_a_doctor_yes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_is_seeing_a_doctor_yes.setSelected(true);
-        tf_is_seeing_a_doctor_yes.setText("Yes");
-        tf_is_seeing_a_doctor_yes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_is_seeing_a_doctor_yesActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(tf_is_seeing_a_doctor_no);
-        tf_is_seeing_a_doctor_no.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_is_seeing_a_doctor_no.setText("No");
-        tf_is_seeing_a_doctor_no.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_is_seeing_a_doctor_noActionPerformed(evt);
-            }
-        });
-
-        jLabel119.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel119.setText("Status:");
-
-        buttonGroup2.add(tf_status_normal);
-        tf_status_normal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_status_normal.setSelected(true);
-        tf_status_normal.setText("Normal");
-        tf_status_normal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_status_normalActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(tf_status_pwd);
-        tf_status_pwd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_status_pwd.setText("PWD");
-
-        jLabel121.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel121.setText("Name of Doctor:");
-
-        tf_name_of_doctor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_name_of_doctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_name_of_doctorActionPerformed(evt);
-            }
-        });
-
-        tf_disabilities.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilitiesMouseClicked(evt);
-            }
-        });
-        tf_disabilities.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilitiesActionPerformed(evt);
-            }
-        });
-
-        jLabel120.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel120.setText("Disabilities:");
-
-        jLabel122.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel122.setText("Level of Disabilty:");
-
-        tf_level_of_disability.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_level_of_disability.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_level_of_disabilityActionPerformed(evt);
-            }
-        });
-
-        tf_cause_of_disability.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_cause_of_disability.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_cause_of_disabilityActionPerformed(evt);
-            }
-        });
-
-        jLabel123.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel123.setText("Cause:");
-
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel122)
-                                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel121, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tf_level_of_disability, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_disabilities, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_name_of_doctor, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_cause_of_disability, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(lbl_facilities7)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(jLabel118)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_is_seeing_a_doctor_yes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_is_seeing_a_doctor_no))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(jLabel119)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_status_normal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_status_pwd))))
-        );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_facilities7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_is_seeing_a_doctor_yes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_is_seeing_a_doctor_no, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_status_normal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_status_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_name_of_doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_disabilities, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_level_of_disability, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_cause_of_disability, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jLabel140.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel140.setText("C.) Past Surgical History");
-
-        jLabel142.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel142.setText("Operation:");
-
-        tf_disabilities6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities6MouseClicked(evt);
-            }
-        });
-        tf_disabilities6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities6ActionPerformed(evt);
-            }
-        });
-
-        jDateChooser1.setDate(new Date());
-
-        jLabel141.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel141.setText("Date:");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        tf_assets17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/new-file.png"))); // NOI18N
-        tf_assets17.setText("New");
-        tf_assets17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_assets17ActionPerformed(evt);
-            }
-        });
-
-        tf_assets16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/download-arrow.png"))); // NOI18N
-        tf_assets16.setText("Save");
-        tf_assets16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_assets16ActionPerformed(evt);
-            }
-        });
-
-        jLabel137.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel137.setText("D.) Family History (Diff. Diseases):");
-
-        tf_disabilities3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities3MouseClicked(evt);
-            }
-        });
-        tf_disabilities3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities3ActionPerformed(evt);
-            }
-        });
-
-        jLabel143.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel143.setText("E.) Personal / Social History");
-
-        jLabel144.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel144.setText("Smoking:");
-
-        buttonGroup7.add(jCheckBox1);
-        jCheckBox1.setText("Yes");
-
-        buttonGroup7.add(jCheckBox2);
-        jCheckBox2.setSelected(true);
-        jCheckBox2.setText("No");
-
-        buttonGroup7.add(jCheckBox3);
-        jCheckBox3.setText("Quit");
-
-        buttonGroup8.add(jCheckBox6);
-        jCheckBox6.setText("Quit");
-
-        buttonGroup8.add(jCheckBox5);
-        jCheckBox5.setSelected(true);
-        jCheckBox5.setText("No");
-
-        buttonGroup8.add(jCheckBox4);
-        jCheckBox4.setText("Yes");
-
-        jLabel146.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel146.setText("Alcohol:");
-
-        jLabel148.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel148.setText("Elicit drugs:");
-
-        buttonGroup9.add(jCheckBox7);
-        jCheckBox7.setText("Yes");
-
-        buttonGroup9.add(jCheckBox8);
-        jCheckBox8.setSelected(true);
-        jCheckBox8.setText("No");
-
-        jLabel147.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel147.setText("No. of bottles/day:");
-
-        tf_disabilities7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities7MouseClicked(evt);
-            }
-        });
-        tf_disabilities7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities7ActionPerformed(evt);
-            }
-        });
-
-        tf_disabilities8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities8MouseClicked(evt);
-            }
-        });
-        tf_disabilities8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities8ActionPerformed(evt);
-            }
-        });
-
-        jLabel145.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel145.setText("No. of packs/day:");
-
-        jLabel138.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel138.setText("F.) Mental Problem:");
-
-        tf_disabilities4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities4MouseClicked(evt);
-            }
-        });
-        tf_disabilities4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities4ActionPerformed(evt);
-            }
-        });
-
-        tf_disabilities5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_disabilities5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_disabilities5MouseClicked(evt);
-            }
-        });
-        tf_disabilities5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_disabilities5ActionPerformed(evt);
-            }
-        });
-
-        jLabel139.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel139.setText("G.) PWD:");
-
-        jLabel149.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel149.setText("H.) Immunization");
-
-        jLabel150.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel150.setText("For Children:");
-
-        jLabel151.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel151.setText("BCG:");
-
-        jLabel154.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel154.setText("Penta 1:");
-
-        jLabel155.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel155.setText("Penta 2:");
-
-        jLabel152.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel152.setText("OPV1:");
-
-        jLabel153.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel153.setText("OPV2:");
-
-        jLabel156.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel156.setText("Penta 3:");
-
-        jLabel158.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel158.setText("Hepa B1 > 24 hrs:");
-
-        jLabel160.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel160.setText("Penta 2:");
-
-        jLabel162.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel162.setText("Protected at birth:");
-
-        jLabel157.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel157.setText("Hepa B1 w/in 24 hrs:");
-
-        jLabel159.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel159.setText("MCV1:");
-
-        jLabel161.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel161.setText("FIC (9-11 mos) :");
-
-        jLabel163.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel163.setText("Exclusive Breastfeeding (0-6 mos):");
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel140, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel135, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel136, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_disabilities2)
-                            .addComponent(tf_medical_diseases)
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel142, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_disabilities6)
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tf_assets17, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_assets16, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel143, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addComponent(jLabel137)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_disabilities3))
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel146, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel148, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel23Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCheckBox5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCheckBox6))
-                                    .addGroup(jPanel23Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCheckBox8))))
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addComponent(jLabel144, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                                .addComponent(jLabel145, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_disabilities7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                                .addComponent(jLabel147)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_disabilities8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                        .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_disabilities4, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                        .addComponent(jLabel139, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_disabilities5, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel149, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel150, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel23Layout.createSequentialGroup()
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel154, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel155, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(4, 4, 4)
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jDateChooser6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel23Layout.createSequentialGroup()
-                                                    .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(1, 1, 1))
-                                                .addComponent(jLabel156)))
-                                        .addGroup(jPanel23Layout.createSequentialGroup()
-                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jDateChooser12, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createSequentialGroup()
-                                                    .addComponent(jLabel157, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(2, 2, 2)
-                                                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jDateChooser10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jDateChooser8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGap(50, 50, 50)
-                                            .addComponent(jLabel158, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(jPanel23Layout.createSequentialGroup()
-                                        .addComponent(jLabel159, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(180, 180, 180)
-                                        .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel23Layout.createSequentialGroup()
-                                        .addComponent(jLabel163)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jDateChooser14, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(1, 1, 1))
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(180, 180, 180)
-                                .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3)))
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser13, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(jDateChooser9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_medical_diseases, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel135, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_disabilities2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel136, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel140, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_disabilities6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel142, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tf_assets16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tf_assets17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel141, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_disabilities3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel144, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel145, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tf_disabilities7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tf_disabilities8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel146, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel148, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_disabilities4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_disabilities5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDateChooser5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel154, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel155, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel156, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jDateChooser8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel157, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel158, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jDateChooser10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel159, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jDateChooser12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel161, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel163, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jSeparator2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("HEALTH STATUS", jPanel3);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2281,6 +1133,100 @@ public class Dlg_household_members extends javax.swing.JDialog {
             }
         });
 
+        jLabel195.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel195.setText("Experienced Displacement?");
+
+        jCheckBox16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox16.setText("Yes / No");
+
+        tf_others_language1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_others_language1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_others_language1ActionPerformed(evt);
+            }
+        });
+
+        jLabel196.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel196.setText("Cause:");
+
+        jLabel197.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel197.setText("Received Programs/Services?");
+
+        jCheckBox17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox17.setText("Yes / No");
+
+        tf_others_language2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_others_language2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_others_language2ActionPerformed(evt);
+            }
+        });
+
+        jLabel198.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel198.setText("Programs:");
+
+        jLabel199.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel199.setText("ID Numbers:");
+
+        tf_others_language3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_others_language3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_others_language3ActionPerformed(evt);
+            }
+        });
+
+        jLabel200.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel200.setText("Indigenous People?");
+
+        jCheckBox18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox18.setText("Yes / No");
+
+        jLabel201.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel201.setText("Group:");
+
+        tf_others_language4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_others_language4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_others_language4ActionPerformed(evt);
+            }
+        });
+
+        jLabel202.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel202.setText("Currently Pregnant?");
+
+        jCheckBox19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox19.setText("Yes / No");
+
+        jCheckBox20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox20.setText("Yes / No");
+
+        jLabel203.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel203.setText("Solo Parent?");
+
+        jLabel204.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel204.setText("Has Disability?");
+
+        jCheckBox21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox21.setText("Seing");
+
+        jCheckBox22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox22.setText("Hearing");
+
+        jCheckBox23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox23.setText("Walking / Climbing Steps");
+
+        jCheckBox24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox24.setText("Self Caring");
+
+        jCheckBox25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox25.setText("Remembering / Concentrating");
+
+        jCheckBox26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox26.setText("Communicating");
+
+        jCheckBox27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox27.setText("Yes / No");
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -2288,9 +1234,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2373,20 +1316,84 @@ public class Dlg_household_members extends javax.swing.JDialog {
                             .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addComponent(jLabel116)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_is_registered_voter))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                                 .addComponent(tf_languages_spoken)
                                 .addGap(15, 15, 15)
                                 .addComponent(jLabel115)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_others_language))))
+                                .addComponent(tf_others_language))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel116)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_is_registered_voter)
+                                    .addGroup(jPanel18Layout.createSequentialGroup()
+                                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel198, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel196, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tf_others_language1)
+                                            .addComponent(tf_others_language2)))))))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jLabel134, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(tf_contact_no)))
+                        .addComponent(tf_contact_no))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel199, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_others_language3))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addGap(289, 289, 289)
+                                .addComponent(jLabel201, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel200, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox18)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_others_language4))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel195, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox16))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel197, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox17))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel202, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel203, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox20, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(jLabel204, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox24)
+                            .addComponent(jCheckBox27))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jCheckBox25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox26))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jCheckBox21, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox22, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox23)))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
@@ -2486,9 +1493,53 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_is_registered_voter, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_is_registered_voter, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(1, 1, 1)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel195, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox16)
+                    .addComponent(tf_others_language1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel196, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel197, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox17)
+                    .addComponent(tf_others_language2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel198, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_others_language3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel199, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel200, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox18)
+                    .addComponent(tf_others_language4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel201, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel202, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox19)
+                            .addComponent(jLabel203, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel204, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox21)
+                            .addComponent(jCheckBox22)
+                            .addComponent(jCheckBox23)
+                            .addComponent(jCheckBox27))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox25)
+                            .addComponent(jCheckBox26)
+                            .addComponent(jCheckBox24))
+                        .addContainerGap(14, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
@@ -2717,7 +1768,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_purok, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_purok1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -2728,7 +1779,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 .addGap(22, 22, 22)
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 746, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -2738,7 +1789,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("BASIC INFORMATION", jPanel2);
@@ -2847,7 +1898,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(lbl_facilities9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel236)
                         .addGap(18, 18, 18)
@@ -2898,7 +1949,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -3056,7 +2107,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -3086,6 +2137,1343 @@ public class Dlg_household_members extends javax.swing.JDialog {
         );
 
         jTabbedPane1.addTab("EDUCATION BACKGROUND", jPanel5);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jPanel22.setBackground(java.awt.Color.white);
+        jPanel22.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel189.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel189.setText("Given Vit A:");
+
+        jLabel188.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel188.setText("Initiated Breastfeeding:");
+
+        jLabel183.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel183.setText("Date of Del:");
+
+        jLabel182.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel182.setText("J.) Post Partum:");
+
+        jLabel187.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel187.setText("Attended by:");
+
+        tf_disabilities11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities11MouseClicked(evt);
+            }
+        });
+        tf_disabilities11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities11ActionPerformed(evt);
+            }
+        });
+
+        tf_disabilities10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities10MouseClicked(evt);
+            }
+        });
+        tf_disabilities10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities10ActionPerformed(evt);
+            }
+        });
+
+        jLabel186.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel186.setText("Type of Del:");
+
+        tf_disabilities9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities9MouseClicked(evt);
+            }
+        });
+        tf_disabilities9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities9ActionPerformed(evt);
+            }
+        });
+
+        jLabel185.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel185.setText("Place of Del:");
+
+        buttonGroup10.add(jCheckBox11);
+        jCheckBox11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox11.setText("Abortion");
+
+        buttonGroup10.add(jCheckBox10);
+        jCheckBox10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox10.setText("Fetal Death");
+
+        buttonGroup10.add(jCheckBox9);
+        jCheckBox9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox9.setSelected(true);
+        jCheckBox9.setText("Live Birth");
+
+        jLabel184.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel184.setText("Outcome:");
+
+        jLabel177.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel177.setText("I.) Pregnant:");
+
+        jLabel178.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel178.setText("LMP:");
+
+        jLabel179.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel179.setText("EDC:");
+
+        jLabel180.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel180.setText("GP:");
+
+        jLabel181.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel181.setText("TPAL:");
+
+        jLabel175.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel175.setText("Pneumococcal Vaccine:");
+
+        jLabel176.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel176.setText("Flu Vaccine:");
+
+        jLabel169.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel169.setText("For Elderly:");
+
+        jLabel168.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel168.setText("For Pregnant: Tetanus Toxoid: Status:");
+
+        jLabel173.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel173.setText("TT1:");
+
+        jLabel174.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel174.setText("TT2:");
+
+        jLabel172.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel172.setText("TT5:");
+
+        jLabel171.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel171.setText("TT4:");
+
+        jLabel170.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel170.setText("TT3:");
+
+        jLabel164.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel164.setText("For Young Women:");
+
+        jLabel165.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel165.setText("HPV:");
+
+        jLabel166.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel166.setText("MMR:");
+
+        jLabel167.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel167.setText("Td:");
+
+        jLabel190.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel190.setText("K.) Family Planning");
+
+        jLabel191.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel191.setText("(Present Acceptor 15-49 y.o )");
+
+        tf_disabilities12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities12MouseClicked(evt);
+            }
+        });
+        tf_disabilities12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities12ActionPerformed(evt);
+            }
+        });
+
+        jLabel192.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel192.setText("L.) TB Program:");
+
+        tf_disabilities13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities13MouseClicked(evt);
+            }
+        });
+        tf_disabilities13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities13ActionPerformed(evt);
+            }
+        });
+
+        jLabel193.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel193.setText("Treatment:");
+
+        tf_disabilities14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities14MouseClicked(evt);
+            }
+        });
+        tf_disabilities14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities14ActionPerformed(evt);
+            }
+        });
+
+        jLabel194.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel194.setText("Treatment Outcome:");
+
+        buttonGroup11.add(jCheckBox12);
+        jCheckBox12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox12.setText("Cured");
+
+        buttonGroup11.add(jCheckBox13);
+        jCheckBox13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox13.setText("Failure");
+
+        buttonGroup11.add(jCheckBox14);
+        jCheckBox14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox14.setText("Relapse");
+
+        buttonGroup11.add(jCheckBox15);
+        jCheckBox15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox15.setText("Return and default");
+
+        jLabel206.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel206.setText("M.) Natality (0-5 y.o.)");
+
+        jLabel207.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel207.setText("Birthweight:");
+
+        buttonGroup13.add(jCheckBox28);
+        jCheckBox28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox28.setText("> 2,500 g");
+
+        buttonGroup13.add(jCheckBox29);
+        jCheckBox29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox29.setText("< 2,500 g");
+
+        buttonGroup13.add(jCheckBox30);
+        jCheckBox30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox30.setText("Not Known");
+
+        jLabel208.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel208.setText("Attended by:");
+
+        tf_disabilities15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities15MouseClicked(evt);
+            }
+        });
+        tf_disabilities15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities15ActionPerformed(evt);
+            }
+        });
+
+        jLabel209.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel209.setText("Place of Delivery:");
+
+        tf_disabilities16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities16MouseClicked(evt);
+            }
+        });
+        tf_disabilities16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities16ActionPerformed(evt);
+            }
+        });
+
+        jButton15.setText("Update");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
+                                    .addComponent(jLabel209, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tf_disabilities16))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
+                                    .addComponent(jLabel208, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tf_disabilities15, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser15, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDateChooser16, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jDateChooser17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel164, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel169)
+                            .addComponent(jLabel182, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel190, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel22Layout.createSequentialGroup()
+                                            .addComponent(jLabel173, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jDateChooser22, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jDateChooser19, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel22Layout.createSequentialGroup()
+                                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel179, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel178, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGap(4, 4, 4)
+                                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jDateChooser26, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jDateChooser27, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel177, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel174, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel22Layout.createSequentialGroup()
+                                        .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                                .addGap(162, 162, 162)
+                                                .addComponent(jDateChooser24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel176))
+                                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                                .addGap(154, 154, 154)
+                                                .addComponent(jLabel171, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(185, 185, 185))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel180, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(8, 8, 8)
+                                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDateChooser28, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jDateChooser20, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                                .addComponent(jDateChooser23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jLabel172, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(jLabel181, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(4, 4, 4)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDateChooser25, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jDateChooser21, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                                        .addComponent(jDateChooser29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel188, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(jDateChooser31, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel189)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser32, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel186, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_disabilities10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel187)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_disabilities11))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel192, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(jLabel193, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_disabilities13)
+                                    .addComponent(tf_disabilities14)))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel191)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_disabilities12))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel194)
+                                .addGap(2, 2, 2)
+                                .addComponent(jCheckBox12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel183, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel185, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel22Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_disabilities9))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jDateChooser30, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel184, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jCheckBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jCheckBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jCheckBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel206)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel207, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox28, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox29, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel22Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox30, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel22Layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap())))
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel164, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser15, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser16, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser22, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel173, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel174, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser23, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser19, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser21, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel171, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser20, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel172, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel169, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser24, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel176, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser25, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel177, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser26, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel178, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooser27, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jLabel179, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jLabel180, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jDateChooser28, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jLabel181, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(jDateChooser29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel182, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel183, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel184, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCheckBox9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jDateChooser30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel185, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_disabilities9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel186, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_disabilities10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel187, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_disabilities11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDateChooser32, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel189, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel188, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabel190, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel191, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_disabilities12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel192, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_disabilities13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel193, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_disabilities14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel194, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jDateChooser31, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel206, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel207, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox28, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox29, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox30, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel208, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_disabilities15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel209, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_disabilities16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
+        );
+
+        jPanel23.setBackground(java.awt.Color.white);
+
+        jLabel135.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel135.setText("A.) Present Medical Disease:");
+
+        tf_medical_diseases.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_medical_diseases.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_medical_diseasesMouseClicked(evt);
+            }
+        });
+        tf_medical_diseases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_medical_diseasesActionPerformed(evt);
+            }
+        });
+
+        tf_disabilities2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities2MouseClicked(evt);
+            }
+        });
+        tf_disabilities2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities2ActionPerformed(evt);
+            }
+        });
+
+        jLabel136.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel136.setText("B.) Past Medical History:");
+
+        tbl_household_member_health_statuses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbl_household_member_health_statuses.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_household_member_health_statusesMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbl_household_member_health_statuses);
+
+        jLabel2.setText("0");
+
+        jLabel1.setText("No. of rows:");
+
+        tf_assets1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/new-file.png"))); // NOI18N
+        tf_assets1.setText("New");
+        tf_assets1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_assets1ActionPerformed(evt);
+            }
+        });
+
+        tf_assets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/download-arrow.png"))); // NOI18N
+        tf_assets.setText("Save");
+        tf_assets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_assetsActionPerformed(evt);
+            }
+        });
+
+        lbl_facilities7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_facilities7.setText("[HEALTH STATUS]");
+
+        jLabel118.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel118.setText("Seeing a Doctor?");
+
+        buttonGroup1.add(tf_is_seeing_a_doctor_yes);
+        tf_is_seeing_a_doctor_yes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_is_seeing_a_doctor_yes.setSelected(true);
+        tf_is_seeing_a_doctor_yes.setText("Yes");
+        tf_is_seeing_a_doctor_yes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_is_seeing_a_doctor_yesActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(tf_is_seeing_a_doctor_no);
+        tf_is_seeing_a_doctor_no.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_is_seeing_a_doctor_no.setText("No");
+        tf_is_seeing_a_doctor_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_is_seeing_a_doctor_noActionPerformed(evt);
+            }
+        });
+
+        jLabel119.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel119.setText("Status:");
+
+        buttonGroup2.add(tf_status_normal);
+        tf_status_normal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_status_normal.setSelected(true);
+        tf_status_normal.setText("Normal");
+        tf_status_normal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_status_normalActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(tf_status_pwd);
+        tf_status_pwd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_status_pwd.setText("PWD");
+
+        jLabel121.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel121.setText("Name of Doctor:");
+
+        tf_name_of_doctor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_name_of_doctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_name_of_doctorActionPerformed(evt);
+            }
+        });
+
+        tf_disabilities.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilitiesMouseClicked(evt);
+            }
+        });
+        tf_disabilities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilitiesActionPerformed(evt);
+            }
+        });
+
+        jLabel120.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel120.setText("Disabilities:");
+
+        jLabel122.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel122.setText("Level of Disabilty:");
+
+        tf_level_of_disability.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_level_of_disability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_level_of_disabilityActionPerformed(evt);
+            }
+        });
+
+        tf_cause_of_disability.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_cause_of_disability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_cause_of_disabilityActionPerformed(evt);
+            }
+        });
+
+        jLabel123.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel123.setText("Cause:");
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel122)
+                                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel121, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tf_level_of_disability, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_disabilities, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_name_of_doctor, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tf_cause_of_disability, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(lbl_facilities7)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(jLabel118)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_is_seeing_a_doctor_yes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_is_seeing_a_doctor_no))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(jLabel119)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_status_normal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_status_pwd))))
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_facilities7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_is_seeing_a_doctor_yes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_is_seeing_a_doctor_no, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_status_normal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_status_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_name_of_doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_disabilities, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_level_of_disability, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_cause_of_disability, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_assets, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_assets1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jLabel140.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel140.setText("C.) Past Surgical History");
+
+        jLabel142.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel142.setText("Operation:");
+
+        tf_disabilities6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities6MouseClicked(evt);
+            }
+        });
+        tf_disabilities6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities6ActionPerformed(evt);
+            }
+        });
+
+        jDateChooser1.setDate(new Date());
+
+        jLabel141.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel141.setText("Date:");
+
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        tbl_household_member_past_surgical_history.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbl_household_member_past_surgical_history.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_household_member_past_surgical_historyMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_household_member_past_surgical_history);
+
+        tf_assets17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/new-file.png"))); // NOI18N
+        tf_assets17.setText("New");
+        tf_assets17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_assets17ActionPerformed(evt);
+            }
+        });
+
+        tf_assets16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/city_planning/img_city_planning/download-arrow.png"))); // NOI18N
+        tf_assets16.setText("Save");
+        tf_assets16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_assets16ActionPerformed(evt);
+            }
+        });
+
+        jLabel137.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel137.setText("D.) Family History (Diff. Diseases):");
+
+        tf_disabilities3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities3MouseClicked(evt);
+            }
+        });
+        tf_disabilities3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities3ActionPerformed(evt);
+            }
+        });
+
+        jLabel143.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel143.setText("E.) Personal / Social History");
+
+        jLabel144.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel144.setText("Smoking:");
+
+        buttonGroup7.add(jCheckBox1);
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox1.setText("Yes");
+
+        buttonGroup7.add(jCheckBox2);
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox2.setSelected(true);
+        jCheckBox2.setText("No");
+
+        buttonGroup7.add(jCheckBox3);
+        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox3.setText("Quit");
+
+        buttonGroup8.add(jCheckBox6);
+        jCheckBox6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox6.setText("Quit");
+
+        buttonGroup8.add(jCheckBox5);
+        jCheckBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox5.setSelected(true);
+        jCheckBox5.setText("No");
+
+        buttonGroup8.add(jCheckBox4);
+        jCheckBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox4.setText("Yes");
+
+        jLabel146.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel146.setText("Alcohol:");
+
+        jLabel148.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel148.setText("Elicit drugs:");
+
+        buttonGroup9.add(jCheckBox7);
+        jCheckBox7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox7.setText("Yes");
+
+        buttonGroup9.add(jCheckBox8);
+        jCheckBox8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox8.setSelected(true);
+        jCheckBox8.setText("No");
+
+        jLabel147.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel147.setText("No. of bottles/day:");
+
+        tf_disabilities7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities7MouseClicked(evt);
+            }
+        });
+        tf_disabilities7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities7ActionPerformed(evt);
+            }
+        });
+
+        tf_disabilities8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities8MouseClicked(evt);
+            }
+        });
+        tf_disabilities8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities8ActionPerformed(evt);
+            }
+        });
+
+        jLabel145.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel145.setText("No. of packs/day:");
+
+        jLabel138.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel138.setText("F.) Mental Problem:");
+
+        tf_disabilities4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities4MouseClicked(evt);
+            }
+        });
+        tf_disabilities4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities4ActionPerformed(evt);
+            }
+        });
+
+        tf_disabilities5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_disabilities5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_disabilities5MouseClicked(evt);
+            }
+        });
+        tf_disabilities5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_disabilities5ActionPerformed(evt);
+            }
+        });
+
+        jLabel139.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel139.setText("G.) PWD:");
+
+        jLabel149.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel149.setText("H.) Immunization");
+
+        jLabel150.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel150.setText("For Children:");
+
+        jLabel151.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel151.setText("BCG:");
+
+        jLabel154.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel154.setText("Penta 1:");
+
+        jLabel155.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel155.setText("Penta 2:");
+
+        jLabel152.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel152.setText("OPV1:");
+
+        jLabel153.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel153.setText("OPV2:");
+
+        jLabel156.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel156.setText("Penta 3:");
+
+        jLabel158.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel158.setText("Hepa B1 > 24 hrs:");
+
+        jLabel160.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel160.setText("MCV2:");
+
+        jLabel162.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel162.setText("Protected at birth:");
+
+        jLabel157.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel157.setText("Hepa B1 w/in 24 hrs:");
+
+        jLabel159.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel159.setText("MCV1:");
+
+        jLabel161.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel161.setText("FIC (9-11 mos) :");
+
+        jLabel163.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel163.setText("Exclusive Breastfeeding (0-6 mos):");
+
+        jLabel205.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel205.setText("OPV3:");
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel140, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel135, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel136, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_disabilities2)
+                            .addComponent(tf_medical_diseases)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel142, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_disabilities6)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_assets17, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_assets16, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel143, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel137)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_disabilities3))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel146, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel148, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel23Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jCheckBox5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jCheckBox6))
+                                    .addGroup(jPanel23Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jCheckBox8))))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jLabel144, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                                .addComponent(jLabel145, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_disabilities7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                                .addComponent(jLabel147)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_disabilities8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_disabilities4, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel139, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_disabilities5, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel149, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel150, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(180, 180, 180)
+                        .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jDateChooser7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel154, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel155, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel156)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel152)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel153)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel205)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDateChooser12, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createSequentialGroup()
+                                .addComponent(jLabel157, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jDateChooser10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jDateChooser8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel158, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel159, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(180, 180, 180)
+                        .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel163)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser14, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_medical_diseases, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel135, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_disabilities2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel136, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel140, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_disabilities6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel142, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tf_assets16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_assets17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel141, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_disabilities3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel144, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel145, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tf_disabilities7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tf_disabilities8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel146, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel148, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_disabilities4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_disabilities5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel23Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jDateChooser18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel205, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel23Layout.createSequentialGroup()
+                                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel152, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDateChooser3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel153, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel155, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                                .addComponent(jDateChooser6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel156, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jDateChooser8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel157, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel158, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jDateChooser10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel159, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jDateChooser12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel161, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel163, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jSeparator2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("HEALTH STATUS", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -3219,7 +3607,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -3389,7 +3777,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -3459,7 +3847,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(lbl_facilities14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jLabel255, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3485,7 +3873,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                     .addComponent(tf_assets15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_assets14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -3605,7 +3993,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(lbl_facilities11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel243, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -4684,7 +5072,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                                     .addComponent(organizing, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(cb_is_expressing, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jButton16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4826,7 +5214,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                         .addComponent(cb_is_expressing, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("SKILLS", jPanel17);
@@ -5427,6 +5815,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
     private void tf_medical_diseasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_medical_diseasesActionPerformed
         Initialize_household_member_field_types.init_medical_diseases(tf_medical_diseases);
+
+
     }//GEN-LAST:event_tf_medical_diseasesActionPerformed
 
     private void tf_disabilities2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities2MouseClicked
@@ -5435,6 +5825,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
     private void tf_disabilities2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities2ActionPerformed
         Initialize_household_member_field_types.init_medical_diseases(tf_disabilities2);
+
     }//GEN-LAST:event_tf_disabilities2ActionPerformed
 
     private void tf_disabilities3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities3MouseClicked
@@ -5443,6 +5834,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
     private void tf_disabilities3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities3ActionPerformed
         Initialize_household_member_field_types.init_medical_diseases(tf_disabilities3);
+
     }//GEN-LAST:event_tf_disabilities3ActionPerformed
 
     private void tf_disabilities4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities4MouseClicked
@@ -5451,6 +5843,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
 
     private void tf_disabilities4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities4ActionPerformed
         Initialize_household_member_field_types.init_mental_problems(tf_disabilities4);
+
     }//GEN-LAST:event_tf_disabilities4ActionPerformed
 
     private void tf_disabilities5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities5MouseClicked
@@ -5458,7 +5851,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_disabilities5MouseClicked
 
     private void tf_disabilities5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities5ActionPerformed
-       Initialize_household_member_field_types.init_disabilities2(tf_disabilities5);
+//       Initialize_household_member_field_types.init_disabilities2(tf_disabilities5);
+
     }//GEN-LAST:event_tf_disabilities5ActionPerformed
 
     private void tf_disabilities6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities6MouseClicked
@@ -5470,11 +5864,11 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_disabilities6ActionPerformed
 
     private void tf_assets16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_assets16ActionPerformed
-        // TODO add your handling code here:
+        save_household_member_past_surgical_history();
     }//GEN-LAST:event_tf_assets16ActionPerformed
 
     private void tf_assets17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_assets17ActionPerformed
-        // TODO add your handling code here:
+        clear_household_member_past_surgical_history();
     }//GEN-LAST:event_tf_assets17ActionPerformed
 
     private void tf_disabilities7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities7MouseClicked
@@ -5541,6 +5935,46 @@ public class Dlg_household_members extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_disabilities14ActionPerformed
 
+    private void tbl_household_member_past_surgical_historyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_household_member_past_surgical_historyMouseClicked
+        select_household_member_past_surgical_history();
+    }//GEN-LAST:event_tbl_household_member_past_surgical_historyMouseClicked
+
+    private void tf_others_language1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_language1ActionPerformed
+        Initialize_household_member_field_types.init_displacements(tf_others_language1);
+    }//GEN-LAST:event_tf_others_language1ActionPerformed
+
+    private void tf_others_language2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_language2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_others_language2ActionPerformed
+
+    private void tf_others_language3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_language3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_others_language3ActionPerformed
+
+    private void tf_others_language4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_language4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_others_language4ActionPerformed
+
+    private void tf_disabilities15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities15MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_disabilities15MouseClicked
+
+    private void tf_disabilities15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_disabilities15ActionPerformed
+
+    private void tf_disabilities16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities16MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_disabilities16MouseClicked
+
+    private void tf_disabilities16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_disabilities16ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        update_other_details();
+    }//GEN-LAST:event_jButton15ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -5550,6 +5984,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup10;
     private javax.swing.ButtonGroup buttonGroup11;
     private javax.swing.ButtonGroup buttonGroup12;
+    private javax.swing.ButtonGroup buttonGroup13;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
@@ -5625,6 +6060,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -5635,8 +6071,23 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JCheckBox jCheckBox13;
     private javax.swing.JCheckBox jCheckBox14;
     private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
+    private javax.swing.JCheckBox jCheckBox22;
+    private javax.swing.JCheckBox jCheckBox23;
+    private javax.swing.JCheckBox jCheckBox24;
+    private javax.swing.JCheckBox jCheckBox25;
+    private javax.swing.JCheckBox jCheckBox26;
+    private javax.swing.JCheckBox jCheckBox27;
+    private javax.swing.JCheckBox jCheckBox28;
+    private javax.swing.JCheckBox jCheckBox29;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox30;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
@@ -5652,6 +6103,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser jDateChooser15;
     private com.toedter.calendar.JDateChooser jDateChooser16;
     private com.toedter.calendar.JDateChooser jDateChooser17;
+    private com.toedter.calendar.JDateChooser jDateChooser18;
     private com.toedter.calendar.JDateChooser jDateChooser19;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser20;
@@ -5779,8 +6231,23 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel192;
     private javax.swing.JLabel jLabel193;
     private javax.swing.JLabel jLabel194;
+    private javax.swing.JLabel jLabel195;
+    private javax.swing.JLabel jLabel196;
+    private javax.swing.JLabel jLabel197;
+    private javax.swing.JLabel jLabel198;
+    private javax.swing.JLabel jLabel199;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel200;
+    private javax.swing.JLabel jLabel201;
+    private javax.swing.JLabel jLabel202;
+    private javax.swing.JLabel jLabel203;
+    private javax.swing.JLabel jLabel204;
+    private javax.swing.JLabel jLabel205;
+    private javax.swing.JLabel jLabel206;
+    private javax.swing.JLabel jLabel207;
+    private javax.swing.JLabel jLabel208;
+    private javax.swing.JLabel jLabel209;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel233;
     private javax.swing.JLabel jLabel234;
@@ -5866,7 +6333,6 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField145;
     private javax.swing.JTextField jTextField48;
     private javax.swing.JLabel lbl_barangay1;
@@ -5892,6 +6358,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JTable tbl_household_member_health_statuses;
     private javax.swing.JTable tbl_household_member_licenses;
     private javax.swing.JTable tbl_household_member_medications;
+    private javax.swing.JTable tbl_household_member_past_surgical_history;
     private javax.swing.JTable tbl_household_member_prefered_works;
     private javax.swing.JTable tbl_household_member_vocational_experiences;
     private javax.swing.JTable tbl_household_member_work_experiences;
@@ -5934,6 +6401,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JTextField tf_disabilities12;
     private javax.swing.JTextField tf_disabilities13;
     private javax.swing.JTextField tf_disabilities14;
+    private javax.swing.JTextField tf_disabilities15;
+    private javax.swing.JTextField tf_disabilities16;
     private javax.swing.JTextField tf_disabilities2;
     private javax.swing.JTextField tf_disabilities3;
     private javax.swing.JTextField tf_disabilities4;
@@ -5980,6 +6449,10 @@ public class Dlg_household_members extends javax.swing.JDialog {
     private javax.swing.JTextField tf_ofw_reason_for_migration;
     private javax.swing.JTextField tf_ofw_type_of_business;
     private javax.swing.JTextField tf_others_language;
+    private javax.swing.JTextField tf_others_language1;
+    private javax.swing.JTextField tf_others_language2;
+    private javax.swing.JTextField tf_others_language3;
+    private javax.swing.JTextField tf_others_language4;
     private javax.swing.JTextField tf_others_relations;
     private javax.swing.JTextField tf_period_of_training;
     private javax.swing.JTextField tf_position;
@@ -6018,15 +6491,16 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Initialize_table_household_members.init_tbl_household_member_licenses(tbl_household_member_licenses);
         Initialize_table_household_members.init_tbl_household_member_work_experiences(tbl_household_member_work_experiences);
         Initialize_table_household_members.init_tbl_household_member_prefered_works(tbl_household_member_prefered_works);
-
+        Initialize_table_household_members.init_tbl_household_member_past_surgical_history(tbl_household_member_past_surgical_history);
         try {
             webcams = Webcam.getWebcams();
-        } catch (Exception e) {
+        } catch (WebcamException e) {
             System.out.println(e);
         }
         jButton13.setVisible(false);
         jButton14.setVisible(false);
         jButton16.setVisible(false);
+        jButton15.setVisible(false);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -6035,7 +6509,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
     }
 
-    Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "");
+    Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "", new ArrayList(), null);
 
     String my_region = "";
     String my_region_id = "";
@@ -6091,8 +6565,9 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jButton13.setVisible(true);
         jButton14.setVisible(true);
         jButton16.setVisible(true);
-        jButton10.setVisible(false);
+//        jButton10.setVisible(false);
         jButton12.setVisible(false);
+        jButton15.setVisible(true);
 
         Field.Combo reg = (Field.Combo) tf_region;
         Field.Combo prov = (Field.Combo) tf_province;
@@ -6165,7 +6640,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
             jLabel21.setIcon(imageIcon);
         }
 
-        System.out.println(path);
+//        System.out.println(path);
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" Load Table Records ">
         Initialize_table_household_members.loadData_household_member_educational_backgrounds(household_member.educational_backgrounds);
@@ -6176,6 +6651,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Initialize_table_household_members.loadData_household_member_prefered_works(household_member.prefered_works);
         Initialize_table_household_members.loadData_household_member_competence_certificates(household_member.competence_certificates);
         Initialize_table_household_members.loadData_household_member_licenses(household_member.licenses);
+        Initialize_table_household_members.loadData_household_member_past_surgical_history(household_member.surgeries);
 
         jLabel6.setText("" + Initialize_table_household_members.tbl_household_member_educational_backgrounds_ALM.size());
         jLabel8.setText("" + Initialize_table_household_members.tbl_household_member_vocational_experiences_ALM.size());
@@ -6264,6 +6740,146 @@ public class Dlg_household_members extends javax.swing.JDialog {
         cb_setter(idea_skill, cb_idea_skill);
 
         //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Other Details ">
+        Household_member_other_details.to_household_member_other_details od = household_member1.other_details;
+        cb_setter2(od.experienced_displacement, jCheckBox16);
+        tf_others_language1.setText(od.experienced_displacement_reasons);
+        cb_setter2(od.has_received_programs, jCheckBox17);
+        tf_others_language2.setText(od.received_programs);
+        tf_others_language3.setText(od.received_programs_id_numbers);
+        cb_setter2(od.is_indigenous_people, jCheckBox18);
+        tf_others_language4.setText(od.indigenous_people_group);
+        cb_setter2(od.is_pregnant, jCheckBox19);
+        cb_setter2(od.solo_parent, jCheckBox20);
+        cb_setter2(od.has_disability, jCheckBox27);
+        cb_setter2(od.has_hearing_problem, jCheckBox22);
+        cb_setter2(od.has_seeing_problem, jCheckBox21);
+        cb_setter2(od.has_communicating_problem, jCheckBox26);
+        cb_setter2(od.has_remembering_problem, jCheckBox25);
+        cb_setter2(od.has_self_caring_problem, jCheckBox24);
+        cb_setter2(od.has_walking_problem, jCheckBox23);
+        tf_medical_diseases.setText(od.hs_present_medical_diseases);
+        tf_disabilities2.setText(od.hs_past_medical_history);
+        tf_disabilities3.setText(od.hs_family_history_diseases);
+        if (od.hs_smoking_history_status == 0) {
+            jCheckBox2.setSelected(true);
+        }
+        if (od.hs_smoking_history_status == 1) {
+            jCheckBox1.setSelected(true);
+        }
+        if (od.hs_smoking_history_status == 2) {
+            jCheckBox3.setSelected(true);
+        }
+        tf_disabilities7.setText("" + od.hs_smoking_history_no_of_packs);
+        if (od.hs_alcohol_history_status == 0) {
+            jCheckBox5.setSelected(true);
+        }
+        if (od.hs_alcohol_history_status == 1) {
+            jCheckBox4.setSelected(true);
+        }
+        if (od.hs_alcohol_history_status == 2) {
+            jCheckBox6.setSelected(true);
+        }
+        tf_disabilities8.setText("" + od.hs_alcohol_history_no_of_bottles);
+        if (od.hs_ellicit_drugs == 0) {
+            jCheckBox8.setSelected(true);
+        }
+        if (od.hs_ellicit_drugs == 1) {
+            jCheckBox7.setSelected(true);
+        }
+        tf_disabilities4.setText(od.hs_medical_problems);
+        tf_disabilities5.setText(od.hs_pwd);
+        dp_setter(od.hs_immunization_children_bcg, jDateChooser2);
+        dp_setter(od.hs_immunization_children_opv1, jDateChooser3);
+        dp_setter(od.hs_immunization_children_opv2, jDateChooser4);
+        dp_setter(od.hs_immunization_children_opv3, jDateChooser18);
+        dp_setter(od.hs_immunization_children_penta1, jDateChooser5);
+        dp_setter(od.hs_immunization_children_penta2, jDateChooser6);
+        dp_setter(od.hs_immunization_children_penta3, jDateChooser7);
+        dp_setter(od.hs_immunization_children_hepa_within_24_hours, jDateChooser8);
+        dp_setter(od.hs_immunization_children_hepa_greater_24_hours, jDateChooser9);
+        dp_setter(od.hs_immunization_children_mcv1, jDateChooser10);
+        dp_setter(od.hs_immunization_children_mcv2, jDateChooser11);
+        dp_setter(od.hs_immunization_children_fic, jDateChooser12);
+        dp_setter(od.hs_immunization_children_protected_at_birth, jDateChooser13);
+        dp_setter(od.hs_immunization_children_exclusive_breastfeeding, jDateChooser14);
+        dp_setter(od.hs_immunization_young_women_hpv, jDateChooser15);
+        dp_setter(od.hs_immunization_young_women_mmr, jDateChooser16);
+        dp_setter(od.hs_immunization_young_women_td, jDateChooser17);
+        dp_setter(od.hs_immunization_pregnant_tt1, jDateChooser22);
+        dp_setter(od.hs_immunization_pregnant_tt2, jDateChooser23);
+        dp_setter(od.hs_immunization_pregnant_tt3, jDateChooser19);
+        dp_setter(od.hs_immunization_pregnant_tt4, jDateChooser20);
+        dp_setter(od.hs_immunization_pregnant_tt5, jDateChooser21);
+        dp_setter(od.hs_immunization_elderly_pneumococcal_vaccine, jDateChooser24);
+        dp_setter(od.hs_immunization_elderly_flu_vaccine, jDateChooser25);
+        dp_setter(od.hs_pregnant_lmp, jDateChooser26);
+        dp_setter(od.hs_pregnant_edc, jDateChooser27);
+        dp_setter(od.hs_pregnant_gp, jDateChooser28);
+        dp_setter(od.hs_pregnant_tpal, jDateChooser29);
+        dp_setter(od.hs_post_partum_date_of_delivery, jDateChooser30);
+        tf_disabilities9.setText(od.hs_post_partum_place_of_delivery);
+        tf_disabilities10.setText(od.hs_post_partum_type_of_delivery);
+        tf_disabilities11.setText(od.hs_post_partum_attended_by);
+        if (od.hs_post_partum_outcome.equals("1")) {
+            jCheckBox9.setSelected(true);
+        }
+        if (od.hs_post_partum_outcome.equals("2")) {
+            jCheckBox10.setSelected(true);
+        }
+        if (od.hs_post_partum_outcome.equals("3")) {
+            jCheckBox11.setSelected(true);
+        }
+        tf_disabilities12.setText(od.hs_family_planning);
+        tf_disabilities13.setText(od.hs_tb_program_checklist);
+        tf_disabilities14.setText(od.hs_tb_program_treatment);
+        if (od.hs_tb_program_treatment_outcome.equals("1")) {
+            jCheckBox12.setSelected(true);
+        }
+        if (od.hs_tb_program_treatment_outcome.equals("2")) {
+            jCheckBox13.setSelected(true);
+        }
+        if (od.hs_tb_program_treatment_outcome.equals("3")) {
+            jCheckBox14.setSelected(true);
+        }
+        if (od.hs_tb_program_treatment_outcome.equals("4")) {
+            jCheckBox15.setSelected(true);
+        }
+        if (od.hs_natality_birthweight.equals("1")) {
+            jCheckBox28.setSelected(true);
+        }
+        if (od.hs_natality_birthweight.equals("2")) {
+            jCheckBox29.setSelected(true);
+        }
+        if (od.hs_natality_birthweight.equals("3")) {
+            jCheckBox30.setSelected(true);
+        }
+        tf_disabilities15.setText(od.hs_natality_attended_by);
+        tf_disabilities16.setText(od.hs_natality_place_of_delivery);
+        //</editor-fold>
+    }
+
+    private void dp_setter(String date, JDateChooser jd) {
+        if (date == null) {
+            jd.setDate(null);
+        } else {
+
+            try {
+                Date d = DateType.sf.parse(date);
+                jd.setDate(d);
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_household_members.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }
+
+    private void cb_setter2(int status, JCheckBox box) {
+        if (status == 1) {
+            box.setSelected(true);
+        } else {
+            box.setSelected(false);
+        }
     }
 
     private void cb_setter(int[] status, JCheckBox[] cb) {
@@ -7724,6 +8340,166 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }
 
     //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc=" Household Member Past Surgical History ">
+    private void save_household_member_past_surgical_history() {
+        int row = tbl_household_member_past_surgical_history.getSelectedRow();
+        if (row < 0) {
+
+            int id = 0;
+            String created_at = DateType.now();
+            String updated_at = DateType.now();
+            String created_by = MyUser.getUser_id();
+            String updated_by = MyUser.getUser_id();
+            String region = household_member.region;
+            String region_id = household_member.region_id;
+            String province = household_member.province;
+            String province_id = household_member.province_id;
+            String city = household_member.city;
+            String city_id = household_member.city_id;
+            String barangay = household_member.barangay;
+            String barangay_id = household_member.barangay_id;
+            String purok = household_member.purok;
+            String purok_id = household_member.purok_id;
+            int status = 0;
+            int is_uploaded = 0;
+            String house_no = household_member.house_no;
+            String household_no = household_member.household_no;
+            String household_member_no = household_member.household_member_no;
+            String fname = tf_fname.getText();
+            String mname = tf_mname.getText();
+            String lname = tf_lname.getText();
+            String sname = tf_sname.getText();
+            String operation = tf_disabilities6.getText();
+            String date_of_operation = DateType.sf.format(jDateChooser1.getDate());
+            String transient_no = household_member.transient_no;
+            Household_member_past_surgical_history.to_household_member_past_surgical_history surgery = new Household_member_past_surgical_history.to_household_member_past_surgical_history(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, operation, date_of_operation, transient_no);
+            if (household_member.id == 0) {
+                Initialize_table_household_members.tbl_household_member_past_surgical_history_ALM.add(surgery);
+            } else {
+
+                Household_member_past_surgical_history.add_data(surgery);
+                String where = " where household_member_no='" + surgery.household_member_no + "'";
+                Initialize_table_household_members.ret_household_member_past_surgical_history(where);
+
+            }
+            Alert.set(1, "");
+        } else {
+
+            Household_member_past_surgical_history.to_household_member_past_surgical_history surgery = (Household_member_past_surgical_history.to_household_member_past_surgical_history) Initialize_table_household_members.tbl_household_member_past_surgical_history_ALM.get(row);
+
+            int id = surgery.id;
+            String created_at = surgery.created_at;
+            String updated_at = surgery.updated_at;
+            String created_by = surgery.created_by;
+            String updated_by = surgery.updated_by;
+            String region = surgery.region;
+            String region_id = surgery.region_id;
+            String province = surgery.province;
+            String province_id = surgery.province_id;
+            String city = surgery.city;
+            String city_id = surgery.city_id;
+            String barangay = surgery.barangay;
+            String barangay_id = surgery.barangay_id;
+            String purok = surgery.purok;
+            String purok_id = surgery.purok_id;
+            int status = surgery.status;
+            int is_uploaded = surgery.is_uploaded;
+            String house_no = surgery.house_no;
+            String household_no = surgery.household_no;
+            String household_member_no = surgery.household_member_no;
+            String fname = tf_fname.getText();
+            String mname = tf_mname.getText();
+            String lname = tf_lname.getText();
+            String sname = tf_sname.getText();
+
+            String operation = tf_disabilities6.getText();
+            surgery.setOperation(operation);
+            String date_of_operation = DateType.sf.format(jDateChooser1.getDate());
+            surgery.setDate_of_operation(date_of_operation);
+            String transient_no = surgery.transient_no;
+
+            if (household_member.id == 0) {
+                Initialize_table_household_members.tbl_household_member_past_surgical_history_M.fireTableDataChanged();
+            } else {
+
+                if (status == 0 && is_uploaded == 0) {
+                    status = 2;
+                } else if ((status == 0 && is_uploaded == 1) || (status == 2 && is_uploaded == 1)) {
+                    status = 1;
+                    is_uploaded = 0;
+                } else {
+                    is_uploaded = 0;
+                }
+                surgery.setStatus(status);
+                surgery.setIs_uploaded(is_uploaded);
+                Household_member_past_surgical_history.update_data(surgery);
+                String where = " where household_member_no='" + surgery.household_member_no + "'";
+                Initialize_table_household_members.ret_household_member_prefered_works(where);
+            }
+            Alert.set(2, "");
+        }
+        clear_household_member_past_surgical_history();
+    }
+
+    private void select_household_member_past_surgical_history() {
+        final int row = tbl_household_member_past_surgical_history.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+
+        final Household_member_past_surgical_history.to_household_member_past_surgical_history surgery = (Household_member_past_surgical_history.to_household_member_past_surgical_history) Initialize_table_household_members.tbl_household_member_past_surgical_history_ALM.get(row);
+
+        int col = tbl_household_member_past_surgical_history.getSelectedColumn();
+
+        if (col == 2) {
+
+            tf_disabilities6.setText(surgery.operation);
+            Date d = new Date();
+
+            try {
+                d = DateType.sf.parse(surgery.date_of_operation);
+                jDateChooser1.setDate(d);
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_household_members.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        if (col == 3) {
+            Window p = (Window) this;
+            Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+            nd.setTitle("");
+            nd.setCallback(new Dlg_confirm_action.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                    closeDialog.ok();
+                    if (household_member.id == 0) {
+                        Initialize_table_household_members.tbl_household_member_past_surgical_history_ALM.remove(row);
+                        Initialize_table_household_members.tbl_household_member_past_surgical_history_M.fireTableDataChanged();
+
+                    } else {
+                        Household_member_past_surgical_history.delete_data(surgery);
+                        String where = " where household_member_no='" + surgery.household_member_no + "'";
+                        Initialize_table_household_members.ret_household_member_past_surgical_history(where);
+                    }
+                    Alert.set(3, "");
+
+                    clear_household_member_past_surgical_history();
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
+
+    }
+
+    private void clear_household_member_past_surgical_history() {
+        tf_disabilities6.setText("");
+        tbl_household_member_past_surgical_history.getSelectionModel().clearSelection();
+        tf_disabilities6.grabFocus();
+    }
+
+    //</editor-fold>
     private void ok() {
 
         //<editor-fold defaultstate="collapsed" desc=" callback ">
@@ -7832,6 +8608,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         String ofw_job = tf_ofw_job.getText();
         String ofw_reason_for_migration = tf_ofw_reason_for_migration.getText();
         String transient_no = household_member.transient_no;
+
         Household_member_employment_status.to_household_member_employment_status employment_status1 = new Household_member_employment_status.to_household_member_employment_status(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, employment_status, employment_type, unemployment_type, company, work_position, work_description, is_looking_for_work, ofw_business_name, ofw_business_address, ofw_mailing_address, ofw_type_of_business, ofw_financial_assistance_amount, ofw_country, ofw_job, ofw_reason_for_migration, transient_no);
 
         int ps_teaching = get_status(cb_ps_teaching);
@@ -7894,8 +8671,130 @@ public class Dlg_household_members extends javax.swing.JDialog {
         for (WebcamPanel panel : panels) {
             panel.stop();
         }
+
+        List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries = Initialize_table_household_members.tbl_household_member_past_surgical_history_ALM;
+
+        //<editor-fold defaultstate="collapsed" desc=" other details ">
+        int experienced_displacement = get_status(jCheckBox16);
+
+        String experienced_displacement_reasons = tf_others_language1.getText();
+        int has_received_programs = get_status(jCheckBox17);
+        String received_programs = tf_others_language2.getText();
+        String received_programs_id_numbers = tf_others_language3.getText();
+        int is_indigenous_people = get_status(jCheckBox18);
+        String indigenous_people_group = tf_others_language4.getText();
+        int is_pregnant = get_status(jCheckBox19);
+        int solo_parent = get_status(jCheckBox20);
+        String relation_to_nuclear_family = "";
+        int has_disability = get_status(jCheckBox27);
+        int has_seeing_problem = get_status(jCheckBox21);
+        int has_hearing_problem = get_status(jCheckBox22);
+        int has_walking_problem = get_status(jCheckBox23);
+        int has_remembering_problem = get_status(jCheckBox25);
+        int has_self_caring_problem = get_status(jCheckBox24);
+        int has_communicating_problem = get_status(jCheckBox26);
+        String hs_present_medical_diseases = tf_medical_diseases.getText();
+        String hs_past_medical_history = tf_disabilities2.getText();
+        String hs_family_history_diseases = tf_disabilities3.getText();
+        int hs_smoking_history_status = 1;
+        if (jCheckBox2.isSelected()) {
+            hs_smoking_history_status = 0;
+        }
+        if (jCheckBox3.isSelected()) {
+            hs_smoking_history_status = 2;
+        }
+        int hs_smoking_history_no_of_packs = FitIn.toInt(tf_disabilities7.getText());
+        int hs_alcohol_history_status = 1;
+        if (jCheckBox5.isSelected()) {
+            hs_alcohol_history_status = 0;
+        }
+        if (jCheckBox6.isSelected()) {
+            hs_alcohol_history_status = 2;
+        }
+        int hs_alcohol_history_no_of_bottles = FitIn.toInt(tf_disabilities8.getText());
+        int hs_ellicit_drugs = 1;
+        if (jCheckBox8.isSelected()) {
+            hs_ellicit_drugs = 0;
+        }
+        String hs_medical_problems = tf_disabilities4.getText();
+        String hs_pwd = tf_disabilities5.getText();
+        String hs_immunization_children_bcg = get_Date(jDateChooser2);
+        String hs_immunization_children_opv1 = get_Date(jDateChooser3);
+        String hs_immunization_children_opv2 = get_Date(jDateChooser4);
+        String hs_immunization_children_opv3 = get_Date(jDateChooser18);
+        String hs_immunization_children_hepa_within_24_hours = get_Date(jDateChooser8);
+        String hs_immunization_children_hepa_greater_24_hours = get_Date(jDateChooser9);
+        String hs_immunization_children_penta1 = get_Date(jDateChooser5);
+        String hs_immunization_children_penta2 = get_Date(jDateChooser6);
+        String hs_immunization_children_penta3 = get_Date(jDateChooser7);
+        String hs_immunization_children_mcv1 = get_Date(jDateChooser10);
+        String hs_immunization_children_mcv2 = get_Date(jDateChooser11);
+        String hs_immunization_children_fic = get_Date(jDateChooser12);
+        String hs_immunization_children_protected_at_birth = get_Date(jDateChooser13);
+        String hs_immunization_children_exclusive_breastfeeding = get_Date(jDateChooser14);
+        String hs_immunization_young_women_hpv = get_Date(jDateChooser15);
+        String hs_immunization_young_women_mmr = get_Date(jDateChooser16);
+        String hs_immunization_young_women_td = get_Date(jDateChooser17);
+        String hs_immunization_pregnant_tt1 = get_Date(jDateChooser22);
+        String hs_immunization_pregnant_tt2 = get_Date(jDateChooser23);
+        String hs_immunization_pregnant_tt3 = get_Date(jDateChooser19);
+        String hs_immunization_pregnant_tt4 = get_Date(jDateChooser20);
+        String hs_immunization_pregnant_tt5 = get_Date(jDateChooser21);
+        String hs_immunization_elderly_pneumococcal_vaccine = get_Date(jDateChooser24);
+        String hs_immunization_elderly_flu_vaccine = get_Date(jDateChooser25);
+        String hs_pregnant_lmp = get_Date(jDateChooser26);
+        String hs_pregnant_edc = get_Date(jDateChooser27);
+        String hs_pregnant_gp = get_Date(jDateChooser28);
+        String hs_pregnant_tpal = get_Date(jDateChooser29);
+        String hs_post_partum_date_of_delivery = get_Date(jDateChooser30);
+        String hs_post_partum_place_of_delivery = tf_disabilities9.getText();
+        String hs_post_partum_type_of_delivery = tf_disabilities10.getText();
+        String hs_post_partum_attended_by = tf_disabilities11.getText();
+        String hs_post_partum_outcome = "0";
+        if (jCheckBox9.isSelected()) {
+            hs_post_partum_outcome = "1";
+        }
+        if (jCheckBox10.isSelected()) {
+            hs_post_partum_outcome = "2";
+        }
+        if (jCheckBox11.isSelected()) {
+            hs_post_partum_outcome = "3";
+        }
+        String hs_post_partum_initiated_breasfeeding = get_Date(jDateChooser31);
+        String hs_post_partum_given_vitamic_a = get_Date(jDateChooser32);
+        String hs_family_planning = tf_disabilities12.getText();
+        String hs_tb_program_checklist = tf_disabilities13.getText();
+        String hs_tb_program_treatment = tf_disabilities14.getText();
+        String hs_tb_program_treatment_outcome = "0";
+        if (jCheckBox12.isSelected()) {
+            hs_tb_program_treatment_outcome = "1";
+        }
+        if (jCheckBox13.isSelected()) {
+            hs_tb_program_treatment_outcome = "2";
+        }
+        if (jCheckBox14.isSelected()) {
+            hs_tb_program_treatment_outcome = "3";
+        }
+        if (jCheckBox15.isSelected()) {
+            hs_tb_program_treatment_outcome = "4";
+        }
+        String hs_natality_birthweight = "";
+        if (jCheckBox28.isSelected()) {
+            hs_natality_birthweight = "1";
+        }
+        if (jCheckBox29.isSelected()) {
+            hs_natality_birthweight = "2";
+        }
+        if (jCheckBox30.isSelected()) {
+            hs_natality_birthweight = "3";
+        }
+        String hs_natality_attended_by = tf_disabilities15.getText();
+        String hs_natality_place_of_delivery = tf_disabilities16.getText();
+        Household_member_other_details.to_household_member_other_details other_details = new Household_member_other_details.to_household_member_other_details(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, transient_no, experienced_displacement, experienced_displacement_reasons, has_received_programs, received_programs, received_programs_id_numbers, is_indigenous_people, indigenous_people_group, is_pregnant, solo_parent, relation_to_nuclear_family, has_disability, has_seeing_problem, has_hearing_problem, has_walking_problem, has_remembering_problem, has_self_caring_problem, has_communicating_problem, hs_present_medical_diseases, hs_past_medical_history, hs_family_history_diseases, hs_smoking_history_status, hs_smoking_history_no_of_packs, hs_alcohol_history_status, hs_alcohol_history_no_of_bottles, hs_ellicit_drugs, hs_medical_problems, hs_pwd, hs_immunization_children_bcg, hs_immunization_children_opv1, hs_immunization_children_opv2, hs_immunization_children_opv3, hs_immunization_children_hepa_within_24_hours, hs_immunization_children_hepa_greater_24_hours, hs_immunization_children_penta1, hs_immunization_children_penta2, hs_immunization_children_penta3, hs_immunization_children_mcv1, hs_immunization_children_mcv2, hs_immunization_children_fic, hs_immunization_children_protected_at_birth, hs_immunization_children_exclusive_breastfeeding, hs_immunization_young_women_hpv, hs_immunization_young_women_mmr, hs_immunization_young_women_td, hs_immunization_pregnant_tt1, hs_immunization_pregnant_tt2, hs_immunization_pregnant_tt3, hs_immunization_pregnant_tt4, hs_immunization_pregnant_tt5, hs_immunization_elderly_pneumococcal_vaccine, hs_immunization_elderly_flu_vaccine, hs_pregnant_lmp, hs_pregnant_edc, hs_pregnant_gp, hs_pregnant_tpal, hs_post_partum_date_of_delivery, hs_post_partum_place_of_delivery, hs_post_partum_type_of_delivery, hs_post_partum_attended_by, hs_post_partum_outcome, hs_post_partum_initiated_breasfeeding, hs_post_partum_given_vitamic_a, hs_family_planning, hs_tb_program_checklist, hs_tb_program_treatment, hs_tb_program_treatment_outcome, hs_natality_birthweight, hs_natality_attended_by, hs_natality_place_of_delivery);
+        //</editor-fold>
+
         if (callback != null) {
-            callback.ok(new CloseDialog(this), new OutputData(fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experience, prefered_works, employment_status1, skills, image, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, house_no, household_no, household_member_no, contact_no));
+            callback.ok(new CloseDialog(this), new OutputData(fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experience, prefered_works, employment_status1, skills, image, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, house_no, household_no, household_member_no, contact_no, surgeries, other_details));
         }
 
         //</editor-fold>
@@ -7907,6 +8806,15 @@ public class Dlg_household_members extends javax.swing.JDialog {
         } else {
             return 0;
         }
+    }
+
+    private String get_Date(JDateChooser chooser) {
+        if (chooser.getDate() == null) {
+            return null;
+        }
+        String date = DateType.sf.format(chooser.getDate());
+        return date;
+
     }
 
     private void update_household_member_basic_infomation() {
@@ -7977,7 +8885,125 @@ public class Dlg_household_members extends javax.swing.JDialog {
         } else {
             is_uploaded = 0;
         }
-        Household_members.to_household_members household_mem = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no);
+        List<Household_member_past_surgical_history.to_household_member_past_surgical_history> surgeries = new ArrayList();
+        //<editor-fold defaultstate="collapsed" desc=" other details ">
+        int experienced_displacement = get_status(jCheckBox16);
+        String experienced_displacement_reasons = tf_others_language1.getText();
+        int has_received_programs = get_status(jCheckBox17);
+        String received_programs = tf_others_language2.getText();
+        String received_programs_id_numbers = tf_others_language3.getText();
+        int is_indigenous_people = get_status(jCheckBox18);
+        String indigenous_people_group = tf_others_language4.getText();
+        int is_pregnant = get_status(jCheckBox19);
+        int solo_parent = get_status(jCheckBox20);
+        String relation_to_nuclear_family = "";
+        int has_disability = get_status(jCheckBox27);
+        int has_seeing_problem = get_status(jCheckBox21);
+        int has_hearing_problem = get_status(jCheckBox22);
+        int has_walking_problem = get_status(jCheckBox23);
+        int has_remembering_problem = get_status(jCheckBox25);
+        int has_self_caring_problem = get_status(jCheckBox24);
+        int has_communicating_problem = get_status(jCheckBox26);
+        String hs_present_medical_diseases = tf_medical_diseases.getText();
+        String hs_past_medical_history = tf_disabilities2.getText();
+        String hs_family_history_diseases = tf_disabilities3.getText();
+        int hs_smoking_history_status = 1;
+        if (jCheckBox2.isSelected()) {
+            hs_smoking_history_status = 0;
+        }
+        if (jCheckBox3.isSelected()) {
+            hs_smoking_history_status = 2;
+        }
+        int hs_smoking_history_no_of_packs = FitIn.toInt(tf_disabilities7.getText());
+        int hs_alcohol_history_status = 1;
+        if (jCheckBox5.isSelected()) {
+            hs_alcohol_history_status = 0;
+        }
+        if (jCheckBox6.isSelected()) {
+            hs_alcohol_history_status = 2;
+        }
+        int hs_alcohol_history_no_of_bottles = FitIn.toInt(tf_disabilities8.getText());
+        int hs_ellicit_drugs = 1;
+        if (jCheckBox8.isSelected()) {
+            hs_ellicit_drugs = 0;
+        }
+        String hs_medical_problems = tf_disabilities4.getText();
+        String hs_pwd = tf_disabilities5.getText();
+        String hs_immunization_children_bcg = get_Date(jDateChooser2);
+        String hs_immunization_children_opv1 = get_Date(jDateChooser3);
+        String hs_immunization_children_opv2 = get_Date(jDateChooser4);
+        String hs_immunization_children_opv3 = get_Date(jDateChooser18);
+        String hs_immunization_children_hepa_within_24_hours = get_Date(jDateChooser8);
+        String hs_immunization_children_hepa_greater_24_hours = get_Date(jDateChooser9);
+        String hs_immunization_children_penta1 = get_Date(jDateChooser5);
+        String hs_immunization_children_penta2 = get_Date(jDateChooser6);
+        String hs_immunization_children_penta3 = get_Date(jDateChooser7);
+        String hs_immunization_children_mcv1 = get_Date(jDateChooser10);
+        String hs_immunization_children_mcv2 = get_Date(jDateChooser11);
+        String hs_immunization_children_fic = get_Date(jDateChooser12);
+        String hs_immunization_children_protected_at_birth = get_Date(jDateChooser13);
+        String hs_immunization_children_exclusive_breastfeeding = get_Date(jDateChooser14);
+        String hs_immunization_young_women_hpv = get_Date(jDateChooser15);
+        String hs_immunization_young_women_mmr = get_Date(jDateChooser16);
+        String hs_immunization_young_women_td = get_Date(jDateChooser17);
+        String hs_immunization_pregnant_tt1 = get_Date(jDateChooser22);
+        String hs_immunization_pregnant_tt2 = get_Date(jDateChooser23);
+        String hs_immunization_pregnant_tt3 = get_Date(jDateChooser19);
+        String hs_immunization_pregnant_tt4 = get_Date(jDateChooser20);
+        String hs_immunization_pregnant_tt5 = get_Date(jDateChooser21);
+        String hs_immunization_elderly_pneumococcal_vaccine = get_Date(jDateChooser24);
+        String hs_immunization_elderly_flu_vaccine = get_Date(jDateChooser25);
+        String hs_pregnant_lmp = get_Date(jDateChooser26);
+        String hs_pregnant_edc = get_Date(jDateChooser27);
+        String hs_pregnant_gp = get_Date(jDateChooser28);
+        String hs_pregnant_tpal = get_Date(jDateChooser29);
+        String hs_post_partum_date_of_delivery = get_Date(jDateChooser30);
+        String hs_post_partum_place_of_delivery = tf_disabilities9.getText();
+        String hs_post_partum_type_of_delivery = tf_disabilities10.getText();
+        String hs_post_partum_attended_by = tf_disabilities11.getText();
+        String hs_post_partum_outcome = "0";
+        if (jCheckBox9.isSelected()) {
+            hs_post_partum_outcome = "1";
+        }
+        if (jCheckBox10.isSelected()) {
+            hs_post_partum_outcome = "2";
+        }
+        if (jCheckBox11.isSelected()) {
+            hs_post_partum_outcome = "3";
+        }
+        String hs_post_partum_initiated_breasfeeding = get_Date(jDateChooser31);
+        String hs_post_partum_given_vitamic_a = get_Date(jDateChooser32);
+        String hs_family_planning = tf_disabilities12.getText();
+        String hs_tb_program_checklist = tf_disabilities13.getText();
+        String hs_tb_program_treatment = tf_disabilities14.getText();
+        String hs_tb_program_treatment_outcome = "0";
+        if (jCheckBox12.isSelected()) {
+            hs_tb_program_treatment_outcome = "1";
+        }
+        if (jCheckBox13.isSelected()) {
+            hs_tb_program_treatment_outcome = "2";
+        }
+        if (jCheckBox14.isSelected()) {
+            hs_tb_program_treatment_outcome = "3";
+        }
+        if (jCheckBox15.isSelected()) {
+            hs_tb_program_treatment_outcome = "4";
+        }
+        String hs_natality_birthweight = "";
+        if (jCheckBox28.isSelected()) {
+            hs_natality_birthweight = "1";
+        }
+        if (jCheckBox29.isSelected()) {
+            hs_natality_birthweight = "2";
+        }
+        if (jCheckBox30.isSelected()) {
+            hs_natality_birthweight = "3";
+        }
+        String hs_natality_attended_by = tf_disabilities15.getText();
+        String hs_natality_place_of_delivery = tf_disabilities16.getText();
+        Household_member_other_details.to_household_member_other_details other_details = new Household_member_other_details.to_household_member_other_details(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, transient_no, experienced_displacement, experienced_displacement_reasons, has_received_programs, received_programs, received_programs_id_numbers, is_indigenous_people, indigenous_people_group, is_pregnant, solo_parent, relation_to_nuclear_family, has_disability, has_seeing_problem, has_hearing_problem, has_walking_problem, has_remembering_problem, has_self_caring_problem, has_communicating_problem, hs_present_medical_diseases, hs_past_medical_history, hs_family_history_diseases, hs_smoking_history_status, hs_smoking_history_no_of_packs, hs_alcohol_history_status, hs_alcohol_history_no_of_bottles, hs_ellicit_drugs, hs_medical_problems, hs_pwd, hs_immunization_children_bcg, hs_immunization_children_opv1, hs_immunization_children_opv2, hs_immunization_children_opv3, hs_immunization_children_hepa_within_24_hours, hs_immunization_children_hepa_greater_24_hours, hs_immunization_children_penta1, hs_immunization_children_penta2, hs_immunization_children_penta3, hs_immunization_children_mcv1, hs_immunization_children_mcv2, hs_immunization_children_fic, hs_immunization_children_protected_at_birth, hs_immunization_children_exclusive_breastfeeding, hs_immunization_young_women_hpv, hs_immunization_young_women_mmr, hs_immunization_young_women_td, hs_immunization_pregnant_tt1, hs_immunization_pregnant_tt2, hs_immunization_pregnant_tt3, hs_immunization_pregnant_tt4, hs_immunization_pregnant_tt5, hs_immunization_elderly_pneumococcal_vaccine, hs_immunization_elderly_flu_vaccine, hs_pregnant_lmp, hs_pregnant_edc, hs_pregnant_gp, hs_pregnant_tpal, hs_post_partum_date_of_delivery, hs_post_partum_place_of_delivery, hs_post_partum_type_of_delivery, hs_post_partum_attended_by, hs_post_partum_outcome, hs_post_partum_initiated_breasfeeding, hs_post_partum_given_vitamic_a, hs_family_planning, hs_tb_program_checklist, hs_tb_program_treatment, hs_tb_program_treatment_outcome, hs_natality_birthweight, hs_natality_attended_by, hs_natality_place_of_delivery);
+        //</editor-fold>
+        Household_members.to_household_members household_mem = new Household_members.to_household_members(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, gender, marital_status, bday, occupancy_years, height, weight, birth_place, present_address, relation_to_household, religion, citizenship, email_address, blood_type, languages_spoken, is_registered_voter, voters_id_no, health_statuses, health_medications, educational_backgrounds, vocational_experiences, competence_certificates, licenses, work_experiences, prefered_works, employment_status, skills, image, transient_no, contact_no, surgeries, other_details);
         Household_members.update_data(household_mem);
         System.out.println("Status: " + status);
         System.out.println("Uploaded: " + is_uploaded);
@@ -7987,6 +9013,155 @@ public class Dlg_household_members extends javax.swing.JDialog {
         }
         //</editor-fold>
 
+    }
+
+    private void update_other_details() {
+        //<editor-fold defaultstate="collapsed" desc=" other details ">
+        int id = 0;
+        String created_at = "";
+        String updated_at = "";
+        String created_by = "";
+        String updated_by = "";
+        String region = "";
+        String region_id = "";
+        String province = "";
+        String province_id = "";
+        String city = "";
+        String city_id = "";
+        String barangay = "";
+        String barangay_id = "";
+        String purok = "";
+        String purok_id = "";
+        int status = 0;
+        int is_uploaded = 0;
+
+        String house_no = "";
+        String household_no = "";
+        String household_member_no = "";
+        String fname = "";
+        String mname = "";
+        String lname = "";
+        String sname = "";
+        String transient_no = household_member.transient_no;
+        int experienced_displacement = get_status(jCheckBox16);
+
+        String experienced_displacement_reasons = tf_others_language1.getText();
+        int has_received_programs = get_status(jCheckBox17);
+        String received_programs = tf_others_language2.getText();
+        String received_programs_id_numbers = tf_others_language3.getText();
+        int is_indigenous_people = get_status(jCheckBox18);
+        String indigenous_people_group = tf_others_language4.getText();
+        int is_pregnant = get_status(jCheckBox19);
+        int solo_parent = get_status(jCheckBox20);
+        String relation_to_nuclear_family = "";
+        int has_disability = get_status(jCheckBox27);
+        int has_seeing_problem = get_status(jCheckBox21);
+        int has_hearing_problem = get_status(jCheckBox22);
+        int has_walking_problem = get_status(jCheckBox23);
+        int has_remembering_problem = get_status(jCheckBox25);
+        int has_self_caring_problem = get_status(jCheckBox24);
+        int has_communicating_problem = get_status(jCheckBox26);
+        String hs_present_medical_diseases = tf_medical_diseases.getText();
+        String hs_past_medical_history = tf_disabilities2.getText();
+        String hs_family_history_diseases = tf_disabilities3.getText();
+        int hs_smoking_history_status = 1;
+        if (jCheckBox2.isSelected()) {
+            hs_smoking_history_status = 0;
+        }
+        if (jCheckBox3.isSelected()) {
+            hs_smoking_history_status = 2;
+        }
+        int hs_smoking_history_no_of_packs = FitIn.toInt(tf_disabilities7.getText());
+        int hs_alcohol_history_status = 1;
+        if (jCheckBox5.isSelected()) {
+            hs_alcohol_history_status = 0;
+        }
+        if (jCheckBox6.isSelected()) {
+            hs_alcohol_history_status = 2;
+        }
+        int hs_alcohol_history_no_of_bottles = FitIn.toInt(tf_disabilities8.getText());
+        int hs_ellicit_drugs = 1;
+        if (jCheckBox8.isSelected()) {
+            hs_ellicit_drugs = 0;
+        }
+        String hs_medical_problems = tf_disabilities4.getText();
+        String hs_pwd = tf_disabilities5.getText();
+        String hs_immunization_children_bcg = get_Date(jDateChooser2);
+        String hs_immunization_children_opv1 = get_Date(jDateChooser3);
+        String hs_immunization_children_opv2 = get_Date(jDateChooser4);
+        String hs_immunization_children_opv3 = get_Date(jDateChooser18);
+        String hs_immunization_children_hepa_within_24_hours = get_Date(jDateChooser8);
+        String hs_immunization_children_hepa_greater_24_hours = get_Date(jDateChooser9);
+        String hs_immunization_children_penta1 = get_Date(jDateChooser5);
+        String hs_immunization_children_penta2 = get_Date(jDateChooser6);
+        String hs_immunization_children_penta3 = get_Date(jDateChooser7);
+        String hs_immunization_children_mcv1 = get_Date(jDateChooser10);
+        String hs_immunization_children_mcv2 = get_Date(jDateChooser11);
+        String hs_immunization_children_fic = get_Date(jDateChooser12);
+        String hs_immunization_children_protected_at_birth = get_Date(jDateChooser13);
+        String hs_immunization_children_exclusive_breastfeeding = get_Date(jDateChooser14);
+        String hs_immunization_young_women_hpv = get_Date(jDateChooser15);
+        String hs_immunization_young_women_mmr = get_Date(jDateChooser16);
+        String hs_immunization_young_women_td = get_Date(jDateChooser17);
+        String hs_immunization_pregnant_tt1 = get_Date(jDateChooser22);
+        String hs_immunization_pregnant_tt2 = get_Date(jDateChooser23);
+        String hs_immunization_pregnant_tt3 = get_Date(jDateChooser19);
+        String hs_immunization_pregnant_tt4 = get_Date(jDateChooser20);
+        String hs_immunization_pregnant_tt5 = get_Date(jDateChooser21);
+        String hs_immunization_elderly_pneumococcal_vaccine = get_Date(jDateChooser24);
+        String hs_immunization_elderly_flu_vaccine = get_Date(jDateChooser25);
+        String hs_pregnant_lmp = get_Date(jDateChooser26);
+        String hs_pregnant_edc = get_Date(jDateChooser27);
+        String hs_pregnant_gp = get_Date(jDateChooser28);
+        String hs_pregnant_tpal = get_Date(jDateChooser29);
+        String hs_post_partum_date_of_delivery = get_Date(jDateChooser30);
+        String hs_post_partum_place_of_delivery = tf_disabilities9.getText();
+        String hs_post_partum_type_of_delivery = tf_disabilities10.getText();
+        String hs_post_partum_attended_by = tf_disabilities11.getText();
+        String hs_post_partum_outcome = "0";
+        if (jCheckBox9.isSelected()) {
+            hs_post_partum_outcome = "1";
+        }
+        if (jCheckBox10.isSelected()) {
+            hs_post_partum_outcome = "2";
+        }
+        if (jCheckBox11.isSelected()) {
+            hs_post_partum_outcome = "3";
+        }
+        String hs_post_partum_initiated_breasfeeding = get_Date(jDateChooser31);
+        String hs_post_partum_given_vitamic_a = get_Date(jDateChooser32);
+        String hs_family_planning = tf_disabilities12.getText();
+        String hs_tb_program_checklist = tf_disabilities13.getText();
+        String hs_tb_program_treatment = tf_disabilities14.getText();
+        String hs_tb_program_treatment_outcome = "0";
+        if (jCheckBox12.isSelected()) {
+            hs_tb_program_treatment_outcome = "1";
+        }
+        if (jCheckBox13.isSelected()) {
+            hs_tb_program_treatment_outcome = "2";
+        }
+        if (jCheckBox14.isSelected()) {
+            hs_tb_program_treatment_outcome = "3";
+        }
+        if (jCheckBox15.isSelected()) {
+            hs_tb_program_treatment_outcome = "4";
+        }
+        String hs_natality_birthweight = "";
+        if (jCheckBox28.isSelected()) {
+            hs_natality_birthweight = "1";
+        }
+        if (jCheckBox29.isSelected()) {
+            hs_natality_birthweight = "2";
+        }
+        if (jCheckBox30.isSelected()) {
+            hs_natality_birthweight = "3";
+        }
+        String hs_natality_attended_by = tf_disabilities15.getText();
+        String hs_natality_place_of_delivery = tf_disabilities16.getText();
+        Household_member_other_details.to_household_member_other_details other_details = new Household_member_other_details.to_household_member_other_details(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, household_member_no, fname, mname, lname, sname, transient_no, experienced_displacement, experienced_displacement_reasons, has_received_programs, received_programs, received_programs_id_numbers, is_indigenous_people, indigenous_people_group, is_pregnant, solo_parent, relation_to_nuclear_family, has_disability, has_seeing_problem, has_hearing_problem, has_walking_problem, has_remembering_problem, has_self_caring_problem, has_communicating_problem, hs_present_medical_diseases, hs_past_medical_history, hs_family_history_diseases, hs_smoking_history_status, hs_smoking_history_no_of_packs, hs_alcohol_history_status, hs_alcohol_history_no_of_bottles, hs_ellicit_drugs, hs_medical_problems, hs_pwd, hs_immunization_children_bcg, hs_immunization_children_opv1, hs_immunization_children_opv2, hs_immunization_children_opv3, hs_immunization_children_hepa_within_24_hours, hs_immunization_children_hepa_greater_24_hours, hs_immunization_children_penta1, hs_immunization_children_penta2, hs_immunization_children_penta3, hs_immunization_children_mcv1, hs_immunization_children_mcv2, hs_immunization_children_fic, hs_immunization_children_protected_at_birth, hs_immunization_children_exclusive_breastfeeding, hs_immunization_young_women_hpv, hs_immunization_young_women_mmr, hs_immunization_young_women_td, hs_immunization_pregnant_tt1, hs_immunization_pregnant_tt2, hs_immunization_pregnant_tt3, hs_immunization_pregnant_tt4, hs_immunization_pregnant_tt5, hs_immunization_elderly_pneumococcal_vaccine, hs_immunization_elderly_flu_vaccine, hs_pregnant_lmp, hs_pregnant_edc, hs_pregnant_gp, hs_pregnant_tpal, hs_post_partum_date_of_delivery, hs_post_partum_place_of_delivery, hs_post_partum_type_of_delivery, hs_post_partum_attended_by, hs_post_partum_outcome, hs_post_partum_initiated_breasfeeding, hs_post_partum_given_vitamic_a, hs_family_planning, hs_tb_program_checklist, hs_tb_program_treatment, hs_tb_program_treatment_outcome, hs_natality_birthweight, hs_natality_attended_by, hs_natality_place_of_delivery);
+        Household_member_other_details.update_data(other_details);
+        Alert.set(2, "");
+        //</editor-fold>
     }
 
     private void update_household_member_employment_status() {
@@ -8237,15 +9412,19 @@ public class Dlg_household_members extends javax.swing.JDialog {
         }
         if (jButton1.getText().equalsIgnoreCase("Start")) {
             jButton1.setText("Capture");
-            for (Webcam webcam : webcams) {
-                webcam.setViewSize(new Dimension(320, 240));
+            if (!webcams.isEmpty()) {
+                Webcam webcam = webcams.get(0);
+                System.out.println("Test - 1");
+                System.out.println("Sizes: " + Arrays.asList(webcam.getViewSizes()));
+                webcam.setViewSize(WebcamResolution.VGA.getSize());
                 WebcamPanel panel = new WebcamPanel(webcam, size, false);
                 panel.setSize(new Dimension(jPanel2.getWidth(), jPanel2.getHeight()));
                 panel.setFPSDisplayed(true);
-                panel.setFillArea(true);
+                panel.setDisplayDebugInfo(true);
+                panel.setImageSizeDisplayed(true);
+//              panel.setMirrored(true);
                 panels.add(panel);
             }
-
             jPanel16.setLayout(new BorderLayout());
             for (WebcamPanel panel : panels) {
                 jPanel16.add(panel);
