@@ -44,6 +44,13 @@ public class Initialize_household_member_field_types {
     static List<Medical_diseases.to_medical_diseases> medical_diseases = new ArrayList();
     static List<Mental_problems.to_mental_problems> mental_problems = new ArrayList();
     static List<Marital_statuses.to_marital_statuses> displacements = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> programs = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> indigenous = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> family_planning = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> tb_program = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> tb_program_treatment = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> natality_attended_by = new ArrayList();
+    static List<Marital_statuses.to_marital_statuses> natality_place_of_delivery = new ArrayList();
 
     public static void ret_data_disabilities() {
         disabilities = Disabilities.ret_data(" order by disability asc ");
@@ -182,6 +189,215 @@ public class Initialize_household_member_field_types {
         displacements.add(d2);
         displacements.add(d3);
         displacements.add(d4);
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" programs and services ">
+        Marital_statuses.to_marital_statuses ps1 = new Marital_statuses.to_marital_statuses(0, "Scholarship");
+        Marital_statuses.to_marital_statuses ps2 = new Marital_statuses.to_marital_statuses(0, "Day Care Service/ECCD");
+        Marital_statuses.to_marital_statuses ps3 = new Marital_statuses.to_marital_statuses(0, "Supplemental Feeding");
+        Marital_statuses.to_marital_statuses ps4 = new Marital_statuses.to_marital_statuses(0, "Subsidized Rice");
+        Marital_statuses.to_marital_statuses ps5 = new Marital_statuses.to_marital_statuses(0, "Philhealth");
+        Marital_statuses.to_marital_statuses ps6 = new Marital_statuses.to_marital_statuses(0, "Skills/Livelihood Training");
+        Marital_statuses.to_marital_statuses ps7 = new Marital_statuses.to_marital_statuses(0, "Housing");
+        Marital_statuses.to_marital_statuses ps8 = new Marital_statuses.to_marital_statuses(0, "Microcredit");
+        Marital_statuses.to_marital_statuses ps9 = new Marital_statuses.to_marital_statuses(0, "Self-Employment Assistance");
+        Marital_statuses.to_marital_statuses ps10 = new Marital_statuses.to_marital_statuses(0, "Pantawid Pamilya");
+        programs.add(ps1);
+        programs.add(ps2);
+        programs.add(ps3);
+        programs.add(ps4);
+        programs.add(ps5);
+        programs.add(ps6);
+        programs.add(ps7);
+        programs.add(ps8);
+        programs.add(ps9);
+        programs.add(ps10);
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" indigenous ">
+        Marital_statuses.to_marital_statuses ind1 = new Marital_statuses.to_marital_statuses(0, "Aeta");
+        Marital_statuses.to_marital_statuses ind2 = new Marital_statuses.to_marital_statuses(0, "Agta Casiguran");
+        Marital_statuses.to_marital_statuses ind3 = new Marital_statuses.to_marital_statuses(0, "Agta Cayagan");
+        Marital_statuses.to_marital_statuses ind4 = new Marital_statuses.to_marital_statuses(0, "Alangan");
+        Marital_statuses.to_marital_statuses ind5 = new Marital_statuses.to_marital_statuses(0, "Apayao Isnag");
+        Marital_statuses.to_marital_statuses ind6 = new Marital_statuses.to_marital_statuses(0, "Ata du sud");
+        Marital_statuses.to_marital_statuses ind7 = new Marital_statuses.to_marital_statuses(0, "Ata Manobo");
+        Marital_statuses.to_marital_statuses ind8 = new Marital_statuses.to_marital_statuses(0, "Bagobo");
+        Marital_statuses.to_marital_statuses ind9 = new Marital_statuses.to_marital_statuses(0, "Batak");
+        Marital_statuses.to_marital_statuses ind10 = new Marital_statuses.to_marital_statuses(0, "Blaan");
+        Marital_statuses.to_marital_statuses ind11 = new Marital_statuses.to_marital_statuses(0, "Blit (Manobo Cotabato group)");
+        Marital_statuses.to_marital_statuses ind12 = new Marital_statuses.to_marital_statuses(0, "Bontok");
+        Marital_statuses.to_marital_statuses ind13 = new Marital_statuses.to_marital_statuses(0, "Buhid");
+        Marital_statuses.to_marital_statuses ind14 = new Marital_statuses.to_marital_statuses(0, "Bukidnon");
+        Marital_statuses.to_marital_statuses ind15 = new Marital_statuses.to_marital_statuses(0, "Gaddang");
+        Marital_statuses.to_marital_statuses ind16 = new Marital_statuses.to_marital_statuses(0, "Hanunòòo");
+        Marital_statuses.to_marital_statuses ind17 = new Marital_statuses.to_marital_statuses(0, "Ibanag");
+        Marital_statuses.to_marital_statuses ind18 = new Marital_statuses.to_marital_statuses(0, "Ifugao");
+        Marital_statuses.to_marital_statuses ind19 = new Marital_statuses.to_marital_statuses(0, "Igorot");
+        Marital_statuses.to_marital_statuses ind20 = new Marital_statuses.to_marital_statuses(0, "Ilanon Manobo");
+        Marital_statuses.to_marital_statuses ind21 = new Marital_statuses.to_marital_statuses(0, "Ilianen");
+        Marital_statuses.to_marital_statuses ind22 = new Marital_statuses.to_marital_statuses(0, "Ilongot");
+
+        Marital_statuses.to_marital_statuses ind23 = new Marital_statuses.to_marital_statuses(0, "Iraya");
+        Marital_statuses.to_marital_statuses ind24 = new Marital_statuses.to_marital_statuses(0, "Isneg");
+        Marital_statuses.to_marital_statuses ind25 = new Marital_statuses.to_marital_statuses(0, "Itneg");
+        Marital_statuses.to_marital_statuses ind26 = new Marital_statuses.to_marital_statuses(0, "Itneg (Tingian)");
+        Marital_statuses.to_marital_statuses ind27 = new Marital_statuses.to_marital_statuses(0, "Kalinga");
+        Marital_statuses.to_marital_statuses ind28 = new Marital_statuses.to_marital_statuses(0, "Kankanay");
+        Marital_statuses.to_marital_statuses ind29 = new Marital_statuses.to_marital_statuses(0, "Magahat Bukidnon");
+        Marital_statuses.to_marital_statuses ind30 = new Marital_statuses.to_marital_statuses(0, "Magindanao");
+        Marital_statuses.to_marital_statuses ind31 = new Marital_statuses.to_marital_statuses(0, "Malaweg");
+        Marital_statuses.to_marital_statuses ind32 = new Marital_statuses.to_marital_statuses(0, "Mamanwa");
+
+        Marital_statuses.to_marital_statuses ind33 = new Marital_statuses.to_marital_statuses(0, "Mandaya Cataelano");
+        Marital_statuses.to_marital_statuses ind34 = new Marital_statuses.to_marital_statuses(0, "Mandaya Sangab");
+        Marital_statuses.to_marital_statuses ind35 = new Marital_statuses.to_marital_statuses(0, "Mangwanga");
+        Marital_statuses.to_marital_statuses ind36 = new Marital_statuses.to_marital_statuses(0, "Manobo");
+        Marital_statuses.to_marital_statuses ind37 = new Marital_statuses.to_marital_statuses(0, "Manobo Ata");
+        Marital_statuses.to_marital_statuses ind38 = new Marital_statuses.to_marital_statuses(0, "Manobo-Cotabato");
+        Marital_statuses.to_marital_statuses ind39 = new Marital_statuses.to_marital_statuses(0, "Mansaka");
+        Marital_statuses.to_marital_statuses ind40 = new Marital_statuses.to_marital_statuses(0, "Negritos");
+        Marital_statuses.to_marital_statuses ind41 = new Marital_statuses.to_marital_statuses(0, "Pakkak Gadang");
+        Marital_statuses.to_marital_statuses ind42 = new Marital_statuses.to_marital_statuses(0, "Palawan");
+        Marital_statuses.to_marital_statuses ind43 = new Marital_statuses.to_marital_statuses(0, "Paranan");
+        Marital_statuses.to_marital_statuses ind44 = new Marital_statuses.to_marital_statuses(0, "Pugot N. Apayao");
+        Marital_statuses.to_marital_statuses ind45 = new Marital_statuses.to_marital_statuses(0, "Ratagnon Loktanon");
+        Marital_statuses.to_marital_statuses ind46 = new Marital_statuses.to_marital_statuses(0, "Subanon");
+        Marital_statuses.to_marital_statuses ind47 = new Marital_statuses.to_marital_statuses(0, "Subanon Tuboy Salog");
+        Marital_statuses.to_marital_statuses ind48 = new Marital_statuses.to_marital_statuses(0, "Tadyawan");
+        Marital_statuses.to_marital_statuses ind49 = new Marital_statuses.to_marital_statuses(0, "Tagabawa");
+        Marital_statuses.to_marital_statuses ind50 = new Marital_statuses.to_marital_statuses(0, "Tagbanwa");
+        Marital_statuses.to_marital_statuses ind51 = new Marital_statuses.to_marital_statuses(0, "Tasaday (Manobo Cotabato)");
+        Marital_statuses.to_marital_statuses ind52 = new Marital_statuses.to_marital_statuses(0, "Taubuid (Batangan)");
+        Marital_statuses.to_marital_statuses ind53 = new Marital_statuses.to_marital_statuses(0, "Taut batu");
+        Marital_statuses.to_marital_statuses ind54 = new Marital_statuses.to_marital_statuses(0, "Tboli");
+        Marital_statuses.to_marital_statuses ind55 = new Marital_statuses.to_marital_statuses(0, "Tigwa");
+        Marital_statuses.to_marital_statuses ind56 = new Marital_statuses.to_marital_statuses(0, "Tinggian (Itneg)");
+        Marital_statuses.to_marital_statuses ind57 = new Marital_statuses.to_marital_statuses(0, "Tiruray");
+        Marital_statuses.to_marital_statuses ind58 = new Marital_statuses.to_marital_statuses(0, "Ubo Manobo");
+
+        indigenous.add(ind1);
+        indigenous.add(ind2);
+        indigenous.add(ind3);
+        indigenous.add(ind4);
+        indigenous.add(ind5);
+        indigenous.add(ind6);
+        indigenous.add(ind7);
+        indigenous.add(ind8);
+        indigenous.add(ind9);
+        indigenous.add(ind10);
+
+        indigenous.add(ind11);
+        indigenous.add(ind12);
+        indigenous.add(ind13);
+        indigenous.add(ind14);
+        indigenous.add(ind15);
+        indigenous.add(ind16);
+        indigenous.add(ind17);
+        indigenous.add(ind18);
+        indigenous.add(ind19);
+        indigenous.add(ind20);
+
+        indigenous.add(ind21);
+        indigenous.add(ind22);
+        indigenous.add(ind23);
+        indigenous.add(ind24);
+        indigenous.add(ind25);
+        indigenous.add(ind26);
+        indigenous.add(ind27);
+        indigenous.add(ind28);
+        indigenous.add(ind29);
+        indigenous.add(ind30);
+
+        indigenous.add(ind31);
+        indigenous.add(ind32);
+        indigenous.add(ind33);
+        indigenous.add(ind34);
+        indigenous.add(ind35);
+        indigenous.add(ind36);
+        indigenous.add(ind37);
+        indigenous.add(ind38);
+        indigenous.add(ind39);
+        indigenous.add(ind40);
+
+        indigenous.add(ind41);
+        indigenous.add(ind42);
+        indigenous.add(ind43);
+        indigenous.add(ind44);
+        indigenous.add(ind45);
+        indigenous.add(ind46);
+        indigenous.add(ind47);
+        indigenous.add(ind48);
+        indigenous.add(ind49);
+        indigenous.add(ind50);
+
+        indigenous.add(ind51);
+        indigenous.add(ind52);
+        indigenous.add(ind53);
+        indigenous.add(ind54);
+        indigenous.add(ind55);
+        indigenous.add(ind56);
+        indigenous.add(ind57);
+        indigenous.add(ind58);
+
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" family planning ">
+        Marital_statuses.to_marital_statuses fp1 = new Marital_statuses.to_marital_statuses(0, "Pills");
+        Marital_statuses.to_marital_statuses fp2 = new Marital_statuses.to_marital_statuses(0, "IUD");
+        Marital_statuses.to_marital_statuses fp3 = new Marital_statuses.to_marital_statuses(0, "DMPA");
+        Marital_statuses.to_marital_statuses fp4 = new Marital_statuses.to_marital_statuses(0, "LAM");
+        Marital_statuses.to_marital_statuses fp5 = new Marital_statuses.to_marital_statuses(0, "BTL");
+        Marital_statuses.to_marital_statuses fp6 = new Marital_statuses.to_marital_statuses(0, "VAS");
+        Marital_statuses.to_marital_statuses fp7 = new Marital_statuses.to_marital_statuses(0, "Condom");
+        Marital_statuses.to_marital_statuses fp8 = new Marital_statuses.to_marital_statuses(0, "Natural");
+        family_planning.add(fp1);
+        family_planning.add(fp2);
+        family_planning.add(fp2);
+        family_planning.add(fp4);
+        family_planning.add(fp5);
+        family_planning.add(fp6);
+        family_planning.add(fp7);
+        family_planning.add(fp8);
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" TB Program ">
+        Marital_statuses.to_marital_statuses tbpt1 = new Marital_statuses.to_marital_statuses(0, "SCC Government");
+        Marital_statuses.to_marital_statuses tbpt2 = new Marital_statuses.to_marital_statuses(0, "SCC Private");
+
+        tb_program_treatment.add(tbpt1);
+        tb_program_treatment.add(tbpt1);
+
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" TB Program Treatment">
+        Marital_statuses.to_marital_statuses tbp1 = new Marital_statuses.to_marital_statuses(0, "Underwent DSSM");
+        Marital_statuses.to_marital_statuses tbp2 = new Marital_statuses.to_marital_statuses(0, "Smear Positive");
+        Marital_statuses.to_marital_statuses tbp3 = new Marital_statuses.to_marital_statuses(0, "Smear Negative");
+        Marital_statuses.to_marital_statuses tbp4 = new Marital_statuses.to_marital_statuses(0, "X-ray Result");
+        tb_program.add(tbp1);
+        tb_program.add(tbp2);
+        tb_program.add(tbp3);
+        tb_program.add(tbp4);
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Natality Treatment">
+        Marital_statuses.to_marital_statuses nab1 = new Marital_statuses.to_marital_statuses(0, "M.D.");
+        Marital_statuses.to_marital_statuses nab2 = new Marital_statuses.to_marital_statuses(0, "Nurse");
+        Marital_statuses.to_marital_statuses nab3 = new Marital_statuses.to_marital_statuses(0, "Midwife");
+        Marital_statuses.to_marital_statuses nab4 = new Marital_statuses.to_marital_statuses(0, "Trained Hilots");
+        Marital_statuses.to_marital_statuses nab5 = new Marital_statuses.to_marital_statuses(0, "Unknown");
+        natality_attended_by.add(nab1);
+        natality_attended_by.add(nab2);
+        natality_attended_by.add(nab3);
+        natality_attended_by.add(nab4);
+        natality_attended_by.add(nab5);
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Natality Place">
+        Marital_statuses.to_marital_statuses np1 = new Marital_statuses.to_marital_statuses(0, "House");
+        Marital_statuses.to_marital_statuses np2 = new Marital_statuses.to_marital_statuses(0, "Lying-In");
+        Marital_statuses.to_marital_statuses np3 = new Marital_statuses.to_marital_statuses(0, "Hospital");
+        Marital_statuses.to_marital_statuses np4 = new Marital_statuses.to_marital_statuses(0, "Others");
+
+        natality_place_of_delivery.add(np1);
+        natality_place_of_delivery.add(np2);
+        natality_place_of_delivery.add(np3);
+        natality_place_of_delivery.add(np4);
+
         //</editor-fold>
     }
 
@@ -619,6 +835,391 @@ public class Initialize_household_member_field_types {
             @Override
             public void ok(TableCheckBoxRenderer.OutputData data) {
                 Marital_statuses.to_marital_statuses to = displacements.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" Programs ">
+    public static void init_programs(final JTextField tf) {
+
+        Object[][] obj = new Object[programs.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : programs) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = programs.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" indigenous ">
+    public static void init_indigenous(final JTextField tf) {
+
+        Object[][] obj = new Object[indigenous.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : indigenous) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = indigenous.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" family planning ">
+    public static void init_family_planning(final JTextField tf) {
+
+        Object[][] obj = new Object[family_planning.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : family_planning) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = family_planning.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" TB Program">
+    public static void init_tb_program(final JTextField tf) {
+
+        Object[][] obj = new Object[tb_program.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : tb_program) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = tb_program.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" TB Program Treatment">
+    public static void init_tb_program_treatment(final JTextField tf) {
+
+        Object[][] obj = new Object[tb_program_treatment.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : tb_program_treatment) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = tb_program_treatment.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" Natality Attended by">
+    public static void init_natality_attended_by(final JTextField tf) {
+
+        Object[][] obj = new Object[natality_attended_by.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : natality_attended_by) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = natality_attended_by.get(data.selected_row);
+                Field.Combo field = (Field.Combo) tf;
+                field.setText(to.marital_status);
+                field.setId("" + to.id);
+                String values = "";
+                List<CheckBox.list> datas = data.output;
+                int i = 0;
+                for (CheckBox.list l : datas) {
+                    if (l.selected == true) {
+
+                        if (i == 0) {
+                            values = l.stmt;
+                        } else {
+                            values = values + "," + l.stmt;
+                        }
+                        i++;
+                    }
+
+                }
+                tf.setText(values);
+
+            }
+        });
+    }
+
+    //</editor-fold> 
+    //<editor-fold defaultstate="collapsed" desc=" Natality Place">
+    public static void init_natality_place_of_delivery(final JTextField tf) {
+
+        Object[][] obj = new Object[natality_place_of_delivery.size()][2];
+        int i = 0;
+        String[] stmt = tf.getText().split(",");
+        for (Marital_statuses.to_marital_statuses to : natality_place_of_delivery) {
+            int exist = 0;
+            for (String s : stmt) {
+                if (s.equalsIgnoreCase(to.marital_status)) {
+                    exist = 1;
+                }
+            }
+            if (exist == 1) {
+                obj[i][0] = true;
+            } else {
+                obj[i][0] = false;
+            }
+            obj[i][1] = " " + to.marital_status;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {30, tf.getWidth()};
+        String[] col_names = {"", "Name"};
+        TableCheckBoxRenderer tr = new TableCheckBoxRenderer();
+        TableCheckBoxRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableCheckBoxRenderer.Callback() {
+            @Override
+            public void ok(TableCheckBoxRenderer.OutputData data) {
+                Marital_statuses.to_marital_statuses to = natality_place_of_delivery.get(data.selected_row);
                 Field.Combo field = (Field.Combo) tf;
                 field.setText(to.marital_status);
                 field.setId("" + to.id);

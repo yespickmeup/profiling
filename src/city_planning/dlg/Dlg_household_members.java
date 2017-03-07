@@ -407,7 +407,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel196 = new javax.swing.JLabel();
         jLabel197 = new javax.swing.JLabel();
         jCheckBox17 = new javax.swing.JCheckBox();
-        tf_others_language2 = new Field.Input();
+        tf_others_language2 = new Field.Combo();
         jLabel198 = new javax.swing.JLabel();
         jLabel199 = new javax.swing.JLabel();
         tf_others_language3 = new Field.Input();
@@ -496,7 +496,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel182 = new javax.swing.JLabel();
         jLabel187 = new javax.swing.JLabel();
         tf_disabilities11 = new Field.Input();
-        tf_disabilities10 = new Field.Combo();
+        tf_disabilities10 = new Field.Input();
         jLabel186 = new javax.swing.JLabel();
         tf_disabilities9 = new Field.Input();
         jLabel185 = new javax.swing.JLabel();
@@ -587,7 +587,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel123 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
         jLabel142 = new javax.swing.JLabel();
-        tf_disabilities6 = new Field.Combo();
+        tf_disabilities6 = new Field.Input();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel141 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -5916,7 +5916,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_disabilities12MouseClicked
 
     private void tf_disabilities12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities12ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_family_planning(tf_disabilities12);
     }//GEN-LAST:event_tf_disabilities12ActionPerformed
 
     private void tf_disabilities13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities13MouseClicked
@@ -5924,7 +5924,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_disabilities13MouseClicked
 
     private void tf_disabilities13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities13ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_tb_program(tf_disabilities13);
     }//GEN-LAST:event_tf_disabilities13ActionPerformed
 
     private void tf_disabilities14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities14MouseClicked
@@ -5932,7 +5932,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_disabilities14MouseClicked
 
     private void tf_disabilities14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities14ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_tb_program_treatment(tf_disabilities14);
     }//GEN-LAST:event_tf_disabilities14ActionPerformed
 
     private void tbl_household_member_past_surgical_historyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_household_member_past_surgical_historyMouseClicked
@@ -5944,7 +5944,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_others_language1ActionPerformed
 
     private void tf_others_language2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_language2ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_programs(tf_others_language2);
     }//GEN-LAST:event_tf_others_language2ActionPerformed
 
     private void tf_others_language3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_language3ActionPerformed
@@ -5952,7 +5952,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_others_language3ActionPerformed
 
     private void tf_others_language4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_others_language4ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_indigenous(tf_others_language4);
     }//GEN-LAST:event_tf_others_language4ActionPerformed
 
     private void tf_disabilities15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities15MouseClicked
@@ -5960,7 +5960,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_disabilities15MouseClicked
 
     private void tf_disabilities15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities15ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_natality_attended_by(tf_disabilities15);
     }//GEN-LAST:event_tf_disabilities15ActionPerformed
 
     private void tf_disabilities16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_disabilities16MouseClicked
@@ -5968,7 +5968,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
     }//GEN-LAST:event_tf_disabilities16MouseClicked
 
     private void tf_disabilities16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_disabilities16ActionPerformed
-        // TODO add your handling code here:
+        Initialize_household_member_field_types.init_natality_place_of_delivery(tf_disabilities16);
     }//GEN-LAST:event_tf_disabilities16ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
