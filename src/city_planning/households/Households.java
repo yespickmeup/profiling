@@ -9,9 +9,9 @@ import city_planning.household_assets.Household_assets;
 import city_planning.household_consumptions.Household_consumptions;
 import city_planning.household_expenditures.Household_expenditures;
 import city_planning.household_members.Household_members;
+import city_planning.household_source_of_income.Household_source_of_income;
 import city_planning.houses.Houses;
 import city_planning.util.MyConnection;
-import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,8 +74,9 @@ public class Households {
         public List<Household_consumptions.to_household_consumptions> household_consumptions;
         public List<Household_members.to_household_members> household_members;
         public int no_of_household_members;
+        public List<Household_source_of_income.to_household_source_of_income> household_source_of_income;
 
-        public to_households(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members, int no_of_household_members) {
+        public to_households(int id, String created_at, String updated_at, String created_by, String updated_by, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, int status, int is_uploaded, String house_no, String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members, int no_of_household_members, List<Household_source_of_income.to_household_source_of_income> household_source_of_income) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -120,6 +121,15 @@ public class Households {
             this.household_consumptions = household_consumptions;
             this.household_members = household_members;
             this.no_of_household_members = no_of_household_members;
+            this.household_source_of_income = household_source_of_income;
+        }
+
+        public List<Household_source_of_income.to_household_source_of_income> getHousehold_source_of_income() {
+            return household_source_of_income;
+        }
+
+        public void setHousehold_source_of_income(List<Household_source_of_income.to_household_source_of_income> household_source_of_income) {
+            this.household_source_of_income = household_source_of_income;
         }
 
         public int getStatus() {
@@ -726,7 +736,81 @@ public class Households {
                 stmt.addBatch(hc);
             }
             //</editor-fold>
+            //<editor-fold defaultstate="collapsed" desc=" Household Source of Income ">
+            List<Household_source_of_income.to_household_source_of_income> household_source_of_income = to_households.household_source_of_income;
+            for (Household_source_of_income.to_household_source_of_income to_household_source_of_income : household_source_of_income) {
+                String si = "insert into household_source_of_income("
+                        + "created_at"
+                        + ",updated_at"
+                        + ",created_by"
+                        + ",updated_by"
+                        + ",region"
+                        + ",region_id"
+                        + ",province"
+                        + ",province_id"
+                        + ",city"
+                        + ",city_id"
+                        + ",barangay"
+                        + ",barangay_id"
+                        + ",purok"
+                        + ",purok_id"
+                        + ",status"
+                        + ",is_uploaded"
+                        + ",house_no"
+                        + ",household_no"
+                        + ",date_of_income"
+                        + ",source_of_income"
+                        + ",amount"
+                        + ")values("
+                        + ":created_at"
+                        + ",:updated_at"
+                        + ",:created_by"
+                        + ",:updated_by"
+                        + ",:region"
+                        + ",:region_id"
+                        + ",:province"
+                        + ",:province_id"
+                        + ",:city"
+                        + ",:city_id"
+                        + ",:barangay"
+                        + ",:barangay_id"
+                        + ",:purok"
+                        + ",:purok_id"
+                        + ",:status"
+                        + ",:is_uploaded"
+                        + ",:house_no"
+                        + ",:household_no"
+                        + ",:date_of_income"
+                        + ",:source_of_income"
+                        + ",:amount"
+                        + ")";
 
+                si = SqlStringUtil.parse(si)
+                        .setString("created_at", to_households.created_at)
+                        .setString("updated_at", to_households.updated_at)
+                        .setString("created_by", to_households.created_by)
+                        .setString("updated_by", to_households.updated_by)
+                        .setString("region", to_households.region)
+                        .setString("region_id", to_households.region_id)
+                        .setString("province", to_households.province)
+                        .setString("province_id", to_households.province_id)
+                        .setString("city", to_households.city)
+                        .setString("city_id", to_households.city_id)
+                        .setString("barangay", to_households.barangay)
+                        .setString("barangay_id", to_households.barangay_id)
+                        .setString("purok", to_households.purok)
+                        .setString("purok_id", to_households.purok_id)
+                        .setNumber("status", to_households.status)
+                        .setNumber("is_uploaded", to_households.is_uploaded)
+                        .setString("house_no", to_households.house_no)
+                        .setString("household_no", to_households.household_no)
+                        .setString("date_of_income", to_household_source_of_income.date_of_income)
+                        .setString("source_of_income", to_household_source_of_income.source_of_income)
+                        .setNumber("amount", to_household_source_of_income.amount)
+                        .ok();
+                stmt.addBatch(si);
+            }
+            //</editor-fold>
             //<editor-fold defaultstate="collapsed" desc=" update household count ">
             int count = 0;
             String h2 = "select count(id) from households where house_no='" + to_households.house_no + "' ";
@@ -892,6 +976,7 @@ public class Households {
         List<Household_expenditures.to_household_expenditures> household_expenditures = new ArrayList();
         List<Household_consumptions.to_household_consumptions> household_consumptions = new ArrayList();
         List<Household_members.to_household_members> household_members = new ArrayList();
+        List<Household_source_of_income.to_household_source_of_income> household_source_of_income = new ArrayList();
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select "
@@ -983,7 +1068,7 @@ public class Households {
                 String health_disparities_rating = rs.getString(38);
                 int no_of_household_members = rs.getInt(39);
                 int is_uploaded = rs.getInt(40);
-                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
+                to_households to = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members, household_source_of_income);
                 datas.add(to);
             }
             return datas;

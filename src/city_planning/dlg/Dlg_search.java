@@ -24,6 +24,7 @@ import city_planning.household_member_skills.Household_member_skills;
 import city_planning.household_member_vocational_experiences.Household_member_vocational_experiences;
 import city_planning.household_member_work_experiences.Household_member_work_experiences;
 import city_planning.household_members.Household_members;
+import city_planning.household_source_of_income.Household_source_of_income;
 import city_planning.households.Households;
 import city_planning.households.Households.to_households;
 import city_planning.houses.Houses;
@@ -2299,7 +2300,7 @@ public class Dlg_search extends javax.swing.JDialog {
         }
         where = where + " and house_no like '%" + jTextField2.getText() + "%' ";
         where = where + " order by house_no asc ";
-        System.out.println(where);
+//        System.out.println(where);
         List<to_houses> houses = Houses.ret_data(where);
         loadData_houses(houses);
         jLabel5.setText("" + houses.size());
@@ -2618,7 +2619,7 @@ public class Dlg_search extends javax.swing.JDialog {
         }
         where = where + " and household_no like '%" + jTextField3.getText() + "%' ";
         where = where + " order by household_no asc ";
-        System.out.println(where);
+//        System.out.println(where);
         List<Households.to_households> houses = Households.ret_data(where);
         loadData_households(houses);
         jLabel8.setText("" + houses.size());
@@ -2683,7 +2684,8 @@ public class Dlg_search extends javax.swing.JDialog {
                 List<Household_consumptions.to_household_consumptions> household_consumptions = data.household_consumptions;
                 List<Household_members.to_household_members> household_members = data.household_members;
                 int no_of_household_members = 0;
-                Households.to_households household = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members);
+                List<Household_source_of_income.to_household_source_of_income> household_source_of_income = data.household_source_of_income;
+                Households.to_households household = new to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, no_of_household_members,household_source_of_income);
                 jProgressBar3.setString("Loading...Please wait...");
                 jProgressBar3.setIndeterminate(true);
                 jButton6.setEnabled(false);

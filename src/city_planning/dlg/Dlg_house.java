@@ -18,6 +18,7 @@ import city_planning.household_assets.Household_assets;
 import city_planning.household_consumptions.Household_consumptions;
 import city_planning.household_expenditures.Household_expenditures;
 import city_planning.household_members.Household_members;
+import city_planning.household_source_of_income.Household_source_of_income;
 import city_planning.households.Households;
 import city_planning.houses.Houses;
 import city_planning.initialize_fields.Initialize_house_field_types;
@@ -2118,7 +2119,8 @@ public class Dlg_house extends javax.swing.JDialog {
                     List<Household_expenditures.to_household_expenditures> household_expenditures = data.household_expenditures;
                     List<Household_consumptions.to_household_consumptions> household_consumptions = data.household_consumptions;
                     List<Household_members.to_household_members> household_members = data.household_members;
-                    Households.to_households household = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, 0);
+                    List<Household_source_of_income.to_household_source_of_income> household_source_of_income = data.household_source_of_income;
+                    Households.to_households household = new Households.to_households(id, created_at, updated_at, created_by, updated_by, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, is_uploaded, house_no, household_no, occupancy_types, tenure, is_occupant_owns_the_land, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, 0, household_source_of_income);
                     Initialize_table_households.tbl_households_ALM.add(household);
                     Initialize_table_households.tbl_households_M.fireTableDataChanged();
                     jLabel2.setText("" + Initialize_table_households.tbl_households_ALM.size());
@@ -2268,7 +2270,7 @@ public class Dlg_house extends javax.swing.JDialog {
         String longtitude = tf_nearest_water_src2.getText();
         int no_of_households = 0;
         int no_of_household_members = 0;
-       
+
         if (callback != null) {
             callback.ok(new CloseDialog(this), new OutputData(region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, status, house_no, no_of_rooms, bldg_types, bldg_permit, toilet_types, compartments, bathroom_types, waste_disposal_methods, kitchen_types, trans_types, construction_roof_types, construction_wall_types, construction_floor_types, construction_communication_types, lighting_fuels, cooking_fuels, water_sources, drinking_water_source_distance, nearest_water_source_distance, households, latitude, longtitude));
         }

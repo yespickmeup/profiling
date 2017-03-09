@@ -196,3 +196,30 @@ id int auto_increment primary key
 ,hs_natality_attended_by varchar(255)
 ,hs_natality_place_of_delivery varchar(255)
 );
+
+
+drop table if exists household_source_of_income;
+create table household_source_of_income(
+id int auto_increment primary key
+,created_at datetime
+,updated_at datetime
+,created_by varchar(255)
+,updated_by varchar(255)
+,region varchar(255)
+,region_id varchar(255)
+,province varchar(255)
+,province_id varchar(255)
+,city varchar(255)
+,city_id varchar(255)
+,barangay varchar(255)
+,barangay_id varchar(255)
+,purok varchar(255)
+,purok_id varchar(255)
+,status int
+,is_uploaded int default 0
+,house_no varchar(255)
+,household_no varchar(255)
+,date_of_income date
+,source_of_income varchar(255)
+,amount double
+);

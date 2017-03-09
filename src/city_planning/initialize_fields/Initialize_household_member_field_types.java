@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import synsoftech.fields.Field;
 
+
 /**
  *
  * @author Guinness
@@ -184,7 +185,7 @@ public class Initialize_household_member_field_types {
         Marital_statuses.to_marital_statuses d1 = new Marital_statuses.to_marital_statuses(0, "Natural/Manmade Disaster");
         Marital_statuses.to_marital_statuses d2 = new Marital_statuses.to_marital_statuses(0, "Armed Conflict");
         Marital_statuses.to_marital_statuses d3 = new Marital_statuses.to_marital_statuses(0, "Infrastructure Development Project");
-        Marital_statuses.to_marital_statuses d4 = new Marital_statuses.to_marital_statuses(0, "Other");
+        Marital_statuses.to_marital_statuses d4 = new Marital_statuses.to_marital_statuses(0, "Others");
         displacements.add(d1);
         displacements.add(d2);
         displacements.add(d3);
@@ -201,6 +202,9 @@ public class Initialize_household_member_field_types {
         Marital_statuses.to_marital_statuses ps8 = new Marital_statuses.to_marital_statuses(0, "Microcredit");
         Marital_statuses.to_marital_statuses ps9 = new Marital_statuses.to_marital_statuses(0, "Self-Employment Assistance");
         Marital_statuses.to_marital_statuses ps10 = new Marital_statuses.to_marital_statuses(0, "Pantawid Pamilya");
+        Marital_statuses.to_marital_statuses ps11 = new Marital_statuses.to_marital_statuses(0, "Other Cash Transfer Program");
+        Marital_statuses.to_marital_statuses ps12 = new Marital_statuses.to_marital_statuses(0, "Others");
+        
         programs.add(ps1);
         programs.add(ps2);
         programs.add(ps3);
@@ -211,6 +215,8 @@ public class Initialize_household_member_field_types {
         programs.add(ps8);
         programs.add(ps9);
         programs.add(ps10);
+        programs.add(ps11);
+        programs.add(ps12);
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" indigenous ">
         Marital_statuses.to_marital_statuses ind1 = new Marital_statuses.to_marital_statuses(0, "Aeta");

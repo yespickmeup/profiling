@@ -13,6 +13,8 @@ import city_planning.household_expenditures.Household_expenditures;
 import city_planning.household_expenditures.Household_expenditures.to_household_expenditures;
 import city_planning.household_members.Household_members;
 import city_planning.household_members.Household_members.to_household_members;
+import city_planning.household_source_of_income.Household_source_of_income;
+import city_planning.household_source_of_income.Household_source_of_income.to_household_source_of_income;
 import city_planning.households.Households;
 import city_planning.households.Households.to_households;
 import city_planning.houses.Houses.to_houses;
@@ -29,8 +31,7 @@ import synsoftech.util.DateType;
 
 /**
  *
- * @author Guinness
- * asdasdad
+ * @author Guinness asdasdad
  */
 public class Initialize_table_households {
 
@@ -906,6 +907,121 @@ public class Initialize_table_households {
                     return tt.concerns;
             }
         }
+    }
+//</editor-fold> 
+
+    //<editor-fold defaultstate="collapsed" desc=" household_source_of_income "> 
+    public static ArrayListModel tbl_household_source_of_income_ALM;
+    public static Tblhousehold_source_of_incomeModel tbl_household_source_of_income_M;
+
+    public static void init_tbl_household_source_of_income(JTable tbl_household_source_of_income) {
+        tbl_household_source_of_income_ALM = new ArrayListModel();
+        tbl_household_source_of_income_M = new Tblhousehold_source_of_incomeModel(tbl_household_source_of_income_ALM);
+        tbl_household_source_of_income.setModel(tbl_household_source_of_income_M);
+        tbl_household_source_of_income.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tbl_household_source_of_income.setRowHeight(25);
+        int[] tbl_widths_household_source_of_income = {80, 100, 80, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        for (int i = 0, n = tbl_widths_household_source_of_income.length; i < n; i++) {
+            if (i == 1) {
+                continue;
+            }
+            TableWidthUtilities.setColumnWidth(tbl_household_source_of_income, i, tbl_widths_household_source_of_income[i]);
+        }
+        Dimension d = tbl_household_source_of_income.getTableHeader().getPreferredSize();
+        d.height = 25;
+        tbl_household_source_of_income.getTableHeader().setPreferredSize(d);
+        tbl_household_source_of_income.getTableHeader().setFont(new java.awt.Font("Arial", 0, 12));
+        tbl_household_source_of_income.setRowHeight(25);
+        tbl_household_source_of_income.setFont(new java.awt.Font("Arial", 0, 12));
+        TableWidthUtilities.setColumnRightRenderer(tbl_household_source_of_income, 2);
+    }
+
+    public static void loadData_household_source_of_income(List<to_household_source_of_income> acc) {
+        tbl_household_source_of_income_ALM.clear();
+        tbl_household_source_of_income_ALM.addAll(acc);
+    }
+
+    public static class Tblhousehold_source_of_incomeModel extends AbstractTableAdapter {
+
+        public static String[] COLUMNS = {
+            "Date", "Source", "Amount", "", "", "region", "region_id", "province", "province_id", "city", "city_id", "barangay", "barangay_id", "purok", "purok_id", "status", "is_uploaded", "house_no", "household_no", "date_of_income", "source_of_income", "amount"
+        };
+
+        public Tblhousehold_source_of_incomeModel(ListModel listmodel) {
+            super(listmodel, COLUMNS);
+        }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 100) {
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public Class getColumnClass(int col) {
+            if (col == 1000) {
+                return Boolean.class;
+            }
+            return Object.class;
+        }
+
+        @Override
+        public Object getValueAt(int row, int col) {
+            to_household_source_of_income tt = (to_household_source_of_income) getRow(row);
+            switch (col) {
+                case 0:
+                    return " " + DateType.convert_slash_datetime2(tt.date_of_income);
+                case 1:
+                    return " " + tt.source_of_income;
+                case 2:
+                    return FitIn.fmt_wc_0(tt.amount) + " ";
+                case 3:
+                    return " Edit";
+                case 4:
+                    return " Delete";
+                case 5:
+                    return tt.region;
+                case 6:
+                    return tt.region_id;
+                case 7:
+                    return tt.province;
+                case 8:
+                    return tt.province_id;
+                case 9:
+                    return tt.city;
+                case 10:
+                    return tt.city_id;
+                case 11:
+                    return tt.barangay;
+                case 12:
+                    return tt.barangay_id;
+                case 13:
+                    return tt.purok;
+                case 14:
+                    return tt.purok_id;
+                case 15:
+                    return tt.status;
+                case 16:
+                    return tt.is_uploaded;
+                case 17:
+                    return tt.house_no;
+                case 18:
+                    return tt.household_no;
+                case 19:
+                    return tt.date_of_income;
+                case 20:
+                    return tt.source_of_income;
+                default:
+                    return tt.amount;
+            }
+        }
+    }
+
+    public static void ret_household_source_of_income(String where) {
+        List<to_household_source_of_income> list = Household_source_of_income.ret_data(where);
+        loadData_household_source_of_income(list);
     }
 //</editor-fold> 
 
