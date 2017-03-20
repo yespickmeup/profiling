@@ -37,7 +37,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -785,7 +784,7 @@ public class Dlg_upload extends javax.swing.JDialog {
         jsonObject.addProperty("household_member_vocational_experiences", json_household_member_vocational_experiences_0);
         jsonObject.addProperty("household_member_work_experiences", json_household_member_work_experiences_0);
         jsonObject.addProperty("houses", json_houses_0);
-
+        
         try {
             String urlParameters = "data=" + jsonObject;
 //            System.out.println("" + urlParameters);
