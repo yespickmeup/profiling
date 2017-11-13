@@ -118,7 +118,8 @@ public class Dlg_households extends javax.swing.JDialog {
         public final String purok_id;
         public final String house_no;
         public final List<Household_source_of_income.to_household_source_of_income> household_source_of_income;
-        public OutputData(String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, String house_no,List<Household_source_of_income.to_household_source_of_income> household_source_of_income) {
+
+        public OutputData(String household_no, String occupancy_types, String tenure, int is_occupant_owns_the_land, int is_occupant_owns_the_bldg, double monthly_rental, String drainage_system_concern, String street_maintenance_concern, String garbage_collection_concern, String fire_protection_concern, String police_protection_concern, String ambulance_service_concern, String livelihood_programs_concern, String adolescent_pregnancy_rate, String child_abuse_rating, String crime_rating, String domestic_violence_rating, String drug_abuse_rating, String hunger_rating, String environmental_contamination_rating, String health_disparities_rating, List<Household_assets.to_household_assets> assets, List<Household_expenditures.to_household_expenditures> household_expenditures, List<Household_consumptions.to_household_consumptions> household_consumptions, List<Household_members.to_household_members> household_members, String region, String region_id, String province, String province_id, String city, String city_id, String barangay, String barangay_id, String purok, String purok_id, String house_no, List<Household_source_of_income.to_household_source_of_income> household_source_of_income) {
             this.household_no = household_no;
             this.occupancy_types = occupancy_types;
             this.tenure = tenure;
@@ -155,7 +156,7 @@ public class Dlg_households extends javax.swing.JDialog {
             this.purok = purok;
             this.purok_id = purok_id;
             this.house_no = house_no;
-            this.household_source_of_income=household_source_of_income;
+            this.household_source_of_income = household_source_of_income;
         }
 
     }
@@ -2645,6 +2646,7 @@ public class Dlg_households extends javax.swing.JDialog {
         jButton16.setVisible(false);
         jButton17.setVisible(false);
         jTabbedPane1.remove(5);
+        settings();
 //        jTabbedPane1.remove(5);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -2654,6 +2656,55 @@ public class Dlg_households extends javax.swing.JDialog {
         });
     }
 
+    private void settings() {
+        String[] titles = {"BASIC INFORMATION", "ASSETS", "EXPENDITURES", "CONSUMPTIONS", "CONCERNS", "MEMBERS", "SOURCE OF INCOME"};
+        String household_assets = System.getProperty("household_assets", "0");
+        String household_expenditures = System.getProperty("household_expenditures", "0");
+        String household_consumptions = System.getProperty("household_consumptions", "0");
+        String household_concerns = System.getProperty("household_concerns", "0");
+        String household_source_of_income = System.getProperty("household_source_of_income", "0");
+
+        if (household_assets.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("ASSETS")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_expenditures.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("EXPENDITURES")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_consumptions.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("CONSUMPTIONS")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_concerns.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("CONCERNS")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_source_of_income.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("SOURCE OF INCOME")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+    }
     Households.to_households household = new Households.to_households(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), 0, new ArrayList());
     String my_region = "";
     String my_region_id = "";
@@ -3780,7 +3831,7 @@ public class Dlg_households extends javax.swing.JDialog {
     //</editor-fold>
 
     private void ok() {
-        
+
         //<editor-fold defaultstate="collapsed" desc=" callback ">
         Field.Combo reg = (Field.Combo) tf_region;
         Field.Combo prov = (Field.Combo) tf_province;
@@ -3837,9 +3888,9 @@ public class Dlg_households extends javax.swing.JDialog {
             Alert.set(0, "Choose House Number!");
             return;
         }
-        List<Household_source_of_income.to_household_source_of_income> household_source_of_income=Initialize_table_households.tbl_household_source_of_income_ALM;
+        List<Household_source_of_income.to_household_source_of_income> household_source_of_income = Initialize_table_households.tbl_household_source_of_income_ALM;
         if (callback != null) {
-            callback.ok(new CloseDialog(this), new OutputData(household_no, occupancy_types, tenure, is_occupant_owns_the_lan, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, house_no,household_source_of_income));
+            callback.ok(new CloseDialog(this), new OutputData(household_no, occupancy_types, tenure, is_occupant_owns_the_lan, is_occupant_owns_the_bldg, monthly_rental, drainage_system_concern, street_maintenance_concern, garbage_collection_concern, fire_protection_concern, police_protection_concern, ambulance_service_concern, livelihood_programs_concern, adolescent_pregnancy_rate, child_abuse_rating, crime_rating, domestic_violence_rating, drug_abuse_rating, hunger_rating, environmental_contamination_rating, health_disparities_rating, assets, household_expenditures, household_consumptions, household_members, region, region_id, province, province_id, city, city_id, barangay, barangay_id, purok, purok_id, house_no, household_source_of_income));
         }
         //</editor-fold>
 

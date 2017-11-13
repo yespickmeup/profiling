@@ -1779,7 +1779,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
                 .addGap(22, 22, 22)
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 746, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -3049,7 +3049,7 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jLabel146.setText("Alcohol:");
 
         jLabel148.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel148.setText("Elicit drugs:");
+        jLabel148.setText("Ilicit drugs:");
 
         buttonGroup9.add(jCheckBox7);
         jCheckBox7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -6483,6 +6483,8 @@ public class Dlg_household_members extends javax.swing.JDialog {
         Field.Combo pur = (Field.Combo) tf_purok;
         pur.setText("");
         pur.setId("");
+        String version = System.getProperty("type", "all");
+
         Initialize_table_household_members.init_tbl_household_member_health_statuses(tbl_household_member_health_statuses);
         Initialize_table_household_members.init_tbl_household_member_medications(tbl_household_member_medications);
         Initialize_table_household_members.init_tbl_household_member_educational_backgrounds(tbl_household_member_educational_backgrounds);
@@ -6501,6 +6503,9 @@ public class Dlg_household_members extends javax.swing.JDialog {
         jButton14.setVisible(false);
         jButton16.setVisible(false);
         jButton15.setVisible(false);
+
+        settings();
+
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -6509,6 +6514,73 @@ public class Dlg_household_members extends javax.swing.JDialog {
         });
     }
 
+    private void settings() {
+        String[] titles = {"BASIC INFORMATION", "EDUCATION BACKGROUND", "HEALTH STATUS", "MEDICATION", "WORK EXPERIENCE", "LICENSE AND CERTIFICATES",
+            "EMPLOYMENT STATUS", "SKILLS"};
+        String household_member_educational_background = System.getProperty("household_member_educational_background", "0");
+        String household_member_health_status = System.getProperty("household_member_health_status", "0");
+        String household_member_medication = System.getProperty("household_member_medication", "0");
+        String household_member_work_experience = System.getProperty("household_member_work_experience", "0");
+        String household_member_license_and_certificates = System.getProperty("household_member_license_and_certificates", "0");
+        String household_member_employment_status = System.getProperty("household_member_employment_status", "0");
+        String household_member_skills = System.getProperty("household_member_skills", "0");
+        if (household_member_skills.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("SKILLS")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_member_employment_status.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("EMPLOYMENT STATUS")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_member_license_and_certificates.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("LICENSE AND CERTIFICATES")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_member_work_experience.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("WORK EXPERIENCE")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_member_educational_background.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("EDUCATION BACKGROUND")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_member_health_status.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("HEALTH STATUS")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+        if (household_member_medication.equalsIgnoreCase("0")) {
+            for (int i = 0; i < jTabbedPane1.getTabCount(); i++) {
+                String tabTitle = jTabbedPane1.getTitleAt(i);
+                if (tabTitle.equalsIgnoreCase("MEDICATION")) {
+                    jTabbedPane1.remove(i);
+                }
+            }
+        }
+    }
     Household_members.to_household_members household_member = new Household_members.to_household_members(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, 0, "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", 0, "", new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), null, null, "", "", "", new ArrayList(), null);
 
     String my_region = "";

@@ -60,8 +60,85 @@ public class MyMain {
             List<Settings.to_settings> datas = Settings.ret_data(where);
             if (!datas.isEmpty()) {
                 Settings.to_settings setting = datas.get(0);
-                System.setProperty("city_label", setting.city_label);
+                String city = "City";
+                if (setting.barangay_is_city == 0) {
+                    city = "Municipality";
+                }
+                System.setProperty("city_label", city);
                 System.setProperty("punong_barangay", setting.punong_barangay);
+
+                //<editor-fold defaultstate="collapsed" desc=" callback ">
+                if (setting.household_assets == 0) {
+                    System.setProperty("household_assets", "0");
+                } else {
+                    System.setProperty("household_assets", "1");
+                }
+
+                if (setting.household_expenditures == 0) {
+                    System.setProperty("household_expenditures", "0");
+                } else {
+                    System.setProperty("household_expenditures", "1");
+                }
+
+                if (setting.household_consumptions == 0) {
+                    System.setProperty("household_consumptions", "0");
+                } else {
+                    System.setProperty("household_consumptions", "1");
+                }
+
+                if (setting.household_concerns == 0) {
+                    System.setProperty("household_concerns", "0");
+                } else {
+                    System.setProperty("household_concerns", "1");
+                }
+                if (setting.household_source_of_income == 0) {
+                    System.setProperty("household_source_of_income", "0");
+                } else {
+                    System.setProperty("household_source_of_income", "1");
+                }
+                // household members
+                if (setting.household_member_educational_background == 0) {
+                    System.setProperty("household_member_educational_background", "0");
+                } else {
+                    System.setProperty("household_member_educational_background", "1");
+                }
+
+                if (setting.household_member_health_status == 0) {
+                    System.setProperty("household_member_health_status", "0");
+                } else {
+                    System.setProperty("household_member_health_status", "1");
+                }
+                if (setting.household_member_medication == 0) {
+                    System.setProperty("household_member_medication", "");
+                } else {
+                    System.setProperty("household_member_medication", "");
+                }
+
+                if (setting.household_member_work_experience == 0) {
+                    System.setProperty("household_member_work_experience", "0");
+                } else {
+                    System.setProperty("household_member_work_experience", "1");
+                }
+
+                if (setting.household_member_license_and_certificates == 0) {
+                    System.setProperty("household_member_license_and_certificates", "0");
+                } else {
+                    System.setProperty("household_member_license_and_certificates", "1");
+                }
+
+                if (setting.household_member_employment_status == 0) {
+                    System.setProperty("household_member_employment_status", "0");
+                } else {
+                    System.setProperty("household_member_employment_status", "1");
+                }
+
+                if (setting.household_member_skills == 0) {
+                    System.setProperty("household_member_skills", "0");
+                } else {
+                    System.setProperty("household_member_skills", "1");
+                }
+
+                //</editor-fold>
             }
 
             System.out.println(home);
@@ -81,8 +158,13 @@ public class MyMain {
             System.setProperty("cloud_db", prop.getProperty("cloud_db", "db_algorithm"));
             System.setProperty("hdd_drive", prop.getProperty("hdd_drive", ""));
             System.setProperty("community_tax_no", prop.getProperty("community_tax_no", ""));
+            System.setProperty("environment", prop.getProperty("environment", "production"));
+            System.setProperty("type", prop.getProperty("type", "full"));
 
-            //
+            //Modules
+            //Households
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
